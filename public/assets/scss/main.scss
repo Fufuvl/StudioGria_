@@ -1,0 +1,23 @@
+@forward '../css/animate.css';
+@forward '../css/custom-animation.css';
+@forward '../css/font-awesome-pro.css';
+@forward 'theme';
+@forward 'components';
+@forward 'layout';
+
+.project-image-container {
+  position: relative;
+  height: 600px; // İstenilen yüksekliği buradan ayarlayabilirsiniz
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Header varsayılan stillerine geri dön */
+.tp-inner-header-area.tp-inner-header-style-2,
+.tp-inner-header-area.transparent {
+  background-color: transparent !important;
+  color: inherit;
+}
+
+.tp-inner-header-logo h1 { color: inherit; }
+.tp-offcanvas-open-btn { color: inherit; }
