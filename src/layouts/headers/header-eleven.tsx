@@ -1,9 +1,12 @@
 'use client';
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import HeaderMenus from "./header-menus";
 import useSticky from "@/hooks/use-sticky";
 import MobileOffcanvas from "@/components/offcanvas/mobile-offcanvas";
+import logoDark from "@/assets/img/logo/logo-dark.png";
+import logoWhite from "@/assets/img/logo/logo-white-new.png";
 
 // prop type 
 type IProps = {
@@ -29,7 +32,14 @@ export default function HeaderEleven({transparent=false,cls=''}: IProps) {
               <div className="col-xl-2 col-lg-6 col-md-6 col-6">
                 <div className="tp-inner-header-logo tp-header-logo">
                   <Link href="/">
-                    <h1 style={{fontSize: '26px', fontWeight: 700}}>Studio Gria</h1>
+                    <Image 
+                      src={(transparent && !sticky) ? logoWhite : logoDark} 
+                      alt="Studio Gria" 
+                      width={150}
+                      height={40}
+                      style={{height: 'auto', width: 'auto', maxHeight: '40px'}}
+                      priority
+                    />
                   </Link>
                 </div>
               </div>

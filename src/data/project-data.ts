@@ -54,7 +54,7 @@ export const projects: ProjectDT[] = [
     "/assets/img/home-05/project/Soothe/2.jpg",
     "/assets/img/home-05/project/Soothe/3.jpg",
   ] },
-  { id: 9, slug: "nese-erbak", title: "Neşe Erbak", category: "Concept", img: "/assets/img/home-05/project/12.jpg", year: 2024, images: [
+  { id: 9, slug: "nese-erbak", title: "Neşe Erberk", category: "Concept", img: "/assets/img/home-05/project/12.jpg", year: 2024, images: [
     "/assets/img/home-05/project/nese/5.jpg",
     "/assets/img/home-05/project/nese/6.jpg",
     "/assets/img/home-05/project/nese/7.jpg",

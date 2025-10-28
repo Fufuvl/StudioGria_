@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/assets/img/logo/logo-white.png";
-import logo_2 from "@/assets/img/logo/logo.png";
+import logoWhite from "@/assets/img/logo/logo-white-new.png";
+import logoDark from "@/assets/img/logo/logo-dark.png";
 import { RightArrow } from "@/components/svg";
 
 // prop type
@@ -25,18 +25,36 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
               <div className="tp-footer-2-widget footer-col-2-1">
                 {!whiteFooter && (
                   <div className="tp-footer-2-widget-logo">
-                    <Link href="/" style={{ fontSize: '24px', color: 'white' }}>
-                      Studio Gria
+                    <Link href="/">
+                      <Image 
+                        src={logoWhite} 
+                        alt="Studio Gria" 
+                        width={150}
+                        height={40}
+                        style={{height: 'auto', width: 'auto', maxHeight: '40px'}}
+                      />
                     </Link>
                   </div>
                 )}
                 {whiteFooter && (
                   <div className="tp-footer-2-widget-logo tp-footer-dark">
-                    <Link className="logo-1" href="/" style={{ fontSize: '24px', color: 'white' }}>
-                      Studio Gria
+                    <Link className="logo-1" href="/">
+                      <Image 
+                        src={logoWhite} 
+                        alt="Studio Gria" 
+                        width={150}
+                        height={40}
+                        style={{height: 'auto', width: 'auto', maxHeight: '40px'}}
+                      />
                     </Link>
-                    <Link className="logo-2" href="/" style={{ fontSize: '24px', color: 'white' }}>
-                      Studio Gria
+                    <Link className="logo-2" href="/">
+                      <Image 
+                        src={logoDark} 
+                        alt="Studio Gria" 
+                        width={150}
+                        height={40}
+                        style={{height: 'auto', width: 'auto', maxHeight: '40px'}}
+                      />
                     </Link>
                   </div>
                 )}
