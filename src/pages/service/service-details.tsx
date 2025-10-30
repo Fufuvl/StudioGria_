@@ -30,7 +30,7 @@ const ServiceDetailsMain = () => {
   return (
     <Wrapper>
       {/* header area start */}
-      <HeaderEleven transparent={true} />
+      <HeaderEleven />
       {/* header area end */}
 
       <div id="smooth-wrapper">

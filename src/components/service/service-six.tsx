@@ -4,8 +4,9 @@ import Image from "next/image";
 // images
 import ser_img_1 from "@/assets/img/inner-service/service/service-1.jpg";
 import ser_img_2 from "@/assets/img/inner-service/service/service-2.jpg";
-import ser_img_3 from "@/assets/img/inner-service/service/service-3.jpg";
+import ser_img_3 from "@/assets/img/inner-service/service/service-6.jpg";
 import ser_img_4 from "@/assets/img/inner-service/service/service-4.jpg";
+import ser_img_5 from "@/assets/img/inner-service/service/service-5.jpg";
 import { RightArrow, ShapeTwo } from "../svg";
 import Link from "next/link";
 
@@ -38,10 +39,10 @@ const service_data = [
   },
   {
     id: 3,
-    img: ser_img_3,
+    img: ser_img_5,
     subtitle: "Production Studio",
     title: "Drone & FPV Cinematics",
-    text: "Drone ve FPV çekimleri ile markanızın hikayesini gökyüzünden anlatıyor, mekanlarınızı, ürünlerinizi ve etkinliklerinizi sinematik bir bakış açısıyla öne çıkarıyoruz.",
+    text: "Markanızın hikayesini havadan anlatın. Otel, restoran, fabrika, etkinlik ya da ürün tanıtımlarınızda — profesyonel drone ve FPV çekimleri ile fark yaratıyoruz. Yüksek çözünürlük, sinematik açı ve özgün kurgu dokunuşlarıyla markanıza bambaşka bir perspektif kazandırıyoruz.",
     lists: [
       "FPV Drone Çekimi (Indoor & Outdoor)",
       "Tanıtım Filmleri",
@@ -65,7 +66,7 @@ const service_data = [
   },
   {
     id: 5,
-    img: ser_img_4,
+    img: ser_img_3,
     subtitle: "Design Studio",
     title: "Raporlama ve Analiz",
     text: "Paylaşımlarınızın performansını düzenli olarak analiz ediyor, stratejinizi veriye dayalı kararlarla güçlendiriyoruz.",

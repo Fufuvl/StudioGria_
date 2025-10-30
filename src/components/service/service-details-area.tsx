@@ -45,18 +45,19 @@ const service_data = [
     },
     {
       id: 3,
-      category: "Motion-Design",
-      subtitle: "Motion-Design",
-      title: "Motion-Design",
-      main_text: "Markanızın dijital dünyadaki hikayesini hareketle anlatıyoruz. Yaratıcı motion design çözümlerimizle markanızın mesajını dikkat çekici, dinamik ve akılda kalıcı hale getiriyoruz. Görsel iletişimin gücünü, modern animasyon teknikleriyle birleştirerek markanızı dijital platformlarda öne çıkarıyoruz.",
-      description: "Her markanın kendine özgü bir dili vardır; biz bu dili hareketle konuşturuyoruz. İster sosyal medya videosu, ister reklam filmi, ister tanıtım animasyonu olsun — tasarımlarımız markanızın kimliğini yansıtır, izleyicide etki bırakır.",
+      category: "Drone & FPV Cinematics",
+      subtitle: "Drone & FPV Cinematics",
+      title: "Drone & FPV Cinematics",
+      main_text: "Dijital dünyada markanızı öne çıkaran en etkileyici yöntemlerden biri, izleyicinin gözünden sahnenin kalbine inmektir. Studio Gria olarak, profesyonel drone ve FPV çekimleri ile markanızın hikayesini gökyüzünden anlatıyor, mekanlarınızı, ürünlerinizi ve etkinliklerinizi sinematik bir bakış açısıyla öne çıkarıyoruz.",
+      description: "Her projede mekânın enerjisini, hareketin ritmini ve markanızın ruhunu yakalayan özgün kurgular oluşturuyoruz.Turizm, mimarlık, otelcilik ve üretim sektörlerine özel sunduğumuz çekimlerle, markalarınızın görünürlüğünü artırıyor ve izleyenlerde kalıcı bir etki bırakıyoruz.",
       features: [
-        "Motion Graphic Tasarım",
-        "Sosyal Medya Animasyonları",
-        "Marka Tanıtım Videoları",
-        "Reklam ve Kampanya Videoları"
+        "FPV Drone Çekimi (Indoor & Outdoor)",
+        "Tanıtım Filmleri",
+        "Mekan ve Otel Çekimi",
+        "Etkinlik & Organizasyon Çekimi",
+        "Sosyal Medya İçin Sinematik Videolar",
       ],
-      box_title: "Motion-Design",
+      box_title: "Drone & FPV Cinematics",
       box_desc: "Marka algınızı güçlendiren, özgün ve yüksek kaliteli görsel içerikler üretiyoruz."
     },
     
@@ -89,7 +90,7 @@ const service_data = [
         "Veri Odaklı Strateji Geliştirme",
         "Rakip ve Pazar Analizi"
       ],
-      box_title: "Rapori",
+      box_title: "Raporlama ve Analiz",
       box_desc: "Raporlama ve analiz hizmetlerimizle dijital performansınızı ölçüyor, elde ettiğimiz verilerle markanızı daha etkili stratejilere yönlendiriyoruz. Her paylaşım, her kampanya ve her etkileşim bir veridir. Biz bu verileri anlamlandırarak; markanızın dijital dünyadaki konumunu güçlendirmek, hedef kitlenize daha doğru mesajlar ulaştırmak ve bütçenizi en verimli şekilde kullanmak için detaylı analizler sunuyoruz."
     }
 
@@ -100,7 +101,7 @@ const service_data = [
 const categoryMapping: { [key: string]: string } = {
   "Logo ve Marka Kimliği": "Logo Tasarımı",
   "İçerik Üretimi": "İçerik Üretimi", 
-  "Motion-Design": "Motion-Design",
+  "Drone & FPV Cinematics": "Drone & FPV Cinematics",
   "Sosyal Medya Yönetimi": "Sosyal Medya Yönetimi",
   "Raporlama ve Analiz": "Raporlama ve Analiz"
 };
