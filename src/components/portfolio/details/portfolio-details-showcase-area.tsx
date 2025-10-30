@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { scroller } from 'react-scroll';
 import details_thumb_1 from '@/assets/img/inner-project/showcase/15.jpg';
 import details_thumb_2 from '@/assets/img/inner-project/showcase/16.jpg';
-import details_thumb_3 from '@/assets/img/inner-project/showcase/1.jpg';
+import details_thumb_3 from '@/assets/img/inner-project/showcase/3.jpg';
 import social_data from '@/data/social-data';
 
 export default function PortfolioDetailsShowcaseArea() {
@@ -18,7 +18,7 @@ export default function PortfolioDetailsShowcaseArea() {
     <>
      {/* details area */}
       <div className="tp-showcase-details-area">
-         <div className="tp-showcase-details-bg d-flex align-items-center justify-content-center include-bg p-relative" style={{backgroundImage: "url(/assets/img/inner-project/showcase/showcase-1.jpg)"}}>
+         <div className="tp-showcase-details-bg d-flex align-items-center justify-content-center include-bg p-relative" style={{backgroundImage: "url(/assets/img/inner-project/showcase/background.jpg)"}}>
           <div className="tp-showcase-details-scroll smooth">
               <a onClick={scrollTo} className="pointer">
                 <i className="fa-sharp fa-light fa-angle-down"></i>

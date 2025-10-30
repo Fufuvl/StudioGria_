@@ -39,14 +39,15 @@ const service_data = [
   {
     id: 3,
     img: ser_img_3,
-    subtitle: "Design Studio",
-    title: "Motion-Design",
-    text: "Sosyal medya ve dijital kampanyalarınız için dikkat çekici hareketli grafikler (motion design) ile marka görünürlüğünüzü artırıyoruz.",
+    subtitle: "Production Studio",
+    title: "Drone & FPV Cinematics",
+    text: "Drone ve FPV çekimleri ile markanızın hikayesini gökyüzünden anlatıyor, mekanlarınızı, ürünlerinizi ve etkinliklerinizi sinematik bir bakış açısıyla öne çıkarıyoruz.",
     lists: [
-      "Animasyonlu Postlar",
-    "Reels & Shorts Animasyonları",
-    "Logo Animasyonları",
-    "Etkinlik Tanıtım Videoları",
+      "FPV Drone Çekimi (Indoor & Outdoor)",
+      "Tanıtım Filmleri",
+      "Mekan ve Otel Çekimi",
+      "Etkinlik & Organizasyon Çekimi",
+      "Sosyal Medya İçin Sinematik Videolar",
     ],
   },
   {
