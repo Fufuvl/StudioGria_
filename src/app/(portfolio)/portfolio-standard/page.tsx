@@ -3,12 +3,12 @@ import { Metadata } from "next";
 import PortfolioStandardMain from "@/pages/portfolio/portfolio-standard-main";
 
 export const metadata: Metadata = {
-  title: "Studio Gria - Portföy Standart",
+  title: "Studio Gria - Portfolyo Standart",
 };
 
 const PortfolioStandardPage = () => {
   return (
-    <PortfolioStandardMain/>
+    <PortfolioStandardMain />
   );
 };
 

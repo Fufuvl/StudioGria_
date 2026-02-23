@@ -3,12 +3,12 @@ import { Metadata } from "next";
 import PortfolioDetailsOneMain from "@/pages/portfolio/details/portfolio-details-1-main";
 
 export const metadata: Metadata = {
-  title: "Studio Gria - Portföy Detayı",
+  title: "Studio Gria - Portfolyo Detayı",
 };
 
 const PortfolioDetailsOnePage = () => {
   return (
-    <PortfolioDetailsOneMain/>
+    <PortfolioDetailsOneMain />
   );
 };
 
