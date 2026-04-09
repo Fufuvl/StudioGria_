@@ -14,36 +14,48 @@ type IFaq = {
 export const faq_data:IFaq[] = [
   {
     id: 1,
+    question: "AI ile içerik üretimi yapıyor musunuz?",
+    answer:
+      "Evet. Studio Gria olarak yapay zeka destekli görsel içerik üretimi, kampanya kurgusu ve marka estetiğine uygun kreatif çalışmalar hazırlıyoruz. AI üretim sürecini tek başına değil; marka dili, hedef kitle ve performans hedefleriyle birlikte ele alarak daha hızlı ve ölçeklenebilir içerikler sunuyoruz.",
+  },
+  {
+    id: 2,
+    question: "Ödemeyi kartla yapabiliyor muyuz?",
+    answer:
+      "Evet, kartla ödeme kabul ediyoruz. Süreci markalar ve bireysel müşteriler için mümkün olduğunca kolaylaştırıyoruz; banka/kredi kartıyla ödeme yapabilir, ihtiyacınıza göre size en uygun ödeme yöntemini birlikte belirleyebiliriz.",
+  },
+  {
+    id: 3,
     question: "Sosyal medya yönetimi tam olarak neyi kapsıyor?",
     answer:
       "Sosyal medya yönetimi; markanızın hedef kitlesine uygun içerik planlaması, içerik üretimi (görsel/video), paylaşım takvimi oluşturulması, takipçi etkileşimi, reklam yönetimi ve analiz raporlarının sunulması gibi tüm süreçleri kapsar. Studio Gria olarak bu süreci uçtan uca profesyonel bir şekilde yönetiyoruz.",
   },
   {
-    id: 2,
+    id: 4,
     question: "Hangi sosyal medya platformlarıyla çalışıyorsunuz?",
     answer:
       "Instagram, Facebook, TikTok, LinkedIn, Twitter (X) ve YouTube başta olmak üzere birçok platformda içerik üretimi ve yönetimi sağlıyoruz. Hedef kitlenize ve sektörünüze uygun olan platformlarda stratejik çalışmalar yapıyoruz.",
   },
   {
-    id: 3,
+    id: 5,
     question: "Hizmetlerinizi almak için bir marka ya da şirket olmak zorunda mıyım?",
     answer:
       "Hayır, bireysel markalar, içerik üreticileri veya girişimciler de sosyal medya yönetimi hizmetlerimizden faydalanabilir. Kişisel markanızı dijital dünyada güçlü bir şekilde konumlandırmak için size özel çözümler sunuyoruz.",
   },
   {
-    id: 4,
+    id: 6,
     question: "İçerikler markaya özel mi hazırlanıyor, yoksa hazır şablonlar mı kullanılıyor?",
     answer:
       "Tüm içerikler tamamen markanıza özel olarak hazırlanır. Hedef kitlenize, sektörünüze ve marka kimliğinize uygun özgün görseller, metinler ve stratejiler geliştiriyoruz. Hazır şablonlar kullanmadan, sizin için özel ve özgün bir içerik takvimi oluşturuyoruz.",
   },
   {
-    id: 5,
+    id: 7,
     question: "Ne kadar sürede sonuç almaya başlarım?",
     answer:
       "Sosyal medya stratejileri orta ve uzun vadede etkili sonuçlar verir. İlk etkileri genellikle 4-6 hafta içinde gözlemleyebilirsiniz. Ancak etkileşim artışı, takipçi kazanımı ve marka bilinirliği gibi alanlarda sürdürülebilir başarı için düzenli çalışma ve sabır gereklidir.",
   },
   {
-    id: 6,
+    id: 8,
     question: "Sosyal medya yönetimi hizmetinin fiyatlandırması nasıl yapılıyor?",
     answer:
       "Fiyatlandırmamız; talep edilen hizmet kapsamına (içerik sayısı, reklam yönetimi, platform sayısı, raporlama vb.) göre değişiklik göstermektedir. Size en uygun çözümleri sunabilmek için önce ihtiyaç analizi yapıyor, ardından özel bir teklif sunuyoruz",

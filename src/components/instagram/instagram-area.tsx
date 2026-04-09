@@ -10,6 +10,7 @@ import inst_4 from "@/assets/img/home-02/instagram/insta-inner-4.jpg";
 import inst_5 from "@/assets/img/home-02/instagram/insta-inner-5.jpg";
 import inst_6 from "@/assets/img/home-02/instagram/insta-inner-6.jpg";
 import inst_7 from "@/assets/img/home-02/instagram/insta-inner-7.jpg";
+import inst_main from "@/assets/img/home-02/instagram/insta-1.jpg";
 
 export default function InstagramArea() {
   // instagram images
@@ -40,8 +41,7 @@ export default function InstagramArea() {
           </a>
         </div>
         <div className="tp-instagram-thumb">
-          {/* <Image src={inst_8} alt="inst-img" */}
-          <img src="/assets/img/home-02/instagram/insta-1.jpg" alt="inst-img"/>
+          <Image src={inst_main} alt="inst-img" />
         </div>
         <div className="tp-instagram-content-wrap text-start">
           <div className="tp-instagram-title-box">

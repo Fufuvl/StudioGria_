@@ -26,7 +26,7 @@ export default function BrandSlider() {
       >
         {brand_images.map((b, i) => (
           <div key={i} className="tp-brand-item" style={{ height: "100px", width: "200px", display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-            <Image src={b} alt="" fill style={{objectFit: 'contain'}} />
+            <Image src={b} alt={`Studio Gria iş ortağı logo ${(i % 8) + 1}`} fill style={{objectFit: 'contain'}} />
           </div>
         ))}
       </Marquee>
@@ -38,7 +38,7 @@ export default function BrandSlider() {
         {brand_images.map((b, i) => (
           <SwiperSlide key={i}>
             <div className="tp-brand-item">
-              <Image src={b} alt="" />
+              <Image src={b} alt={`Studio Gria iş ortağı logo ${(i % 8) + 1}`} />
             </div>
           </SwiperSlide>
         ))}

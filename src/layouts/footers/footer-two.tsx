@@ -1,9 +1,11 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logoWhite from "@/assets/img/logo/logo-white-new.png";
 import logoDark from "@/assets/img/logo/logo-dark.png";
 import { RightArrow } from "@/components/svg";
+import menu_data from "@/data/menu-data";
 
 // prop type
 type IProps = {
@@ -12,6 +14,23 @@ type IProps = {
 };
 
 export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: IProps) {
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+
+  const pagesMenu =
+    menu_data.find((item) => item.title === "Sayfalar")?.pages_mega_menu?.first
+      .submenus ?? [];
+  const footerMenu = [
+    { title: "Anasayfa", link: "/" },
+    { title: "Sayfalar", link: "#", submenus: pagesMenu },
+    { title: "AI Destekli Çözümler", link: "/ai-destekli-cozumler" },
+    { title: "Portfolyo", link: "/portfolio-standard" },
+    { title: "İletişim", link: "/contact" },
+  ];
+
+  const handleToggle = (title: string) => {
+    setOpenSubmenu((prev) => (prev === title ? null : title));
+  };
+
   return (
     <footer className={`${topCls}`}>
       <div
@@ -70,10 +89,54 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
                 <div className="tp-footer-2-widget-menu">
                   <h4 className="tp-footer-2-widget-title">Site Haritası</h4>
                   <ul>
-                    <li><a href="#">Anasayfa</a></li>
-                    <li><a href="#">Hakkımızda</a></li>
-                    <li><a href="#">İletişim</a></li>
-                    <li><a href="#">Hizmetlerimiz</a></li>
+                    {footerMenu.map((item) => (
+                      <li
+                        key={item.title}
+                        className={item.submenus?.length ? "is-submenu" : ""}
+                      >
+                        {item.submenus?.length ? (
+                          <>
+                            <span
+                              className={`tp-footer-2-menu-parent tp-footer-submenu-toggle ${
+                                openSubmenu === item.title ? "open" : ""
+                              }`}
+                              onClick={() => handleToggle(item.title)}
+                            >
+                              {item.title}
+                              <svg
+                                className="tp-footer-submenu-arrow"
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                              </svg>
+                            </span>
+                            <ul
+                              className="tp-footer-submenu-list"
+                              style={{
+                                maxHeight: openSubmenu === item.title ? "500px" : "0",
+                                overflow: "hidden",
+                                transition: "max-height 0.35s ease",
+                              }}
+                            >
+                              {item.submenus.map((subItem) => (
+                                <li key={subItem.link}>
+                                  <Link href={subItem.link}>{subItem.title}</Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </>
+                        ) : (
+                          <Link href={item.link}>{item.title}</Link>
+                        )}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>

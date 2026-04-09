@@ -83,7 +83,7 @@ export default function BlogClassicArea({setIsVideoOpen,setVideoId}:IProps) {
                           {item.images &&
                             item.images.map((src, i) => (
                               <SwiperSlide key={i}>
-                                <Image src={src} alt="" />
+                                <Image src={src} alt={`${item.title} - blog görseli ${i + 1}`} />
                               </SwiperSlide>
                             ))}
                         </Swiper>

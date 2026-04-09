@@ -14,8 +14,11 @@
     }
 }
 .tp-footer-dark{
-    & .logo-2{
+    & .logo-1{
         display: none;
+    }
+    & .logo-2{
+        display: block;
     }
 }
 .tp-copyright-logo{

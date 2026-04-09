@@ -31,12 +31,18 @@ const menu_data: IMenuDT[] = [
   },
   {
     id: 3,
+    title: 'AI Destekli Çözümler',
+    link: '/ai-destekli-cozumler',
+    dropdown_menus: []
+  },
+  {
+    id: 4,
     title: 'Portfolyo',
     link: '/portfolio-standard',
     dropdown_menus: []
   },
   {
-    id: 4,
+    id: 5,
     title: 'İLETİŞİM',
     link: '/contact',
     dropdown_menus: []
@@ -77,12 +83,18 @@ export const mobile_menu_data: {
     },
     {
       id: 3,
+      title: 'AI Destekli Çözümler',
+      link: '/ai-destekli-cozumler',
+      dropdown_menus: []
+    },
+    {
+      id: 4,
       title: 'Portfolyo',
       link: '/portfolio-standard',
       dropdown_menus: []
     },
     {
-      id: 4,
+      id: 5,
       title: 'İLETİŞİM',
       link: '/contact',
       dropdown_menus: []

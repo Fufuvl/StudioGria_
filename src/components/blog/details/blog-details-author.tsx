@@ -8,7 +8,7 @@ export default function BlogDetailsAuthor() {
       <div className="blog-details-author-img">
         <Image
           src={avatar}
-          alt=""
+          alt="Lea Cohen - Blog Yazarı"
         />
       </div>
       <div className="blog-details-author-content-wrap">

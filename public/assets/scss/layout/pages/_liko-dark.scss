@@ -2054,10 +2054,10 @@
         }
         & .tp-footer-dark{
             & .logo-1{
-                display: none;
+                display: block;
             }
             & .logo-2{
-                display: block;
+                display: none;
             }
         }
         & .cartmini__checkout-btn{
@@ -2180,6 +2180,5 @@
     
     }
     
-
 
 

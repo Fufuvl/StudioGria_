@@ -58,7 +58,7 @@ export default function ServiceTwo() {
         <div className="row align-items-center">
           <div className="col-xxl-6 col-xl-4 col-lg-4">
             <div className="tp-service-2-shape-img text-center text-lg-start">
-              <Image src={shape} alt="" />
+              <Image src={shape} alt="Studio Gria hizmetler dekoratif şekil" />
             </div>
           </div>
           <div className="col-xxl-6 col-xl-8 col-lg-8">

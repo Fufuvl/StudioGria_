@@ -31,7 +31,7 @@ const BrandMain = () => {
   });
 
   return (
-    <Wrapper>
+      <Wrapper>
       {/* header area start */}
       <HeaderEleven />
       {/* header area end */}

@@ -40,7 +40,7 @@ Gezinmek için kaydırın veya sürükleyin
                       <span className="port-showcase-slider-subtitle tp_title_anim">
                         [ Dijital Medya Ajansı ]
                       </span>
-                      <h4 className="port-showcase-slider-title tp-char-animation">Studio Gria </h4>
+                      <h1 className="port-showcase-slider-title tp-char-animation">Studio Gria </h1>
                     </div>
                 </div>
               </div>

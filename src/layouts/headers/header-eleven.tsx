@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 import HeaderMenus from "./header-menus";
 import useSticky from "@/hooks/use-sticky";
 import MobileOffcanvas from "@/components/offcanvas/mobile-offcanvas";
@@ -12,20 +13,42 @@ import logoWhite from "@/assets/img/logo/logo-white-new.png";
 type IProps = {
   transparent?: boolean;
   cls?: string;
+  lightContent?: boolean;
 }
-export default function HeaderEleven({transparent=false,cls=''}: IProps) {
+export default function HeaderEleven({
+  transparent=false,
+  cls='',
+  lightContent=false,
+}: IProps) {
   const { sticky, headerRef, headerFullWidth } = useSticky();
   const [openOffcanvas, setOpenOffcanvas] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+
   useEffect(() => {
     headerFullWidth();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDarkTheme = mounted && resolvedTheme === "dark";
+  const useLightHeader = lightContent || isDarkTheme;
+  const currentLogo =
+    transparent && !sticky ? logoWhite : useLightHeader ? logoWhite : logoDark;
+
   return (
     <>
       <header className="tp-header-height z-index-5" ref={headerRef}>  
         <div
           id="header-sticky"
-          className={`tp-inner-header-area ${cls} ${transparent?'transparent':'tp-inner-header-style-2'} tp-inner-header-mob-space ${sticky ? "header-sticky" : ""}`}
+          className={`tp-inner-header-area ${cls} ${
+            transparent ? "transparent" : "tp-inner-header-style-2"
+          } ${useLightHeader ? "tp-inner-header-white" : ""} tp-inner-header-mob-space ${
+            sticky ? "header-sticky" : ""
+          }`}
         >
           <div className="container container-1800">
             <div className="row align-items-center">
@@ -33,7 +56,7 @@ export default function HeaderEleven({transparent=false,cls=''}: IProps) {
                 <div className="tp-inner-header-logo tp-header-logo">
                   <Link href="/">
                     <Image 
-                      src={(transparent && !sticky) ? logoWhite : logoDark} 
+                      src={currentLogo}
                       alt="Studio Gria" 
                       width={150}
                       height={40}
