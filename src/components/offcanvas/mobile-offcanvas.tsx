@@ -24,7 +24,7 @@ export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps
         <div className="tp-offcanvas-wrapper">
           <div className="tp-offcanvas-top d-flex align-items-center justify-content-between">
             <div className="tp-offcanvas-logo">
-              <a href="#" className="d-inline-block" style={{fontWeight:600}}>
+              <a href="/" className="d-inline-block" style={{fontWeight:600}}>
                 Studio Gria
               </a>
             </div>
@@ -32,8 +32,9 @@ export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps
               <button
                 className="tp-offcanvas-close-btn"
                 onClick={() => setOpenOffcanvas(false)}
+                aria-label="Menüyü kapat"
               >
-                <CloseTwo />
+                <CloseTwo aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -77,10 +78,10 @@ export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps
               <h3 className="tp-offcanvas-title sm">Bizi takip edin</h3>
               <ul>
                 <li>
-                  <a href="https://www.linkedin.com/company/studio-gria/" target="_blank" rel="noopener noreferrer"><Linkdin /></a>
+                  <a href="https://www.linkedin.com/company/studio-gria/" target="_blank" rel="noopener noreferrer" aria-label="Studio Gria LinkedIn"><Linkdin aria-hidden="true" /></a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/studiogria/" target="_blank" rel="noopener noreferrer"><Instagram /></a>
+                  <a href="https://www.instagram.com/studiogria/" target="_blank" rel="noopener noreferrer" aria-label="Studio Gria Instagram"><Instagram aria-hidden="true" /></a>
                 </li>
               </ul>
             </div>

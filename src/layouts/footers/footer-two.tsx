@@ -156,12 +156,12 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
                 </div>
                 <div className="tp-footer-2-contact-item">
                   <span>
-                    <a href="tel:+725214456">+90 538 865 44 05</a>
+                    <a href="tel:+905388654405">+90 538 865 44 05</a>
                   </span>
                 </div>
                 <div className="tp-footer-2-contact-item">
                   <span>
-                    <a href="mailto:contact@liko.com">E: hello@studiogria.com</a>
+                    <a href="mailto:hello@studiogria.com">E: hello@studiogria.com</a>
                   </span>
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
             <div className="col-xl-4 col-lg-5">
               <div className="tp-copyright-2-left text-center text-lg-start">
                 <p>
-                  All rights reserved — {new Date().getFullYear()} © Themepure
+                  Tüm hakları saklıdır — {new Date().getFullYear()} © Studio Gria
                 </p>
               </div>
             </div>

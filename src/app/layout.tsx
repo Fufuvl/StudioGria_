@@ -8,6 +8,7 @@ import {
 } from "next/font/google";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
+import LeadPopup from "@/components/modal/lead-popup";
 import "./globals.scss";
 
 const gellery = localFont({
@@ -35,36 +36,43 @@ const aladin = Aladin({
   weight: ["400"],
   subsets: ["latin"],
   variable: "--tp-ff-aladin",
+  display: "swap",
 });
 const syne_body = Syne({
   weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--tp-ff-body",
+  display: "swap",
 });
 const syne_heading = Syne({
   weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--tp-ff-heading",
+  display: "swap",
 });
 const syne_p = Syne({
   weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--tp-ff-p",
+  display: "swap",
 });
 const syne = Syne({
   weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--tp-ff-syne",
+  display: "swap",
 });
 const big_shoulders = Big_Shoulders_Display({
   weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--tp-ff-shoulders",
+  display: "swap",
 });
 const marcellus = Marcellus({
   weight: ["400"],
   subsets: ["latin"],
   variable: "--tp-ff-marcellus",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -167,7 +175,10 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${gellery.variable} ${aladin.variable} ${syne_body.variable} ${syne_heading.variable} ${syne_p.variable} ${syne.variable} ${big_shoulders.variable} ${marcellus.variable}`}
       >
-        <ThemeProvider defaultTheme="light">{children}</ThemeProvider>
+        <ThemeProvider defaultTheme="light">
+          {children}
+          <LeadPopup />
+        </ThemeProvider>
       </body>
     </html>
   );

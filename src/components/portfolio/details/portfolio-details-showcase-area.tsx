@@ -20,10 +20,14 @@ export default function PortfolioDetailsShowcaseArea() {
       <div className="tp-showcase-details-area">
          <div className="tp-showcase-details-bg d-flex align-items-center justify-content-center include-bg p-relative" style={{backgroundImage: "url(/assets/img/inner-project/showcase/background.jpg)"}}>
           <div className="tp-showcase-details-scroll smooth">
-              <a onClick={scrollTo} className="pointer">
-                <i className="fa-sharp fa-light fa-angle-down"></i>
-                
-Gezinmek için kaydırın veya sürükleyin
+              <a
+                href="#xyz"
+                onClick={(e) => { e.preventDefault(); scrollTo(); }}
+                className="pointer"
+                aria-label="Sayfayı aşağı kaydır"
+              >
+                <i className="fa-sharp fa-light fa-angle-down" aria-hidden="true"></i>
+                <span>Gezinmek için kaydırın veya sürükleyin</span>
               </a>
           </div>
           <div className="port-showcase-slider-social tp-hover-btn-wrapper">
