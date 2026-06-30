@@ -10,6 +10,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 import Wrapper from "@/layouts/wrapper";
 import HeaderEleven from "@/layouts/headers/header-eleven";
 import PortfolioDetailsShowcaseArea from "@/components/portfolio/details/portfolio-details-showcase-area";
+import FunFactOne from "@/components/fun-fact/fun-fact-one";
+import BrandMainArea from "@/components/brand/brand-main-area";
 import FooterTwo from "@/layouts/footers/footer-two";
 // animation
 import { charAnimation, fadeAnimation, titleAnimation } from "@/utils/title-animation";
@@ -40,6 +42,14 @@ const PortfolioDetailsShowcaseMain = () => {
             {/* portfolio details area */}
             <PortfolioDetailsShowcaseArea/>
             {/* portfolio details area */}
+
+            {/* fun fact area */}
+            <FunFactOne />
+            {/* fun fact area */}
+
+            {/* brand area */}
+            <BrandMainArea />
+            {/* brand area */}
           </main>
 
           {/* footer area */}

@@ -30,7 +30,7 @@ export default function FunFactOne() {
           <div className="col-xl-4">
             <div className="ab-funfact-title-box">
               <h4 className="ab-inner-funfact-title tp_title_anim">
-                Agency <br /> Snapshots
+                Rakamlarla <br /> Studio Gria
               </h4>
             </div>
           </div>

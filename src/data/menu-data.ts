@@ -8,6 +8,18 @@ const menu_data: IMenuDT[] = [
     link: '/'
   },
   {
+    id: 6,
+    title: 'Hizmetlerimiz',
+    link: '/service',
+    dropdown_menus: []
+  },
+  {
+    id: 7,
+    title: 'Müşterilerimiz',
+    link: '/brand',
+    dropdown_menus: []
+  },
+  {
     id: 2,
     title: 'Sayfalar',
     link: '#',
@@ -16,9 +28,7 @@ const menu_data: IMenuDT[] = [
         title: 'SAYFALAR',
         submenus: [
           { title: 'HAKKIMIZDA', link: '/about-us' },
-          { title: 'HİZMETLERİMİZ', link: '/service' },
           { title: 'HİZMET DETAYLARI', link: '/service-details' },
-          { title: 'MÜŞTERİLERİMİZ', link: '/brand' },
           { title: 'SSS Sayfası', link: '/faq' },
         ]
       },
@@ -70,15 +80,25 @@ export const mobile_menu_data: {
       dropdown_menus: []
     },
     {
+      id: 6,
+      title: 'Hizmetlerimiz',
+      link: '/service',
+      dropdown_menus: []
+    },
+    {
+      id: 7,
+      title: 'Müşterilerimiz',
+      link: '/brand',
+      dropdown_menus: []
+    },
+    {
       id: 2,
       title: 'Sayfalar',
       link: '#',
       dropdown_menus: [
         { title: 'HAKKIMIZDA', link: '/about-us' },
-        { title: 'SSS Sayfası', link: '/faq' },
-        { title: 'MÜŞTERİLERİMİZ', link: '/brand' },
-        { title: 'HİZMETLERİMİZ', link: '/service' },
         { title: 'HİZMET DETAYLARI', link: '/service-details' },
+        { title: 'SSS Sayfası', link: '/faq' },
       ]
     },
     {
