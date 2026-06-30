@@ -44,7 +44,7 @@ export default function PortfolioDetailsShowcaseArea() {
                       <span className="port-showcase-slider-subtitle tp_title_anim">
                         [ Dijital Medya Ajansı ]
                       </span>
-                      <h1 className="port-showcase-slider-title tp-char-animation">Studio Gria </h1>
+                      <h1 className="port-showcase-slider-title tp-char-animation">Markaları büyüten <br /> dijital ajans</h1>
                       <p className="port-showcase-slider-subtitle tp_title_anim" style={{ marginTop: "24px" }}>
                         Markaları içerik, tasarım ve reklamla büyütüyoruz. 100+ proje, %194 ortalama büyüme.
                       </p>
