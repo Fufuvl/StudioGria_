@@ -1,9 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { trackLead } from "@/utils/meta-pixel";
 import { leadKaydet, whatsappAc } from "@/utils/lead";
 
+// Zaten form odakli olan sayfalarda popup gostermeyiz
+const POPUP_KAPALI_SAYFALAR = ["/teklif"];
+
 export default function LeadPopup() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     adSoyad: "",
@@ -13,6 +18,8 @@ export default function LeadPopup() {
   });
 
   useEffect(() => {
+    // Teklif sayfasinda sayfanin kendisi zaten bir form, popup gereksiz
+    if (pathname && POPUP_KAPALI_SAYFALAR.includes(pathname)) return;
     // Session'da daha önce gösterildiyse tekrar açma
     if (sessionStorage.getItem("sg_popup_shown")) return;
 
@@ -60,7 +67,7 @@ export default function LeadPopup() {
     window.addEventListener("touchmove", onTouchMove, { passive: true });
     window.addEventListener("scroll", onScroll, { passive: true });
     return temizle;
-  }, []);
+  }, [pathname]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

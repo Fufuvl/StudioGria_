@@ -65,6 +65,11 @@ const VIEW_CONTENT_PAGES: {
     content_name: "İletişim Sayfası",
     content_category: "İletişim",
   },
+  {
+    match: (p) => p === "/teklif",
+    content_name: "Teklif Sayfası",
+    content_category: "Kampanya",
+  },
 ];
 
 export function getViewContentParams(pathname: string): PixelEventParams | null {

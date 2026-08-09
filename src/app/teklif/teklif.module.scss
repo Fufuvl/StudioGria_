@@ -1,0 +1,422 @@
+.sayfa {
+  --lacivert: #0a1628;
+  --bronz: #b8945f;
+  --metin: #1c1c1c;
+  --soluk: #6b6b6b;
+  --zemin: #faf9f7;
+
+  background: var(--zemin);
+  color: var(--metin);
+  font-family: var(--tp-ff-body), sans-serif;
+  min-height: 100vh;
+}
+
+.kapsayici {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- ust bant ---------- */
+.ustBant {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(10, 22, 40, 0.08);
+}
+
+.logo {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lacivert);
+  text-decoration: none;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  padding: 72px 0 64px;
+}
+
+.heroIzgara {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.rozet {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronz);
+  border: 1px solid rgba(184, 148, 95, 0.4);
+  border-radius: 100px;
+  padding: 7px 16px;
+  margin-bottom: 28px;
+}
+
+.baslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(34px, 4.6vw, 56px);
+  line-height: 1.08;
+  font-weight: 700;
+  color: var(--lacivert);
+  margin: 0 0 24px;
+}
+
+.baslikVurgu {
+  color: var(--bronz);
+}
+
+.spot {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--soluk);
+  margin: 0 0 32px;
+  max-width: 520px;
+}
+
+.maddeler {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+}
+
+.madde {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 11px 0;
+  font-size: 15.5px;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(10, 22, 40, 0.07);
+}
+
+.maddeIsaret {
+  color: var(--bronz);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* ---------- form ---------- */
+.formKart {
+  background: #fff;
+  border: 1px solid rgba(10, 22, 40, 0.1);
+  border-radius: 4px;
+  padding: 36px 32px;
+  box-shadow: 0 18px 48px rgba(10, 22, 40, 0.07);
+  position: sticky;
+  top: 32px;
+}
+
+.formBaslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--lacivert);
+  margin: 0 0 6px;
+}
+
+.formSpot {
+  font-size: 14px;
+  color: var(--soluk);
+  margin: 0 0 26px;
+  line-height: 1.55;
+}
+
+.alan {
+  margin-bottom: 16px;
+}
+
+.etiket {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--soluk);
+  margin-bottom: 7px;
+}
+
+.girdi {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--metin);
+  background: #fff;
+  border: 1px solid rgba(10, 22, 40, 0.16);
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: var(--bronz);
+  }
+
+  &::placeholder {
+    color: #b3b3b3;
+  }
+}
+
+.hataMetni {
+  display: block;
+  font-size: 12.5px;
+  color: #c0392b;
+  margin-top: 6px;
+}
+
+.gonder {
+  width: 100%;
+  height: 54px;
+  margin-top: 10px;
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--lacivert);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+
+  &:hover {
+    background: var(--bronz);
+  }
+}
+
+.formNot {
+  font-size: 12.5px;
+  color: var(--soluk);
+  text-align: center;
+  margin: 16px 0 0;
+  line-height: 1.5;
+}
+
+.tesekkur {
+  text-align: center;
+  padding: 26px 0 10px;
+}
+
+.tesekkurBaslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 22px;
+  color: var(--lacivert);
+  margin: 0 0 10px;
+}
+
+.tesekkurMetin {
+  font-size: 15px;
+  color: var(--soluk);
+  line-height: 1.6;
+  margin: 0 0 22px;
+}
+
+.tesekkurBaglanti {
+  display: inline-block;
+  font-size: 14.5px;
+  color: var(--lacivert);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---------- bolumler ---------- */
+.bolum {
+  padding: 68px 0;
+  border-top: 1px solid rgba(10, 22, 40, 0.08);
+}
+
+.bolumBaslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.2;
+  color: var(--lacivert);
+  margin: 0 0 40px;
+  max-width: 720px;
+}
+
+.adimlar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.adim {
+  border-top: 2px solid var(--bronz);
+  padding-top: 20px;
+}
+
+.adimNo {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--bronz);
+  margin: 0 0 10px;
+}
+
+.adimBaslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 18px;
+  color: var(--lacivert);
+  margin: 0 0 10px;
+}
+
+.adimMetin {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--soluk);
+  margin: 0;
+}
+
+.isler {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.isKart {
+  background: #fff;
+  border: 1px solid rgba(10, 22, 40, 0.09);
+  border-radius: 3px;
+  padding: 24px 20px;
+}
+
+.isAd {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 16px;
+  color: var(--lacivert);
+  margin: 0 0 6px;
+}
+
+.isTur {
+  font-size: 13.5px;
+  color: var(--soluk);
+  margin: 0;
+}
+
+.sorular {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 44px;
+}
+
+.soru {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 16.5px;
+  color: var(--lacivert);
+  margin: 0 0 9px;
+}
+
+.cevap {
+  font-size: 14.5px;
+  line-height: 1.68;
+  color: var(--soluk);
+  margin: 0;
+}
+
+/* ---------- kapanis ---------- */
+.kapanis {
+  background: var(--lacivert);
+  color: #fff;
+  padding: 66px 0;
+  text-align: center;
+}
+
+.kapanisBaslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(26px, 3.4vw, 38px);
+  line-height: 1.2;
+  margin: 0 0 16px;
+  // Global basliklar icin tanimli koyu rengi ezmek gerekiyor
+  color: #fff;
+}
+
+.kapanisMetin {
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 auto 30px;
+  max-width: 560px;
+}
+
+.kapanisDugme {
+  display: inline-block;
+  padding: 16px 40px;
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--lacivert);
+  background: #fff;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+
+  &:hover {
+    background: var(--bronz);
+    color: #fff;
+  }
+}
+
+.altBant {
+  padding: 26px 0;
+  font-size: 13px;
+  color: var(--soluk);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.altBaglanti {
+  color: var(--soluk);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--bronz);
+  }
+}
+
+/* ---------- duyarli ---------- */
+@media (max-width: 991px) {
+  .heroIzgara {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .formKart {
+    position: static;
+  }
+
+  .adimlar,
+  .sorular {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .isler {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    padding: 48px 0 40px;
+  }
+
+  .bolum {
+    padding: 52px 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .isler {
+    grid-template-columns: 1fr;
+  }
+
+  .formKart {
+    padding: 28px 22px;
+  }
+}
