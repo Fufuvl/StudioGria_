@@ -1,4 +1,77 @@
 @import "~bootstrap/scss/bootstrap";
 @import 'node_modules/react-modal-video/scss/modal-video.scss';
-@import "swiper/css/bundle"; 
+@import "swiper/css/bundle";
 @import '../../public/assets/scss/main.scss';
+
+/* ---------------------------------------------
+   Studio Gria: donusum bilesenleri
+   Header teklif butonu ve mobil WhatsApp butonu
+--------------------------------------------- */
+.sg-header-cta {
+  flex-shrink: 0;
+  margin-left: 28px;
+  padding: 12px 26px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+  background: #0a1628;
+  border: 1px solid #0a1628;
+  border-radius: 3px;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+
+  &:hover {
+    color: #fff;
+    background: #b8945f;
+    border-color: #b8945f;
+  }
+}
+
+.tp-inner-header-white .sg-header-cta,
+.transparent .sg-header-cta {
+  color: #0a1628;
+  background: #fff;
+  border-color: #fff;
+
+  &:hover {
+    color: #fff;
+    background: #b8945f;
+    border-color: #b8945f;
+  }
+}
+
+.sg-whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: #fff;
+  background: #25d366;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    color: #fff;
+    transform: scale(1.06);
+  }
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+// Masaustunde sag altta baska ogeler var, buton yalnizca mobilde gorunur
+@media (min-width: 992px) {
+  .sg-whatsapp-float {
+    display: none;
+  }
+}

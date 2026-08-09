@@ -67,7 +67,7 @@ export default function HeaderEleven({
                 </div>
               </div>
               <div className="col-xl-10 col-lg-10 d-none d-xl-block">
-                <div className="tp-inner-header-right-wrap text-center">
+                <div className="tp-inner-header-right-wrap d-flex align-items-center justify-content-end">
                   <div className="tp-inner-header-menu header-main-menu">
                     <nav className="tp-main-menu-content">
                       {/* header menus */}
@@ -75,6 +75,10 @@ export default function HeaderEleven({
                       {/* header menus */}
                     </nav>
                   </div>
+                  {/* her sayfada gorunen tek eylem cagrisi */}
+                  <Link href="/teklif" className="sg-header-cta">
+                    Teklif Al
+                  </Link>
                 </div>
               </div>
               {/* mobile burger */}

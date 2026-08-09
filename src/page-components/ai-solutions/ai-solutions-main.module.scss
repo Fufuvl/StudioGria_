@@ -766,3 +766,52 @@
     align-self: stretch;
   }
 }
+
+/* Giris bolumune eklenen eylem cagrisi */
+.pageHeaderActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.pageHeaderCta {
+  display: inline-block;
+  padding: 15px 34px;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: #0a1628;
+  border-radius: 3px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.pageHeaderCta:hover {
+  color: #fff;
+  background: #b8945f;
+}
+
+.pageHeaderLink {
+  display: inline-block;
+  padding: 15px 10px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #0a1628;
+  border-bottom: 1px solid rgba(184, 148, 95, 0.7);
+  transition: color 0.25s ease;
+}
+
+.pageHeaderLink:hover {
+  color: #b8945f;
+}
+
+@media (max-width: 575px) {
+  .pageHeaderActions {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+}

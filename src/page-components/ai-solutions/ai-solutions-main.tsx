@@ -23,7 +23,7 @@ const capabilityPills = [
   "Marka estetiğine sadık",
 ];
 
-const motionCards = [
+const tumMotionCards = [
   {
     id: 1,
     title: "Street Lifestyle",
@@ -121,6 +121,10 @@ const motionCards = [
     image: "/assets/img/ai-solutions/brand-mix/luxera-dunes.jpg",
   },
 ];
+
+// Yelpazede on iki kart ust uste binip okunmaz hale geliyordu.
+// Gosterilen kart sayisi sinirlandirildi, kalan gorseller veride duruyor.
+const motionCards = tumMotionCards.slice(0, 8);
 
 const insightCards = [
   {
@@ -440,12 +444,22 @@ const AiSolutionsMain = () => {
                 >
                   <div className={styles.pageHeaderInner}>
                     <span className={styles.pageHeaderEyebrow}>Studio Gria</span>
-                    <h1 className={styles.pageHeaderTitle}>AI Destekli Çözümler</h1>
+                    <h1 className={styles.pageHeaderTitle}>
+                      Stüdyo kurmadan stüdyo kalitesinde görsel
+                    </h1>
                     <p className={styles.pageHeaderText}>
-                      Yapay zeka destekli görsel prodüksiyon altyapımızla
-                      markalar için daha hızlı, daha esnek ve daha ölçeklenebilir
-                      içerik üretiyoruz.
+                      Ürününüzü her mekanda, her ışıkta ve her mevsimde
+                      gösterebiliriz. Set kurulumu, lokasyon kirası ve günler süren
+                      çekim planı olmadan, günler içinde kampanyaya hazır görseller.
                     </p>
+                    <div className={styles.pageHeaderActions}>
+                      <Link className={styles.pageHeaderCta} href="/teklif">
+                        Markanız için teklif alın
+                      </Link>
+                      <a className={styles.pageHeaderLink} href="#ai-sections">
+                        Nasıl çalıştığını görün
+                      </a>
+                    </div>
                   </div>
 
                   <div

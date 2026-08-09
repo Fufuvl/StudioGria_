@@ -1,0 +1,189 @@
+.sayfa {
+  --lacivert: #0a1628;
+  --bronz: #b8945f;
+  --metin: #1c1c1c;
+  --soluk: #6b6b6b;
+  --zemin: #faf9f7;
+
+  background: var(--zemin);
+  color: var(--metin);
+  padding: 140px 0 0;
+}
+
+.kapsayici {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.giris {
+  padding: 40px 0 56px;
+  max-width: 760px;
+}
+
+.rozet {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronz);
+  margin-bottom: 20px;
+}
+
+.baslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(32px, 4.4vw, 52px);
+  line-height: 1.1;
+  color: var(--lacivert);
+  margin: 0 0 22px;
+}
+
+.spot {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--soluk);
+  margin: 0;
+}
+
+.sayilar {
+  display: flex;
+  gap: 56px;
+  flex-wrap: wrap;
+  padding: 0 0 56px;
+}
+
+.sayiDeger {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--lacivert);
+  margin: 0 0 8px;
+}
+
+.sayiEtiket {
+  font-size: 13.5px;
+  letter-spacing: 0.06em;
+  color: var(--soluk);
+  margin: 0;
+}
+
+.izgara {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-bottom: 80px;
+}
+
+.kart {
+  background: #fff;
+  border: 1px solid rgba(10, 22, 40, 0.09);
+  border-radius: 4px;
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    border-color: rgba(184, 148, 95, 0.55);
+    transform: translateY(-3px);
+  }
+}
+
+.kartUst {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.kartAd {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 19px;
+  color: var(--lacivert);
+  margin: 0;
+}
+
+.kartSektor {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bronz);
+  white-space: nowrap;
+}
+
+.kartIs {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--soluk);
+  margin: 0;
+}
+
+.kapanis {
+  background: var(--lacivert);
+  color: #fff;
+  padding: 72px 0;
+  text-align: center;
+}
+
+.kapanisBaslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(26px, 3.4vw, 36px);
+  line-height: 1.2;
+  color: #fff;
+  margin: 0 0 16px;
+}
+
+.kapanisMetin {
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 auto 30px;
+  max-width: 540px;
+}
+
+.kapanisDugme {
+  display: inline-block;
+  padding: 16px 40px;
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--lacivert);
+  background: #fff;
+  border-radius: 3px;
+  transition: background 0.25s ease, color 0.25s ease;
+
+  &:hover {
+    color: #fff;
+    background: var(--bronz);
+  }
+}
+
+@media (max-width: 991px) {
+  .sayfa {
+    padding-top: 110px;
+  }
+
+  .izgara {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sayilar {
+    gap: 36px;
+  }
+}
+
+@media (max-width: 575px) {
+  .izgara {
+    grid-template-columns: 1fr;
+  }
+
+  .sayilar {
+    gap: 28px;
+  }
+
+  .sayiDeger {
+    font-size: 32px;
+  }
+}

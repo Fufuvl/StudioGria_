@@ -1,6 +1,7 @@
 import { IMenuDT } from "@/types/menu-d-t";
 
-
+// Menu bilerek sade tutuldu: ziyaretcinin karar yolu kisa olsun diye
+// dropdown yok, her baslik dogrudan bir sayfaya gidiyor.
 const menu_data: IMenuDT[] = [
   {
     id: 1,
@@ -9,25 +10,9 @@ const menu_data: IMenuDT[] = [
   },
   {
     id: 2,
-    title: 'Sayfalar',
-    link: '#',
-    pages_mega_menu: {
-      first: {
-        title: 'SAYFALAR',
-        submenus: [
-          { title: 'HAKKIMIZDA', link: '/about-us' },
-          { title: 'HİZMETLERİMİZ', link: '/service' },
-          { title: 'HİZMET DETAYLARI', link: '/service-details' },
-          { title: 'MÜŞTERİLERİMİZ', link: '/brand' },
-          { title: 'SSS Sayfası', link: '/faq' },
-        ]
-      },
-      second: {
-        title: '',
-        submenus: []
-      },
-
-    }
+    title: 'Hizmetlerimiz',
+    link: '/service',
+    dropdown_menus: []
   },
   {
     id: 3,
@@ -37,13 +22,19 @@ const menu_data: IMenuDT[] = [
   },
   {
     id: 4,
-    title: 'Portfolyo',
-    link: '/portfolio-standard',
+    title: 'Referanslar',
+    link: '/referanslar',
     dropdown_menus: []
   },
   {
     id: 5,
-    title: 'İLETİŞİM',
+    title: 'Hakkımızda',
+    link: '/about-us',
+    dropdown_menus: []
+  },
+  {
+    id: 6,
+    title: 'İletişim',
     link: '/contact',
     dropdown_menus: []
   }
@@ -53,7 +44,7 @@ const menu_data: IMenuDT[] = [
 
 export default menu_data;
 
-// mobile menus 
+// mobile menus
 export const mobile_menu_data: {
   id: number;
   title: string;
@@ -71,15 +62,9 @@ export const mobile_menu_data: {
     },
     {
       id: 2,
-      title: 'Sayfalar',
-      link: '#',
-      dropdown_menus: [
-        { title: 'HAKKIMIZDA', link: '/about-us' },
-        { title: 'SSS Sayfası', link: '/faq' },
-        { title: 'MÜŞTERİLERİMİZ', link: '/brand' },
-        { title: 'HİZMETLERİMİZ', link: '/service' },
-        { title: 'HİZMET DETAYLARI', link: '/service-details' },
-      ]
+      title: 'Hizmetlerimiz',
+      link: '/service',
+      dropdown_menus: []
     },
     {
       id: 3,
@@ -89,14 +74,32 @@ export const mobile_menu_data: {
     },
     {
       id: 4,
-      title: 'Portfolyo',
-      link: '/portfolio-standard',
+      title: 'Referanslar',
+      link: '/referanslar',
       dropdown_menus: []
     },
     {
       id: 5,
-      title: 'İLETİŞİM',
+      title: 'Hakkımızda',
+      link: '/about-us',
+      dropdown_menus: []
+    },
+    {
+      id: 6,
+      title: 'Sıkça Sorulanlar',
+      link: '/faq',
+      dropdown_menus: []
+    },
+    {
+      id: 7,
+      title: 'İletişim',
       link: '/contact',
+      dropdown_menus: []
+    },
+    {
+      id: 8,
+      title: 'Teklif Al',
+      link: '/teklif',
       dropdown_menus: []
     }
   ]

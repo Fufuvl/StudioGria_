@@ -10,6 +10,7 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import LeadPopup from "@/components/modal/lead-popup";
 import MetaPixelEvents from "@/components/meta-pixel-events";
+import WhatsappFloat from "@/components/whatsapp-float";
 import { META_PIXEL_ID } from "@/utils/meta-pixel";
 import "./globals.scss";
 
@@ -210,6 +211,7 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="light">
           {children}
           <LeadPopup />
+          <WhatsappFloat />
           <MetaPixelEvents />
         </ThemeProvider>
       </body>
