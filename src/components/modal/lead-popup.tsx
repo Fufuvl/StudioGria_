@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { trackLead } from "@/utils/meta-pixel";
 
 export default function LeadPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +36,8 @@ export default function LeadPopup() {
       `*Telefon:* ${encodeURIComponent(numara)}%0A` +
       `*Sektör:* ${encodeURIComponent(sektor)}%0A` +
       `*Hedef:* ${encodeURIComponent(hedef)}`;
+    // Meta Pixel: teklif popup dönüşümü
+    trackLead({ content_name: "Teklif Popup", content_category: sektor });
     window.open(`https://wa.me/905388654405?text=${message}`, "_blank");
     setIsOpen(false);
   };

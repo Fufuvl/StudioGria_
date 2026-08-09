@@ -9,6 +9,8 @@ import {
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import LeadPopup from "@/components/modal/lead-popup";
+import MetaPixelRouteTracker from "@/components/meta-pixel-route-tracker";
+import { META_PIXEL_ID } from "@/utils/meta-pixel";
 import "./globals.scss";
 
 const gellery = localFont({
@@ -169,15 +171,46 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Meta Pixel Code */}
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '${META_PIXEL_ID}');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
       </head>
       <body
         id="body"
         suppressHydrationWarning={true}
         className={`${gellery.variable} ${aladin.variable} ${syne_body.variable} ${syne_heading.variable} ${syne_p.variable} ${syne.variable} ${big_shoulders.variable} ${marcellus.variable}`}
       >
+        {/* Meta Pixel: JavaScript kapalı tarayıcılar için yedek izleme */}
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            alt=""
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+          />
+        </noscript>
         <ThemeProvider defaultTheme="light">
           {children}
           <LeadPopup />
+          <MetaPixelRouteTracker />
         </ThemeProvider>
       </body>
     </html>

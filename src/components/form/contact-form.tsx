@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import ErrorMsg from '../error-msg';
+import { trackLead } from '@/utils/meta-pixel';
 
 type FormData = {
   name: string;
@@ -29,6 +30,8 @@ export default function ContactForm({btnCls=''}:IProps) {
     const phoneNumber = "905388654405"; // WhatsApp numarası
     const message = `Ad: ${data.name}\nKonu: ${data.subject}\nMesaj: ${data.message}`;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    // Meta Pixel: iletişim formu dönüşümü
+    trackLead({ content_name: 'İletişim Formu', content_category: data.subject });
     window.open(whatsappUrl, '_blank');
     reset();
   });
