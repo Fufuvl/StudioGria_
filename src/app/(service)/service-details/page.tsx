@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Metadata } from "next";
-import ServiceDetailsMain from "@/pages/service/service-details";
+import ServiceDetailsMain from "@/page-components/service/service-details";
 
 export const metadata: Metadata = {
   title: "Studio Gria - Hizmet Detayları",

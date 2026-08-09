@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import PortfolioDetailsOneMain from "@/pages/portfolio/details/portfolio-details-1-main";
+import PortfolioDetailsOneMain from "@/page-components/portfolio/details/portfolio-details-1-main";
 
 export const metadata: Metadata = {
   title: "Studio Gria - Portfolyo Detayı",

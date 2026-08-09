@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import BrandMain from "@/pages/brand/brand-main";
+import BrandMain from "@/page-components/brand/brand-main";
 
 export const metadata: Metadata = {
   title: "Studio Gria - Referanslar",

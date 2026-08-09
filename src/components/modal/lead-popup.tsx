@@ -12,15 +12,35 @@ export default function LeadPopup() {
   });
 
   useEffect(() => {
-    // Session'da daha önce gösterilmemişse aç
-    const hasShown = sessionStorage.getItem("sg_popup_shown");
-    if (!hasShown) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-        sessionStorage.setItem("sg_popup_shown", "true");
-      }, 1500);
-      return () => clearTimeout(timer);
+    // Session'da daha önce gösterildiyse tekrar açma
+    if (sessionStorage.getItem("sg_popup_shown")) return;
+
+    // Ziyaretçi siteyi tanımadan form göstermek kaçışı artırıyor.
+    // Bu yüzden iki koşuldan hangisi önce gerçekleşirse o an açılır:
+    // 22 saniye kalma süresi ya da sayfanın %40'ının kaydırılması.
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
+    function onScroll() {
+      const kaydirilabilir = document.body.scrollHeight - window.innerHeight;
+      if (kaydirilabilir > 0 && window.scrollY / kaydirilabilir > 0.4) {
+        goster();
+      }
     }
+
+    function temizle() {
+      if (timer) clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    }
+
+    function goster() {
+      setIsOpen(true);
+      sessionStorage.setItem("sg_popup_shown", "true");
+      temizle();
+    }
+
+    timer = setTimeout(goster, 22000);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return temizle;
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

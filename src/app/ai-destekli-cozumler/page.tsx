@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import AiSolutionsMain from "@/pages/ai-solutions/ai-solutions-main";
+import AiSolutionsMain from "@/page-components/ai-solutions/ai-solutions-main";
 
 export const metadata: Metadata = {
   title: "Studio Gria - AI Destekli Çözümler",

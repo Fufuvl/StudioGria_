@@ -147,8 +147,9 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
                 <div className="tp-footer-2-contact-item">
                   <span>
                     <a
-                      href="https://www.google.com/maps/@23.8223596,90.3656686,15z?entry=ttu"
+                      href="https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%2C+T%C3%BCrkiye"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       İstanbul, Türkiye
                     </a>

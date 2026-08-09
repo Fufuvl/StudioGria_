@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { getProjectBySlug } from "@/data/project-data";
-import PortfolioDetailsOneMain from "@/pages/portfolio/details/portfolio-details-1-main";
+import PortfolioDetailsOneMain from "@/page-components/portfolio/details/portfolio-details-1-main";
 
 type Props = {
   params: { slug: string };
