@@ -1,7 +1,8 @@
 import { IMenuDT } from "@/types/menu-d-t";
 
-// Menu bilerek sade tutuldu: ziyaretcinin karar yolu kisa olsun diye
-// dropdown yok, her baslik dogrudan bir sayfaya gidiyor.
+// Menu bilerek sade tutuldu: her baslik dogrudan bir sayfaya gidiyor.
+// Iletisim masaustu menuden cikarildi; header'daki Teklif Al butonu tek
+// eylem cagrisi olarak kaldi. Iletisim footer ve mobil menude durur.
 const menu_data: IMenuDT[] = [
   {
     id: 1,
@@ -17,7 +18,7 @@ const menu_data: IMenuDT[] = [
   {
     id: 3,
     title: 'Hizmetlerimiz',
-    link: '/service',
+    link: '/hizmetler',
     dropdown_menus: []
   },
   {
@@ -30,12 +31,6 @@ const menu_data: IMenuDT[] = [
     id: 5,
     title: 'Referanslar',
     link: '/referanslar',
-    dropdown_menus: []
-  },
-  {
-    id: 6,
-    title: 'İletişim',
-    link: '/contact',
     dropdown_menus: []
   }
 ];
@@ -69,7 +64,7 @@ export const mobile_menu_data: {
     {
       id: 3,
       title: 'Hizmetlerimiz',
-      link: '/service',
+      link: '/hizmetler',
       dropdown_menus: []
     },
     {

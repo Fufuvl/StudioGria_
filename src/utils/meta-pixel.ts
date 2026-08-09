@@ -46,7 +46,7 @@ const VIEW_CONTENT_PAGES: {
   content_category: string;
 }[] = [
   {
-    match: (p) => p === "/service",
+    match: (p) => p === "/hizmetler" || p.startsWith("/hizmetler/"),
     content_name: "Hizmetler",
     content_category: "Hizmet",
   },

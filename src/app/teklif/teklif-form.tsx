@@ -79,7 +79,8 @@ export default function TeklifForm() {
     <div className={styles.formKart}>
       <h2 className={styles.formBaslik}>Markanıza özel teklif alın</h2>
       <p className={styles.formSpot}>
-        Formu doldurun, hesabınızı inceleyip size uygun çalışma modelini ve fiyatı paylaşalım.
+        Formu doldurun, size uygun çalışma modelini ve fiyatı içeren teklif
+        sunumunu hazırlayalım.
       </p>
 
       <form onSubmit={gonder} noValidate>
@@ -146,7 +147,8 @@ export default function TeklifForm() {
       </form>
 
       <p className={styles.formNot}>
-        Bilgileriniz yalnızca teklif hazırlamak için kullanılır, üçüncü kişilerle paylaşılmaz.
+        Bilgileriniz yalnızca teklif hazırlamak için kullanılır, üçüncü kişilerle
+        paylaşılmaz. Ödemenizi dilerseniz kredi kartıyla yapabilirsiniz.
       </p>
     </div>
   );

@@ -1,49 +1,14 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import HeaderEleven from "@/layouts/headers/header-eleven";
 import FooterTwo from "@/layouts/footers/footer-two";
 import Wrapper from "@/layouts/wrapper";
+import Sayac from "@/components/sayac";
 import { referanslar, referansGruplari, sektorSayisi } from "@/data/referans-data";
+import { sosyalKanit } from "@/data/sosyal-kanit-data";
 import styles from "@/app/referanslar/referanslar.module.scss";
-
-// Gorunume girince hedefe dogru sayan rakam
-function Sayac({ hedef, sonek = "" }: { hedef: number; sonek?: string }) {
-  const [deger, setDeger] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const basladi = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const gozlemci = new IntersectionObserver(
-      (girisler) => {
-        if (!girisler[0].isIntersecting || basladi.current) return;
-        basladi.current = true;
-        const baslangic = performance.now();
-        const sure = 1100;
-        const adim = (simdi: number) => {
-          const oran = Math.min((simdi - baslangic) / sure, 1);
-          const yumusatilmis = 1 - Math.pow(1 - oran, 3);
-          setDeger(Math.round(hedef * yumusatilmis));
-          if (oran < 1) requestAnimationFrame(adim);
-        };
-        requestAnimationFrame(adim);
-      },
-      { threshold: 0.4 }
-    );
-    gozlemci.observe(el);
-    return () => gozlemci.disconnect();
-  }, [hedef]);
-
-  return (
-    <span ref={ref}>
-      {deger}
-      {sonek}
-    </span>
-  );
-}
 
 const TUMU = "Tümü";
 
@@ -88,31 +53,30 @@ export default function ReferanslarMain() {
           <div className={styles.giris}>
             <span className={styles.rozet}>Referanslarımız</span>
             <h1 className={styles.baslik}>
-              Spor kulübünden sanayiye, <em>39 markanın</em> güvendiği ekip
+              Otelden restorana, <em>39 markanın</em> güvendiği ekip
             </h1>
             <p className={styles.spot}>
-              Her sektörün dili farklı, disiplinimiz aynı: önce markayı anlamak,
+              Her markanın dili farklı, disiplinimiz aynı: önce markayı anlamak,
               sonra düzenli üretmek, en sonunda sonucu ölçmek. Aşağıdan sektöre
               göre süzebilir, her markada ne yaptığımızı açıp bakabilirsiniz.
             </p>
           </div>
 
+          {/* Sosyal kanit: rakamlar gorunume girince sayarak dolar */}
           <div className={styles.sayilar}>
-            <div>
-              <p className={styles.sayiDeger}>
-                <Sayac hedef={referanslar.length} sonek="+" />
-              </p>
-              <p className={styles.sayiEtiket}>Birlikte çalıştığımız marka</p>
-            </div>
+            {sosyalKanit.map((metrik) => (
+              <div key={metrik.etiket}>
+                <p className={styles.sayiDeger}>
+                  <Sayac hedef={metrik.deger} sonek={metrik.sonek} />
+                </p>
+                <p className={styles.sayiEtiket}>{metrik.etiket}</p>
+              </div>
+            ))}
             <div>
               <p className={styles.sayiDeger}>
                 <Sayac hedef={sektorSayisi} sonek="+" />
               </p>
               <p className={styles.sayiEtiket}>Farklı sektör</p>
-            </div>
-            <div>
-              <p className={styles.sayiDeger}>İstanbul</p>
-              <p className={styles.sayiEtiket}>Merkez ofis, Türkiye geneli hizmet</p>
             </div>
           </div>
         </div>
@@ -211,8 +175,8 @@ export default function ReferanslarMain() {
               Sıradaki marka <em>sizinki</em> olsun
             </h2>
             <p className={styles.kapanisMetin}>
-              Hesabınızı inceleyip markanıza özel stratejiyi ve teklifi
-              hazırlayalım. İnceleme ücretsiz, karar sizin.
+              Sizi dinleyip markanıza özel teklif sunumunu hazırlayalım. Sunum
+              ücretsiz, karar sizin.
             </p>
             <Link className={styles.kapanisDugme} href="/teklif">
               Teklif İste

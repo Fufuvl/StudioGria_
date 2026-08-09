@@ -19,7 +19,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
   const footerMenu = [
     { title: "Anasayfa", link: "/" },
     { title: "Hakkımızda", link: "/about-us" },
-    { title: "Hizmetlerimiz", link: "/service" },
+    { title: "Hizmetlerimiz", link: "/hizmetler" },
     { title: "AI Destekli Çözümler", link: "/ai-destekli-cozumler" },
     { title: "Referanslar", link: "/referanslar" },
     { title: "Sıkça Sorulanlar", link: "/faq" },

@@ -19,7 +19,7 @@ export default function PortfolioDetailsShowcaseArea() {
     <>
      {/* details area */}
       <div className="tp-showcase-details-area">
-         <div className="tp-showcase-details-bg d-flex align-items-center justify-content-center include-bg p-relative" style={{backgroundImage: "url(/assets/img/inner-project/showcase/background.jpg)"}}>
+         <div className="tp-showcase-details-bg d-flex align-items-center justify-content-center include-bg p-relative sg-hero-topleft" style={{backgroundImage: "url(/assets/img/inner-project/showcase/background.jpg)"}}>
           <div className="tp-showcase-details-scroll smooth">
               <a
                 href="#xyz"
@@ -41,7 +41,7 @@ export default function PortfolioDetailsShowcaseArea() {
           <div className="container">
               <div className="row">
                 <div className="col-12">
-                    <div className="tp-showcase-details-content text-center">
+                    <div className="tp-showcase-details-content">
                       <span className="port-showcase-slider-subtitle tp_title_anim">
                         [ İstanbul Merkezli Dijital Medya Stüdyosu ]
                       </span>

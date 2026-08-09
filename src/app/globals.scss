@@ -112,6 +112,127 @@
   }
 }
 
+/* Hero sol ust hizalama: icerik gorselin sol ustunden baslar */
+.sg-hero-topleft {
+  align-items: flex-start !important;
+
+  .tp-showcase-details-content {
+    text-align: left;
+    max-width: 720px;
+    padding-top: clamp(150px, 24vh, 260px);
+  }
+
+  .sg-hero-sub {
+    margin-left: 0;
+  }
+
+  .sg-hero-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767px) {
+  .sg-hero-topleft .tp-showcase-details-content {
+    padding-top: 130px;
+  }
+}
+
+/* Sosyal kanit satiri: sayaclarla metrikler */
+.sg-kanit {
+  display: flex;
+  gap: clamp(28px, 5vw, 64px);
+  flex-wrap: wrap;
+}
+
+.sg-kanit-oge {
+  min-width: 150px;
+}
+
+.sg-kanit-deger {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1;
+  color: #16181d;
+  margin: 0 0 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sg-kanit-etiket {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: #6b6b6b;
+  margin: 0;
+}
+
+.sg-kanit-koyu {
+  .sg-kanit-deger {
+    color: #fff;
+  }
+
+  .sg-kanit-etiket {
+    color: rgba(255, 255, 255, 0.65);
+  }
+}
+
+/* Ortak akan marka seridi */
+.sg-serit {
+  border-top: 1px solid rgba(22, 24, 29, 0.12);
+  border-bottom: 1px solid rgba(22, 24, 29, 0.12);
+  padding: 16px 0;
+  background: #fff;
+  overflow: hidden;
+}
+
+.sg-serit + .sg-serit {
+  border-top: 0;
+}
+
+.sg-serit-ic {
+  display: flex;
+  align-items: baseline;
+}
+
+.sg-serit-oge {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(19px, 2.2vw, 28px);
+  color: #16181d;
+  white-space: nowrap;
+  padding-right: 14px;
+}
+
+.sg-serit-ayrac {
+  padding-right: 14px;
+  color: #6b6b6b;
+}
+
+.sg-serit-kontur .sg-serit-oge {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(22, 24, 29, 0.45);
+}
+
+/* Kademeli giris animasyonu: sayfa acilirken ogeler sirayla belirir */
+@keyframes sgFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sg-gir {
+  animation: sgFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.sg-gir-1 { animation-delay: 0.05s; }
+.sg-gir-2 { animation-delay: 0.15s; }
+.sg-gir-3 { animation-delay: 0.25s; }
+.sg-gir-4 { animation-delay: 0.35s; }
+.sg-gir-5 { animation-delay: 0.45s; }
+
 .sg-whatsapp-float {
   position: fixed;
   right: 18px;

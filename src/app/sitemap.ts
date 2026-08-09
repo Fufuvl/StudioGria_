@@ -1,10 +1,11 @@
 import { MetadataRoute } from "next";
+import { hizmetler } from "@/data/hizmet-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://studiogria.com";
   const lastModified = new Date();
 
-  return [
+  const sabitSayfalar: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified,
@@ -12,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/service`,
+      url: `${baseUrl}/hizmetler`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
@@ -42,16 +43,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/faq`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
       url: `${baseUrl}/contact`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
   ];
+
+  // Hizmet detay sayfalari katalogdan otomatik uretilir
+  const hizmetSayfalari: MetadataRoute.Sitemap = hizmetler.map((hizmet) => ({
+    url: `${baseUrl}/hizmetler/${hizmet.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  return [...sabitSayfalar, ...hizmetSayfalari];
 }
