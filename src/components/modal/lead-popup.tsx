@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { trackLead } from "@/utils/meta-pixel";
+import { leadKaydet, whatsappAc } from "@/utils/lead";
 
 export default function LeadPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,18 +18,34 @@ export default function LeadPopup() {
 
     // Ziyaretçi siteyi tanımadan form göstermek kaçışı artırıyor.
     // Bu yüzden iki koşuldan hangisi önce gerçekleşirse o an açılır:
-    // 22 saniye kalma süresi ya da sayfanın %40'ının kaydırılması.
+    // 22 saniye kalma süresi ya da belirgin bir kaydırma hareketi.
+    //
+    // Not: Site GSAP ScrollSmoother kullandığı için sayfa transform ile kayıyor
+    // ve window üzerinde scroll olayı doğmuyor. Bu yüzden kaydırma niyetini
+    // doğrudan wheel ve touchmove olaylarından ölçüyoruz.
+    const KAYDIRMA_ESIGI = 1500;
+    let toplamKaydirma = 0;
     let timer: ReturnType<typeof setTimeout> | undefined;
+
+    function onWheel(olay: WheelEvent) {
+      toplamKaydirma += Math.abs(olay.deltaY);
+      if (toplamKaydirma > KAYDIRMA_ESIGI) goster();
+    }
+
+    function onTouchMove() {
+      toplamKaydirma += 120;
+      if (toplamKaydirma > KAYDIRMA_ESIGI) goster();
+    }
 
     function onScroll() {
       const kaydirilabilir = document.body.scrollHeight - window.innerHeight;
-      if (kaydirilabilir > 0 && window.scrollY / kaydirilabilir > 0.4) {
-        goster();
-      }
+      if (kaydirilabilir > 0 && window.scrollY / kaydirilabilir > 0.4) goster();
     }
 
     function temizle() {
       if (timer) clearTimeout(timer);
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("scroll", onScroll);
     }
 
@@ -39,6 +56,8 @@ export default function LeadPopup() {
     }
 
     timer = setTimeout(goster, 22000);
+    window.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
     window.addEventListener("scroll", onScroll, { passive: true });
     return temizle;
   }, []);
@@ -56,9 +75,17 @@ export default function LeadPopup() {
       `*Telefon:* ${encodeURIComponent(numara)}%0A` +
       `*Sektör:* ${encodeURIComponent(sektor)}%0A` +
       `*Hedef:* ${encodeURIComponent(hedef)}`;
+    // Veri önce kaydedilir, WhatsApp gönderilmese bile lead elde kalır
+    leadKaydet({
+      kaynak: "Teklif Popup",
+      adSoyad,
+      telefon: numara,
+      sektor,
+      hedef,
+    });
     // Meta Pixel: teklif popup dönüşümü
     trackLead({ content_name: "Teklif Popup", content_category: sektor });
-    window.open(`https://wa.me/905388654405?text=${message}`, "_blank");
+    whatsappAc(`https://wa.me/905388654405?text=${message}`);
     setIsOpen(false);
   };
 

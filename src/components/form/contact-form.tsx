@@ -5,17 +5,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import ErrorMsg from '../error-msg';
 import { trackLead } from '@/utils/meta-pixel';
+import { leadKaydet, whatsappAc } from '@/utils/lead';
 
 type FormData = {
   name: string;
+  phone: string;
   subject: string;
   message: string;
 };
 
 const schema = yup.object().shape({
-  name: yup.string().required().label("Name"),
-  subject: yup.string().required().label("subject"),
-  message: yup.string().required().label("Message"),
+  name: yup.string().required("Adınızı giriniz").label("Ad Soyad"),
+  phone: yup.string().required("Telefon numaranızı giriniz").label("Telefon"),
+  subject: yup.string().required("Konu giriniz").label("Konu"),
+  message: yup.string().required("Mesajınızı giriniz").label("Mesaj"),
 });
 
 // prop type 
@@ -28,11 +31,19 @@ export default function ContactForm({btnCls=''}:IProps) {
   });
   const onSubmit = handleSubmit((data:FormData) => {
     const phoneNumber = "905388654405"; // WhatsApp numarası
-    const message = `Ad: ${data.name}\nKonu: ${data.subject}\nMesaj: ${data.message}`;
+    const message = `Ad: ${data.name}\nTelefon: ${data.phone}\nKonu: ${data.subject}\nMesaj: ${data.message}`;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    // Veri önce kaydedilir, WhatsApp gönderilmese bile lead elde kalır
+    leadKaydet({
+      kaynak: 'İletişim Formu',
+      adSoyad: data.name,
+      telefon: data.phone,
+      konu: data.subject,
+      mesaj: data.message,
+    });
     // Meta Pixel: iletişim formu dönüşümü
     trackLead({ content_name: 'İletişim Formu', content_category: data.subject });
-    window.open(whatsappUrl, '_blank');
+    whatsappAc(whatsappUrl);
     reset();
   });
   return (
@@ -41,6 +52,11 @@ export default function ContactForm({btnCls=''}:IProps) {
         <label>Adınız</label>
         <input id='name' {...register("name")} type="text" placeholder="Can Tekin" />
         <ErrorMsg msg={errors.name?.message!} />
+      </div>
+      <div className="cn-contactform-input mb-25">
+        <label>Telefon</label>
+        <input id='phone' {...register("phone")} type="tel" placeholder="+90 5__ ___ __ __" />
+        <ErrorMsg msg={errors.phone?.message!} />
       </div>
       <div className="cn-contactform-input mb-25">
         <label>Konu</label>
