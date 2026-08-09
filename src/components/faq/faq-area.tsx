@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Search } from "../svg";
 import faq_banner from '@/assets/img/inner-faq/faq/banner-faq.jpg';
 import FaqItem from "./faq-item";
+import { trackSearch } from "@/utils/meta-pixel";
 
 // type 
 type IFaq = {
@@ -81,6 +82,14 @@ export default function FaqArea() {
       setFilteredFaqs(filtered);
     }
   };
+
+  // Meta Pixel: her tuş vuruşu değil, yazma durduktan sonra tek bir Search olayı
+  React.useEffect(() => {
+    const term = searchTerm.trim();
+    if (term.length < 3) return;
+    const timer = setTimeout(() => trackSearch(term), 1200);
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
   return (
     <div className="fq-faq-area fq-faq-bdr pt-80 pb-140">

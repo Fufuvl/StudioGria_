@@ -9,7 +9,7 @@ import {
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import LeadPopup from "@/components/modal/lead-popup";
-import MetaPixelRouteTracker from "@/components/meta-pixel-route-tracker";
+import MetaPixelEvents from "@/components/meta-pixel-events";
 import { META_PIXEL_ID } from "@/utils/meta-pixel";
 import "./globals.scss";
 
@@ -210,7 +210,7 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="light">
           {children}
           <LeadPopup />
-          <MetaPixelRouteTracker />
+          <MetaPixelEvents />
         </ThemeProvider>
       </body>
     </html>

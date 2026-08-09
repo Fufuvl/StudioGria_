@@ -27,3 +27,51 @@ export function trackLead(params?: PixelEventParams) {
 export function trackContact(params?: PixelEventParams) {
   trackPixelEvent("Contact", params);
 }
+
+// Hizmet, portfolyo ve iletişim gibi niyet taşıyan sayfaların görüntülenmesi
+export function trackViewContent(params?: PixelEventParams) {
+  trackPixelEvent("ViewContent", params);
+}
+
+// Site içi arama (SSS sayfasındaki soru arama kutusu)
+export function trackSearch(searchString: string) {
+  trackPixelEvent("Search", { search_string: searchString });
+}
+
+// ViewContent gönderilecek sayfalar. Buraya girmeyen sayfalar yalnızca PageView üretir,
+// böylece ilgi sinyali gerçekten niyet taşıyan sayfalarda toplanır.
+const VIEW_CONTENT_PAGES: {
+  match: (pathname: string) => boolean;
+  content_name: string;
+  content_category: string;
+}[] = [
+  {
+    match: (p) => p === "/service" || p === "/service-details",
+    content_name: "Hizmetler",
+    content_category: "Hizmet",
+  },
+  {
+    match: (p) => p === "/ai-destekli-cozumler",
+    content_name: "AI Destekli Çözümler",
+    content_category: "Hizmet",
+  },
+  {
+    match: (p) => p.startsWith("/portfolio"),
+    content_name: "Portfolyo",
+    content_category: "Portfolyo",
+  },
+  {
+    match: (p) => p === "/contact",
+    content_name: "İletişim Sayfası",
+    content_category: "İletişim",
+  },
+];
+
+export function getViewContentParams(pathname: string): PixelEventParams | null {
+  const page = VIEW_CONTENT_PAGES.find((item) => item.match(pathname));
+  if (!page) return null;
+  return {
+    content_name: page.content_name,
+    content_category: page.content_category,
+  };
+}
