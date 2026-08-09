@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { scroller } from 'react-scroll';
 import details_thumb_1 from '@/assets/img/inner-project/showcase/15.jpg';
 import details_thumb_2 from '@/assets/img/inner-project/showcase/16.jpg';
@@ -42,9 +43,24 @@ export default function PortfolioDetailsShowcaseArea() {
                 <div className="col-12">
                     <div className="tp-showcase-details-content text-center">
                       <span className="port-showcase-slider-subtitle tp_title_anim">
-                        [ Dijital Medya Ajansı ]
+                        [ İstanbul Merkezli Dijital Medya Stüdyosu ]
                       </span>
-                      <h1 className="port-showcase-slider-title tp-char-animation">Studio Gria </h1>
+                      <h1 className="port-showcase-slider-title tp-char-animation sg-hero-title">
+                        İyi içerik izlenir.
+                        <br />
+                        Doğru içerik <em>satar.</em>
+                      </h1>
+                      <p className="sg-hero-sub tp_title_anim">
+                        İçerik, tasarım ve reklam tek elden. Sonuç tahmin edilmez, ölçülür.
+                      </p>
+                      <div className="sg-hero-actions">
+                        <Link className="sg-hero-cta" href="/teklif">
+                          Teklif Al
+                        </Link>
+                        <Link className="sg-hero-link" href="/referanslar">
+                          Referanslarımızı görün
+                        </Link>
+                      </div>
                     </div>
                 </div>
               </div>

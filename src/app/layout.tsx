@@ -114,9 +114,12 @@ const organizationSchema = {
   description: "Studio Gria, İstanbul merkezli dijital medya ve sosyal medya ajansı.",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "İstanbul",
+    addressLocality: "Büyükçekmece",
+    addressRegion: "İstanbul",
     addressCountry: "TR",
   },
+  email: "hello@studiogria.com",
+  telephone: "+905388654405",
   sameAs: [
     "https://www.instagram.com/studiogria",
     "https://www.linkedin.com/company/studiogria",
@@ -124,6 +127,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
+    telephone: "+905388654405",
     availableLanguage: "Turkish",
   },
 };

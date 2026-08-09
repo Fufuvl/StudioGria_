@@ -2,19 +2,23 @@ import React from "react";
 import { Metadata } from "next";
 import AiSolutionsMain from "@/page-components/ai-solutions/ai-solutions-main";
 
+const sayfaBaslik = "Yapay Zeka ile Ürün Görseli ve Reklam İçeriği Üretimi | Studio Gria";
+const sayfaAciklama =
+  "Stüdyo kurmadan stüdyo kalitesinde görsel: yapay zeka destekli ürün çekimi, kampanya görseli ve video üretimi. Set ve lokasyon maliyeti olmadan, günler içinde kampanyaya hazır içerik.";
+
 export const metadata: Metadata = {
-  title: "Studio Gria - AI Destekli Çözümler",
-  description: "Studio Gria'nın yapay zeka destekli dijital çözümleri. AI ile güçlendirilmiş içerik üretimi, otomasyon ve veri odaklı pazarlama stratejileriyle markanızı geleceğe taşıyın.",
+  title: sayfaBaslik,
+  description: sayfaAciklama,
   alternates: { canonical: "https://studiogria.com/ai-destekli-cozumler" },
   openGraph: {
-    title: "Studio Gria - AI Destekli Çözümler",
-    description: "Studio Gria'nın yapay zeka destekli dijital çözümleri. AI ile güçlendirilmiş içerik üretimi, otomasyon ve veri odaklı pazarlama stratejileriyle markanızı geleceğe taşıyın.",
+    title: sayfaBaslik,
+    description: sayfaAciklama,
     url: "https://studiogria.com/ai-destekli-cozumler",
-    images: [{ url: "/assets/img/inner-project/showcase/background.jpg", width: 1200, height: 630, alt: "Studio Gria AI Destekli Çözümler" }],
+    images: [{ url: "/assets/img/ai-solutions/brand-mix/matcha-hero.jpg", width: 1200, height: 630, alt: "Yapay zeka ile üretilmiş ürün görseli" }],
   },
   twitter: {
-    title: "Studio Gria - AI Destekli Çözümler",
-    description: "Studio Gria'nın yapay zeka destekli dijital çözümleri. AI ile güçlendirilmiş içerik üretimi, otomasyon ve veri odaklı pazarlama stratejileriyle markanızı geleceğe taşıyın.",
+    title: sayfaBaslik,
+    description: sayfaAciklama,
   },
 };
 

@@ -1,6 +1,6 @@
 .sayfa {
-  --lacivert: #0a1628;
-  --bronz: #b8945f;
+  --lacivert: #16181d;
+  --bronz: #16181d;
   --metin: #1c1c1c;
   --soluk: #6b6b6b;
   --zemin: #faf9f7;
@@ -40,7 +40,8 @@
 }
 
 .heroVurgu {
-  color: var(--bronz);
+  // Renk kurali: vurgu renkle degil italikle yapilir
+  font-style: italic;
 }
 
 .heroSpot {
@@ -71,7 +72,7 @@
 
   &:hover {
     color: #fff;
-    background: var(--bronz);
+    background: #2c2f36;
   }
 }
 
@@ -82,7 +83,7 @@
   font-size: 15px;
   font-weight: 600;
   color: var(--lacivert);
-  border: 1px solid rgba(10, 22, 40, 0.22);
+  border: 1px solid rgba(22, 24, 29, 0.22);
   border-radius: 3px;
   transition: border-color 0.25s ease, color 0.25s ease;
 
@@ -103,7 +104,7 @@
   gap: 60px;
   align-items: center;
   padding: 56px 0;
-  border-top: 1px solid rgba(10, 22, 40, 0.1);
+  border-top: 1px solid rgba(22, 24, 29, 0.1);
 }
 
 .hizmetTers {
@@ -149,7 +150,7 @@
   font-size: 15px;
   line-height: 1.55;
   color: var(--metin);
-  border-bottom: 1px solid rgba(10, 22, 40, 0.07);
+  border-bottom: 1px solid rgba(22, 24, 29, 0.07);
 
   &::before {
     content: "";
@@ -193,7 +194,7 @@
 .surec {
   background: #fff;
   padding: 80px 0;
-  border-top: 1px solid rgba(10, 22, 40, 0.09);
+  border-top: 1px solid rgba(22, 24, 29, 0.09);
 }
 
 .bolumBaslik {
@@ -220,7 +221,7 @@
 }
 
 .adim {
-  border-top: 2px solid var(--bronz);
+  border-top: 1px solid var(--lacivert);
   padding-top: 20px;
 }
 
@@ -259,7 +260,7 @@
 
 .farkKart {
   background: #fff;
-  border: 1px solid rgba(10, 22, 40, 0.09);
+  border: 1px solid rgba(22, 24, 29, 0.09);
   border-radius: 4px;
   padding: 32px 28px;
 }
@@ -282,7 +283,7 @@
 .referanslar {
   background: #fff;
   padding: 64px 0;
-  border-top: 1px solid rgba(10, 22, 40, 0.09);
+  border-top: 1px solid rgba(22, 24, 29, 0.09);
 }
 
 .referansBaslik {
@@ -305,7 +306,7 @@
   color: var(--lacivert);
   padding: 16px 10px;
   text-align: center;
-  border: 1px solid rgba(10, 22, 40, 0.08);
+  border: 1px solid rgba(22, 24, 29, 0.08);
   border-radius: 3px;
 }
 
@@ -355,10 +356,12 @@
   color: var(--lacivert);
   background: #fff;
   border-radius: 3px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 
   &:hover {
-    color: #fff;
-    background: var(--bronz);
+    color: var(--lacivert);
+    opacity: 0.88;
+    transform: translateY(-2px);
   }
 }
 

@@ -1,6 +1,6 @@
 .sayfa {
-  --lacivert: #0a1628;
-  --bronz: #b8945f;
+  --lacivert: #16181d;
+  --bronz: #16181d;
   --metin: #1c1c1c;
   --soluk: #6b6b6b;
   --zemin: #faf9f7;
@@ -21,7 +21,7 @@
 /* ---------- ust bant ---------- */
 .ustBant {
   padding: 28px 0;
-  border-bottom: 1px solid rgba(10, 22, 40, 0.08);
+  border-bottom: 1px solid rgba(22, 24, 29, 0.08);
 }
 
 .logo {
@@ -52,7 +52,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--bronz);
-  border: 1px solid rgba(184, 148, 95, 0.4);
+  border: 1px solid rgba(22, 24, 29, 0.4);
   border-radius: 100px;
   padding: 7px 16px;
   margin-bottom: 28px;
@@ -68,7 +68,8 @@
 }
 
 .baslikVurgu {
-  color: var(--bronz);
+  // Renk kurali: vurgu renkle degil italikle yapilir
+  font-style: italic;
 }
 
 .spot {
@@ -92,7 +93,7 @@
   padding: 11px 0;
   font-size: 15.5px;
   line-height: 1.5;
-  border-bottom: 1px solid rgba(10, 22, 40, 0.07);
+  border-bottom: 1px solid rgba(22, 24, 29, 0.07);
 }
 
 .maddeIsaret {
@@ -104,10 +105,10 @@
 /* ---------- form ---------- */
 .formKart {
   background: #fff;
-  border: 1px solid rgba(10, 22, 40, 0.1);
+  border: 1px solid rgba(22, 24, 29, 0.1);
   border-radius: 4px;
   padding: 36px 32px;
-  box-shadow: 0 18px 48px rgba(10, 22, 40, 0.07);
+  box-shadow: 0 18px 48px rgba(22, 24, 29, 0.07);
   position: sticky;
   top: 32px;
 }
@@ -148,7 +149,7 @@
   font-family: inherit;
   color: var(--metin);
   background: #fff;
-  border: 1px solid rgba(10, 22, 40, 0.16);
+  border: 1px solid rgba(22, 24, 29, 0.16);
   border-radius: 3px;
   outline: none;
   transition: border-color 0.2s ease;
@@ -185,7 +186,7 @@
   transition: background 0.25s ease;
 
   &:hover {
-    background: var(--bronz);
+    background: #2c2f36;
   }
 }
 
@@ -227,7 +228,7 @@
 /* ---------- bolumler ---------- */
 .bolum {
   padding: 68px 0;
-  border-top: 1px solid rgba(10, 22, 40, 0.08);
+  border-top: 1px solid rgba(22, 24, 29, 0.08);
 }
 
 .bolumBaslik {
@@ -280,7 +281,7 @@
 
 .isKart {
   background: #fff;
-  border: 1px solid rgba(10, 22, 40, 0.09);
+  border: 1px solid rgba(22, 24, 29, 0.09);
   border-radius: 3px;
   padding: 24px 20px;
 }
@@ -354,11 +355,12 @@
   background: #fff;
   border-radius: 3px;
   text-decoration: none;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 
   &:hover {
-    background: var(--bronz);
-    color: #fff;
+    color: var(--lacivert);
+    opacity: 0.88;
+    transform: translateY(-2px);
   }
 }
 

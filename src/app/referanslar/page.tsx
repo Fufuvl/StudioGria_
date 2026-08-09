@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ReferanslarMain from "@/page-components/referanslar/referanslar-main";
 
 export const metadata: Metadata = {
-  title: "Referanslarımız | Studio Gria",
+  title: "Referanslarımız: 39+ Marka, 20+ Sektör | Studio Gria",
   description:
-    "Otelden restorana, güzellik markasından üretime kadar birlikte çalıştığımız markalar. Studio Gria, İstanbul merkezli dijital medya ajansı.",
+    "Beşiktaş Spor Kulübü'nden The Oba Hotel'e, restorandan sanayiye birlikte çalıştığımız 39'dan fazla marka. Sektöre göre süzün, her markada ne yaptığımızı görün.",
   alternates: { canonical: "https://studiogria.com/referanslar" },
   openGraph: {
     type: "website",

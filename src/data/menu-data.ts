@@ -10,26 +10,26 @@ const menu_data: IMenuDT[] = [
   },
   {
     id: 2,
+    title: 'Hakkımızda',
+    link: '/about-us',
+    dropdown_menus: []
+  },
+  {
+    id: 3,
     title: 'Hizmetlerimiz',
     link: '/service',
     dropdown_menus: []
   },
   {
-    id: 3,
+    id: 4,
     title: 'AI Destekli Çözümler',
     link: '/ai-destekli-cozumler',
     dropdown_menus: []
   },
   {
-    id: 4,
+    id: 5,
     title: 'Referanslar',
     link: '/referanslar',
-    dropdown_menus: []
-  },
-  {
-    id: 5,
-    title: 'Hakkımızda',
-    link: '/about-us',
     dropdown_menus: []
   },
   {
@@ -62,26 +62,26 @@ export const mobile_menu_data: {
     },
     {
       id: 2,
+      title: 'Hakkımızda',
+      link: '/about-us',
+      dropdown_menus: []
+    },
+    {
+      id: 3,
       title: 'Hizmetlerimiz',
       link: '/service',
       dropdown_menus: []
     },
     {
-      id: 3,
+      id: 4,
       title: 'AI Destekli Çözümler',
       link: '/ai-destekli-cozumler',
       dropdown_menus: []
     },
     {
-      id: 4,
+      id: 5,
       title: 'Referanslar',
       link: '/referanslar',
-      dropdown_menus: []
-    },
-    {
-      id: 5,
-      title: 'Hakkımızda',
-      link: '/about-us',
       dropdown_menus: []
     },
     {

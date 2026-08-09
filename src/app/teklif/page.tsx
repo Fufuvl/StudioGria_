@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import logoDark from "@/assets/img/logo/logo-dark.png";
 import TeklifForm from "./teklif-form";
 import styles from "./teklif.module.scss";
 
@@ -75,8 +77,16 @@ export default function TeklifSayfasi() {
     <main className={styles.sayfa}>
       <header className={styles.ustBant}>
         <div className={styles.kapsayici}>
-          <Link className={styles.logo} href="/">
-            Studio Gria
+          {/* Sitenin gercek logosu kullanilir, metin logo degil */}
+          <Link href="/" aria-label="Studio Gria ana sayfa">
+            <Image
+              src={logoDark}
+              alt="Studio Gria"
+              width={150}
+              height={40}
+              style={{ height: "auto", width: "auto", maxHeight: "40px" }}
+              priority
+            />
           </Link>
         </div>
       </header>

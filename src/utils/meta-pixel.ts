@@ -46,9 +46,14 @@ const VIEW_CONTENT_PAGES: {
   content_category: string;
 }[] = [
   {
-    match: (p) => p === "/service" || p === "/service-details",
+    match: (p) => p === "/service",
     content_name: "Hizmetler",
     content_category: "Hizmet",
+  },
+  {
+    match: (p) => p === "/referanslar",
+    content_name: "Referanslar",
+    content_category: "Referans",
   },
   {
     match: (p) => p === "/ai-destekli-cozumler",

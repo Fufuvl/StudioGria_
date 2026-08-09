@@ -197,12 +197,14 @@ const deliverables = [
 
 const getArcState = (index: number, total: number) => {
   const progress = total === 1 ? 0.5 : index / (total - 1);
-  const angle = -82 + progress * 164;
+  // Kartlar buyutuldugu icin yay daraltildi ve olcek yukari cekildi;
+  // boylece gorseller sahneyi orantili kaplar, ust uste binme azalir.
+  const angle = -72 + progress * 144;
   const radians = (angle * Math.PI) / 180;
-  const left = 50 + Math.sin(radians) * 42;
-  const top = 72 - Math.cos(radians) * 26;
-  const rotate = angle * 0.72;
-  const scale = 0.76 + (1 - Math.abs(progress - 0.5) / 0.5) * 0.22;
+  const left = 50 + Math.sin(radians) * 38;
+  const top = 76 - Math.cos(radians) * 30;
+  const rotate = angle * 0.55;
+  const scale = 0.9 + (1 - Math.abs(progress - 0.5) / 0.5) * 0.14;
 
   return {
     left: `${left}%`,
@@ -291,7 +293,8 @@ const AiSolutionsMain = () => {
 
     const activeEl = cards[activeIndex];
     const activeArcState = getArcState(activeIndex, total);
-    const liftOffset = window.innerWidth < 768 ? -54 : -86;
+    // Kart tabani buyudugu icin kaldirma mesafesi kisaltildi (tasma olmasin)
+    const liftOffset = window.innerWidth < 768 ? -44 : -64;
     const stackBaseLeft = window.innerWidth < 768 ? "44%" : "46%";
     const stackBaseTop = window.innerWidth < 768 ? "52%" : "51%";
 
@@ -310,7 +313,7 @@ const AiSolutionsMain = () => {
       x: 0,
       y: liftOffset,
       rotate: activeArcState.rotate * 0.24,
-      scale: activeArcState.scale + 0.14,
+      scale: activeArcState.scale + 0.1,
       zIndex: 180,
     });
 
