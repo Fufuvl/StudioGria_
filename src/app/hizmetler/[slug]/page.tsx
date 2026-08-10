@@ -70,29 +70,32 @@ export default function HizmetDetayPage({ params }: Props) {
       <HeaderEleven />
 
       <main className={styles.sayfa}>
+        {/* Editoryal hero: sayfayi gorsel degil tipografi tasir.
+            Ikon kucuk bir muhur, numara dergi kapagi gibi konturlu. */}
         <section className={styles.detayHero}>
           <div className={styles.kapsayici}>
-            <Link className={styles.detayGeri} href="/hizmetler">
-              Tüm hizmetlerimize dönün
-            </Link>
-            <div className={styles.detayIzgara}>
+            <div className={styles.detayUst}>
+              <span className={styles.detayEtiket}>
+                <span className={styles.detayEtiketIkon}>
+                  <HizmetIkonu ad={hizmet.ikon} />
+                </span>
+                Hizmetlerimiz · {numara}
+              </span>
+              <Link className={styles.detayGeri} href="/hizmetler">
+                Tüm hizmetlerimize dönün
+              </Link>
+            </div>
+            <div className={styles.detayHeroIzgara}>
               <div>
-                <span className={styles.rozet}>Hizmetlerimiz</span>
-                <h1 className={styles.bolumBaslik}>{hizmet.ad}</h1>
+                <h1 className={styles.detayBaslik}>{hizmet.ad}</h1>
                 <p className={styles.detayGiris}>{hizmet.giris}</p>
                 <Link className={styles.kapanisDugme} href="/teklif" style={{ background: "#16181d", color: "#fff" }}>
                   Bu hizmet için teklif alın
                 </Link>
               </div>
-              {/* Katalog kartlariyla ayni dil: fotograf degil cizgisel ikon */}
-              <div className={styles.detayIkonPanel}>
-                <span className={styles.detayIkonDaire}>
-                  <HizmetIkonu ad={hizmet.ikon} />
-                </span>
-                <span className={styles.detayNo} aria-hidden="true">
-                  {numara}
-                </span>
-              </div>
+              <span className={styles.detayDevNo} aria-hidden="true">
+                {numara}
+              </span>
             </div>
           </div>
         </section>
