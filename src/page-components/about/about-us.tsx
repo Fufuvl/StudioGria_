@@ -13,7 +13,6 @@ import FooterTwo from "@/layouts/footers/footer-two";
 import AboutUsHero from "@/components/about/about-us-hero";
 import AboutUsArea from "@/components/about/about-us-area";
 import FunFactOne from "@/components/fun-fact/fun-fact-one";
-import BrandFive from "@/components/brand/brand-five";
 // animation
 import { charAnimation, fadeAnimation, titleAnimation } from "@/utils/title-animation";
 import { hoverBtn } from "@/utils/hover-btn";
@@ -52,10 +51,6 @@ const AboutUsMain = () => {
             {/* fun fact area */}
             <FunFactOne />
             {/* fun fact area */}
-
-            {/* brand area */}
-            <BrandFive />
-            {/* brand area */}
           </main>
 
           {/* footer area */}

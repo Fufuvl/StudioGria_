@@ -9,6 +9,7 @@ export type HizmetSSS = {
 export type Hizmet = {
   slug: string;
   ad: string;
+  ikon: string;
   kisaAciklama: string;
   seoBaslik: string;
   seoAciklama: string;
@@ -23,6 +24,7 @@ export type Hizmet = {
 export const hizmetler: Hizmet[] = [
   {
     slug: "sosyal-medya-yonetimi",
+    ikon: "megafon",
     ad: "Sosyal Medya Yönetimi",
     kisaAciklama:
       "İçerik planından yayına, hesabınızın tamamını tek elden yönetiriz.",
@@ -59,6 +61,7 @@ export const hizmetler: Hizmet[] = [
   },
   {
     slug: "fotograf-video-produksiyon",
+    ikon: "kamera",
     ad: "Fotoğraf & Video Prodüksiyon",
     kisaAciklama:
       "Mekan, ürün ve marka çekimleri; kurgu ve renk düzenlemesiyle teslim.",
@@ -95,6 +98,7 @@ export const hizmetler: Hizmet[] = [
   },
   {
     slug: "reklam-yonetimi",
+    ikon: "hedef",
     ad: "Reklam Yönetimi",
     kisaAciklama:
       "Google Ads ve Meta Ads kampanyalarınızı kurar, günlük takip ederiz.",
@@ -131,6 +135,7 @@ export const hizmetler: Hizmet[] = [
   },
   {
     slug: "ai-uretim-reklam-filmleri",
+    ikon: "parilti",
     ad: "AI Üretim & AI Reklam Filmleri",
     kisaAciklama:
       "Yapay zeka ile stüdyo kalitesinde ürün görseli ve reklam filmi üretimi.",
@@ -167,6 +172,7 @@ export const hizmetler: Hizmet[] = [
   },
   {
     slug: "web-site-seo-geo",
+    ikon: "kure",
     ad: "Web Sitesi, SEO & GEO",
     kisaAciklama:
       "Hızlı ve dönüşüm odaklı web sitesi; arama motoru ve yapay zeka görünürlüğü.",
@@ -203,6 +209,7 @@ export const hizmetler: Hizmet[] = [
   },
   {
     slug: "yazilim-mobil-uygulama",
+    ikon: "kod",
     ad: "Yazılım & Mobil Uygulama",
     kisaAciklama:
       "İşinize özel web tabanlı yazılım ve mobil uygulama geliştirme.",
@@ -239,6 +246,7 @@ export const hizmetler: Hizmet[] = [
   },
   {
     slug: "e-ticaret-entegrasyonlari",
+    ikon: "canta",
     ad: "E-Ticaret Entegrasyonları",
     kisaAciklama:
       "Satış kanallarınızı kurar, ürün akışını ve reklam bağlantılarını bağlarız.",
@@ -275,6 +283,7 @@ export const hizmetler: Hizmet[] = [
   },
   {
     slug: "drone-cekimleri",
+    ikon: "drone",
     ad: "Drone Çekimleri",
     kisaAciklama:
       "Mekan, proje ve etkinlikleriniz için havadan fotoğraf ve video.",
@@ -311,6 +320,7 @@ export const hizmetler: Hizmet[] = [
   },
   {
     slug: "marka-kimligi-tasarim",
+    ikon: "kalem",
     ad: "Marka Kimliği & Tasarım",
     kisaAciklama:
       "Logo, kurumsal kimlik ve markanızın tüm görsel dili.",
@@ -347,6 +357,7 @@ export const hizmetler: Hizmet[] = [
   },
   {
     slug: "danismanlik",
+    ikon: "balon",
     ad: "Danışmanlık Hizmeti",
     kisaAciklama:
       "Ekibiniz üretiyor, biz yönü ve stratejiyi birlikte kuruyoruz.",

@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Wrapper from "@/layouts/wrapper";
 import HeaderEleven from "@/layouts/headers/header-eleven";
 import FooterTwo from "@/layouts/footers/footer-two";
 import SosyalKanit from "@/components/sosyal-kanit";
 import ReferansSerit from "@/components/referans-serit";
+import HizmetIkonu from "@/components/hizmet-ikonlari";
 import { hizmetler } from "@/data/hizmet-data";
 import { surecAdimlari } from "@/data/surec-data";
 import styles from "@/app/hizmetler/hizmetler.module.scss";
@@ -61,15 +61,9 @@ const HizmetlerMain = () => {
                   href={`/hizmetler/${hizmet.slug}`}
                   key={hizmet.slug}
                 >
-                  <span className={styles.kartGorselKutu}>
-                    <Image
-                      className={styles.kartGorsel}
-                      src={hizmet.gorsel}
-                      alt={hizmet.gorselAlt}
-                      width={640}
-                      height={400}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1199px) 50vw, 400px"
-                    />
+                  {/* Fotograf yerine cizgisel ikon: kartlar esit agirlikta durur */}
+                  <span className={styles.kartIkon}>
+                    <HizmetIkonu ad={hizmet.ikon} />
                   </span>
                   <span className={styles.kartIc}>
                     <span className={styles.kartBaslik}>{hizmet.ad}</span>

@@ -42,98 +42,156 @@
   }
 }
 
-/* Ana sayfa hero kurgusu: gorsel ustunde iddiali baslik + tek eylem */
-.sg-hero-title {
-  font-size: clamp(38px, 6vw, 88px);
+/* Ana sayfa split hero: solda acik zeminde metin, sagda gorsel.
+   Yazi hicbir zaman gorselin ustune binmez. */
+.sg-split-hero {
+  display: grid;
+  grid-template-columns: minmax(440px, 0.92fr) 1.08fr;
+  min-height: clamp(520px, 74vh, 720px);
+  background: #faf9f7;
+  // ScrollSmoother icerigi header'in arkasina aldigi icin header payi birakilir
+  padding-top: 106px;
+}
+
+.sg-split-metin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 96px);
+  padding-right: clamp(28px, 4vw, 64px);
+}
+
+.sg-split-rozet {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+  margin-bottom: 24px;
+}
+
+.sg-split-baslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(36px, 4.6vw, 68px);
   line-height: 1.06;
-  color: #fff;
+  color: #16181d;
+  margin: 0 0 22px;
 
   em {
     font-style: italic;
   }
 }
 
-.sg-hero-sub {
-  margin: 22px auto 0;
-  max-width: 560px;
-  font-size: clamp(15px, 1.4vw, 18px);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.82);
+.sg-split-alt {
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.65;
+  color: #6b6b6b;
+  margin: 0;
+  max-width: 460px;
 }
 
 .sg-hero-actions {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 18px;
   flex-wrap: wrap;
   margin-top: 34px;
 }
 
-.sg-hero-cta {
+.sg-split-cta {
   display: inline-block;
   padding: 15px 40px;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #16181d;
-  background: #fff;
-  border: 1px solid #fff;
+  color: #fff;
+  background: #16181d;
+  border: 1px solid #16181d;
   border-radius: 3px;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background 0.25s ease, border-color 0.25s ease;
 
   &:hover {
     color: #fff;
-    background: transparent;
+    background: #2c2f36;
+    border-color: #2c2f36;
   }
 }
 
-.sg-hero-link {
+.sg-split-link {
   display: inline-block;
   padding: 15px 6px;
   font-size: 14px;
   font-weight: 500;
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  color: #16181d;
+  border-bottom: 1px solid rgba(22, 24, 29, 0.4);
   transition: border-color 0.25s ease;
 
   &:hover {
-    color: #fff;
+    color: #16181d;
     font-style: italic;
-    border-color: #fff;
+    border-color: #16181d;
+  }
+}
+
+.sg-split-sosyal {
+  display: flex;
+  gap: 16px;
+  margin-top: 44px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #16181d;
+    border: 1px solid rgba(22, 24, 29, 0.2);
+    border-radius: 50%;
+    transition: background 0.25s ease, color 0.25s ease;
+
+    &:hover {
+      color: #fff;
+      background: #16181d;
+    }
+  }
+}
+
+.sg-split-gorsel {
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+}
+
+@media (max-width: 991px) {
+  .sg-split-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding-top: 88px;
+  }
+
+  .sg-split-gorsel {
+    order: -1;
+    min-height: 44vh;
+  }
+
+  .sg-split-metin {
+    padding: 36px 24px 44px;
+  }
+
+  .sg-split-sosyal {
+    margin-top: 30px;
   }
 }
 
 @media (max-width: 575px) {
   .sg-hero-actions {
     flex-direction: column;
+    align-items: stretch;
     gap: 10px;
   }
-}
 
-/* Hero sol ust hizalama: icerik gorselin sol ustunden baslar */
-.sg-hero-topleft {
-  align-items: flex-start !important;
-
-  .tp-showcase-details-content {
-    text-align: left;
-    max-width: 720px;
-    padding-top: clamp(150px, 24vh, 260px);
-  }
-
-  .sg-hero-sub {
-    margin-left: 0;
-  }
-
-  .sg-hero-actions {
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 767px) {
-  .sg-hero-topleft .tp-showcase-details-content {
-    padding-top: 130px;
+  .sg-split-cta {
+    text-align: center;
   }
 }
 

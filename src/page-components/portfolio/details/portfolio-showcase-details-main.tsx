@@ -31,7 +31,8 @@ const PortfolioDetailsShowcaseMain = () => {
   return (
     <Wrapper>
       {/* header area start */}
-      <HeaderEleven transparent={true} />
+      {/* Split hero acik zeminli oldugu icin header opak kullanilir */}
+      <HeaderEleven transparent={false} />
       {/* header area end */}
 
       <div id="smooth-wrapper">

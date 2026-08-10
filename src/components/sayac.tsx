@@ -25,7 +25,8 @@ export default function Sayac({
         basladi.current = true;
         const baslangic = performance.now();
         const adim = (simdi: number) => {
-          const oran = Math.min((simdi - baslangic) / sure, 1);
+          // rAF zaman damgasi kayit anindan kucuk gelebilir; 0'a sabitlenir
+          const oran = Math.min(Math.max((simdi - baslangic) / sure, 0), 1);
           const yumusatilmis = 1 - Math.pow(1 - oran, 3);
           setDeger(Math.round(hedef * yumusatilmis));
           if (oran < 1) requestAnimationFrame(adim);

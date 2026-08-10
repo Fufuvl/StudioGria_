@@ -1,73 +1,52 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { scroller } from 'react-scroll';
 import details_thumb_1 from '@/assets/img/inner-project/showcase/15.jpg';
 import details_thumb_2 from '@/assets/img/inner-project/showcase/16.jpg';
 import details_thumb_3 from '@/assets/img/inner-project/showcase/3.jpg';
 import social_data from '@/data/social-data';
 
 export default function PortfolioDetailsShowcaseArea() {
-  const scrollTo = () => {
-    scroller.scrollTo('xyz', {
-      duration: 800,
-      delay: 0,
-      smooth: 'easeInOutQuart',
-    });
-  };
   return (
     <>
-     {/* details area */}
-      <div className="tp-showcase-details-area">
-         <div className="tp-showcase-details-bg d-flex align-items-center justify-content-center include-bg p-relative sg-hero-topleft" style={{backgroundImage: "url(/assets/img/inner-project/showcase/background.jpg)"}}>
-          <div className="tp-showcase-details-scroll smooth">
-              <a
-                href="#xyz"
-                onClick={(e) => { e.preventDefault(); scrollTo(); }}
-                className="pointer"
-                aria-label="Sayfayı aşağı kaydır"
-              >
-                <i className="fa-sharp fa-light fa-angle-down" aria-hidden="true"></i>
-                <span>Gezinmek için kaydırın veya sürükleyin</span>
+     {/* hero: solda metin kolonu, sagda gorsel; yazi gorselin ustunde durmaz */}
+      <div className="sg-split-hero">
+        <div className="sg-split-metin">
+          <span className="sg-split-rozet sg-gir sg-gir-1">
+            İstanbul Merkezli Dijital Medya Stüdyosu
+          </span>
+          <h1 className="sg-split-baslik sg-gir sg-gir-2">
+            İyi içerik izlenir.
+            <br />
+            Doğru içerik <em>satar.</em>
+          </h1>
+          <p className="sg-split-alt sg-gir sg-gir-3">
+            İçerik, tasarım ve reklam tek elden. Sonuç tahmin edilmez, ölçülür.
+          </p>
+          <div className="sg-hero-actions sg-gir sg-gir-4">
+            <Link className="sg-split-cta" href="/teklif">
+              Teklif Al
+            </Link>
+            <Link className="sg-split-link" href="/referanslar">
+              Referanslarımızı görün
+            </Link>
+          </div>
+          <div className="sg-split-sosyal sg-gir sg-gir-5">
+            {social_data.map((s) => (
+              <a key={s.id} href={s.link} target="_blank" rel="noopener noreferrer" aria-label={s.name}>
+                <i className={s.icon}></i>
               </a>
-          </div>
-          <div className="port-showcase-slider-social tp-hover-btn-wrapper">
-              {social_data.map((s) => (
-                <a key={s.id} className="tp-hover-btn-item tp-hover-btn" href={s.link} target="_blank" rel="noopener noreferrer" aria-label={s.name}>
-                  <i className={s.icon}></i>
-                </a>
-              ))}
-          </div>
-          <div className="container">
-              <div className="row">
-                <div className="col-12">
-                    <div className="tp-showcase-details-content">
-                      <span className="port-showcase-slider-subtitle tp_title_anim">
-                        [ İstanbul Merkezli Dijital Medya Stüdyosu ]
-                      </span>
-                      <h1 className="port-showcase-slider-title tp-char-animation sg-hero-title">
-                        İyi içerik izlenir.
-                        <br />
-                        Doğru içerik <em>satar.</em>
-                      </h1>
-                      <p className="sg-hero-sub tp_title_anim">
-                        İçerik, tasarım ve reklam tek elden. Sonuç tahmin edilmez, ölçülür.
-                      </p>
-                      <div className="sg-hero-actions">
-                        <Link className="sg-hero-cta" href="/teklif">
-                          Teklif Al
-                        </Link>
-                        <Link className="sg-hero-link" href="/referanslar">
-                          Referanslarımızı görün
-                        </Link>
-                      </div>
-                    </div>
-                </div>
-              </div>
+            ))}
           </div>
         </div>
+        <div
+          className="sg-split-gorsel"
+          role="img"
+          aria-label="The Oba Hotel için havadan çekilmiş tanıtım karesi"
+          style={{ backgroundImage: "url(/assets/img/inner-project/showcase/background.jpg)" }}
+        />
       </div>
-      {/* details area */}
+      {/* hero */}
 
       {/* details overview */}
       <div id="xyz" className="showcase-details-overview pt-120 pb-120">
