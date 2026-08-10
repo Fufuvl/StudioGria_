@@ -15,6 +15,7 @@ type LeadPayload = {
   kaynak?: string;
   adSoyad?: string;
   telefon?: string;
+  eposta?: string;
   sektor?: string;
   hedef?: string;
   konu?: string;
@@ -42,6 +43,7 @@ export async function POST(request: Request) {
   const kaynak = temizle(veri.kaynak, 60) || "Bilinmiyor";
   const adSoyad = temizle(veri.adSoyad, 120);
   const telefon = temizle(veri.telefon, 40);
+  const eposta = temizle(veri.eposta, 160);
   const sektor = temizle(veri.sektor, 120);
   const hedef = temizle(veri.hedef, 300);
   const konu = temizle(veri.konu, 160);
@@ -75,6 +77,7 @@ export async function POST(request: Request) {
       <p style="margin:0 0 16px;color:#666;font-size:13px">${zaman}</p>
       ${satir("Ad Soyad", adSoyad)}
       ${satir("Telefon", telefon)}
+      ${satir("E-posta", eposta)}
       ${satir("Sektor", sektor)}
       ${satir("Hedef", hedef)}
       ${satir("Konu", konu)}
@@ -97,7 +100,8 @@ export async function POST(request: Request) {
         to: [alici],
         subject: `Yeni lead: ${adSoyad || telefon || kaynak}`,
         html,
-        ...(telefon ? { reply_to: alici } : {}),
+        // Musteri e-postasini birakti ise bildirime dogrudan yanit verilebilir
+        ...(eposta ? { reply_to: eposta } : {}),
       }),
     });
 

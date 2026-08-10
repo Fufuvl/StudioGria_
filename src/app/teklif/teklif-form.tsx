@@ -1,21 +1,23 @@
 "use client";
 import React, { useState } from "react";
 import { trackLead } from "@/utils/meta-pixel";
-import { leadKaydet, whatsappAc } from "@/utils/lead";
+import { leadKaydetVeBekle, whatsappAc } from "@/utils/lead";
 import styles from "./teklif.module.scss";
 
 type Alanlar = {
   adSoyad: string;
   telefon: string;
+  eposta: string;
   sektor: string;
   hedef: string;
 };
 
-const BOS: Alanlar = { adSoyad: "", telefon: "", sektor: "", hedef: "" };
+const BOS: Alanlar = { adSoyad: "", telefon: "", eposta: "", sektor: "", hedef: "" };
 
 export default function TeklifForm() {
   const [veri, setVeri] = useState<Alanlar>(BOS);
   const [hatalar, setHatalar] = useState<Partial<Alanlar>>({});
+  const [gonderiliyor, setGonderiliyor] = useState(false);
   const [gonderildi, setGonderildi] = useState(false);
 
   const degistir = (olay: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,33 +30,46 @@ export default function TeklifForm() {
     if (veri.adSoyad.trim().length < 2) yeni.adSoyad = "Adınızı giriniz";
     // En az 10 rakam: sabit ve mobil numaralarin tamamini kapsar
     if (veri.telefon.replace(/\D/g, "").length < 10) yeni.telefon = "Geçerli bir telefon numarası giriniz";
+    // E-posta istege bagli; girildiyse bicimi dogru olmali
+    if (veri.eposta.trim() && !/^\S+@\S+\.\S+$/.test(veri.eposta.trim())) {
+      yeni.eposta = "Geçerli bir e-posta adresi giriniz";
+    }
     if (veri.sektor.trim().length < 2) yeni.sektor = "Sektörünüzü giriniz";
     setHatalar(yeni);
     return Object.keys(yeni).length === 0;
   };
 
-  const gonder = (olay: React.FormEvent) => {
+  const gonder = async (olay: React.FormEvent) => {
     olay.preventDefault();
-    if (!dogrula()) return;
+    if (gonderiliyor || !dogrula()) return;
+    setGonderiliyor(true);
 
-    const mesaj =
-      `Merhaba, teklif sayfasindan yaziyorum.%0A%0A` +
-      `*Ad Soyad:* ${encodeURIComponent(veri.adSoyad)}%0A` +
-      `*Telefon:* ${encodeURIComponent(veri.telefon)}%0A` +
-      `*Sektor:* ${encodeURIComponent(veri.sektor)}%0A` +
-      `*Hedef:* ${encodeURIComponent(veri.hedef)}`;
+    trackLead({ content_name: "Teklif Sayfası", content_category: veri.sektor });
 
-    leadKaydet({
+    // Once e-posta bildirimi: lead otomatik olarak posta kutusuna duser.
+    const sonuc = await leadKaydetVeBekle({
       kaynak: "Teklif Sayfası",
       adSoyad: veri.adSoyad,
       telefon: veri.telefon,
+      eposta: veri.eposta,
       sektor: veri.sektor,
       hedef: veri.hedef,
     });
-    trackLead({ content_name: "Teklif Sayfası", content_category: veri.sektor });
-    whatsappAc(`https://wa.me/905388654405?text=${mesaj}`);
+
+    // E-posta altyapisi ulasilamazsa lead kaybolmasin diye WhatsApp yedegi devreye girer
+    if (!sonuc.ok) {
+      const mesaj =
+        `Merhaba, teklif sayfasindan yaziyorum.%0A%0A` +
+        `*Ad Soyad:* ${encodeURIComponent(veri.adSoyad)}%0A` +
+        `*Telefon:* ${encodeURIComponent(veri.telefon)}%0A` +
+        (veri.eposta ? `*E-posta:* ${encodeURIComponent(veri.eposta)}%0A` : "") +
+        `*Sektor:* ${encodeURIComponent(veri.sektor)}%0A` +
+        `*Hedef:* ${encodeURIComponent(veri.hedef)}`;
+      whatsappAc(`https://wa.me/905388654405?text=${mesaj}`);
+    }
 
     setVeri(BOS);
+    setGonderiliyor(false);
     setGonderildi(true);
   };
 
@@ -65,10 +80,10 @@ export default function TeklifForm() {
           <h2 className={styles.tesekkurBaslik}>Talebiniz bize ulaştı</h2>
           <p className={styles.tesekkurMetin}>
             Bilgilerinizi aldık. Ekibimiz aynı gün içinde dönüş yapıp markanıza özel
-            stratejiyi ve teklifi paylaşacak.
+            teklif sunumunu paylaşacak.
           </p>
           <a className={styles.tesekkurBaglanti} href="https://wa.me/905388654405" target="_blank" rel="noopener noreferrer">
-            Hemen WhatsApp üzerinden yazmak isterim
+            Beklemeden WhatsApp üzerinden yazmak isterim
           </a>
         </div>
       </div>
@@ -115,6 +130,21 @@ export default function TeklifForm() {
         </div>
 
         <div className={styles.alan}>
+          <label className={styles.etiket} htmlFor="teklif-eposta">E-posta</label>
+          <input
+            id="teklif-eposta"
+            name="eposta"
+            className={styles.girdi}
+            type="email"
+            placeholder="ornek@firmaniz.com"
+            value={veri.eposta}
+            onChange={degistir}
+            autoComplete="email"
+          />
+          {hatalar.eposta && <span className={styles.hataMetni}>{hatalar.eposta}</span>}
+        </div>
+
+        <div className={styles.alan}>
           <label className={styles.etiket} htmlFor="teklif-sektor">Sektör</label>
           <input
             id="teklif-sektor"
@@ -141,8 +171,8 @@ export default function TeklifForm() {
           />
         </div>
 
-        <button className={styles.gonder} type="submit">
-          Teklif İste
+        <button className={styles.gonder} type="submit" disabled={gonderiliyor}>
+          {gonderiliyor ? "Gönderiliyor..." : "Teklif İste"}
         </button>
       </form>
 
