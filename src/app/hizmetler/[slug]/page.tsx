@@ -2,11 +2,11 @@ import React from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import Wrapper from "@/layouts/wrapper";
 import HeaderEleven from "@/layouts/headers/header-eleven";
 import FooterTwo from "@/layouts/footers/footer-two";
 import ReferansSerit from "@/components/referans-serit";
+import HizmetIkonu from "@/components/hizmet-ikonlari";
 import { hizmetler, hizmetBul } from "@/data/hizmet-data";
 import { surecAdimlari } from "@/data/surec-data";
 import styles from "../hizmetler.module.scss";
@@ -30,6 +30,7 @@ export function generateMetadata({ params }: Props): Metadata {
       title: hizmet.seoBaslik,
       description: hizmet.seoAciklama,
       url,
+      // Fotograf yalnizca sosyal medya paylasim onizlemesinde kullanilir
       images: [{ url: hizmet.gorsel, width: 1200, height: 630, alt: hizmet.gorselAlt }],
     },
     twitter: {
@@ -43,16 +44,8 @@ export default function HizmetDetayPage({ params }: Props) {
   const hizmet = hizmetBul(params.slug);
   if (!hizmet) notFound();
 
-  // Zengin sonuc sansi icin hizmete ozel SSS schema'si
-  const sssSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: hizmet.sss.map((madde) => ({
-      "@type": "Question",
-      name: madde.soru,
-      acceptedAnswer: { "@type": "Answer", text: madde.cevap },
-    })),
-  };
+  const sira = hizmetler.findIndex((kayit) => kayit.slug === hizmet.slug);
+  const numara = String(sira + 1).padStart(2, "0");
 
   const hizmetSchema = {
     "@context": "https://schema.org",
@@ -70,10 +63,6 @@ export default function HizmetDetayPage({ params }: Props) {
 
   return (
     <Wrapper>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(sssSchema) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(hizmetSchema) }}
@@ -95,16 +84,14 @@ export default function HizmetDetayPage({ params }: Props) {
                   Bu hizmet için teklif alın
                 </Link>
               </div>
-              <div className={styles.detayGorselKutu}>
-                <Image
-                  className={styles.detayGorsel}
-                  src={hizmet.gorsel}
-                  alt={hizmet.gorselAlt}
-                  width={900}
-                  height={675}
-                  priority
-                  sizes="(max-width: 991px) 100vw, 560px"
-                />
+              {/* Katalog kartlariyla ayni dil: fotograf degil cizgisel ikon */}
+              <div className={styles.detayIkonPanel}>
+                <span className={styles.detayIkonDaire}>
+                  <HizmetIkonu ad={hizmet.ikon} />
+                </span>
+                <span className={styles.detayNo} aria-hidden="true">
+                  {numara}
+                </span>
               </div>
             </div>
           </div>
@@ -136,34 +123,19 @@ export default function HizmetDetayPage({ params }: Props) {
 
         <section className={styles.detaySss}>
           <div className={styles.kapsayici}>
-            <h2 className={styles.bolumBaslik}>Sık sorulanlar</h2>
-            <p className={styles.bolumSpot}>
-              Cevabını bulamadığınız soruyu WhatsApp üzerinden sorabilirsiniz.
-            </p>
-            <div className={styles.sssIzgara}>
-              {hizmet.sss.map((madde) => (
-                <div key={madde.soru}>
-                  <h3 className={styles.sssSoru}>{madde.soru}</h3>
-                  <p className={styles.sssCevap}>{madde.cevap}</p>
+            <h2 className={styles.bolumBaslik}>Nasıl ilerliyoruz</h2>
+            <div className={styles.adimlar} style={{ marginTop: "28px" }}>
+              {surecAdimlari.map((adim) => (
+                <div className={styles.adim} key={adim.no}>
+                  <p className={styles.adimNo}>{adim.no}</p>
+                  <h3 className={styles.adimBaslik}>{adim.baslik}</h3>
+                  <p className={styles.adimMetin}>{adim.metin}</p>
                 </div>
               ))}
             </div>
-
-            <div style={{ marginTop: "48px" }}>
-              <h2 className={styles.bolumBaslik}>Nasıl ilerliyoruz</h2>
-              <div className={styles.adimlar} style={{ marginTop: "28px" }}>
-                {surecAdimlari.map((adim) => (
-                  <div className={styles.adim} key={adim.no}>
-                    <p className={styles.adimNo}>{adim.no}</p>
-                    <h3 className={styles.adimBaslik}>{adim.baslik}</h3>
-                    <p className={styles.adimMetin}>{adim.metin}</p>
-                  </div>
-                ))}
-              </div>
-              <p className={styles.odemeNotu}>
-                Ödemenizi dilerseniz <em>kredi kartıyla</em> yapabilirsiniz.
-              </p>
-            </div>
+            <p className={styles.odemeNotu}>
+              Ödemenizi dilerseniz <em>kredi kartıyla</em> yapabilirsiniz.
+            </p>
           </div>
         </section>
 
