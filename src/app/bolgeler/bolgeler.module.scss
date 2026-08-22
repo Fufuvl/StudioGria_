@@ -77,18 +77,21 @@
   }
 }
 
+/* Cizgiler kartlarin kenarliklarindan gelir; son satirda dolmayan
+   hucrelerin gri blok olarak gorunmesini onler. */
 .odakIzgara {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1px;
-  background: var(--cizgi);
-  border: 1px solid var(--cizgi);
+  border-top: 1px solid var(--cizgi);
+  border-left: 1px solid var(--cizgi);
 }
 
 .odakKart {
   display: flex;
   flex-direction: column;
-  background: var(--zemin);
+  background: transparent;
+  border-right: 1px solid var(--cizgi);
+  border-bottom: 1px solid var(--cizgi);
   padding: 32px 28px;
 }
 
