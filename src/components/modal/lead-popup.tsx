@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { trackLead } from "@/utils/meta-pixel";
-import { leadKaydet, whatsappAc } from "@/utils/lead";
+import { leadKaydetVeBekle, whatsappAc } from "@/utils/lead";
+import { BotTuzagi, useFormSuresi } from "@/components/form/bot-tuzagi";
 
 // Zaten form odakli olan sayfalarda popup gostermeyiz
 const POPUP_KAPALI_SAYFALAR = ["/teklif"];
@@ -16,6 +17,9 @@ export default function LeadPopup() {
     sektor: "",
     hedef: "",
   });
+  // Bot tuzakları: görünmez alan ve formun doldurulma süresi
+  const [tuzak, setTuzak] = useState("");
+  const formSuresi = useFormSuresi();
 
   useEffect(() => {
     // Teklif sayfasinda sayfanin kendisi zaten bir form, popup gereksiz
@@ -83,16 +87,21 @@ export default function LeadPopup() {
       `*Sektör:* ${encodeURIComponent(sektor)}%0A` +
       `*Hedef:* ${encodeURIComponent(hedef)}`;
     // Veri önce kaydedilir, WhatsApp gönderilmese bile lead elde kalır
-    leadKaydet({
+    const kayit = leadKaydetVeBekle({
       kaynak: "Teklif Popup",
       adSoyad,
       telefon: numara,
       sektor,
       hedef,
+      website: tuzak,
+      sureSaniye: formSuresi(),
     });
-    // Meta Pixel: teklif popup dönüşümü
-    trackLead({ content_name: "Teklif Popup", content_category: sektor });
+    // WhatsApp penceresi tıklamanın hemen ardından açılır, yoksa tarayıcı engeller
     whatsappAc(`https://wa.me/905388654405?text=${message}`);
+    // Meta Pixel yalnızca spam filtresinden geçen gönderimlerde tetiklenir
+    kayit.then((sonuc) => {
+      if (sonuc.sayilir) trackLead({ content_name: "Teklif Popup", content_category: sektor });
+    });
     setIsOpen(false);
   };
 
@@ -158,6 +167,8 @@ export default function LeadPopup() {
 
           {/* Contact form */}
           <form onSubmit={handleSubmit} className="sg-popup-form" noValidate>
+            <BotTuzagi deger={tuzak} degistir={setTuzak} alanId="sg-popup-website" />
+
             {/* Row 1 */}
             <div className="sg-popup-field-row">
               <div className="sg-popup-field">

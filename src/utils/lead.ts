@@ -3,6 +3,9 @@
 // 2. WhatsApp açılır
 // Kayıt isteği beklenmeden gönderilir, böylece WhatsApp penceresi kullanıcı
 // tıklamasının hemen ardından açılır ve tarayıcı engeline takılmaz.
+//
+// Her gönderim iki bot tuzağı alanı taşır: görünmez honeypot (website) ve
+// formun doldurulma süresi (sureSaniye). Değerlendirmeyi sunucu yapar.
 
 export type LeadVerisi = {
   kaynak: string;
@@ -13,26 +16,20 @@ export type LeadVerisi = {
   hedef?: string;
   konu?: string;
   mesaj?: string;
+  website?: string;
+  sureSaniye?: number;
 };
 
-export function leadKaydet(veri: LeadVerisi) {
-  try {
-    fetch("/api/lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(veri),
-      // Sayfa WhatsApp'a giderse bile istek tamamlanır
-      keepalive: true,
-    }).catch(() => {});
-  } catch {
-    // Kayıt başarısız olsa da kullanıcının WhatsApp akışı bozulmamalı
-  }
-}
+// Sunucunun yanıtı:
+//   ok      istek sorunsuz tamamlandı mı
+//   sayilir gerçek bir lead mi (spam filtresine takılan gönderimlerde false)
+export type LeadYaniti = { ok: boolean; sayilir: boolean };
 
-// Sonucu beklenen kayıt: e-posta bildirimi gerçekten gitti mi bilmek istediğimizde.
+// Kaydı başlatır ve sonucu döndürür. Çağıran taraf sonucu beklemeden
+// WhatsApp'ı açabilir, sonra dönen sözü Meta Pixel kararı için kullanabilir.
 // ok:false dönerse (anahtar tanımsız, sunucu hatası, ağ sorunu) çağıran taraf
 // WhatsApp yedeğine düşebilir; lead hiçbir durumda kaybolmaz.
-export async function leadKaydetVeBekle(veri: LeadVerisi): Promise<{ ok: boolean }> {
+export async function leadKaydetVeBekle(veri: LeadVerisi): Promise<LeadYaniti> {
   try {
     const yanit = await fetch("/api/lead", {
       method: "POST",
@@ -41,9 +38,12 @@ export async function leadKaydetVeBekle(veri: LeadVerisi): Promise<{ ok: boolean
       keepalive: true,
     });
     const govde = await yanit.json().catch(() => null);
-    return { ok: Boolean(yanit.ok && govde && govde.ok) };
+    const ok = Boolean(yanit.ok && govde && govde.ok);
+    // sayilir alanı yoksa (eski yanıt biçimi) gönderim gerçek kabul edilir
+    const sayilir = ok && govde?.sayilir !== false;
+    return { ok, sayilir };
   } catch {
-    return { ok: false };
+    return { ok: false, sayilir: false };
   }
 }
 

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { trackLead } from "@/utils/meta-pixel";
 import { leadKaydetVeBekle, whatsappAc } from "@/utils/lead";
+import { BotTuzagi, useFormSuresi } from "@/components/form/bot-tuzagi";
 import styles from "./teklif.module.scss";
 
 type Alanlar = {
@@ -14,11 +15,23 @@ type Alanlar = {
 
 const BOS: Alanlar = { adSoyad: "", telefon: "", eposta: "", sektor: "", hedef: "" };
 
+// Turkiye numarasi: 10 hane, mobil 5 ya da sabit hat 2/3/4 ile baslar
+function telefonGecerliMi(ham: string) {
+  let rakamlar = ham.replace(/\D/g, "");
+  if (rakamlar.startsWith("0090")) rakamlar = rakamlar.slice(4);
+  else if (rakamlar.startsWith("90") && rakamlar.length > 10) rakamlar = rakamlar.slice(2);
+  else if (rakamlar.startsWith("0")) rakamlar = rakamlar.slice(1);
+  return rakamlar.length === 10 && /^[2345]/.test(rakamlar);
+}
+
 export default function TeklifForm() {
   const [veri, setVeri] = useState<Alanlar>(BOS);
   const [hatalar, setHatalar] = useState<Partial<Alanlar>>({});
   const [gonderiliyor, setGonderiliyor] = useState(false);
   const [gonderildi, setGonderildi] = useState(false);
+  // Bot tuzaklari: gorunmez alan ve formun doldurulma suresi
+  const [tuzak, setTuzak] = useState("");
+  const formSuresi = useFormSuresi();
 
   const degistir = (olay: React.ChangeEvent<HTMLInputElement>) => {
     setVeri({ ...veri, [olay.target.name]: olay.target.value });
@@ -27,14 +40,18 @@ export default function TeklifForm() {
 
   const dogrula = () => {
     const yeni: Partial<Alanlar> = {};
-    if (veri.adSoyad.trim().length < 2) yeni.adSoyad = "Adınızı giriniz";
-    // En az 10 rakam: sabit ve mobil numaralarin tamamini kapsar
-    if (veri.telefon.replace(/\D/g, "").length < 10) yeni.telefon = "Geçerli bir telefon numarası giriniz";
+    const ad = veri.adSoyad.trim();
+    if (ad.length < 3) yeni.adSoyad = "Adınızı giriniz";
+    else if (/\d/.test(ad)) yeni.adSoyad = "Adınızı harflerle giriniz";
+    // Turkiye numarasi bicimi: yanlis yazilan numara lead'i ulasilmaz kilar
+    if (!telefonGecerliMi(veri.telefon)) yeni.telefon = "Geçerli bir telefon numarası giriniz";
     // E-posta istege bagli; girildiyse bicimi dogru olmali
     if (veri.eposta.trim() && !/^\S+@\S+\.\S+$/.test(veri.eposta.trim())) {
       yeni.eposta = "Geçerli bir e-posta adresi giriniz";
     }
-    if (veri.sektor.trim().length < 2) yeni.sektor = "Sektörünüzü giriniz";
+    const sektor = veri.sektor.trim();
+    if (sektor.length < 2) yeni.sektor = "Sektörünüzü giriniz";
+    else if (!/[a-zçğıöşüA-ZÇĞİÖŞÜ]/.test(sektor)) yeni.sektor = "Sektörünüzü harflerle giriniz";
     setHatalar(yeni);
     return Object.keys(yeni).length === 0;
   };
@@ -44,8 +61,6 @@ export default function TeklifForm() {
     if (gonderiliyor || !dogrula()) return;
     setGonderiliyor(true);
 
-    trackLead({ content_name: "Teklif Sayfası", content_category: veri.sektor });
-
     // Once e-posta bildirimi: lead otomatik olarak posta kutusuna duser.
     const sonuc = await leadKaydetVeBekle({
       kaynak: "Teklif Sayfası",
@@ -54,7 +69,15 @@ export default function TeklifForm() {
       eposta: veri.eposta,
       sektor: veri.sektor,
       hedef: veri.hedef,
+      website: tuzak,
+      sureSaniye: formSuresi(),
     });
+
+    // Meta Pixel yalnizca gercek lead'lerde tetiklenir.
+    // Spam gonderimler donusum olarak sayilsaydi reklam optimizasyonu bozulurdu.
+    if (sonuc.sayilir) {
+      trackLead({ content_name: "Teklif Sayfası", content_category: veri.sektor });
+    }
 
     // E-posta altyapisi ulasilamazsa lead kaybolmasin diye WhatsApp yedegi devreye girer
     if (!sonuc.ok) {
@@ -69,6 +92,7 @@ export default function TeklifForm() {
     }
 
     setVeri(BOS);
+    setTuzak("");
     setGonderiliyor(false);
     setGonderildi(true);
   };
@@ -99,6 +123,8 @@ export default function TeklifForm() {
       </p>
 
       <form onSubmit={gonder} noValidate>
+        <BotTuzagi deger={tuzak} degistir={setTuzak} alanId="teklif-website" />
+
         <div className={styles.alan}>
           <label className={styles.etiket} htmlFor="teklif-ad">Ad Soyad</label>
           <input
