@@ -86,8 +86,9 @@
 .kartUst {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 12px;
+  flex-wrap: wrap;
+  gap: 4px 9px;
+  font-size: 11.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--soluk);

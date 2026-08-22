@@ -32,9 +32,11 @@ export const metadata: Metadata = {
 };
 
 function tarihYaz(isoTarih: string) {
+  // Liste kartlari dar oldugu icin kisa ay adi kullanilir ("11 Ağu 2026").
+  // Uzun bicim kart kunyesini iki satira dusuruyordu.
   return new Intl.DateTimeFormat("tr-TR", {
     day: "numeric",
-    month: "long",
+    month: "short",
     year: "numeric",
     timeZone: "Europe/Istanbul",
   }).format(new Date(isoTarih));
