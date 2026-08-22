@@ -113,10 +113,15 @@ const organizationSchema = {
   url: "https://www.studiogria.com",
   logo: "https://www.studiogria.com/assets/img/logo/logo-white-new.png",
   description: "Studio Gria, İstanbul merkezli dijital medya ve sosyal medya ajansı.",
+  // Adres, Google Isletme Profili kaydiyla birebir ayni olmalidir.
+  // Yerel aramada ad, adres ve telefonun her yerde ayni gorunmesi (NAP
+  // tutarliligi) siralamayi dogrudan etkiler.
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Mimaroba Mahallesi, Mustafa Kemal Bulvarı No 18 Demir Plaza",
     addressLocality: "Büyükçekmece",
     addressRegion: "İstanbul",
+    postalCode: "34535",
     addressCountry: "TR",
   },
   email: "hello@studiogria.com",

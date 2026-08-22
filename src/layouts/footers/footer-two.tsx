@@ -130,7 +130,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
                 <div className="tp-footer-2-contact-item">
                   <span>
                     <a
-                      href="https://www.google.com/maps/search/?api=1&query=%C4%B0stanbul%2C+T%C3%BCrkiye"
+                      href="https://www.google.com/maps/search/?api=1&query=Studio+Gria%2C+Mimaroba+Mahallesi+Mustafa+Kemal+Bulvar%C4%B1+No+18+Demir+Plaza%2C+34535+B%C3%BCy%C3%BCk%C3%A7ekmece%2F%C4%B0stanbul"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
