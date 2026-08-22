@@ -18,6 +18,7 @@ export type LeadVerisi = {
   mesaj?: string;
   website?: string;
   sureSaniye?: number;
+  bilet?: string;
 };
 
 // Sunucunun yanıtı:

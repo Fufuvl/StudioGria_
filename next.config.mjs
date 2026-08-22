@@ -1,3 +1,8 @@
+// Vercel BotID: /api/lead ucuna gelen istekleri gorunmez bicimde dogrular.
+// withBotId, dogrulama betiginin ilk taraf alan adindan servis edilmesi icin
+// gereken yeniden yazma kurallarini ekler.
+import { withBotId } from "botid/next/config";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
@@ -14,4 +19,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBotId(nextConfig);

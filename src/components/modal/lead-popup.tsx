@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { trackLead } from "@/utils/meta-pixel";
 import { leadKaydetVeBekle, whatsappAc } from "@/utils/lead";
-import { BotTuzagi, useFormSuresi } from "@/components/form/bot-tuzagi";
+import { BotTuzagi, useFormSuresi, useFormBileti } from "@/components/form/bot-tuzagi";
 
 // Zaten form odakli olan sayfalarda popup gostermeyiz
 const POPUP_KAPALI_SAYFALAR = ["/teklif"];
@@ -20,6 +20,8 @@ export default function LeadPopup() {
   // Bot tuzakları: görünmez alan ve formun doldurulma süresi
   const [tuzak, setTuzak] = useState("");
   const formSuresi = useFormSuresi();
+  // Bilet yalnizca popup gorundugunde alinir, her sayfa yuklemesinde degil
+  const bilet = useFormBileti(isOpen);
 
   useEffect(() => {
     // Teklif sayfasinda sayfanin kendisi zaten bir form, popup gereksiz
@@ -95,6 +97,7 @@ export default function LeadPopup() {
       hedef,
       website: tuzak,
       sureSaniye: formSuresi(),
+      bilet,
     });
     // WhatsApp penceresi tıklamanın hemen ardından açılır, yoksa tarayıcı engeller
     whatsappAc(`https://wa.me/905388654405?text=${message}`);

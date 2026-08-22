@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { trackLead } from "@/utils/meta-pixel";
 import { leadKaydetVeBekle, whatsappAc } from "@/utils/lead";
-import { BotTuzagi, useFormSuresi } from "@/components/form/bot-tuzagi";
+import { BotTuzagi, useFormSuresi, useFormBileti } from "@/components/form/bot-tuzagi";
 import styles from "./teklif.module.scss";
 
 type Alanlar = {
@@ -32,6 +32,7 @@ export default function TeklifForm() {
   // Bot tuzaklari: gorunmez alan ve formun doldurulma suresi
   const [tuzak, setTuzak] = useState("");
   const formSuresi = useFormSuresi();
+  const bilet = useFormBileti();
 
   const degistir = (olay: React.ChangeEvent<HTMLInputElement>) => {
     setVeri({ ...veri, [olay.target.name]: olay.target.value });
@@ -71,6 +72,7 @@ export default function TeklifForm() {
       hedef: veri.hedef,
       website: tuzak,
       sureSaniye: formSuresi(),
+      bilet,
     });
 
     // Meta Pixel yalnizca gercek lead'lerde tetiklenir.

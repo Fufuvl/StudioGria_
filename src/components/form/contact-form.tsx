@@ -6,7 +6,7 @@ import * as yup from "yup";
 import ErrorMsg from '../error-msg';
 import { trackLead } from '@/utils/meta-pixel';
 import { leadKaydetVeBekle, whatsappAc } from '@/utils/lead';
-import { BotTuzagi, useFormSuresi } from './bot-tuzagi';
+import { BotTuzagi, useFormSuresi, useFormBileti } from './bot-tuzagi';
 
 type FormData = {
   name: string;
@@ -51,6 +51,7 @@ export default function ContactForm({btnCls=''}:IProps) {
   // Bot tuzakları: görünmez alan ve formun doldurulma süresi
   const [tuzak, setTuzak] = useState('');
   const formSuresi = useFormSuresi();
+  const bilet = useFormBileti();
 
   const onSubmit = handleSubmit((data:FormData) => {
     const phoneNumber = "905388654405"; // WhatsApp numarası
@@ -65,6 +66,7 @@ export default function ContactForm({btnCls=''}:IProps) {
       mesaj: data.message,
       website: tuzak,
       sureSaniye: formSuresi(),
+      bilet,
     });
     // WhatsApp penceresi tıklamanın hemen ardından açılır, yoksa tarayıcı engeller
     whatsappAc(whatsappUrl);

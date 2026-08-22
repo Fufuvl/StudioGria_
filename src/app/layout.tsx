@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { BotIdClient } from "botid/client";
 import {
   Syne,
   Aladin,
@@ -132,6 +133,13 @@ const organizationSchema = {
   },
 };
 
+// Vercel BotID'nin gorunmez dogrulama yapacagi uclar.
+// Ziyaretciye hicbir ek adim yuklemez, CAPTCHA gostermez.
+const botKorumaliYollar = [
+  { path: "/api/lead", method: "POST" },
+  { path: "/api/lead-bileti", method: "GET" },
+];
+
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -152,6 +160,7 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning={true}>
       <head>
+        <BotIdClient protect={botKorumaliYollar} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

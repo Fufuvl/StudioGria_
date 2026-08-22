@@ -7,6 +7,8 @@
 //
 // Boylece yanlis pozitif bir lead en fazla etiketlenir, hicbir zaman kaybolmaz.
 
+import type { BiletDurumu } from "./bilet";
+
 export type LeadAlanlari = {
   kaynak?: string;
   adSoyad?: string;
@@ -18,7 +20,8 @@ export type LeadAlanlari = {
   mesaj?: string;
   // Bot tuzaklari
   website?: string; // honeypot: gorunmez alan, insan dolduramaz
-  sureSaniye?: number; // formun acilisindan gonderime kadar gecen sure
+  sureSaniye?: number; // istemcinin bildirdigi sure (biletin yedegi)
+  biletDurumu?: BiletDurumu; // sunucunun imzaladigi biletin dogrulama sonucu
 };
 
 export type FiltreKarari = "gecti" | "supheli" | "reddedildi";
@@ -147,7 +150,20 @@ export function spamDegerlendir(veri: LeadAlanlari): FiltreSonucu {
     return { karar: "reddedildi", puan: 99, sebepler: ["honeypot alani doldurulmus"] };
   }
 
-  // Sure tuzagi: insan formu dort saniyeden hizli dolduramaz
+  // Imzali bilet: sure ve kaynak kaniti. Kurcalanmis, tekrar kullanilmis ya da
+  // dort saniyeden hizli gonderilmis biletler kesin bot isaretidir.
+  if (veri.biletDurumu === "bozuk") {
+    return { karar: "reddedildi", puan: 99, sebepler: ["form bileti kurcalanmis"] };
+  }
+  if (veri.biletDurumu === "tekrar") {
+    return { karar: "reddedildi", puan: 99, sebepler: ["ayni form bileti tekrar kullanilmis"] };
+  }
+  if (veri.biletDurumu === "cok-hizli") {
+    return { karar: "reddedildi", puan: 99, sebepler: ["form dort saniyeden hizli gonderildi"] };
+  }
+
+  // Bilet yoksa istemcinin bildirdigi sureye bakariz. Bu deger uydurulabilir,
+  // bu yuzden yalnizca ek bir sinyaldir.
   if (
     typeof veri.sureSaniye === "number" &&
     veri.sureSaniye >= 0 &&
@@ -175,11 +191,21 @@ export function spamDegerlendir(veri: LeadAlanlari): FiltreSonucu {
   // --- Puanlanan supheler ---
   let puan = 0;
 
-  // Tarayici uzerinden gelen her gonderimde sure alani bulunur.
-  // Yoksa istek dogrudan API'ye atilmis olabilir.
-  if (typeof veri.sureSaniye !== "number") {
-    puan += 3;
-    sebepler.push("form suresi bildirilmemis");
+  // Site uzerinden acilan her form bir bilet tasir. Bilet yoksa istek
+  // dogrudan API'ye atilmis olabilir; suresi dolmus bilet ise cok eski bir
+  // sekmeden gelmis olabilir, bu yuzden daha hafif puanlanir.
+  // Durum hic bildirilmemisse bilet yok kabul edilir.
+  const biletDurumu = veri.biletDurumu ?? "yok";
+  if (biletDurumu === "yok") {
+    puan += 4;
+    sebepler.push("form bileti yok");
+    if (typeof veri.sureSaniye !== "number") {
+      puan += 2;
+      sebepler.push("form suresi de bildirilmemis");
+    }
+  } else if (biletDurumu === "suresi-dolmus") {
+    puan += 2;
+    sebepler.push("form biletinin suresi dolmus");
   }
 
   if (veri.adSoyad) {

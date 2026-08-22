@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { checkBotId } from "botid/server";
 import {
   spamDegerlendir,
   originGecerliMi,
@@ -6,6 +7,7 @@ import {
   istekAnahtari,
   type LeadAlanlari,
 } from "./spam-filtresi";
+import { biletDogrula } from "./bilet";
 
 export const runtime = "nodejs";
 
@@ -22,7 +24,11 @@ export const runtime = "nodejs";
 //   LEAD_MAIL_TO     Bildirimin dusecegi adres (varsayilan hello@studiogria.com)
 //   LEAD_MAIL_FROM   Gonderen adres; domain dogrulanana kadar onboarding@resend.dev
 
-type LeadPayload = LeadAlanlari;
+type LeadPayload = LeadAlanlari & { bilet?: unknown };
+
+// reply_to basligina yalnizca kesin bicimi dogru bir adres konur.
+// Bosluk ya da satir sonu tasiyan deger baslik enjeksiyonu denemesidir.
+const EPOSTA_BICIMI = /^[^\s@<>",;:]+@[^\s@<>",;:]+\.[a-zA-Z]{2,}$/;
 
 function temizle(deger: unknown, maxUzunluk = 500) {
   if (typeof deger !== "string") return "";
@@ -59,6 +65,20 @@ export async function POST(request: Request) {
     return sessizRet();
   }
 
+  // 2. Vercel BotID: tarayici parmak izi ve davranis sinyalleriyle gorunmez
+  // bot dogrulamasi. Ziyaretciye hicbir ek adim yuklemez.
+  try {
+    const botKontrolu = await checkBotId();
+    if (botKontrolu.isBot) {
+      console.warn("[lead] BotID otomatik istemci tespit etti");
+      return sessizRet();
+    }
+  } catch (hata) {
+    // BotID ulasilamazsa lead kaybetmemek icin akisa devam edilir;
+    // diger katmanlar (bilet, honeypot, icerik puanlamasi) yerinde kalir.
+    console.error("[lead] BotID kontrolu yapilamadi:", hata);
+  }
+
   let veri: LeadPayload;
   try {
     veri = await request.json();
@@ -80,7 +100,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, hata: "bos form" }, { status: 400 });
   }
 
-  // 2. Spam degerlendirmesi
+  // 3. Imzali form bileti: sureyi istemcinin beyanindan degil sunucunun
+  // urettigi zaman damgasindan okur, ayrica bileti tek kullanimlik yapar.
+  const bilet = biletDogrula((veri as { bilet?: unknown }).bilet);
+
+  // 4. Spam degerlendirmesi
   const filtre = spamDegerlendir({
     kaynak,
     adSoyad,
@@ -92,6 +116,7 @@ export async function POST(request: Request) {
     mesaj,
     website: typeof veri.website === "string" ? veri.website : undefined,
     sureSaniye: typeof veri.sureSaniye === "number" ? veri.sureSaniye : undefined,
+    biletDurumu: bilet.durum,
   });
 
   if (filtre.karar === "reddedildi") {
@@ -101,7 +126,7 @@ export async function POST(request: Request) {
     return sessizRet();
   }
 
-  // 3. Hiz siniri: ayni kaynaktan seri gonderim
+  // 5. Hiz siniri: ayni kaynaktan seri gonderim
   if (hizSiniriAsildiMi(istekAnahtari(request, eposta), Date.now())) {
     console.warn(`[lead] hiz siniri asildi | ad: ${adSoyad} | tel: ${telefon}`);
     return sessizRet();
@@ -167,7 +192,7 @@ export async function POST(request: Request) {
         subject: baslik,
         html,
         // Musteri e-postasini birakti ise bildirime dogrudan yanit verilebilir
-        ...(eposta ? { reply_to: eposta } : {}),
+        ...(EPOSTA_BICIMI.test(eposta) ? { reply_to: eposta } : {}),
       }),
     });
 
