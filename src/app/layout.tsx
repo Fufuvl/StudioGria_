@@ -80,7 +80,7 @@ const marcellus = Marcellus({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://studiogria.com"),
+  metadataBase: new URL("https://www.studiogria.com"),
   title: "Studio Gria - Dijital Medya Ajansı",
   description: "Studio Gria, İstanbul merkezli dijital medya ajansı. Sosyal medya yönetimi, marka kimliği tasarımı, web geliştirme ve AI destekli dijital çözümlerle markanızı büyütüyoruz.",
   openGraph: {
@@ -110,8 +110,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Studio Gria",
-  url: "https://studiogria.com",
-  logo: "https://studiogria.com/assets/img/logo/logo-white-new.png",
+  url: "https://www.studiogria.com",
+  logo: "https://www.studiogria.com/assets/img/logo/logo-white-new.png",
   description: "Studio Gria, İstanbul merkezli dijital medya ve sosyal medya ajansı.",
   address: {
     "@type": "PostalAddress",
@@ -144,7 +144,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Studio Gria",
-  url: "https://studiogria.com",
+  url: "https://www.studiogria.com",
   inLanguage: "tr",
   publisher: {
     "@type": "Organization",

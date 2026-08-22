@@ -9,11 +9,11 @@ const sayfaAciklama =
 export const metadata: Metadata = {
   title: sayfaBaslik,
   description: sayfaAciklama,
-  alternates: { canonical: "https://studiogria.com/ai-destekli-cozumler" },
+  alternates: { canonical: "/ai-destekli-cozumler" },
   openGraph: {
     title: sayfaBaslik,
     description: sayfaAciklama,
-    url: "https://studiogria.com/ai-destekli-cozumler",
+    url: "https://www.studiogria.com/ai-destekli-cozumler",
     images: [{ url: "/assets/img/ai-solutions/brand-mix/matcha-hero.jpg", width: 1200, height: 630, alt: "Yapay zeka ile üretilmiş ürün görseli" }],
   },
   twitter: {

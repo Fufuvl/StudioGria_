@@ -5,11 +5,11 @@ import FaqMain from "@/page-components/faq/faq-main";
 export const metadata: Metadata = {
   title: "Studio Gria - Sıkça Sorulan Sorular",
   description: "Studio Gria hakkında sıkça sorulan sorular ve yanıtları. Hizmetlerimiz, çalışma sürecimiz ve fiyatlandırma hakkında merak ettikleriniz.",
-  alternates: { canonical: "https://studiogria.com/faq" },
+  alternates: { canonical: "/faq" },
   openGraph: {
     title: "Studio Gria - Sıkça Sorulan Sorular",
     description: "Studio Gria hakkında sıkça sorulan sorular ve yanıtları. Hizmetlerimiz, çalışma sürecimiz ve fiyatlandırma hakkında merak ettikleriniz.",
-    url: "https://studiogria.com/faq",
+    url: "https://www.studiogria.com/faq",
     images: [{ url: "/assets/img/inner-project/showcase/background.jpg", width: 1200, height: 630, alt: "Studio Gria SSS" }],
   },
   twitter: {

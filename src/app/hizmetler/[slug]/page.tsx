@@ -21,7 +21,9 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Props): Metadata {
   const hizmet = hizmetBul(params.slug);
   if (!hizmet) return {};
-  const url = `https://studiogria.com/hizmetler/${hizmet.slug}`;
+  // Goreli adres: layout.tsx icindeki metadataBase bunu mutlaklastirir,
+  // boylece alan adi tek yerden yonetilir.
+  const url = `/hizmetler/${hizmet.slug}`;
   return {
     title: hizmet.seoBaslik,
     description: hizmet.seoAciklama,
@@ -55,10 +57,10 @@ export default function HizmetDetayPage({ params }: Props) {
     provider: {
       "@type": "Organization",
       name: "Studio Gria",
-      url: "https://studiogria.com",
+      url: "https://www.studiogria.com",
     },
     areaServed: "TR",
-    url: `https://studiogria.com/hizmetler/${hizmet.slug}`,
+    url: `https://www.studiogria.com/hizmetler/${hizmet.slug}`,
   };
 
   return (

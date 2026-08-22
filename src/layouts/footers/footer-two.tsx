@@ -22,9 +22,21 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
     { title: "Hizmetlerimiz", link: "/hizmetler" },
     { title: "AI Destekli Çözümler", link: "/ai-destekli-cozumler" },
     { title: "Referanslar", link: "/referanslar" },
+    { title: "Blog", link: "/blog" },
+    { title: "Hizmet Bölgelerimiz", link: "/bolgeler" },
     { title: "Sıkça Sorulanlar", link: "/faq" },
     { title: "Teklif Al", link: "/teklif" },
     { title: "İletişim", link: "/contact" },
+  ];
+
+  // Bolge sayfalari footer'dan da baglanir; yerel sayfalarin site icinde
+  // yalnizca tek bir yerden erisilebilir olmasi taranmalarini zorlastirirdi.
+  const bolgeMenu = [
+    { title: "Büyükçekmece", link: "/bolgeler/buyukcekmece-sosyal-medya-ajansi" },
+    { title: "Beylikdüzü", link: "/bolgeler/beylikduzu-sosyal-medya-ajansi" },
+    { title: "Esenyurt", link: "/bolgeler/esenyurt-sosyal-medya-ajansi" },
+    { title: "Avcılar", link: "/bolgeler/avcilar-sosyal-medya-ajansi" },
+    { title: "Başakşehir", link: "/bolgeler/basaksehir-sosyal-medya-ajansi" },
   ];
 
   const handleToggle = (title: string) => {
@@ -90,6 +102,20 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
                   <h4 className="tp-footer-2-widget-title">Site Haritası</h4>
                   <ul>
                     {footerMenu.map((item) => (
+                      <li key={item.title}>
+                        <Link href={item.link}>{item.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-2 col-lg-3 col-md-6 mb-50">
+              <div className="tp-footer-2-widget footer-col-2-2">
+                <div className="tp-footer-2-widget-menu">
+                  <h4 className="tp-footer-2-widget-title">Bölgeler</h4>
+                  <ul>
+                    {bolgeMenu.map((item) => (
                       <li key={item.title}>
                         <Link href={item.link}>{item.title}</Link>
                       </li>

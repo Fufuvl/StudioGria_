@@ -1,8 +1,10 @@
 import { MetadataRoute } from "next";
 import { hizmetler } from "@/data/hizmet-data";
+import { blogYazilari } from "@/data/blog-yazilari";
+import { bolgeler } from "@/data/bolge-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://studiogria.com";
+  const baseUrl = "https://www.studiogria.com";
   const lastModified = new Date();
 
   const sabitSayfalar: MetadataRoute.Sitemap = [
@@ -29,6 +31,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/bolgeler`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/referanslar`,
@@ -64,5 +78,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...sabitSayfalar, ...hizmetSayfalari];
+  // Blog yazilari: her yazinin kendi yayin tarihi lastModified olur
+  const blogSayfalari: MetadataRoute.Sitemap = blogYazilari.map((yazi) => ({
+    url: `${baseUrl}/blog/${yazi.slug}`,
+    lastModified: new Date(yazi.tarih),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  // Bolge sayfalari: yerel arama sonuclari icin
+  const bolgeSayfalari: MetadataRoute.Sitemap = bolgeler.map((bolge) => ({
+    url: `${baseUrl}/bolgeler/${bolge.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  return [...sabitSayfalar, ...hizmetSayfalari, ...blogSayfalari, ...bolgeSayfalari];
 }

@@ -324,3 +324,109 @@
     display: none;
   }
 }
+
+/* Ana sayfa hizmet bolumu: hizmet detay sayfalarina dogrudan ic link verir */
+.sg-hizmet-bolum {
+  background: #faf9f7;
+  padding: clamp(64px, 8vw, 120px) 0;
+}
+
+.sg-hizmet-ic {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+}
+
+.sg-hizmet-rozet {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+  margin-bottom: 20px;
+}
+
+.sg-hizmet-baslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1.14;
+  color: #16181d;
+  margin: 0 0 20px;
+  max-width: 780px;
+}
+
+.sg-hizmet-spot {
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.7;
+  color: #6b6b6b;
+  margin: 0 0 48px;
+  max-width: 680px;
+}
+
+.sg-hizmet-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1px;
+  background: rgba(22, 24, 29, 0.12);
+  border: 1px solid rgba(22, 24, 29, 0.12);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sg-hizmet-kart {
+  background: #faf9f7;
+  transition: background 0.25s ease;
+
+  &:hover {
+    background: #fff;
+  }
+}
+
+.sg-hizmet-bag {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(24px, 2.6vw, 34px);
+  color: inherit;
+}
+
+.sg-hizmet-ad {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 19px;
+  line-height: 1.3;
+  color: #16181d;
+  margin: 0 0 12px;
+}
+
+.sg-hizmet-metin {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #6b6b6b;
+  margin: 0 0 20px;
+  flex-grow: 1;
+}
+
+.sg-hizmet-ok {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #16181d;
+  border-bottom: 1px solid rgba(22, 24, 29, 0.35);
+  padding-bottom: 3px;
+  align-self: flex-start;
+  transition: border-color 0.25s ease;
+}
+
+.sg-hizmet-kart:hover .sg-hizmet-ok {
+  border-color: #16181d;
+}
+
+.sg-hizmet-alt {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}

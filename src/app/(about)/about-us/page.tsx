@@ -9,11 +9,11 @@ const sayfaAciklama =
 export const metadata: Metadata = {
   title: sayfaBaslik,
   description: sayfaAciklama,
-  alternates: { canonical: "https://studiogria.com/about-us" },
+  alternates: { canonical: "/about-us" },
   openGraph: {
     title: sayfaBaslik,
     description: sayfaAciklama,
-    url: "https://studiogria.com/about-us",
+    url: "https://www.studiogria.com/about-us",
     images: [{ url: "/assets/img/inner-project/showcase/background.jpg", width: 1200, height: 630, alt: "Studio Gria Hakkımızda" }],
   },
   twitter: {

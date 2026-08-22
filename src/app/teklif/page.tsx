@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Markanıza Özel Sosyal Medya Teklifi | Studio Gria",
   description:
     "Studio Gria sizi dinler, markanıza özel sosyal medya teklif sunumunu hazırlar. Formu doldurun, aynı gün dönüş yapalım. Kredi kartıyla ödeme kolaylığı.",
-  alternates: { canonical: "https://studiogria.com/teklif" },
+  alternates: { canonical: "/teklif" },
   openGraph: {
     type: "website",
     locale: "tr_TR",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "Markanıza Özel Sosyal Medya Teklifi | Studio Gria",
     description:
       "Sizi dinleyip markanıza özel teklif sunumunu hazırlıyoruz. İstanbul merkezli dijital medya ajansı Studio Gria.",
-    url: "https://studiogria.com/teklif",
+    url: "https://www.studiogria.com/teklif",
   },
 };
 

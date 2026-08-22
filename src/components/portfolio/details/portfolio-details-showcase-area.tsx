@@ -5,6 +5,7 @@ import details_thumb_1 from '@/assets/img/inner-project/showcase/15.jpg';
 import details_thumb_2 from '@/assets/img/inner-project/showcase/16.jpg';
 import details_thumb_3 from '@/assets/img/inner-project/showcase/3.jpg';
 import social_data from '@/data/social-data';
+import AnasayfaHizmetler from '@/components/anasayfa-hizmetler';
 
 export default function PortfolioDetailsShowcaseArea() {
   return (
@@ -48,13 +49,17 @@ export default function PortfolioDetailsShowcaseArea() {
       </div>
       {/* hero */}
 
+      {/* hizmetler: ana sayfadan detay sayfalarina ic link */}
+      <AnasayfaHizmetler />
+      {/* hizmetler */}
+
       {/* details overview */}
       <div id="xyz" className="showcase-details-overview pt-120 pb-120">
           <div className="container">
             <div className="row">
                 <div className="col-xl-4">
                   <div className="showcase-details-overview-left">
-                      <span className="showcase-details-subtitle">Hakkımızda</span>
+                      <h2 className="showcase-details-subtitle">Hakkımızda</h2>
                   </div>
                 </div>
                 <div className="col-xl-8">
@@ -127,7 +132,7 @@ export default function PortfolioDetailsShowcaseArea() {
             <div className="row">
                 <div className="col-xl-4">
                   <div className="showcase-details-overview-left">
-                      <span className="showcase-details-subtitle fs-40 tp-char-animation">Misyonumuz</span>
+                      <h2 className="showcase-details-subtitle fs-40 tp-char-animation">Misyonumuz</h2>
                   </div>
                 </div>
                 <div className="col-xl-8">

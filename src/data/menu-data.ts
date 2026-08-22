@@ -32,6 +32,12 @@ const menu_data: IMenuDT[] = [
     title: 'Referanslar',
     link: '/referanslar',
     dropdown_menus: []
+  },
+  {
+    id: 6,
+    title: 'Blog',
+    link: '/blog',
+    dropdown_menus: []
   }
 ];
 
