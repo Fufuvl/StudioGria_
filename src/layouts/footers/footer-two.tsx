@@ -27,6 +27,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
     { title: "Sıkça Sorulanlar", link: "/faq" },
     { title: "Teklif Al", link: "/teklif" },
     { title: "İletişim", link: "/contact" },
+    { title: "Gizlilik Politikası", link: "/gizlilik" },
   ];
 
   // Bolge sayfalari footer'dan da baglanir; yerel sayfalarin site icinde
