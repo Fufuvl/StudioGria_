@@ -8,6 +8,13 @@ import FooterTwo from "@/layouts/footers/footer-two";
 import SosyalKanit from "@/components/sosyal-kanit";
 import { bolgeler, bolgeBul } from "@/data/bolge-data";
 import { hizmetBul } from "@/data/hizmet-data";
+import {
+  KIMLIK,
+  SITE_URL,
+  grafSemasi,
+  kirintiSemasi,
+  kunye,
+} from "@/data/kurulus-data";
 import styles from "../bolgeler.module.scss";
 
 type Props = { params: { slug: string } };
@@ -47,30 +54,65 @@ export default function BolgePage({ params }: Props) {
 
   const digerBolgeler = bolgeler.filter((b) => b.slug !== bolge.slug);
 
-  // Yerel isletme semasi: Google'in hizmet verilen bolgeyi anlamasini saglar
-  const yerelSema = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: `Studio Gria ${bolge.ilce}`,
-    description: bolge.seoAciklama,
-    url: `https://www.studiogria.com/bolgeler/${bolge.slug}`,
-    email: "hello@studiogria.com",
-    telephone: "+905388654405",
-    priceRange: "$$",
-    image: "https://www.studiogria.com/assets/img/logo/logo-white-new.png",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Büyükçekmece",
-      addressRegion: "İstanbul",
-      addressCountry: "TR",
+  const bolgeAdresi = `${SITE_URL}/bolgeler/${bolge.slug}`;
+
+  // Yerel isletme semasi: Google'in hizmet verilen bolgeyi anlamasini saglar.
+  // Ad, adres ve telefon kurulus kunyesinden gelir; sayfada elle yazilmaz.
+  // Yerel siralamada bu uc bilginin her yerde birebir ayni olmasi sarttir.
+  const sayfaSemasi = grafSemasi([
+    {
+      "@type": "ProfessionalService",
+      "@id": `${bolgeAdresi}#yerel`,
+      name: `Studio Gria ${bolge.ilce}`,
+      description: bolge.seoAciklama,
+      url: bolgeAdresi,
+      email: kunye.eposta,
+      telephone: kunye.telefon,
+      priceRange: kunye.fiyatBandi,
+      image: kunye.logo,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: kunye.adres.sokak,
+        addressLocality: kunye.adres.ilce,
+        addressRegion: kunye.adres.il,
+        postalCode: kunye.adres.postaKodu,
+        addressCountry: kunye.adres.ulke,
+      },
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: bolge.ilce,
+        containedInPlace: { "@type": "City", name: "İstanbul" },
+      },
+      parentOrganization: { "@id": KIMLIK.kurulus },
+      // Bu bolgede one cikardigimiz hizmetler
+      makesOffer: bolge.odak
+        .map((odak) => hizmetBul(odak.hizmetSlug))
+        .filter((hizmet): hizmet is NonNullable<typeof hizmet> => Boolean(hizmet))
+        .map((hizmet) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            "@id": `${SITE_URL}/hizmetler/${hizmet.slug}#hizmet`,
+            name: hizmet.ad,
+          },
+        })),
     },
-    areaServed: {
-      "@type": "AdministrativeArea",
-      name: bolge.ilce,
-      containedInPlace: { "@type": "City", name: "İstanbul" },
+    {
+      "@type": "WebPage",
+      "@id": `${bolgeAdresi}#sayfa`,
+      url: bolgeAdresi,
+      name: bolge.seoBaslik,
+      description: bolge.seoAciklama,
+      inLanguage: "tr-TR",
+      isPartOf: { "@id": KIMLIK.website },
+      about: { "@id": `${bolgeAdresi}#yerel` },
     },
-    parentOrganization: { "@type": "Organization", name: "Studio Gria" },
-  };
+    kirintiSemasi([
+      { ad: "Ana sayfa", yol: "/" },
+      { ad: "Hizmet bölgelerimiz", yol: "/bolgeler" },
+      { ad: bolge.ilce, yol: `/bolgeler/${bolge.slug}` },
+    ]),
+  ]);
 
   return (
     <Wrapper>
@@ -79,7 +121,7 @@ export default function BolgePage({ params }: Props) {
       <main className={styles.sayfa}>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(yerelSema) }}
+          dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
         />
 
         <section className={styles.hero}>

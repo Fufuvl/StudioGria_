@@ -5,6 +5,12 @@ import Wrapper from "@/layouts/wrapper";
 import HeaderEleven from "@/layouts/headers/header-eleven";
 import FooterTwo from "@/layouts/footers/footer-two";
 import styles from "../blog/blog.module.scss";
+import {
+  KIMLIK,
+  SITE_URL,
+  grafSemasi,
+  kirintiSemasi,
+} from "@/data/kurulus-data";
 
 // Bu sayfa Google tarafindan Mart 2026'dan beri araniyor ve 404 donuyordu.
 // Ayrica formda kisisel veri toplandigi, Google Analytics ve Meta Pixel
@@ -92,12 +98,33 @@ const bolumler: Bolum[] = [
   },
 ];
 
+const sayfaSemasi = grafSemasi([
+  {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/gizlilik#sayfa`,
+    url: `${SITE_URL}/gizlilik`,
+    name: sayfaBaslik,
+    description: sayfaAciklama,
+    inLanguage: "tr-TR",
+    isPartOf: { "@id": KIMLIK.website },
+    publisher: { "@id": KIMLIK.kurulus },
+  },
+  kirintiSemasi([
+    { ad: "Ana sayfa", yol: "/" },
+    { ad: "Gizlilik politikası", yol: "/gizlilik" },
+  ]),
+]);
+
 export default function GizlilikPage() {
   return (
     <Wrapper>
       <HeaderEleven transparent={false} />
 
       <main className={styles.sayfa}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
+        />
         <article>
           <header className={styles.yaziHero}>
             <div className={`${styles.kapsayici} ${styles.dar}`}>

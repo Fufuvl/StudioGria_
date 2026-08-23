@@ -5,6 +5,12 @@ import Wrapper from "@/layouts/wrapper";
 import HeaderEleven from "@/layouts/headers/header-eleven";
 import FooterTwo from "@/layouts/footers/footer-two";
 import { bolgeler } from "@/data/bolge-data";
+import {
+  KIMLIK,
+  SITE_URL,
+  grafSemasi,
+  kirintiSemasi,
+} from "@/data/kurulus-data";
 import styles from "./bolgeler.module.scss";
 
 const sayfaBaslik = "Hizmet Bölgelerimiz: Batı İstanbul | Studio Gria";
@@ -31,12 +37,45 @@ export const metadata: Metadata = {
   twitter: { title: sayfaBaslik, description: sayfaAciklama },
 };
 
+const sayfaSemasi = grafSemasi([
+  {
+    "@type": "CollectionPage",
+    "@id": `${SITE_URL}/bolgeler#sayfa`,
+    url: `${SITE_URL}/bolgeler`,
+    name: sayfaBaslik,
+    description: sayfaAciklama,
+    inLanguage: "tr-TR",
+    isPartOf: { "@id": KIMLIK.website },
+    about: { "@id": KIMLIK.kurulus },
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Studio Gria hizmet bölgeleri",
+      numberOfItems: bolgeler.length,
+      itemListElement: bolgeler.map((bolge, sira) => ({
+        "@type": "ListItem",
+        position: sira + 1,
+        name: `${bolge.ilce} sosyal medya ajansı`,
+        url: `${SITE_URL}/bolgeler/${bolge.slug}`,
+      })),
+    },
+  },
+  kirintiSemasi([
+    { ad: "Ana sayfa", yol: "/" },
+    { ad: "Hizmet bölgelerimiz", yol: "/bolgeler" },
+  ]),
+]);
+
 export default function BolgelerPage() {
   return (
     <Wrapper>
       <HeaderEleven transparent={false} />
 
       <main className={styles.sayfa}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
+        />
+
         <section className={styles.hero}>
           <div className={styles.kapsayici}>
             <span className={`${styles.rozet} sg-gir sg-gir-1`}>Hizmet bölgelerimiz</span>

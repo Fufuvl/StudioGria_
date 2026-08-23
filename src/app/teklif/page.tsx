@@ -6,6 +6,12 @@ import TeklifForm from "./teklif-form";
 import SosyalKanit from "@/components/sosyal-kanit";
 import ReferansSerit from "@/components/referans-serit";
 import { surecAdimlari } from "@/data/surec-data";
+import {
+  KIMLIK,
+  SITE_URL,
+  grafSemasi,
+  sssSemasi,
+} from "@/data/kurulus-data";
 import styles from "./teklif.module.scss";
 
 export const metadata: Metadata = {
@@ -47,9 +53,29 @@ const sorular = [
   },
 ];
 
+// Sayfadaki soru-cevap blogu ayni zamanda yapisal veri olarak verilir.
+// Reklam inis sayfasi oldugu icin kirinti izi eklenmez; sayfanin tek isi
+// tek vaat ve tek formdur.
+const sayfaSemasi = grafSemasi([
+  {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/teklif#sayfa`,
+    url: `${SITE_URL}/teklif`,
+    name: "Markanıza özel sosyal medya teklifi",
+    inLanguage: "tr-TR",
+    isPartOf: { "@id": KIMLIK.website },
+    about: { "@id": KIMLIK.kurulus },
+  },
+  sssSemasi(sorular, "/teklif"),
+]);
+
 export default function TeklifSayfasi() {
   return (
     <main className={styles.sayfa}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
+      />
       <header className={styles.ustBant}>
         <div className={styles.kapsayici}>
           {/* Sitenin gercek logosu kullanilir, metin logo degil */}

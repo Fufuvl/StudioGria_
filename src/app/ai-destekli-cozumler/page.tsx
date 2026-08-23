@@ -1,6 +1,12 @@
 import React from "react";
 import { Metadata } from "next";
 import AiSolutionsMain from "@/page-components/ai-solutions/ai-solutions-main";
+import {
+  KIMLIK,
+  SITE_URL,
+  grafSemasi,
+  kirintiSemasi,
+} from "@/data/kurulus-data";
 
 const sayfaBaslik = "Yapay Zeka ile Ürün Görseli ve Reklam İçeriği Üretimi | Studio Gria";
 const sayfaAciklama =
@@ -22,8 +28,38 @@ export const metadata: Metadata = {
   },
 };
 
+const sayfaSemasi = grafSemasi([
+  {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/ai-destekli-cozumler#sayfa`,
+    url: `${SITE_URL}/ai-destekli-cozumler`,
+    name: sayfaBaslik,
+    description: sayfaAciklama,
+    inLanguage: "tr-TR",
+    isPartOf: { "@id": KIMLIK.website },
+    about: {
+      "@type": "Service",
+      "@id": `${SITE_URL}/hizmetler/ai-uretim-reklam-filmleri#hizmet`,
+      name: "Yapay zeka destekli görsel ve video üretimi",
+      provider: { "@id": KIMLIK.kurulus },
+    },
+  },
+  kirintiSemasi([
+    { ad: "Ana sayfa", yol: "/" },
+    { ad: "AI destekli çözümler", yol: "/ai-destekli-cozumler" },
+  ]),
+]);
+
 const AiSolutionsPage = () => {
-  return <AiSolutionsMain />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
+      />
+      <AiSolutionsMain />
+    </>
+  );
 };
 
 export default AiSolutionsPage;

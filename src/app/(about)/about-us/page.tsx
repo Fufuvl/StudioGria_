@@ -1,6 +1,12 @@
 import React from "react";
 import { Metadata } from "next";
 import AboutUsMain from "@/page-components/about/about-us";
+import {
+  KIMLIK,
+  SITE_URL,
+  grafSemasi,
+  kirintiSemasi,
+} from "@/data/kurulus-data";
 
 const sayfaBaslik = "Hakkımızda: İstanbul Merkezli Dijital Medya Stüdyosu | Studio Gria";
 const sayfaAciklama =
@@ -22,9 +28,37 @@ export const metadata: Metadata = {
   },
 };
 
+// AboutPage dugumu kurulus ve kurucu dugumlerine baglanir. Google'in
+// E-E-A-T degerlendirmesinde "bu markanin arkasinda kim var" sorusuna
+// yanit veren asil sayfa burasidir.
+const sayfaSemasi = grafSemasi([
+  {
+    "@type": "AboutPage",
+    "@id": `${SITE_URL}/about-us#sayfa`,
+    url: `${SITE_URL}/about-us`,
+    name: sayfaBaslik,
+    description: sayfaAciklama,
+    inLanguage: "tr-TR",
+    isPartOf: { "@id": KIMLIK.website },
+    about: { "@id": KIMLIK.kurulus },
+    mainEntity: { "@id": KIMLIK.kurulus },
+    mentions: [{ "@id": KIMLIK.kurucu }],
+  },
+  kirintiSemasi([
+    { ad: "Ana sayfa", yol: "/" },
+    { ad: "Hakkımızda", yol: "/about-us" },
+  ]),
+]);
+
 const AboutUsPage = () => {
   return (
-    <AboutUsMain/>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
+      />
+      <AboutUsMain />
+    </>
   );
 };
 

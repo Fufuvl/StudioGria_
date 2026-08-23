@@ -5,6 +5,12 @@ import Wrapper from "@/layouts/wrapper";
 import HeaderEleven from "@/layouts/headers/header-eleven";
 import FooterTwo from "@/layouts/footers/footer-two";
 import { yazilariSirala } from "@/data/blog-yazilari";
+import {
+  KIMLIK,
+  SITE_URL,
+  grafSemasi,
+  kirintiSemasi,
+} from "@/data/kurulus-data";
 import styles from "./blog.module.scss";
 
 const sayfaBaslik = "Blog: Sosyal Medya ve Reklam Rehberleri | Studio Gria";
@@ -14,7 +20,11 @@ const sayfaAciklama =
 export const metadata: Metadata = {
   title: sayfaBaslik,
   description: sayfaAciklama,
-  alternates: { canonical: "/blog" },
+  alternates: {
+    canonical: "/blog",
+    // RSS beslemesi: yeni yazilarin daha hizli kesfedilmesini saglar
+    types: { "application/rss+xml": `${SITE_URL}/blog/rss.xml` },
+  },
   openGraph: {
     title: sayfaBaslik,
     description: sayfaAciklama,
@@ -45,22 +55,36 @@ function tarihYaz(isoTarih: string) {
 export default function BlogPage() {
   const yazilar = yazilariSirala();
 
-  // Blog listesi icin yapisal veri: arama motorlari yazilari tek tek taniyabilir
-  const listeSemasi = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    name: "Studio Gria Blog",
-    url: "https://www.studiogria.com/blog",
-    inLanguage: "tr",
-    publisher: { "@type": "Organization", name: "Studio Gria" },
-    blogPost: yazilar.map((yazi) => ({
-      "@type": "BlogPosting",
-      headline: yazi.baslik,
-      description: yazi.ozet,
-      datePublished: yazi.tarih,
-      url: `https://www.studiogria.com/blog/${yazi.slug}`,
-    })),
-  };
+  // Blog listesi icin yapisal veri: arama motorlari yazilari tek tek taniyabilir.
+  // blogPost dugumleri yazi sayfalarindaki @id ile ayni; boylece liste ile
+  // detay sayfasi ayni varliga isaret eder.
+  const listeSemasi = grafSemasi([
+    {
+      "@type": "Blog",
+      "@id": `${SITE_URL}/blog#blog`,
+      name: "Studio Gria Blog",
+      description:
+        "Sosyal medya yönetimi, içerik üretimi ve Meta reklamları üzerine saha deneyiminden çıkan rehberler.",
+      url: `${SITE_URL}/blog`,
+      inLanguage: "tr-TR",
+      publisher: { "@id": KIMLIK.kurulus },
+      blogPost: yazilar.map((yazi) => ({
+        "@type": "BlogPosting",
+        "@id": `${SITE_URL}/blog/${yazi.slug}#yazi`,
+        headline: yazi.baslik,
+        description: yazi.ozet,
+        abstract: yazi.kisaCevap,
+        datePublished: yazi.tarih,
+        dateModified: yazi.guncelleme ?? yazi.tarih,
+        author: { "@id": KIMLIK.kurucu },
+        url: `${SITE_URL}/blog/${yazi.slug}`,
+      })),
+    },
+    kirintiSemasi([
+      { ad: "Ana sayfa", yol: "/" },
+      { ad: "Blog", yol: "/blog" },
+    ]),
+  ]);
 
   return (
     <Wrapper>
@@ -69,7 +93,7 @@ export default function BlogPage() {
       <main className={styles.sayfa}>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(listeSemasi) }}
+          dangerouslySetInnerHTML={{ __html: listeSemasi }}
         />
 
         <section className={styles.hero}>

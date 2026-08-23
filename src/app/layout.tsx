@@ -13,6 +13,13 @@ import LeadPopup from "@/components/modal/lead-popup";
 import MetaPixelEvents from "@/components/meta-pixel-events";
 import WhatsappFloat from "@/components/whatsapp-float";
 import { META_PIXEL_ID } from "@/utils/meta-pixel";
+import {
+  SITE_URL,
+  grafSemasi,
+  kurulusSemasi,
+  kurucuSemasi,
+  siteSemasi,
+} from "@/data/kurulus-data";
 import "./globals.scss";
 
 const gellery = localFont({
@@ -80,7 +87,22 @@ const marcellus = Marcellus({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.studiogria.com"),
+  metadataBase: new URL(SITE_URL),
+  // Arama motorlarina ust sinir birakmadigimizi soyler. Varsayilanda Google
+  // ozet uzunlugunu ve onizleme boyutunu kendi kisitlar; bu blok buyuk gorsel
+  // onizlemesini ve tam uzunlukta ozet alintisini serbest birakir. Yapay zeka
+  // ozetlerinde ve zengin sonuclarda gorunurlugu dogrudan etkiler.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   title: "Studio Gria - Dijital Medya Ajansı",
   description: "Studio Gria, İstanbul merkezli dijital medya ajansı. Sosyal medya yönetimi, marka kimliği tasarımı, web geliştirme ve AI destekli dijital çözümlerle markanızı büyütüyoruz.",
   openGraph: {
@@ -106,56 +128,12 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Studio Gria",
-  url: "https://www.studiogria.com",
-  logo: "https://www.studiogria.com/assets/img/logo/logo-white-new.png",
-  description: "Studio Gria, İstanbul merkezli dijital medya ve sosyal medya ajansı.",
-  // Adres, Google Isletme Profili kaydiyla birebir ayni olmalidir.
-  // Yerel aramada ad, adres ve telefonun her yerde ayni gorunmesi (NAP
-  // tutarliligi) siralamayi dogrudan etkiler.
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Mimaroba Mahallesi, Mustafa Kemal Bulvarı No 18 Demir Plaza",
-    addressLocality: "Büyükçekmece",
-    addressRegion: "İstanbul",
-    postalCode: "34535",
-    addressCountry: "TR",
-  },
-  email: "hello@studiogria.com",
-  telephone: "+905388654405",
-  sameAs: [
-    "https://www.instagram.com/studiogria",
-    "https://www.linkedin.com/company/studiogria",
-  ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "customer service",
-    telephone: "+905388654405",
-    availableLanguage: "Turkish",
-  },
-};
-
 // Vercel BotID'nin gorunmez dogrulama yapacagi uclar.
 // Ziyaretciye hicbir ek adim yuklemez, CAPTCHA gostermez.
 const botKorumaliYollar = [
   { path: "/api/lead", method: "POST" },
   { path: "/api/lead-bileti", method: "GET" },
 ];
-
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Studio Gria",
-  url: "https://www.studiogria.com",
-  inLanguage: "tr",
-  publisher: {
-    "@type": "Organization",
-    name: "Studio Gria",
-  },
-};
 
 export default function RootLayout({
   children,
@@ -166,13 +144,14 @@ export default function RootLayout({
     <html lang="tr" suppressHydrationWarning={true}>
       <head>
         <BotIdClient protect={botKorumaliYollar} />
+        {/* Site geneli varlik grafi: kurulus, kurucu ve web sitesi dugumleri
+            tek blokta tanimlanir. Sayfalar bu dugumlere @id ile atif yapar,
+            boylece her sayfada yeniden kurulus tanimlanmaz. */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: grafSemasi([kurulusSemasi(), kurucuSemasi(), siteSemasi()]),
+          }}
         />
         <Script
           strategy="afterInteractive"

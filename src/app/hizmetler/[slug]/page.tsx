@@ -9,6 +9,15 @@ import ReferansSerit from "@/components/referans-serit";
 import HizmetIkonu from "@/components/hizmet-ikonlari";
 import { hizmetler, hizmetBul } from "@/data/hizmet-data";
 import { surecAdimlari } from "@/data/surec-data";
+import { blogYazilari } from "@/data/blog-yazilari";
+import {
+  KIMLIK,
+  SITE_URL,
+  grafSemasi,
+  hizmetBolgeleri,
+  kirintiSemasi,
+  sssSemasi,
+} from "@/data/kurulus-data";
 import styles from "../hizmetler.module.scss";
 
 type Props = { params: { slug: string } };
@@ -27,6 +36,8 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: hizmet.seoBaslik,
     description: hizmet.seoAciklama,
+    // Hizmetin kendi SSS sorulari dogal anahtar kelime kumesini olusturur
+    keywords: [hizmet.ad, ...hizmet.sss.map((kayit) => kayit.soru)],
     alternates: { canonical: url },
     openGraph: {
       title: hizmet.seoBaslik,
@@ -49,25 +60,71 @@ export default function HizmetDetayPage({ params }: Props) {
   const sira = hizmetler.findIndex((kayit) => kayit.slug === hizmet.slug);
   const numara = String(sira + 1).padStart(2, "0");
 
-  const hizmetSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: hizmet.ad,
-    description: hizmet.seoAciklama,
-    provider: {
-      "@type": "Organization",
-      name: "Studio Gria",
-      url: "https://www.studiogria.com",
+  // Bu hizmete deginen rehber yazilar. Iliski blog tarafinda tanimli;
+  // burada tersine cevrilerek iki yonlu ic baglanti kurulur.
+  const ilgiliYazilar = blogYazilari.filter((yazi) =>
+    yazi.ilgiliHizmetler.includes(hizmet.slug),
+  );
+
+  const hizmetAdresi = `${SITE_URL}/hizmetler/${hizmet.slug}`;
+
+  // Tek graf: hizmet, sayfa, soru-cevap ve kirinti izi birlikte verilir.
+  // provider alani site genelindeki kurulus dugumune @id ile baglanir,
+  // boylece her hizmet sayfasinda yeni bir kurulus tanimlanmaz.
+  const sayfaSemasi = grafSemasi([
+    {
+      "@type": "Service",
+      "@id": `${hizmetAdresi}#hizmet`,
+      name: hizmet.ad,
+      serviceType: hizmet.ad,
+      description: hizmet.seoAciklama,
+      url: hizmetAdresi,
+      provider: { "@id": KIMLIK.kurulus },
+      areaServed: hizmetBolgeleri.map((bolge) => ({
+        "@type": "AdministrativeArea",
+        name: bolge,
+      })),
+      // "Neler dahil" listesi hizmetin kapsamini motorlara acikca bildirir
+      // Bu hizmeti konu alan rehber yazilar
+      subjectOf: ilgiliYazilar.map((yazi) => ({
+        "@type": "BlogPosting",
+        "@id": `${SITE_URL}/blog/${yazi.slug}#yazi`,
+        headline: yazi.baslik,
+        url: `${SITE_URL}/blog/${yazi.slug}`,
+      })),
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: `${hizmet.ad} kapsamı`,
+        itemListElement: hizmet.dahil.map((madde) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: madde },
+        })),
+      },
     },
-    areaServed: "TR",
-    url: `https://www.studiogria.com/hizmetler/${hizmet.slug}`,
-  };
+    {
+      "@type": "WebPage",
+      "@id": `${hizmetAdresi}#sayfa`,
+      url: hizmetAdresi,
+      name: hizmet.seoBaslik,
+      description: hizmet.seoAciklama,
+      inLanguage: "tr-TR",
+      isPartOf: { "@id": KIMLIK.website },
+      about: { "@id": `${hizmetAdresi}#hizmet` },
+      primaryImageOfPage: { "@type": "ImageObject", url: `${SITE_URL}${hizmet.gorsel}` },
+    },
+    sssSemasi(hizmet.sss, `/hizmetler/${hizmet.slug}`),
+    kirintiSemasi([
+      { ad: "Ana sayfa", yol: "/" },
+      { ad: "Hizmetlerimiz", yol: "/hizmetler" },
+      { ad: hizmet.ad, yol: `/hizmetler/${hizmet.slug}` },
+    ]),
+  ]);
 
   return (
     <Wrapper>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(hizmetSchema) }}
+        dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
       />
       <HeaderEleven />
 
@@ -143,6 +200,44 @@ export default function HizmetDetayPage({ params }: Props) {
             </p>
           </div>
         </section>
+
+        {/* Sikca sorulanlar: sade editoryal blok, akordeon degil.
+            Ayni metin FAQPage semasina gider; Google semadaki cevabin
+            sayfada gorunmesini sart kosar. Ayrica yapay zeka motorlari
+            soru-cevap bicimindeki metni en cok alintilanan yapi olarak
+            kullanir. */}
+        {hizmet.sss.length > 0 && (
+          <section className={styles.detaySss}>
+            <div className={styles.kapsayici}>
+              <h2 className={styles.bolumBaslik}>Sıkça sorulanlar</h2>
+              <div className={styles.sssIzgara} style={{ marginTop: "28px" }}>
+                {hizmet.sss.map((kayit) => (
+                  <div key={kayit.soru}>
+                    <h3 className={styles.sssSoru}>{kayit.soru}</h3>
+                    <p className={styles.sssCevap}>{kayit.cevap}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {ilgiliYazilar.length > 0 && (
+          <section className={styles.rehberler}>
+            <div className={styles.kapsayici}>
+              <h2 className={styles.bolumBaslik}>Bu konudaki rehberlerimiz</h2>
+              <ul className={styles.rehberListe}>
+                {ilgiliYazilar.map((yazi) => (
+                  <li key={yazi.slug}>
+                    <Link className={styles.rehberBag} href={`/blog/${yazi.slug}`}>
+                      {yazi.baslik}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         <ReferansSerit tekSerit />
 

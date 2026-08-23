@@ -11,6 +11,11 @@ export type YaziBolumu = {
   liste?: string[];
 };
 
+export type YaziSorusu = {
+  soru: string;
+  cevap: string;
+};
+
 export type BlogYazisi = {
   slug: string;
   baslik: string;
@@ -18,10 +23,26 @@ export type BlogYazisi = {
   seoAciklama: string;
   ozet: string;
   tarih: string; // ISO 8601
+  // Icerik esasli guncelleme tarihi. Arama motorlari ve yapay zeka motorlari
+  // tazelige bakar; yazi genisletildiginde burasi guncellenir.
+  guncelleme?: string;
   okumaSuresi: number; // dakika
   kategori: string;
   giris: string;
+  // GEO: yazinin en ustunde duran, tek basina anlamli dogrudan yanit.
+  // Yapay zeka motorlari bir soruya kaynak ararken en cok bu bicimdeki
+  // kendi kendine yeten kisa paragraflari alintilar. 40-70 kelime.
+  kisaCevap: string;
   bolumler: YaziBolumu[];
+  // Yazinin sonunda duran madde listesi. Hem okuyucu icin ozet hem de
+  // motorlar icin cikarilabilir sonuc kumesi.
+  anahtarCikarimlar: string[];
+  // Yazi ici soru-cevap. FAQPage semasi bu listeden uretilir; metin sayfada
+  // gorunur oldugu icin Google'in "sema gorunur icerikle esit olmali"
+  // kuralina uygundur.
+  sorular: YaziSorusu[];
+  // Yazinin konu etiketleri. Sema icindeki keywords ve about alanlarini besler.
+  etiketler: string[];
   // Yazinin dogal olarak bagladigi hizmet sayfalari (slug)
   ilgiliHizmetler: string[];
 };
@@ -83,6 +104,39 @@ export const blogYazilari: BlogYazisi[] = [
         ],
       },
     ],
+    guncelleme: "2026-08-23",
+    kisaCevap:
+      "Sosyal medya ajansı fiyatını belirleyen asıl kalem, içeriğin kim tarafından üretildiğidir. Yalnızca sizin gönderdiğiniz görselleri düzenleyip paylaşan bir yönetim hizmeti ile sahaya gelip çekim, kurgu ve tasarım üreten bir prodüksiyon hizmeti aynı isimle sunulur, ancak maliyetleri farklıdır. Teklifleri karşılaştırırken aylık özgün içerik adedine ve bunların kaçının sahada çekildiğine bakın.",
+    anahtarCikarimlar: [
+      "Fiyat farkının asıl kaynağı üretim biçimidir: yalnızca yayın yönetimi mi, yoksa sahada çekim ve kurgu da dahil mi?",
+      "Sağlıklı bir teklifte aylık içerik adedi, saha çekim günü, revizyon hakkı ve raporlama sıklığı adetle yazılıdır.",
+      "Reklam bütçesi ajans ücretinden ayrı bir kalemdir; tamamı doğrudan Meta ya da Google'a gider.",
+      "Bütçe sınırlıysa kapsamı daraltın, kaliteyi değil. Altı güçlü içerik, on iki dolgu içerikten daha iyi çalışır.",
+      "Teklifleri karşılaştırılabilir kılan tek soru şudur: bu bütçeyle ayda kaç özgün içerik üretilecek ve kaçı sahada çekilecek?",
+    ],
+    sorular: [
+      {
+        soru: "Sosyal medya ajansı aylık ne kadar tutar?",
+        cevap:
+          "Aylık ücreti kapsam belirler: üretilen özgün içerik adedi, sahada geçirilen çekim günü sayısı, kaç platformun yönetildiği ve reklam yönetiminin dahil olup olmadığı. Bu kalemler netleşmeden verilen rakam karşılaştırılabilir değildir. Studio Gria olarak önce ihtiyaç analizi yapar, ardından markaya özel bir teklif sunumu hazırlarız.",
+      },
+      {
+        soru: "Reklam bütçesi ajans ücretine dahil mi?",
+        cevap:
+          "Hayır. Ajans ücreti üretim ve yönetim karşılığıdır. Reklam bütçesi doğrudan Meta ya da Google'a ödenir, kendi reklam hesabınızdan harcanır ve tamamı platforma gider. Reklam bütçesi arttığında ajans ücreti otomatik olarak artmaz.",
+      },
+      {
+        soru: "En ucuz teklifi seçmek neden riskli?",
+        cevap:
+          "Çok düşük tekliflerde üretim genelde stok görsel ve şablon tasarımla yapılır. Hesap dolu görünür, ancak içerik markaya ait olmadığı için ne tanınırlık kazandırır ne satışa dokunur. Altı ay sonra elinizde kullanılabilir bir görsel arşivi de kalmaz.",
+      },
+      {
+        soru: "Bir teklifte hangi kalemler mutlaka yazılı olmalı?",
+        cevap:
+          "Aylık özgün içerik adedi ve formatı, sahada çekim yapılacak gün sayısı, tasarım revizyon hakkı, reklam yönetiminin dahil olup olmadığı, raporlama sıklığı ve raporun içeriği, sözleşme süresi ile fesih koşulları. Kapsamı net yazılmamış teklif birkaç ay sonra ek fatura olarak geri döner.",
+      },
+    ],
+    etiketler: ["sosyal medya ajansı fiyatları", "ajans teklifi karşılaştırma", "içerik üretimi maliyeti", "reklam bütçesi"],
     ilgiliHizmetler: ["sosyal-medya-yonetimi", "reklam-yonetimi", "fotograf-video-produksiyon"],
   },
 
@@ -141,6 +195,40 @@ export const blogYazilari: BlogYazisi[] = [
         ],
       },
     ],
+    guncelleme: "2026-08-23",
+    kisaCevap:
+      "İşletme Reels'inde sonucu belirleyen şey ilk üç saniyedir. İzleyici o sürede merak edeceği bir şey görmezse kaydırır, düşen izlenme oranı da algoritmanın videoyu daha az kişiye göstermesine yol açar. Logo ya da jenerikle açılan videolar bu testte neredeyse her zaman kaybeder. İşletmeler için en istikrarlı çalışan dört kalıp şudur: süreç, öncesi ve sonrası, soru cevap, mekan turu.",
+    anahtarCikarimlar: [
+      "En iyi kare videonun ortasında değil başında olmalı; kurguyu bitirince videoyu sesi kapalı izleyip test edin.",
+      "İşletmeler için dört kalıp istikrarlı çalışır: süreç, öncesi ve sonrası, soru cevap, mekan turu.",
+      "İyi bir Reels kamera açılmadan önce kağıt üzerinde biter: ne anlatıyor, izleyici ne yapsın, ilk kare ne olacak?",
+      "İzleyicilerin önemli bölümü sessiz izler. Konuşmalı videoda altyazı zorunludur, ekran metni iki üç kelimeyi geçmemelidir.",
+      "Haftada iki nitelikli Reels, her gün paylaşılan dolgu içerikten daha iyi sonuç verir.",
+      "Sürdürülebilir tempo toplu çekimle kurulur: ayda bir gün sahada, o ayın tüm videoları.",
+    ],
+    sorular: [
+      {
+        soru: "Reels'te ilk kaç saniye belirleyici?",
+        cevap:
+          "İlk üç saniye. İzleyici bu sürede merak uyandıracak bir şey görmezse kaydırır ve düşük izlenme oranı algoritmanın videoyu daha az kişiye göstermesine yol açar. Videoyu logo, jenerik ya da hazırlık karesiyle açmayın; en güçlü kareyi en başa koyun.",
+      },
+      {
+        soru: "Bir işletme hesabı haftada kaç Reels paylaşmalı?",
+        cevap:
+          "Haftada iki nitelikli Reels çoğu işletme için doğru tempodur. Süreklilik önemlidir, ancak sürekliliği kaliteyi düşürerek sağlamak hesabın erişimini kalıcı olarak aşağı çeker. Bu tempoyu sürdürmenin en pratik yolu ayda bir gün toplu çekim yapmaktır.",
+      },
+      {
+        soru: "Reels çekmek için profesyonel kamera şart mı?",
+        cevap:
+          "Hayır. Güncel bir telefon çoğu işletme içeriği için yeterlidir. Sonucu belirleyen şey ekipman değil ışık, kurgu ritmi ve ilk karedir. Mekan atmosferi, drone ve ürün detay çekimlerinde ise profesyonel ekipmanın farkı belirgin şekilde görünür.",
+      },
+      {
+        soru: "Reels'te müzik mi konuşma mı daha iyi çalışır?",
+        cevap:
+          "İkisi de çalışır, seçim içeriğin işine bağlıdır. Bilgi veren ve güven kuran içeriklerde konuşma daha güçlüdür ve altyazıyla birlikte kullanılmalıdır. Atmosfer, ürün ve mekan içeriklerinde müzik yeterlidir; bu durumda ekrandaki kısa metin izleyiciyi yönlendirir.",
+      },
+    ],
+    etiketler: ["Instagram Reels", "işletmeler için video içerik", "sosyal medya video kurgusu", "içerik planlama"],
     ilgiliHizmetler: ["fotograf-video-produksiyon", "sosyal-medya-yonetimi"],
   },
 
@@ -194,6 +282,40 @@ export const blogYazilari: BlogYazisi[] = [
         ],
       },
     ],
+    guncelleme: "2026-08-23",
+    kisaCevap:
+      "Meta reklam bütçesi sektör ortalamasından değil, hedeften geriye doğru hesaplanır. Önce bir müşterinin size kattığı değeri, sonra dönüşüm oranınızı belirleyin: gelen her on mesajdan ikisi müşteriye dönüşüyorsa bir müşteri beş mesaja mal oluyor demektir. Mesaj başına hedef maliyet buradan çıkar, günlük bütçe bu hedefin üzerine kurulur. Çok düşük bütçe kampanyanın öğrenme fazından çıkmasını engeller.",
+    anahtarCikarimlar: [
+      "Bütçe, hedeflenen sonucun maliyetinden geriye doğru hesaplanır; sektör ortalamasından değil.",
+      "Çok düşük günlük bütçe kampanyayı öğrenme fazında bırakır ve maliyeti kalıcı olarak yükseltir.",
+      "Bütçeyi çok sayıda kampanyaya bölmek yerine az sayıda kampanyada toplamak neredeyse her zaman daha verimlidir.",
+      "Bütçe artışı kademeli yapılır: yaklaşık yüzde yirmi beş ekleyip birkaç gün izleyin. Sert artış öğrenmeyi sıfırlar.",
+      "Durdurma eşiği kampanya açılmadan önce yazılı olarak belirlenir, sonuçlar görüldükten sonra değil.",
+      "Zayıf kreatif yüksek bütçeyle daha hızlı para harcar, daha iyi sonuç vermez.",
+    ],
+    sorular: [
+      {
+        soru: "Meta reklamlarına günlük ne kadar bütçe ayırmalıyım?",
+        cevap:
+          "Herkese uyan tek bir rakam yok; bütçe hedef maliyetinizden geriye doğru hesaplanır. Bir müşterinin size kattığı değeri ve mesajdan müşteriye dönüşüm oranınızı bilirseniz, mesaj başına ödeyebileceğiniz üst sınırı da bilirsiniz. Günlük bütçe, sistemin günde birkaç sonuç üretebileceği kadar yüksek olmalıdır; aksi halde kampanya öğrenme fazından çıkamaz.",
+      },
+      {
+        soru: "Öğrenme fazı nedir?",
+        cevap:
+          "Öğrenme fazı, Meta'nın yeni bir reklam setinde kimin dönüşeceğini öğrenmeye çalıştığı dönemdir. Bu süreçte maliyetler dalgalı seyreder. Sistem yeterli sayıda dönüşüm verisi topladığında faz kapanır. Günlük bütçe çok düşükse bu veri hiçbir zaman birikmez ve kampanya öğrenme fazında sıkışıp kalır.",
+      },
+      {
+        soru: "Bütçeyi ne zaman ve ne kadar artırmalıyım?",
+        cevap:
+          "Kampanya hedef maliyetini tutturuyorsa artış yapılabilir. Sağlıklı yöntem kademeli artıştır: mevcut bütçenin üzerine yaklaşık yüzde yirmi beş ekleyip birkaç gün sonucu izlemek. Sert bütçe artışı kampanyayı yeniden öğrenme fazına sokar ve o ana kadar biriken performansı sıfırlar.",
+      },
+      {
+        soru: "Bir kampanyayı kaç gün sonra değerlendirmeliyim?",
+        cevap:
+          "İlk iki gündeki veri karar için yeterli değildir. Bir kampanyayı değerlendirmek için en az üç ile beş gün ve anlamlı sayıda sonuç beklemek gerekir. Erken müdahale, reklamcılıkta en pahalı alışkanlıklardan biridir.",
+      },
+    ],
+    etiketler: ["Meta reklam bütçesi", "Instagram reklamı", "öğrenme fazı", "performans pazarlama"],
     ilgiliHizmetler: ["reklam-yonetimi", "ai-uretim-reklam-filmleri", "fotograf-video-produksiyon"],
   },
 
@@ -249,6 +371,40 @@ export const blogYazilari: BlogYazisi[] = [
         ],
       },
     ],
+    guncelleme: "2026-08-23",
+    kisaCevap:
+      "Restoran ve kafelerde içerik güzel görünmekle kalmamalı, gitme isteği uyandırmalıdır. Sabit tabak fotoğrafı yerine ürünü hareket halinde gösterin: sosun dökülmesi, buharın çıkması, bıçağın kesmesi. Ayda üç dört imza ürünü doğru anlatmak, tüm menüyü sıradan karelerle geçmekten daha iyi sonuç verir. Mutfak arkası içerikleri hem en kolay üretilen hem de güveni en hızlı kuran türdür.",
+    anahtarCikarimlar: [
+      "Ürünü hareket halinde gösterin; masaya konmuş sabit tabak fotoğrafı artık kimseyi durdurmuyor.",
+      "Tüm menüyü değil, ayda üç dört imza ürünü doğru anlatın.",
+      "Mutfak arkası ve ekip içerikleri hem en kolay üretilenler hem de güveni en hızlı kuranlar.",
+      "Atmosfer çekiminde günün en iyi ışığını bekleyin; kalabalık bir salon boş salondan çok daha davetkardır.",
+      "Konum, çalışma saati, rezervasyon yolu ve fiyat fikri veren paylaşımları yalnızca biyografiye bırakmayın.",
+      "Sürekli indirim konuşan hesap fiyatla anılır hale gelir; kampanya içeriği toplamın küçük bir bölümü olmalıdır.",
+    ],
+    sorular: [
+      {
+        soru: "Restoran hesabında ne sıklıkla paylaşım yapılmalı?",
+        cevap:
+          "Haftada üç ile beş paylaşım çoğu yeme içme işletmesi için sürdürülebilir bir tempodur ve bunun en az ikisi video olmalıdır. Kritik olan sıklık değil süreklilik: ayda bir gün toplu çekim yapıp içeriği önceden hazırlamak, her gün aceleyle içerik yetiştirmekten hem daha ucuz hem daha kalitelidir.",
+      },
+      {
+        soru: "Yemek fotoğrafı için en iyi çekim saati hangisi?",
+        cevap:
+          "Doğal ışığın yumuşadığı saatler, özellikle öğleden sonranın geç saatleri ve akşamüstü. Aynı mekan öğle saatinde sıradan, akşamüstü etkileyici görünür. Yapay ışık altında çekim gerekiyorsa masaya tek yönden gelen bir ışık kaynağı kullanın; tepeden gelen tavan aydınlatması yemeği yassı gösterir.",
+      },
+      {
+        soru: "Sürekli indirim paylaşmak zararlı mı?",
+        cevap:
+          "Kampanya duyurusunu içeriğin tamamı haline getirmek zararlıdır. Sürekli indirim konuşan hesap fiyatla anılır hale gelir ve tam fiyattan gelen müşteriyi kaybeder. İndirim içeriği toplam paylaşımın küçük bir bölümü olmalı, geri kalanı ürünü, mekanı ve ekibi anlatmalıdır.",
+      },
+      {
+        soru: "Sosyal medya restorana gerçekten rezervasyon getirir mi?",
+        cevap:
+          "Getirir, ancak erişim kazanan içerik ile rezervasyon getiren içerik her zaman aynı değildir. Rezervasyona dönüşen içerikte konum, çalışma saatleri, rezervasyon yolu ve fiyat aralığı hakkında fikir bulunur. Bu bilgiler yalnızca biyografide kalırsa hesaba gelen çoğu kişi görmez.",
+      },
+    ],
+    etiketler: ["restoran sosyal medya", "kafe içerik fikirleri", "yemek fotoğrafçılığı", "yerel işletme pazarlaması"],
     ilgiliHizmetler: ["sosyal-medya-yonetimi", "fotograf-video-produksiyon", "drone-cekimleri"],
   },
 ];
