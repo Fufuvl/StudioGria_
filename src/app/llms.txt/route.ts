@@ -37,7 +37,7 @@ Studio Gria; içerik üretimi, tasarım ve reklam yönetimini tek ekipte birleş
 ## Künye
 
 - Ad: ${kunye.ad}
-- Kurucu: ${kurucu.ad}, ${kurucu.unvan}
+- Kurucu: ${kurucu.ad}
 - Adres: ${kunye.adres.sokak}, ${kunye.adres.ilce}, ${kunye.adres.il} ${kunye.adres.postaKodu}, Türkiye
 - Telefon: ${kunye.telefon}
 - E-posta: ${kunye.eposta}
