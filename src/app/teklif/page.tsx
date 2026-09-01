@@ -15,7 +15,7 @@ import {
 import styles from "./teklif.module.scss";
 
 export const metadata: Metadata = {
-  title: "Markanıza Özel Sosyal Medya Teklifi | Studio Gria",
+  title: "Sosyal Medya Ajansı Teklifi Alın | Studio Gria",
   description:
     "Studio Gria sizi dinler, markanıza özel sosyal medya teklif sunumunu hazırlar. Formu doldurun, aynı gün dönüş yapalım. Kredi kartıyla ödeme kolaylığı.",
   alternates: { canonical: "/teklif" },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "tr_TR",
     siteName: "Studio Gria",
-    title: "Markanıza Özel Sosyal Medya Teklifi | Studio Gria",
+    title: "Sosyal Medya Ajansı Teklifi Alın | Studio Gria",
     description:
       "Sizi dinleyip markanıza özel teklif sunumunu hazırlıyoruz. İstanbul merkezli dijital medya ajansı Studio Gria.",
     url: "https://www.studiogria.com/teklif",

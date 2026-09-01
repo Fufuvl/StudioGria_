@@ -6,7 +6,7 @@ import { KIMLIK, SITE_URL, grafSemasi } from "@/data/kurulus-data";
 // SEO: title arama niyetine gore kurgulanir, marka sonda kalir
 const sayfaBaslik = "Sosyal Medya Ajansı İstanbul | Studio Gria";
 const sayfaAciklama =
-  "İstanbul merkezli sosyal medya ajansı: içerik üretimi, profesyonel çekim, marka kimliği ve Meta reklam yönetimi tek elden. 39'dan fazla markayla çalıştık. Ücretsiz teklif alın.";
+  "İstanbul merkezli sosyal medya ajansı: içerik üretimi, profesyonel çekim ve Meta reklam yönetimi tek elden. 39'dan fazla marka ile çalıştık. Teklif alın.";
 
 export const metadata: Metadata = {
   title: sayfaBaslik,

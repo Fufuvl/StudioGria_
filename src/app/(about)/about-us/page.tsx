@@ -8,7 +8,7 @@ import {
   kirintiSemasi,
 } from "@/data/kurulus-data";
 
-const sayfaBaslik = "Hakkımızda: İstanbul Merkezli Dijital Medya Stüdyosu | Studio Gria";
+const sayfaBaslik = "Hakkımızda: İstanbul Dijital Medya Stüdyosu | Studio Gria";
 const sayfaAciklama =
   "Studio Gria kimdir, nasıl çalışır: içerik, tasarım ve reklamı tek elden yöneten İstanbul merkezli dijital medya stüdyosunun hikayesi ve çalışma disiplini.";
 

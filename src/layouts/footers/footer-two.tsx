@@ -6,6 +6,8 @@ import logoWhite from "@/assets/img/logo/logo-white-new.png";
 import logoDark from "@/assets/img/logo/logo-dark.png";
 import { RightArrow } from "@/components/svg";
 import menu_data from "@/data/menu-data";
+import { hizmetler } from "@/data/hizmet-data";
+import { yazilariSirala } from "@/data/blog-yazilari";
 
 // prop type
 type IProps = {
@@ -39,6 +41,27 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
     { title: "Avcılar", link: "/bolgeler/avcilar-sosyal-medya-ajansi" },
     { title: "Başakşehir", link: "/bolgeler/basaksehir-sosyal-medya-ajansi" },
   ];
+
+  // Hizmet detay ve blog sayfalari da footer'dan baglanir. Gerekce olculdu:
+  // 2 Eyl 2026'da Search Console'da dizine eklenen 16 sayfanin tamami footer'dan
+  // site geneli baglanan sayfalardi; yalnizca tek bir hub sayfasindan (/hizmetler,
+  // /blog) baglanan 14 sayfanin tamami "kesfedildi, dizine eklenmedi" durumundaydi.
+  // Bolge sayfalarinda ise yontem calisti. Ayni yontem bu iki gruba uygulaniyor.
+  const hizmetMenu = hizmetler.map((hizmet) => ({
+    title: hizmet.ad,
+    link: `/hizmetler/${hizmet.slug}`,
+  }));
+
+  // Blog listesi tarihe gore siralanir; yeni yazi eklendiginde footer kendiliginden
+  // guncellenir, en yeni dort yazi site geneli baglanti alir.
+  // Bag metni yazinin kendi basligindan gelir; iki noktadan sonrasi footer'da
+  // fazla uzun kaldigi icin atilir, anahtar kelime tasiyan bas kismi kalir.
+  const blogMenu = yazilariSirala()
+    .slice(0, 4)
+    .map((yazi) => ({
+      title: yazi.baslik.split(":")[0].trim(),
+      link: `/blog/${yazi.slug}`,
+    }));
 
   const handleToggle = (title: string) => {
     setOpenSubmenu((prev) => (prev === title ? null : title));
@@ -114,9 +137,33 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
             <div className="col-xl-2 col-lg-3 col-md-6 mb-50">
               <div className="tp-footer-2-widget footer-col-2-2">
                 <div className="tp-footer-2-widget-menu">
+                  <h4 className="tp-footer-2-widget-title">Hizmetler</h4>
+                  <ul>
+                    {hizmetMenu.map((item) => (
+                      <li key={item.title}>
+                        <Link href={item.link}>{item.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-2 col-lg-3 col-md-6 mb-50">
+              <div className="tp-footer-2-widget footer-col-2-2">
+                <div className="tp-footer-2-widget-menu">
                   <h4 className="tp-footer-2-widget-title">Bölgeler</h4>
                   <ul>
                     {bolgeMenu.map((item) => (
+                      <li key={item.title}>
+                        <Link href={item.link}>{item.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="tp-footer-2-widget-menu mt-30">
+                  <h4 className="tp-footer-2-widget-title">Blog</h4>
+                  <ul>
+                    {blogMenu.map((item) => (
                       <li key={item.title}>
                         <Link href={item.link}>{item.title}</Link>
                       </li>

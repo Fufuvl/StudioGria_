@@ -8,9 +8,9 @@ import {
   kirintiSemasi,
 } from "@/data/kurulus-data";
 
-const sayfaBaslik = "Yapay Zeka ile Ürün Görseli ve Reklam İçeriği Üretimi | Studio Gria";
+const sayfaBaslik = "Yapay Zeka ile Ürün Görseli ve Reklam İçeriği | Studio Gria";
 const sayfaAciklama =
-  "Stüdyo kurmadan stüdyo kalitesinde görsel: yapay zeka destekli ürün çekimi, kampanya görseli ve video üretimi. Set ve lokasyon maliyeti olmadan, günler içinde kampanyaya hazır içerik.";
+  "Stüdyo kurmadan stüdyo kalitesinde görsel: yapay zeka destekli ürün çekimi, kampanya görseli ve video üretimi. Set maliyeti olmadan günler içinde teslim.";
 
 export const metadata: Metadata = {
   title: sayfaBaslik,

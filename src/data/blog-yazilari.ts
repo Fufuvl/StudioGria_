@@ -51,9 +51,9 @@ export const blogYazilari: BlogYazisi[] = [
   {
     slug: "sosyal-medya-ajansi-fiyatlari",
     baslik: "Sosyal medya ajansı fiyatları: bütçe neye göre belirlenir?",
-    seoBaslik: "Sosyal Medya Ajansı Fiyatları 2026 | Studio Gria",
+    seoBaslik: "Sosyal Medya Ajansı Fiyatları 2026: Neye Göre Değişir?",
     seoAciklama:
-      "Sosyal medya ajansı fiyatları neye göre belirlenir? Paket kapsamı, içerik adedi, çekim ve reklam yönetimi kalemlerinin bütçeye etkisini örneklerle anlattık.",
+      "Ajans teklifleri neden bu kadar farklı? Fiyatı belirleyen asıl kalem, teklifte mutlaka görmeniz gereken maddeler ve ucuz teklifin gizli maliyeti.",
     ozet:
       "Ajans tekliflerini karşılaştırırken bakmanız gereken kalemler, fiyatı gerçekten belirleyen değişkenler ve ucuz teklifin gizli maliyeti.",
     tarih: "2026-06-18",
@@ -237,7 +237,7 @@ export const blogYazilari: BlogYazisi[] = [
     baslik: "Meta reklamlarında bütçe nasıl belirlenir?",
     seoBaslik: "Meta Reklam Bütçesi Nasıl Belirlenir? | Studio Gria",
     seoAciklama:
-      "Instagram ve Facebook reklamlarında günlük bütçe nasıl hesaplanır, öğrenme fazı nedir, bütçe artışı ne zaman yapılır? Reklam yönetimi deneyimimizden pratik rehber.",
+      "Instagram ve Facebook reklamlarında günlük bütçe nasıl hesaplanır, öğrenme fazı nedir, bütçe artışı ne zaman yapılır? Saha deneyimimizden pratik rehber.",
     ozet:
       "Günlük bütçenin hedef maliyetle ilişkisi, öğrenme fazının bütçeye etkisi ve bütçe artırırken yapılan en yaygın hata.",
     tarih: "2026-07-28",
@@ -322,7 +322,7 @@ export const blogYazilari: BlogYazisi[] = [
   {
     slug: "restoran-kafe-sosyal-medya-icerik-fikirleri",
     baslik: "Restoran ve kafeler için sosyal medya içerik fikirleri",
-    seoBaslik: "Restoran ve Kafeler İçin Sosyal Medya İçerik Fikirleri | Studio Gria",
+    seoBaslik: "Restoran ve Kafeler İçin Sosyal Medya İçerik Fikirleri",
     seoAciklama:
       "Restoran ve kafeler için işe yarayan sosyal medya içerik fikirleri: menü tanıtımı, mutfak arkası, mekan atmosferi ve rezervasyona dokunan paylaşım örnekleri.",
     ozet:

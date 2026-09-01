@@ -9,9 +9,9 @@ import {
   kirintiSemasi,
 } from "@/data/kurulus-data";
 
-const sayfaBaslik = "Hizmetlerimiz: Sosyal Medya, Prodüksiyon, Reklam ve Yazılım | Studio Gria";
+const sayfaBaslik = "Sosyal Medya, Prodüksiyon ve Reklam Hizmetleri | Studio Gria";
 const sayfaAciklama =
-  "Sosyal medya yönetimi, fotoğraf ve video prodüksiyon, Google Ads ve Meta Ads reklam yönetimi, drone çekimi, web sitesi, SEO, yazılım, e-ticaret ve AI üretim. Tek çatı altında.";
+  "Sosyal medya yönetimi, fotoğraf ve video prodüksiyon, Meta ve Google reklam yönetimi, drone çekimi, web sitesi ve yazılım. On hizmet, tek ekip.";
 
 export const metadata: Metadata = {
   title: sayfaBaslik,

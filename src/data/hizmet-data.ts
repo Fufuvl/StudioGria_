@@ -104,7 +104,7 @@ export const hizmetler: Hizmet[] = [
       "Google Ads ve Meta Ads kampanyalarınızı kurar, günlük takip ederiz.",
     seoBaslik: "Google Ads ve Meta Ads Reklam Yönetimi | Studio Gria",
     seoAciklama:
-      "Google Ads ve Meta Ads reklam yönetimi: kampanya kurulumu, hedef kitle kurgusu, reklam görseli üretimi, günlük takip ve bütçe optimizasyonu. Ölçülebilir sonuç.",
+      "Google Ads ve Meta Ads reklam yönetimi: kampanya kurulumu, hedef kitle kurgusu, reklam görseli üretimi, günlük takip ve bütçe optimizasyonu.",
     giris:
       "Reklam bütçesi doğru kurgulanmadığında en hızlı para kaybettiren kanaldır. Doğru kurgulandığında ise en hızlı müşteri getiren kanal.",
     aciklama: [

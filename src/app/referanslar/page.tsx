@@ -11,7 +11,7 @@ import {
 export const metadata: Metadata = {
   title: "Referanslarımız: 39+ Marka, 20+ Sektör | Studio Gria",
   description:
-    "Beşiktaş Spor Kulübü'nden The Oba Hotel'e, restorandan sanayiye birlikte çalıştığımız 39'dan fazla marka. Sektöre göre süzün, her markada ne yaptığımızı görün.",
+    "Beşiktaş Spor Kulübü'nden The Oba Hotel'e, restorandan sanayiye birlikte çalıştığımız 39'dan fazla marka. Sektöre göre süzün, ne yaptığımızı görün.",
   alternates: { canonical: "/referanslar" },
   openGraph: {
     type: "website",
