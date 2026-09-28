@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import {
   getViewContentParams,
   trackContact,
+  trackPixelEvent,
   trackViewContent,
 } from "@/utils/meta-pixel";
 
@@ -19,8 +20,9 @@ export default function MetaPixelEvents() {
     // İlk yüklemedeki PageView'i base kod zaten gönderdi, çift saymayalım
     if (isFirstLoad.current) {
       isFirstLoad.current = false;
-    } else if (typeof window.fbq === "function") {
-      window.fbq("track", "PageView");
+    } else {
+      // Kod henuz yuklenmediyse trackPixelEvent yuklenene kadar bekler
+      trackPixelEvent("PageView");
     }
 
     const viewContent = getViewContentParams(pathname || "");

@@ -67,12 +67,14 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
             placeholder="blur"
             style={{ objectFit: "cover", objectPosition: "center" }}
           />
-          {/* Sahadan sessiz dongu: The Oba Hotel tanitim filminden 16 sn.
-              Kaynak: Gria - Firmalar/The Oba Hotel/Cikti Reels/Tanitim-ObaHotel26-27.mp4 */}
+          {/* Sahadan sessiz dongu: yalnizca Studio Gria'nin kendi drone cekimleri
+              (DJI Air 3S, 7-8 Haziran 2026), dikey kayitlardan kare kirpilmis 15 sn.
+              Tanitim filmindeki yer cekimleri Gria'ya ait olmadigi icin kullanilmaz.
+              Kaynak: Gria - Firmalar/The Oba Hotel/Kurgu/Drone/Air 3s/Video */}
           <HeroVideo
-            masaustu="/assets/video/oba-hero-1280.mp4"
-            mobil="/assets/video/oba-hero-854.mp4"
-            etiket="Sahadan: The Oba Hotel, drone ve tanıtım filmi"
+            masaustu="/assets/video/oba-drone-960.mp4"
+            mobil="/assets/video/oba-drone-640.mp4"
+            etiket="Sahadan: The Oba Hotel, drone çekimi"
           />
         </div>
       </div>

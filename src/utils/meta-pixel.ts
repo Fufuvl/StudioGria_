@@ -11,21 +11,48 @@ declare global {
   }
 }
 
+// Olcum kodlari (gtag, fbq) layout.tsx'te lazyOnload ile, sayfa gorundukten
+// sonra yuklenir. O ana kadar tetiklenen olay (ornegin ilk acilistaki
+// ViewContent ya da erken bir WhatsApp tiklamasi) kaybolmasin diye kod hazir
+// olana kadar kisa araliklarla beklenir; 20 sn icinde gelmezse (reklam
+// engelleyici) sessizce vazgecilir.
+function hazirOlunca(hazir: () => boolean, calistir: () => void) {
+  if (typeof window === "undefined") return;
+  if (hazir()) {
+    calistir();
+    return;
+  }
+  let deneme = 0;
+  const zamanlayici = window.setInterval(() => {
+    deneme += 1;
+    if (hazir()) {
+      window.clearInterval(zamanlayici);
+      calistir();
+    } else if (deneme >= 66) {
+      window.clearInterval(zamanlayici);
+    }
+  }, 300);
+}
+
 // GA4 olayi. Organik aramadan gelen musteriyi olcmenin tek yolu budur: form
 // dolduran ziyaretcinin kanali (Google organik, Meta, dogrudan) GA4'te bu
 // olay uzerinden gorulur. GA4'te "generate_lead" onemli etkinlik olarak
 // isaretlenmelidir.
 function ga4Olay(olay: string, params?: Record<string, unknown>) {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-  window.gtag("event", olay, params);
+  hazirOlunca(
+    () => typeof window.gtag === "function",
+    () => window.gtag?.("event", olay, params),
+  );
 }
 
 type PixelEventParams = Record<string, unknown>;
 
-// fbq henüz yüklenmediyse ya da sunucu tarafındaysak sessizce geçer
+// fbq henüz yüklenmediyse yüklenene kadar bekler; sunucu tarafında sessizce geçer
 export function trackPixelEvent(event: string, params?: PixelEventParams) {
-  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
-  window.fbq("track", event, params);
+  hazirOlunca(
+    () => typeof window.fbq === "function",
+    () => window.fbq?.("track", event, params),
+  );
 }
 
 // Form dolduran ziyaretçi: reklam optimizasyonunun hedef olayı

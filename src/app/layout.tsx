@@ -30,18 +30,11 @@ import {
 } from "@/data/kurulus-data";
 import "./globals.scss";
 
+// HIZ (28 Eyl 2026): ilk ekranda yalnizca Syne gorunur. Diger fontlar
+// on yuklenmez, gerektiginde iner. Gallery icin eskiden ttf + woff + woff2
+// ucu birden ayri font olarak on yukleniyordu (~63 KB bosa); yalniz woff2 kaldi.
 const gellery = localFont({
   src: [
-    {
-      path: "../../public/assets/fonts/gallerymodern-webfont.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/assets/fonts/gallerymodern-webfont.woff",
-      weight: "400",
-      style: "normal",
-    },
     {
       path: "../../public/assets/fonts/gallerymodern-webfont.woff2",
       weight: "400",
@@ -49,6 +42,8 @@ const gellery = localFont({
     },
   ],
   variable: "--tp-ff-gallery",
+  display: "swap",
+  preload: false,
 });
 
 const aladin = Aladin({
@@ -56,6 +51,7 @@ const aladin = Aladin({
   subsets: ["latin"],
   variable: "--tp-ff-aladin",
   display: "swap",
+  preload: false,
 });
 const syne_body = Syne({
   weight: ["400", "500", "600", "700", "800"],
@@ -86,12 +82,14 @@ const big_shoulders = Big_Shoulders_Display({
   subsets: ["latin"],
   variable: "--tp-ff-shoulders",
   display: "swap",
+  preload: false,
 });
 const marcellus = Marcellus({
   weight: ["400"],
   subsets: ["latin"],
   variable: "--tp-ff-marcellus",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -177,13 +175,15 @@ export default function RootLayout({
             __html: grafSemasi([kurulusSemasi(), kurucuSemasi(), siteSemasi()]),
           }}
         />
+        {/* HIZ (28 Eyl 2026): olcum kodlari sayfa gorundukten sonra yuklenir.
+            Donusum olaylari (form, WhatsApp, teklif) etkilenmez. */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-4EWVJ0Y6EC"
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -196,7 +196,7 @@ export default function RootLayout({
         {/* Meta Pixel Code */}
         <Script
           id="meta-pixel"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
