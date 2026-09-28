@@ -51,14 +51,7 @@ export default function HakkimizdaIcerik() {
           </div>
         </div>
 
-        <ul className="sg-hk-rakamlar">
-          {sosyalKanit.map((m) => (
-            <li key={m.etiket}>
-              <strong>{metrikMetni(m.deger, m.sonek)}</strong>
-              <span>{m.etiket}</span>
-            </li>
-          ))}
-        </ul>
+        {/* Rakamlar burada tekrar edilmez: hemen altindaki "Rakamlarla Studio Gria" bolumu gosterir */}
 
         <div className="sg-hk-blok">
           <h2 className="sg-hk-baslik">Nasıl çalışıyoruz?</h2>

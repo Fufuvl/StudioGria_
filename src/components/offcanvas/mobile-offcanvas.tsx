@@ -1,6 +1,7 @@
 import React from "react";
 import { CloseTwo, Instagram, Linkdin } from "../svg";
 import MobileMenus from "./mobile-menus";
+import { useSiteBaglantilari } from "@/components/site-baglantilari";
 
 // prop type
 type IProps = {
@@ -9,6 +10,7 @@ type IProps = {
 };
 
 export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps) {
+  const { kurum } = useSiteBaglantilari();
   return (
     <>
       <div className={`tp-offcanvas-area ${openOffcanvas ? "opened" : ""}`}>
@@ -45,7 +47,9 @@ export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps
                   <a href="mailto:hello@studiogria.com">hello@studiogria.com</a>
                 </li>
                 <li>
-                  <a href="#">İstanbul, Türkiye</a>
+                  <a href={kurum.harita} target="_blank" rel="noopener noreferrer">
+                    {kurum.sokak}, {kurum.postaKodu} {kurum.ilce}/{kurum.il}
+                  </a>
                 </li>
               </ul>
             </div>

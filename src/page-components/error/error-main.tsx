@@ -31,15 +31,24 @@ const ErrorMain = () => {
                 <div className="row">
                   <div className="col-xl-12">
                     <div className="tp-error-wrapper text-center">
-                      <h4 className="tp-error-title">Oops!</h4>
-                      <Image src={error} alt="error-img" style={{ height: 'auto' }} />
+                      <Image src={error} alt="404" style={{ height: 'auto' }} />
                       <div className="tp-error-content">
-                        <h4 className="tp-error-title-sm">
-                          Something went Wrong...
-                        </h4>
-                        <p>Sorry, we {"couldn't"} find your page.</p>
-                        <Link className="tp-btn-black-2" href="/">
-                          Back to Home
+                        <h1 className="tp-error-title-sm">
+                          Aradığınız sayfa bulunamadı
+                        </h1>
+                        <p>
+                          Sayfa taşınmış ya da adresi değişmiş olabilir. Aşağıdaki
+                          bağlantılardan devam edebilirsiniz.
+                        </p>
+                        {/* Eski adreslerden gelen ziyaretciyi en cok aranan sayfalara yonlendir */}
+                        <ul className="sg-404-baglantilar">
+                          <li><Link href="/hizmetler">Hizmetlerimiz</Link></li>
+                          <li><Link href="/referanslar">Referanslar</Link></li>
+                          <li><Link href="/blog">Blog</Link></li>
+                          <li><Link href="/contact">İletişim</Link></li>
+                        </ul>
+                        <Link className="tp-btn-black-2" href="/teklif">
+                          Teklif Alın
                         </Link>
                       </div>
                     </div>

@@ -155,14 +155,15 @@ export default function LeadPopup() {
         <div className="sg-popup-inner">
           {/* Badge */}
           <div className="sg-popup-badge">
-            <span>Studio Gria</span>
+            {/* lang="en": buyuk harf donusumu marka adini "STUDİO GRİA" yapmasin */}
+            <span lang="en">Studio Gria</span>
           </div>
 
           {/* Heading */}
           <h2 id="sg-popup-title" className="sg-popup-title">
-            Sizlere Özel Strateji
+            Markanıza özel strateji
             <br />
-            veya Ücret Teklifi İçin
+            ve fiyat teklifi alın
           </h2>
 
           {/* Decorative divider */}
@@ -188,7 +189,7 @@ export default function LeadPopup() {
                 />
               </div>
               <div className="sg-popup-field">
-                <label htmlFor="sg-numara">Numara</label>
+                <label htmlFor="sg-numara">Telefon</label>
                 <input
                   id="sg-numara"
                   name="numara"

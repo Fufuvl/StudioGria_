@@ -36,7 +36,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
 
   // Bolge sayfalari footer'dan da baglanir; yerel sayfalarin site icinde
   // yalnizca tek bir yerden erisilebilir olmasi taranmalarini zorlastirirdi.
-  const { hizmetler, yazilar, bolgeler } = useSiteBaglantilari();
+  const { hizmetler, yazilar, bolgeler, kurum } = useSiteBaglantilari();
 
   const bolgeMenu = bolgeler.map((bolge) => ({
     title: bolge.ilce,
@@ -176,12 +176,9 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
                 <h2 className="tp-footer-2-widget-title">Ofisimiz</h2>
                 <div className="tp-footer-2-contact-item">
                   <span>
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=Studio+Gria%2C+Mimaroba+Mahallesi+Mustafa+Kemal+Bulvar%C4%B1+No+18+Demir+Plaza%2C+34535+B%C3%BCy%C3%BCk%C3%A7ekmece%2F%C4%B0stanbul"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      İstanbul, Türkiye
+                    {/* Adres Google Isletme Profili ile birebir ayni yazilir (NAP tutarliligi) */}
+                    <a href={kurum.harita} target="_blank" rel="noopener noreferrer">
+                      {kurum.sokak}, {kurum.postaKodu} {kurum.ilce}/{kurum.il}
                     </a>
                   </span>
                 </div>
@@ -192,7 +189,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
                 </div>
                 <div className="tp-footer-2-contact-item">
                   <span>
-                    <a href="mailto:hello@studiogria.com">E: hello@studiogria.com</a>
+                    <a href="mailto:hello@studiogria.com">hello@studiogria.com</a>
                   </span>
                 </div>
               </div>
@@ -220,8 +217,8 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
             </div>
             <div className="col-xl-8 col-lg-7">
               <div className="tp-copyright-2-social text-center text-lg-end">
-                <a className="mb-10" href="https://www.linkedin.com/company/studio-gria/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a className="mb-10" href="https://www.instagram.com/studiogria/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a className="mb-10" lang="en" href="https://www.linkedin.com/company/studio-gria/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a className="mb-10" lang="en" href="https://www.instagram.com/studiogria/" target="_blank" rel="noopener noreferrer">Instagram</a>
               </div>
             </div>
           </div>
