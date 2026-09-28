@@ -19,14 +19,14 @@ export default function ContactTwo() {
         <div className="row">
           <div className="col-xl-5">
             <div className="ab-about-category-title-box mb-40 p-relative">
-              <h4 className="ab-about-category-title">
+              <h2 className="ab-about-category-title">
                 İletişime Geçin <br />
                 <span>Bize Ulaşın</span>
-              </h4>
+              </h2>
               <Image
                 className="ab-about-shape-1 d-none d-xl-block"
                 src={shape}
-                alt="shape"
+                alt=""
               />
             </div>
           </div>

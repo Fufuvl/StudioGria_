@@ -1,27 +1,16 @@
 import React from "react";
 import CounterItem from "../counter/counter-item";
+import { sosyalKanit } from "@/data/sosyal-kanit-data";
 import { Leaf } from "../svg";
 
-const counter_data = [
-  {
-    id: 1,
-    title: "TAMAMLANAN PROJELER",
-    count: 100,
-    text: "+",
-  },
-  {
-    id: 2,
-    title: "YILLIK DENEYİM",
-    count: 2,
-    text: "+",
-  },
-  {
-    id: 4,
-    title: "BÜYÜME ORANI",
-    count: 194,
-    text: "%",
-  },
-];
+// Rakamlar tek kaynaktan gelir: src/data/sosyal-kanit-data.ts
+// Milyonluk degerler "16 milyon+" olarak yazilir.
+const counter_data = sosyalKanit.map((m, i) => ({
+  id: i + 1,
+  title: m.etiket.toLocaleUpperCase("tr-TR"),
+  count: m.deger >= 1000000 ? Math.round(m.deger / 1000000) : m.deger,
+  text: m.deger >= 1000000 ? " milyon" + m.sonek : m.sonek,
+}));
 export default function FunFactOne() {
   return (
     <div className="ab-funfact-area pb-40">
@@ -29,9 +18,9 @@ export default function FunFactOne() {
         <div className="row">
           <div className="col-xl-4">
             <div className="ab-funfact-title-box">
-              <h4 className="ab-inner-funfact-title tp_title_anim">
-                Agency <br /> Snapshots
-              </h4>
+              <h2 className="ab-inner-funfact-title tp_title_anim">
+                Rakamlarla <br /> Studio Gria
+              </h2>
             </div>
           </div>
           <div className="col-xl-8">

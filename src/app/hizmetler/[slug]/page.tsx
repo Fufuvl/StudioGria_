@@ -44,9 +44,9 @@ export function generateMetadata({ params }: Props): Metadata {
       description: hizmet.seoAciklama,
       url,
       // Fotograf yalnizca sosyal medya paylasim onizlemesinde kullanilir
-      images: [{ url: hizmet.gorsel, width: 1200, height: 630, alt: hizmet.gorselAlt }],
     },
     twitter: {
+      card: "summary_large_image",
       title: hizmet.seoBaslik,
       description: hizmet.seoAciklama,
     },

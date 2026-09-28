@@ -6,8 +6,10 @@ import logoWhite from "@/assets/img/logo/logo-white-new.png";
 import logoDark from "@/assets/img/logo/logo-dark.png";
 import { RightArrow } from "@/components/svg";
 import menu_data from "@/data/menu-data";
-import { hizmetler } from "@/data/hizmet-data";
-import { yazilariSirala } from "@/data/blog-yazilari";
+// Listeler sunucudan gelir (bkz. components/site-baglantilari.tsx); veri
+// dosyalari burada ice aktarilmaz, aksi halde tum blog metni her sayfanin
+// JS paketine girer.
+import { useSiteBaglantilari } from "@/components/site-baglantilari";
 
 // prop type
 type IProps = {
@@ -34,13 +36,12 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
 
   // Bolge sayfalari footer'dan da baglanir; yerel sayfalarin site icinde
   // yalnizca tek bir yerden erisilebilir olmasi taranmalarini zorlastirirdi.
-  const bolgeMenu = [
-    { title: "Büyükçekmece", link: "/bolgeler/buyukcekmece-sosyal-medya-ajansi" },
-    { title: "Beylikdüzü", link: "/bolgeler/beylikduzu-sosyal-medya-ajansi" },
-    { title: "Esenyurt", link: "/bolgeler/esenyurt-sosyal-medya-ajansi" },
-    { title: "Avcılar", link: "/bolgeler/avcilar-sosyal-medya-ajansi" },
-    { title: "Başakşehir", link: "/bolgeler/basaksehir-sosyal-medya-ajansi" },
-  ];
+  const { hizmetler, yazilar, bolgeler } = useSiteBaglantilari();
+
+  const bolgeMenu = bolgeler.map((bolge) => ({
+    title: bolge.ilce,
+    link: `/bolgeler/${bolge.slug}`,
+  }));
 
   // Hizmet detay ve blog sayfalari da footer'dan baglanir. Gerekce olculdu:
   // 2 Eyl 2026'da Search Console'da dizine eklenen 16 sayfanin tamami footer'dan
@@ -56,12 +57,10 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
   // guncellenir, en yeni dort yazi site geneli baglanti alir.
   // Bag metni yazinin kendi basligindan gelir; iki noktadan sonrasi footer'da
   // fazla uzun kaldigi icin atilir, anahtar kelime tasiyan bas kismi kalir.
-  const blogMenu = yazilariSirala()
-    .slice(0, 4)
-    .map((yazi) => ({
-      title: yazi.baslik.split(":")[0].trim(),
-      link: `/blog/${yazi.slug}`,
-    }));
+  const blogMenu = yazilar.map((yazi) => ({
+    title: yazi.baslik.split(":")[0].trim(),
+    link: `/blog/${yazi.slug}`,
+  }));
 
   const handleToggle = (title: string) => {
     setOpenSubmenu((prev) => (prev === title ? null : title));
@@ -123,7 +122,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
             <div className="col-xl-2 col-lg-3 col-md-6 mb-50">
               <div className="tp-footer-2-widget footer-col-2-2">
                 <div className="tp-footer-2-widget-menu">
-                  <h4 className="tp-footer-2-widget-title">Site Haritası</h4>
+                  <h2 className="tp-footer-2-widget-title">Site Haritası</h2>
                   <ul>
                     {footerMenu.map((item) => (
                       <li key={item.title}>
@@ -137,7 +136,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
             <div className="col-xl-2 col-lg-3 col-md-6 mb-50">
               <div className="tp-footer-2-widget footer-col-2-2">
                 <div className="tp-footer-2-widget-menu">
-                  <h4 className="tp-footer-2-widget-title">Hizmetler</h4>
+                  <h2 className="tp-footer-2-widget-title">Hizmetler</h2>
                   <ul>
                     {hizmetMenu.map((item) => (
                       <li key={item.title}>
@@ -151,7 +150,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
             <div className="col-xl-2 col-lg-3 col-md-6 mb-50">
               <div className="tp-footer-2-widget footer-col-2-2">
                 <div className="tp-footer-2-widget-menu">
-                  <h4 className="tp-footer-2-widget-title">Bölgeler</h4>
+                  <h2 className="tp-footer-2-widget-title">Bölgeler</h2>
                   <ul>
                     {bolgeMenu.map((item) => (
                       <li key={item.title}>
@@ -161,7 +160,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
                   </ul>
                 </div>
                 <div className="tp-footer-2-widget-menu mt-30">
-                  <h4 className="tp-footer-2-widget-title">Blog</h4>
+                  <h2 className="tp-footer-2-widget-title">Blog</h2>
                   <ul>
                     {blogMenu.map((item) => (
                       <li key={item.title}>
@@ -174,7 +173,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
             </div>
             <div className="col-xl-3 col-lg-5 col-md-6 mb-50">
               <div className="tp-footer-2-widget footer-col-2-3">
-                <h4 className="tp-footer-2-widget-title">Ofisimiz</h4>
+                <h2 className="tp-footer-2-widget-title">Ofisimiz</h2>
                 <div className="tp-footer-2-contact-item">
                   <span>
                     <a
@@ -215,7 +214,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
             <div className="col-xl-4 col-lg-5">
               <div className="tp-copyright-2-left text-center text-lg-start">
                 <p>
-                  Tüm hakları saklıdır — {new Date().getFullYear()} © Studio Gria
+                  © {new Date().getFullYear()} Studio Gria. Tüm hakları saklıdır.
                 </p>
               </div>
             </div>

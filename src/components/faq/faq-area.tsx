@@ -82,7 +82,7 @@ export default function FaqArea() {
                 <Image
                   className="w-100"
                   src={faq_banner}
-                  alt="faq-banner"
+                  alt=""
                   style={{height:'auto'}}
                 />
               </div>

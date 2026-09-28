@@ -20,7 +20,7 @@ export default function FaqAreaTwo() {
                 </p>
               </div>
               <div className="tp-service-2-shape-img text-center text-lg-start">
-                <Image src={shape} alt="shape" />
+                <Image src={shape} alt="" />
               </div>
             </div>
           </div>

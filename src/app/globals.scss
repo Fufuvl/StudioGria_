@@ -157,8 +157,8 @@
 }
 
 .sg-split-gorsel {
-  background-size: cover;
-  background-position: center;
+  position: relative;
+  overflow: hidden;
   min-height: 100%;
 }
 
@@ -265,7 +265,8 @@
 
 .sg-serit-kontur .sg-serit-oge {
   color: transparent;
-  -webkit-text-stroke: 1px rgba(22, 24, 29, 0.45);
+  // 0.45 opaklik 2,92:1 kontrast veriyordu; 0.66 ile 4,5:1 ustu (WCAG AA)
+  -webkit-text-stroke: 1px rgba(22, 24, 29, 0.66);
 }
 
 /* Kademeli giris animasyonu: sayfa acilirken ogeler sirayla belirir */
@@ -432,4 +433,190 @@
   gap: 18px;
   flex-wrap: wrap;
   margin-top: 48px;
+}
+
+/* Hakkimizda icerik bolumu: kurum tanimi, surec, kurucu, bolgeler */
+.sg-hk {
+  background: #fff;
+  padding: clamp(56px, 7vw, 110px) 0;
+}
+
+.sg-hk-ic {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+}
+
+.sg-hk-blok {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.34fr) 1fr;
+  gap: clamp(20px, 4vw, 64px);
+  padding: clamp(36px, 4vw, 56px) 0;
+  border-top: 1px solid rgba(22, 24, 29, 0.12);
+}
+
+.sg-hk-baslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.15;
+  color: #16181d;
+  margin: 0;
+}
+
+.sg-hk-metin p,
+.sg-hk-surec p,
+.sg-hk-ilkeler li {
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.75;
+  color: #4a4b4f;
+  margin: 0 0 16px;
+}
+
+.sg-hk-metin a,
+.sg-hk-bolgeler a {
+  color: #16181d;
+  border-bottom: 1px solid rgba(22, 24, 29, 0.35);
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    color: #16181d;
+    border-color: #16181d;
+  }
+}
+
+.sg-hk-rakamlar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(24px, 5vw, 72px);
+  list-style: none;
+  margin: 0;
+  padding: clamp(28px, 3vw, 44px) 0;
+  border-top: 1px solid rgba(22, 24, 29, 0.12);
+
+  strong {
+    display: block;
+    font-family: var(--tp-ff-heading), sans-serif;
+    font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 600;
+    line-height: 1;
+    color: #16181d;
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  span {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: #5f6063;
+  }
+}
+
+.sg-hk-surec {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  grid-column: 2;
+
+  li {
+    position: relative;
+    padding: 0 0 18px 56px;
+  }
+
+  h3 {
+    font-family: var(--tp-ff-heading), sans-serif;
+    font-size: 19px;
+    line-height: 1.3;
+    color: #16181d;
+    margin: 0 0 6px;
+  }
+}
+
+.sg-hk-no {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #5f6063;
+}
+
+.sg-hk-ilkeler {
+  grid-column: 2;
+  margin: 0;
+  padding: 0 0 0 18px;
+
+  li {
+    margin-bottom: 8px;
+  }
+}
+
+.sg-hk-bolgeler {
+  line-height: 2;
+}
+
+.sg-hk-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: clamp(36px, 4vw, 56px);
+  border-top: 1px solid rgba(22, 24, 29, 0.12);
+
+  p {
+    font-family: var(--tp-ff-heading), sans-serif;
+    font-size: clamp(20px, 2vw, 26px);
+    color: #16181d;
+    margin: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .sg-hk-blok {
+    grid-template-columns: 1fr;
+  }
+
+  .sg-hk-surec,
+  .sg-hk-ilkeler {
+    grid-column: 1;
+  }
+}
+
+/* Ana sayfa hero rozeti H1 icinde: gorunum ayni, anlam basligin parcasi */
+.sg-split-baslik .sg-split-rozet {
+  display: block;
+  font-family: var(--tp-ff-body), sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.sg-split-slogan {
+  display: block;
+}
+
+/* Masaustu menu: 1440 px gibi yaygin dizustu genisliklerinde "Blog" ikinci
+   satira dusuyor ve logo kayiyordu (28 Eyl 2026). Oge araliklari ekran
+   genisligine gore daralir, menu tek satirda kalir. */
+@media (min-width: 1200px) {
+  .tp-inner-header-menu > nav > ul {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: clamp(18px, 2.4vw, 50px);
+  }
+
+  .tp-inner-header-menu > nav > ul > li {
+    margin: 0 !important;
+  }
+
+  .tp-inner-header-menu > nav > ul > li > a {
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .tp-inner-header-menu > nav > ul > li > a {
+    font-size: 14.5px;
+  }
 }

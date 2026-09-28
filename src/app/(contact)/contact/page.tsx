@@ -9,17 +9,17 @@ import {
 } from "@/data/kurulus-data";
 
 export const metadata: Metadata = {
-  title: "Studio Gria - İletişim",
+  title: "İletişim: Büyükçekmece Sosyal Medya Ajansı | Studio Gria",
   description: "Studio Gria ile iletişime geçin: +90 538 865 44 05, hello@studiogria.com. İstanbul Büyükçekmece merkezli sosyal medya ajansı, Türkiye geneli hizmet.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Studio Gria - İletişim",
+    title: "İletişim: Büyükçekmece Sosyal Medya Ajansı | Studio Gria",
     description: "Studio Gria ile iletişime geçin: +90 538 865 44 05, hello@studiogria.com. İstanbul Büyükçekmece merkezli sosyal medya ajansı, Türkiye geneli hizmet.",
     url: "https://www.studiogria.com/contact",
-    images: [{ url: "/assets/img/inner-project/showcase/background.jpg", width: 1200, height: 630, alt: "Studio Gria İletişim" }],
   },
   twitter: {
-    title: "Studio Gria - İletişim",
+    card: "summary_large_image",
+    title: "İletişim: Büyükçekmece Sosyal Medya Ajansı | Studio Gria",
     description: "Studio Gria ile iletişime geçin: +90 538 865 44 05, hello@studiogria.com. İstanbul Büyükçekmece merkezli sosyal medya ajansı, Türkiye geneli hizmet.",
   },
 };

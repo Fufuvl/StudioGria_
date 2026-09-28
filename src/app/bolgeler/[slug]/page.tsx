@@ -1,3 +1,4 @@
+import { bulunmaEki } from "@/utils/turkce-ek";
 import React from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -35,16 +36,8 @@ export function generateMetadata({ params }: Props): Metadata {
       title: bolge.seoBaslik,
       description: bolge.seoAciklama,
       url,
-      images: [
-        {
-          url: "/assets/img/inner-project/showcase/background.jpg",
-          width: 1200,
-          height: 630,
-          alt: `Studio Gria ${bolge.ilce}`,
-        },
-      ],
     },
-    twitter: { title: bolge.seoBaslik, description: bolge.seoAciklama },
+    twitter: { card: "summary_large_image", title: bolge.seoBaslik, description: bolge.seoAciklama },
   };
 }
 
@@ -141,7 +134,7 @@ export default function BolgePage({ params }: Props) {
         <section className={styles.bolum}>
           <div className={styles.kapsayici}>
             <h2 className={styles.bolumBaslik}>
-              {bolge.ilce}&apos;de işletme dokusu ve içeriğin işlevi
+              {bulunmaEki(bolge.ilce)} işletme dokusu ve içeriğin işlevi
             </h2>
             <div className={styles.dokuMetin}>
               {bolge.doku.map((paragraf) => (
@@ -182,7 +175,7 @@ export default function BolgePage({ params }: Props) {
           <div className={styles.kapsayici}>
             <div className={styles.cta}>
               <h2 className={styles.ctaBaslik}>
-                {bolge.ilce}&apos;deki işletmeniz için teklif alın
+                {bulunmaEki(bolge.ilce, "ki")} işletmeniz için teklif alın
               </h2>
               <p className={styles.ctaMetin}>
                 İşinizi dinleyip size uygun çalışma modelini ve fiyatı içeren bir

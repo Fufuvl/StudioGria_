@@ -172,7 +172,9 @@
 	}
 }
 
-@import url($font-url);
+// Google Fonts @import kaldirildi: ayni aileler layout.tsx icinde next/font ile
+// kendi sunucumuzdan yukleniyor. Bu satir her sayfada ~0,9 sn render engeli
+// yaratiyor ve hicbir font dosyasi indirmiyordu (28 Eyl 2026 denetimi).
 
 
 *{

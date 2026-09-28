@@ -45,16 +45,8 @@ export function generateMetadata({ params }: Props): Metadata {
       authors: [kurucu.ad],
       section: yazi.kategori,
       tags: yazi.etiketler,
-      images: [
-        {
-          url: "/assets/img/inner-project/showcase/background.jpg",
-          width: 1200,
-          height: 630,
-          alt: yazi.baslik,
-        },
-      ],
     },
-    twitter: { title: yazi.seoBaslik, description: yazi.seoAciklama },
+    twitter: { card: "summary_large_image", title: yazi.seoBaslik, description: yazi.seoAciklama },
   };
 }
 

@@ -6,7 +6,8 @@ type CounterProps = {
 }
 
 export default function CounterItem({ min, max }: CounterProps) {
-  const [counted, setCounted] = useState<number>(min);
+  // SSR ve JS'siz tarayicilar gercek degeri gorur; animasyon gorunumde baslar
+  const [counted, setCounted] = useState<number>(max);
   const targetElement = useRef<HTMLSpanElement>(null); // Add type annotation for useRef
 
   const startCountup = () => {

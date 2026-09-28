@@ -1,25 +1,25 @@
 @forward './hero';
-@forward './brand';
+// @forward 'brand'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
 @forward './service';
 @forward './project';
-@forward './award';
+// @forward 'award'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
 @forward './team';
-@forward './testimonial';
+// @forward 'testimonial'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
 @forward './about';
-@forward './video';
-@forward './gallery';
+// @forward 'video'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
+// @forward 'gallery'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
 @forward './instagram';
-@forward './cta';
+// @forward 'cta'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
 @forward './contact';
-@forward './social';
-@forward './price';
-@forward './funfact';
-@forward './shop';
-@forward './cart';
-@forward './checkout';
-@forward './order';
-@forward './profile';
-@forward './login';
+// @forward 'social'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
+// @forward 'price'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
+// @forward 'funfact'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
+// @forward 'shop'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
+// @forward 'cart'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
+// @forward 'checkout'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
+// @forward 'order'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
+// @forward 'profile'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
+// @forward 'login'; kullanilmiyor, 28 Eyl 2026 CSS temizligi (bkz. scripts/css-temizligi.md)
 @forward './liko-dark';
 @forward './tp_custom';
 @forward './error';

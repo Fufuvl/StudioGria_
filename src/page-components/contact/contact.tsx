@@ -48,9 +48,9 @@ const ContactMain = () => {
                     <div className="col-xl-12">
                       <div className="tm-hero-content text-center">
                         <span className="tm-hero-subtitle">Studio Gria</span>
-                        <h4 className="tm-hero-title tp-char-animation">
+                        <h1 className="tm-hero-title tp-char-animation">
                           Bizimle iletişime geçin
-                        </h4>
+                        </h1>
                       </div>
                     </div>
                   </div>

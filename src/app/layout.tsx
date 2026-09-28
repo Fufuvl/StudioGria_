@@ -12,9 +12,17 @@ import { ThemeProvider } from "next-themes";
 import LeadPopup from "@/components/modal/lead-popup";
 import MetaPixelEvents from "@/components/meta-pixel-events";
 import WhatsappFloat from "@/components/whatsapp-float";
+import { SiteBaglantilariSaglayici } from "@/components/site-baglantilari";
+import { hizmetler } from "@/data/hizmet-data";
+import { yazilariSirala } from "@/data/blog-yazilari";
+import { bolgeler } from "@/data/bolge-data";
 import { META_PIXEL_ID } from "@/utils/meta-pixel";
 import {
   SITE_URL,
+  kunye,
+  kurucu,
+  calismaSaatleri,
+  haritaAdresi,
   grafSemasi,
   kurulusSemasi,
   kurucuSemasi,
@@ -111,20 +119,36 @@ export const metadata: Metadata = {
     siteName: "Studio Gria",
     title: "Studio Gria - Dijital Medya Ajansı",
     description: "Studio Gria, İstanbul merkezli dijital medya ajansı. Sosyal medya yönetimi, marka kimliği tasarımı, web geliştirme ve AI destekli dijital çözümlerle markanızı büyütüyoruz.",
-    images: [
-      {
-        url: "/assets/img/inner-project/showcase/background.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Studio Gria - Dijital Medya Ajansı",
-      },
-    ],
+    // Gorsel: src/app/opengraph-image.tsx (her rota kendi kartini uretir)
   },
   twitter: {
     card: "summary_large_image",
     title: "Studio Gria - Dijital Medya Ajansı",
     description: "Studio Gria, İstanbul merkezli dijital medya ajansı. Sosyal medya yönetimi, marka kimliği tasarımı, web geliştirme ve AI destekli dijital çözümlerle markanızı büyütüyoruz.",
-    images: ["/assets/img/inner-project/showcase/background.jpg"],
+  },
+};
+
+// Footer'in site geneli bagladigi listeler: yalnizca baslik ve adres.
+// En yeni dort yazi site geneli baglanti alir.
+const siteBaglantilari = {
+  hizmetler: hizmetler.map((h) => ({ ad: h.ad, slug: h.slug })),
+  yazilar: yazilariSirala()
+    .slice(0, 4)
+    .map((y) => ({ baslik: y.baslik, slug: y.slug })),
+  bolgeler: bolgeler.map((b) => ({ ilce: b.ilce, slug: b.slug })),
+  kurum: {
+    ad: kunye.ad,
+    aciklama: kunye.aciklama,
+    sokak: kunye.adres.sokak,
+    ilce: kunye.adres.ilce,
+    il: kunye.adres.il,
+    postaKodu: kunye.adres.postaKodu,
+    telefon: kunye.telefon,
+    eposta: kunye.eposta,
+    harita: haritaAdresi,
+    saatler: calismaSaatleri,
+    kurucuAd: kurucu.ad,
+    kurucuBiyografi: kurucu.biyografi,
   },
 };
 
@@ -194,22 +218,16 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${gellery.variable} ${aladin.variable} ${syne_body.variable} ${syne_heading.variable} ${syne_p.variable} ${syne.variable} ${big_shoulders.variable} ${marcellus.variable}`}
       >
-        {/* Meta Pixel: JavaScript kapalı tarayıcılar için yedek izleme */}
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            alt=""
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
-          />
-        </noscript>
+        {/* Meta Pixel noscript yedegi BILINCLI OLARAK YOK: Next.js noscript
+            icindeki gorseli <head>'e preload olarak tasiyor ve JS acik her
+            ziyaretcide ikinci bir PageView gonderiyordu (28 Eyl 2026). */}
         <ThemeProvider defaultTheme="light">
+          <SiteBaglantilariSaglayici deger={siteBaglantilari}>
           {children}
           <LeadPopup />
           <WhatsappFloat />
           <MetaPixelEvents />
+          </SiteBaglantilariSaglayici>
         </ThemeProvider>
       </body>
     </html>

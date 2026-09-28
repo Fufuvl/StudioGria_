@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Hand } from "../svg";
+import { hizmetler } from "@/data/hizmet-data";
 
 // images
 import shape from "@/assets/img/inner-about/about/shape-1.png";
@@ -19,7 +21,7 @@ export default function AboutUsArea() {
                 <Image
                   data-speed=".7"
                   src={ab_1}
-                  alt="about-img"
+                  alt="Studio Gria ekibinin sahada çekim hazırlığı"
                   style={{ height: "auto" }}
                 />
               </div>
@@ -30,13 +32,13 @@ export default function AboutUsArea() {
                   data-speed="1.1"
                   className="inner-img z-index-5"
                   src={ab_2}
-                  alt="about-img"
+                  alt="Studio Gria prodüksiyonundan marka çekimi karesi"
                   style={{ height: "auto" }}
                 />
                 <Image
                   data-speed="0.9"
                   src={ab_3}
-                  alt="about-img"
+                  alt="Studio Gria prodüksiyonundan mekan çekimi karesi"
                   style={{ height: "auto" }}
                 />
               </div>
@@ -51,8 +53,10 @@ export default function AboutUsArea() {
                 Merhaba!
               </span>
               <p className="tp-dropcap tp_fade_bottom">
-                Studio Gria, markanızın dijital dünyada güçlü bir yere sahip olmasını sağlar.
-                Dijital deneyimler, maksimum etki ve sonuç sağlayan bir yolculuktur.
+                Studio Gria; sosyal medya yönetimi, fotoğraf ve video prodüksiyon,
+                reklam yönetimi ve marka kimliğini tek ekipte yürüten bir dijital
+                medya ajansıdır. İçeriği planlayan, çeken ve reklamını yöneten
+                aynı ekiptir.
               </p>
             </div>
           </div>
@@ -62,14 +66,14 @@ export default function AboutUsArea() {
             <div className="row">
               <div className="col-xl-5 col-lg-5 col-md-4 mb-40">
                 <div className="ab-about-category-title-box p-relative">
-                  <h4 className="ab-about-category-title">
-                    Yaptığımız Bazı<br />
-                    <span> Çalışmalar </span>
-                  </h4>
+                  <h2 className="ab-about-category-title">
+                    Neler<br />
+                    <span> yapıyoruz? </span>
+                  </h2>
                   <Image
                     className="ab-about-shape-1 d-none d-md-block"
                     src={shape}
-                    alt="shape"
+                    alt=""
                   />
                 </div>
               </div>
@@ -78,21 +82,22 @@ export default function AboutUsArea() {
                   <div className="col-xl-6 col-lg-6 col-md-6 mb-40">
                     <div className="ab-about-category-list category-space-1 tp_fade_bottom">
                       <ul>
-                        <li>Fotoğraf & Video Prodüksiyon</li>
-                        <li>Kurumsal Kimlik Tasarımı</li>
-                        <li>Sosyal Medya Yönetimi</li>
-                        <li>Marka Danışmanlığı</li>
-                        <li>Animasyon</li>
+                        {hizmetler.slice(0, 5).map((h) => (
+                          <li key={h.slug}>
+                            <Link href={`/hizmetler/${h.slug}`}>{h.ad}</Link>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
                   <div className="col-xl-6 col-lg-6 col-md-6 mb-40">
                     <div className="ab-about-category-list category-space-2 tp_fade_bottom">
                       <ul>
-                        <li>Kurumsal Kimlik</li>
-                        <li>Meta & Google Ads Reklam Yönetimi</li>
-                        <li>Grafik Tasarım</li>
-                        <li>Ürün Fotoğrafçılığı</li>
+                        {hizmetler.slice(5).map((h) => (
+                          <li key={h.slug}>
+                            <Link href={`/hizmetler/${h.slug}`}>{h.ad}</Link>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>

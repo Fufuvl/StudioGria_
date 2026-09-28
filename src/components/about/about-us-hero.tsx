@@ -35,13 +35,13 @@ export default function AboutUsHero() {
               data-stagger="0.08"
             >
               <span className="ab-inner-hero-subtitle">
-                Dijital <br /> Sosyal Medya Ajansı
+                Büyükçekmece merkezli <br /> sosyal medya ajansı
               </span>
               <h1 className="ab-inner-hero-title tp-char-animation">
-                Dijital <br /> 
-                Varlık Oluşturma
+                Sahada üreten <br />
+                dijital stüdyo
               </h1>
-              <p>Dijital deneyimler, maksimum etki ve sonuç sağlayan bir yolculuktur.</p>
+              <p>İçerik, çekim, tasarım ve reklam tek ekipte.</p>
             </div>
           </div>
         </div>
@@ -53,9 +53,10 @@ export default function AboutUsHero() {
               data-stagger="0.08"
             >
               <p>
-                Studio Gria, markanızın dijital dünyada güçlü bir yere sahip olmasını sağlar.
+                Studio Gria, içerik üretimi, tasarım ve reklam yönetimini tek
+                ekipte birleştiren bir dijital medya ajansıdır.
               </p>
-               <a className="tp-btn-white-sm border-style" href="#">Hakkımızda</a>
+              <a className="tp-btn-white-sm border-style" href="/teklif">Teklif Al</a>
             </div>
           </div>
         </div>

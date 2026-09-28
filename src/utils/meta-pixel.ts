@@ -7,7 +7,17 @@ export const META_PIXEL_ID =
 declare global {
   interface Window {
     fbq?: (...args: any[]) => void;
+    gtag?: (...args: any[]) => void;
   }
+}
+
+// GA4 olayi. Organik aramadan gelen musteriyi olcmenin tek yolu budur: form
+// dolduran ziyaretcinin kanali (Google organik, Meta, dogrudan) GA4'te bu
+// olay uzerinden gorulur. GA4'te "generate_lead" onemli etkinlik olarak
+// isaretlenmelidir.
+function ga4Olay(olay: string, params?: Record<string, unknown>) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  window.gtag("event", olay, params);
 }
 
 type PixelEventParams = Record<string, unknown>;
@@ -21,11 +31,16 @@ export function trackPixelEvent(event: string, params?: PixelEventParams) {
 // Form dolduran ziyaretçi: reklam optimizasyonunun hedef olayı
 export function trackLead(params?: PixelEventParams) {
   trackPixelEvent("Lead", params);
+  ga4Olay("generate_lead", {
+    form_adi: params?.content_name,
+    sektor: params?.content_category,
+  });
 }
 
 // İletişime geçme niyeti (WhatsApp, telefon, e-posta)
 export function trackContact(params?: PixelEventParams) {
   trackPixelEvent("Contact", params);
+  ga4Olay("iletisim_tiklama", params);
 }
 
 // Hizmet, portfolyo ve iletişim gibi niyet taşıyan sayfaların görüntülenmesi

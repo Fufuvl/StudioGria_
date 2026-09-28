@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description: sayfaAciklama,
   alternates: { canonical: "/gizlilik" },
   openGraph: { title: sayfaBaslik, description: sayfaAciklama, url: "/gizlilik" },
-  twitter: { title: sayfaBaslik, description: sayfaAciklama },
+  twitter: { card: "summary_large_image", title: sayfaBaslik, description: sayfaAciklama },
 };
 
 type Bolum = { baslik: string; paragraflar?: string[]; liste?: string[] };

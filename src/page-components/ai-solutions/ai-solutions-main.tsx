@@ -106,7 +106,7 @@ const AiSolutionsMain = () => {
                   <Image
                     className={styles.galeriGorsel}
                     src={oge.gorsel}
-                    alt={`${oge.tag} için yapay zeka ile üretilmiş ${oge.ad.toLowerCase()} görseli`}
+                    alt={`${oge.tag} için yapay zeka ile üretilmiş ${oge.ad.toLocaleLowerCase("tr-TR")} görseli`}
                     width={640}
                     height={800}
                     sizes="(max-width: 575px) 100vw, (max-width: 991px) 50vw, 400px"

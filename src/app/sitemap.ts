@@ -7,7 +7,10 @@ import { SITE_URL } from "@/data/kurulus-data";
 export default function sitemap(): MetadataRoute.Sitemap {
   // Alan adi tek kaynaktan gelir: src/data/kurulus-data.ts
   const baseUrl = SITE_URL;
-  const lastModified = new Date();
+  // Sabit sayfa, hizmet ve bolge iceriginin son gercek degisim tarihi. Her
+  // derlemede "bugun" yazmak Google'in lastmod sinyalini tamamen yok
+  // saymasina yol acar; icerik degistiginde bu tarih elle guncellenir.
+  const lastModified = new Date("2026-09-28");
 
   // Blog listesinin tazeligi en yeni yazinin tarihinden gelir; her derlemede
   // "bugun" yazmak arama motorlarina yanlis tazelik sinyali verir.

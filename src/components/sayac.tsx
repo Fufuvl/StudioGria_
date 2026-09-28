@@ -12,13 +12,18 @@ export default function Sayac({
   sonek?: string;
   sure?: number;
 }) {
-  const [deger, setDeger] = useState(0);
+  // Baslangic degeri hedeftir: sunucu HTML'i gercek rakami tasir (JS
+  // calistirmayan yapay zeka tarayicilari ve ilk boyama icin).
+  const [deger, setDeger] = useState(hedef);
   const ref = useRef<HTMLSpanElement>(null);
   const basladi = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // Ilk ekranda gorunen sayac animasyonsuz kalir; asagidaysa 0'dan sayar.
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    setDeger(0);
     const gozlemci = new IntersectionObserver(
       (girisler) => {
         if (!girisler[0].isIntersecting || basladi.current) return;

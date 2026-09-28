@@ -13,6 +13,7 @@ import FooterTwo from "@/layouts/footers/footer-two";
 import AboutUsHero from "@/components/about/about-us-hero";
 import AboutUsArea from "@/components/about/about-us-area";
 import FunFactOne from "@/components/fun-fact/fun-fact-one";
+import HakkimizdaIcerik from "@/components/about/hakkimizda-icerik";
 // animation
 import { charAnimation, fadeAnimation, titleAnimation } from "@/utils/title-animation";
 import { hoverBtn } from "@/utils/hover-btn";
@@ -46,6 +47,7 @@ const AboutUsMain = () => {
 
             {/* about area */}
             <AboutUsArea />
+            <HakkimizdaIcerik />
             {/* about area */}
 
             {/* fun fact area */}

@@ -49,7 +49,11 @@ const yapayZekaTarayicilari = [
 ];
 
 export default function robots(): MetadataRoute.Robots {
-  const yasakliYollar = ["/api/", "/_next/"];
+  // /_next/ ENGELLENMEZ: Googlebot sayfayi CSS ve JS ile birlikte render eder,
+  // /_next/image altindaki gorseller de Google Gorseller'e buradan girer.
+  // Engellemek sayfanin stilsiz degerlendirilmesine ve gorsel dizinlemenin
+  // tamamen kapanmasina yol acar (28 Eyl 2026 denetimi).
+  const yasakliYollar = ["/api/"];
 
   return {
     rules: [
@@ -66,6 +70,5 @@ export default function robots(): MetadataRoute.Robots {
       })),
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
   };
 }

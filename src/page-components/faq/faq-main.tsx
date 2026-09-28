@@ -49,7 +49,7 @@ const FaqMain = () => {
                     <div className="col-xl-12">
                       <div className="tm-hero-content text-center">
                         <span className="tm-hero-subtitle">Studio Gria</span>
-                        <h4 className="tm-hero-title tp-char-animation">Studio SSS</h4>
+                        <h1 className="tm-hero-title tp-char-animation">Sıkça sorulan sorular</h1>
                       </div>
                       <div className="tm-hero-text tp_title_anim">
                         <p>

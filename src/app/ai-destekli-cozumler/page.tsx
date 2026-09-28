@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     title: sayfaBaslik,
     description: sayfaAciklama,
     url: "https://www.studiogria.com/ai-destekli-cozumler",
-    images: [{ url: "/assets/img/ai-solutions/brand-mix/matcha-hero.jpg", width: 1200, height: 630, alt: "Yapay zeka ile üretilmiş ürün görseli" }],
   },
   twitter: {
+    card: "summary_large_image",
     title: sayfaBaslik,
     description: sayfaAciklama,
   },

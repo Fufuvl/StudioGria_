@@ -171,10 +171,10 @@ export const bolgeler: Bolge[] = [
   {
     slug: "basaksehir-sosyal-medya-ajansi",
     ilce: "Başakşehir",
-    seoBaslik: "Başakşehir Sosyal Medya Ajansı | Studio Gria",
+    seoBaslik: "Başakşehir ve Bahçeşehir Sosyal Medya Ajansı | Studio Gria",
     seoAciklama:
-      "Başakşehir ve Bahçeşehir'de kurumsal firmalar, klinikler ve konut projeleri için sosyal medya yönetimi, prodüksiyon ve reklam hizmeti.",
-    h1: "Başakşehir sosyal medya ajansı",
+      "Başakşehir ve Bahçeşehir'de klinikler, konut projeleri ve kurumsal firmalar için sosyal medya yönetimi, drone çekimi ve reklam hizmeti. Teklif alın.",
+    h1: "Başakşehir ve Bahçeşehir sosyal medya ajansı",
     giris:
       "Başakşehir, planlı yerleşim yapısı ve kurumsal iş merkezleriyle Batı İstanbul'un en yeni ticari merkezlerinden biri. Buradaki işletmelerin beklentisi genelde daha kurumsal bir görsel dil oluyor.",
     doku: [
@@ -203,6 +203,82 @@ export const bolgeler: Bolge[] = [
       },
     ],
     mesafeNotu: "Stüdyomuza yaklaşık otuz dakika mesafede, Bahçeşehir hattında düzenli çalışıyoruz.",
+  },
+
+  {
+    slug: "kucukcekmece-sosyal-medya-ajansi",
+    ilce: "Küçükçekmece",
+    seoBaslik: "Küçükçekmece Sosyal Medya Ajansı | Studio Gria",
+    seoAciklama:
+      "Küçükçekmece'de sosyal medya yönetimi, içerik üretimi ve reklam hizmeti. Halkalı, Sefaköy ve Atakent'teki yerel işletmeler için teklif alın.",
+    h1: "Küçükçekmece sosyal medya ajansı",
+    giris:
+      "Küçükçekmece, yoğun konut dokusuyla Batı İstanbul'un en kalabalık ilçelerinden biri ve ticari hayatı da buna göre şekilleniyor. Büyük zincirlerin değil, mahallesinde tanınan yerel işletmelerin ağırlıkta olduğu bir ilçe; burada sosyal medyanın işi, yakındaki müşteriye işletmenin varlığını ve farkını düzenli olarak hatırlatmak.",
+    doku: [
+      "İlçenin ticari hayatı büyük ölçüde cadde ve mahalle ölçeğinde dönüyor. Halkalı, Sefaköy ve Atakent gibi semtlerde fırından kuaföre, kafeden optik mağazasına kadar zincir olmayan işletmeler aynı müşteri için yarışıyor. Bu işletmelerin en güçlü kozu yakınlık ve tanıdıklık; içerik de bu samimiyeti taşımalı, uzaktan çekilmiş kurumsal bir tanıtım gibi durmamalı.",
+      "Yoğun konut nüfusu sağlık ve eğitim hizmetlerine de güçlü bir talep yaratıyor. Diş klinikleri, fizik tedavi merkezleri, kurslar ve anaokulları için sosyal medya bir güven belgesi işlevi görüyor. Veli ya da hasta kapıdan girmeden önce ekibi, ortamı ve işleyişi görmek istiyor; abartılı vaat yerine süreci şeffaf gösteren içerik burada daha iyi karşılık buluyor.",
+      "Göl çevresi ise yeme içme ve hafta sonu gezmesi için ayrı bir hareketlilik yaratıyor. Bu hatta çalışan mekanlar için manzara ve atmosfer, çoğu zaman menüden önce satılan şey oluyor; doğru saatte çekilmiş bir mekan videosu burada tanıtım metninden daha fazla iş görüyor.",
+    ],
+    odak: [
+      {
+        baslik: "Semt bazlı reklam kurgusu",
+        metin:
+          "Küçükçekmece geniş bir ilçe; Halkalı'daki bir işletmenin müşterisi ile Atakent'teki bir işletmenin müşterisi aynı kişi değil. Reklam hedeflemesini ilçe geneline değil, işletmenin gerçekten hizmet verdiği semte ve çevresine göre kuruyoruz.",
+        hizmetSlug: "reklam-yonetimi",
+      },
+      {
+        baslik: "Klinik ve eğitim kurumları için güven içeriği",
+        metin:
+          "Ekip tanıtımı, ortamın gerçek görüntüsü ve sürecin adım adım anlatımı; bu kurumlarda randevu ve kayıt kararını en çok etkileyen içerikler. Çekimi mahremiyet ve mevzuat kurallarına uygun şekilde planlıyoruz.",
+        hizmetSlug: "sosyal-medya-yonetimi",
+      },
+      {
+        baslik: "Cadde işletmeleri için düzenli kısa video",
+        metin:
+          "Yerel işletmenin hesabı düzenli ve samimi kısa videolarla canlı kalır. Çekim günlerini toplu planlayarak birkaç haftalık içeriği tek seferde üretebiliyoruz.",
+        hizmetSlug: "fotograf-video-produksiyon",
+      },
+    ],
+    mesafeNotu:
+      "Büyükçekmece'deki stüdyomuzun doğusundaki komşu ilçe; planlı çekimlerin yanında gerektiğinde aynı gün sahada olabiliyoruz.",
+  },
+
+  {
+    slug: "silivri-sosyal-medya-ajansi",
+    ilce: "Silivri",
+    seoBaslik: "Silivri Sosyal Medya Ajansı | Studio Gria",
+    seoAciklama:
+      "Silivri'de oteller, tatil tesisleri, bungalovlar ve sahil restoranları için sosyal medya yönetimi, drone çekimi ve sezon reklamları. Teklif alın.",
+    h1: "Silivri sosyal medya ajansı",
+    giris:
+      "Silivri'nin ticari takvimi büyük ölçüde mevsime bağlı. Yaz aylarında ve hafta sonlarında sahil hattı, yazlıklar ve tatil tesisleri hareketleniyor; kışın ise yerel müşteriyle ayakta kalan bir ekonomi devreye giriyor. Sosyal medya planı da bu iki farklı dönemi ayrı ayrı düşünmek zorunda.",
+    doku: [
+      "İlçenin en görünür sektörü konaklama ve hafta sonu turizmi. Tatil tesisleri, butik oteller ve bungalov işletmeleri için sosyal medya çoğu zaman rezervasyonun başladığı yer; misafir fiyatı sormadan önce mekanın havasını, odasını ve çevresini görmek istiyor. Bu işletmelerde doğru çekilmiş bir mekan videosu, rezervasyon kanalına en kısa yoldan ziyaretçi getiren içerik oluyor.",
+      "Sahil hattındaki restoranlar ve balık lokantaları için rekabet manzara ve atmosfer üzerinden ilerliyor. Aynı sahilde yan yana duran mekanlar arasındaki tercih, çoğu zaman misafirin Instagram'da gördüğü bir gün batımı karesiyle yapılıyor.",
+      "Silivri aynı zamanda tarım ve gıda üretiminin güçlü olduğu bir ilçe. Yerel üreticiler ve gıda markaları için içerik, ürünün nereden geldiğini ve nasıl üretildiğini göstermeye dayanıyor; tarladan ya da üretim yerinden çekilmiş görüntüler, ambalajlı ürün fotoğrafından daha fazla güven veriyor.",
+    ],
+    odak: [
+      {
+        baslik: "Sezona göre reklam takvimi",
+        metin:
+          "Konaklama kararları sezondan haftalar önce veriliyor. Reklam bütçesini yıla eşit yaymak yerine sezon öncesi ve hafta sonu öncesi dönemlere yoğunlaştırıyor, kış aylarında yerel kitleye dönük kampanyalarla işletmeyi görünür tutuyoruz.",
+        hizmetSlug: "reklam-yonetimi",
+      },
+      {
+        baslik: "Tesis ve sahil için havadan çekim",
+        metin:
+          "Havuzun denize, bungalovun doğaya ya da tesisin sahile olan ilişkisini tek karede göstermenin en iyi yolu drone çekimi. Uçuş planını ışığın en güçlü olduğu saatlere göre kuruyoruz.",
+        hizmetSlug: "drone-cekimleri",
+      },
+      {
+        baslik: "Rezervasyon odaklı içerik akışı",
+        metin:
+          "Oda, kahvaltı, çevre ve deneyim; misafirin rezervasyondan önce görmek istediği her şeyi planlı bir içerik akışına dönüştürüyor, profilden rezervasyon kanalına giden yolu kısaltıyoruz.",
+        hizmetSlug: "sosyal-medya-yonetimi",
+      },
+    ],
+    mesafeNotu:
+      "Büyükçekmece'deki stüdyomuzun batısında; sezon öncesi ve hafta sonu çekimlerini önceden planlayarak bölgede çalışıyoruz.",
   },
 ];
 

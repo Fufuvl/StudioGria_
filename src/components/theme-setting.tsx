@@ -7,8 +7,6 @@ const  ThemeSetting = () => {
   const { setTheme, theme } = useTheme();
   const [settingOpen, setSettingOpen] = React.useState(false);
 
-  console.log('theme', theme);
-
   function handleOpenSetting() {
     setSettingOpen(!settingOpen);
   };
@@ -49,6 +47,7 @@ const  ThemeSetting = () => {
             <div className="tp-theme-settings-open">
               <button
                 className="tp-theme-settings-open-btn"
+                aria-label="Görünüm modu ayarları"
                 onClick={handleOpenSetting}
               >
                 <span className="tp-theme-settings-gear">

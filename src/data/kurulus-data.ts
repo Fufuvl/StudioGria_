@@ -45,16 +45,33 @@ export const kunye = {
 // DOLDURULACAK: Google Isletme Profili'ndeki calisma saatleriyle birebir
 // ayni olmali. Farkli olursa Google celiskiyi gorur ve ikisine de guvenmez.
 // Saatler dogrulanana kadar bos birakildi; bos oldugunda semaya eklenmez.
+// 28 Eyl 2026'da Google Haritalar kaydindan birebir alindi:
+// Pazartesi-Cuma 10:00-17:00, Cumartesi ve Pazar kapali.
 export const calismaSaatleri: {
   gunler: string[];
   acilis: string;
   kapanis: string;
-}[] = [];
+}[] = [
+  {
+    gunler: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    acilis: "10:00",
+    kapanis: "17:00",
+  },
+];
 
 // DOLDURULACAK: Google Isletme Profili > Konum > enlem ve boylam.
 // Yanlis koordinat harita ignesini yanlis yere koyar, bu yuzden tahmin
 // yazilmaz. Deger girildiginde yerel sema otomatik olarak geo alanini alir.
-export const koordinat: { enlem: number; boylam: number } | null = null;
+// 28 Eyl 2026'da Google Haritalar kaydindan alindi (Demir Plaza, Mimaroba).
+export const koordinat: { enlem: number; boylam: number } | null = {
+  enlem: 41.0071784,
+  boylam: 28.5377901,
+};
+
+// Google Haritalar kaydinin kalici adresi (CID). Kurulus semasinda hasMap
+// olarak yer alir; Google'in web sitesi ile Isletme Profili'ni ayni varlik
+// olarak eslestirmesini kolaylastirir.
+export const haritaAdresi = "https://www.google.com/maps?cid=13148170818970902705";
 
 export const kurucu = {
   ad: "Fuat Dilek",
@@ -73,6 +90,10 @@ export const hizmetBolgeleri = [
   "Esenyurt",
   "Avcılar",
   "Başakşehir",
+  "Bahçeşehir",
+  "Küçükçekmece",
+  "Silivri",
+  "Çatalca",
   "İstanbul",
   "Türkiye",
 ];
@@ -161,6 +182,8 @@ export function kurulusSemasi() {
       })),
     },
   };
+
+  sema.hasMap = haritaAdresi;
 
   if (koordinat) {
     sema.geo = {

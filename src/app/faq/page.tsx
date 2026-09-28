@@ -22,16 +22,8 @@ export const metadata: Metadata = {
     title: sayfaBaslik,
     description: sayfaAciklama,
     url: "/faq",
-    images: [
-      {
-        url: "/assets/img/inner-project/showcase/background.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Studio Gria sıkça sorulan sorular",
-      },
-    ],
   },
-  twitter: { title: sayfaBaslik, description: sayfaAciklama },
+  twitter: { card: "summary_large_image", title: sayfaBaslik, description: sayfaAciklama },
 };
 
 // Soru-cevap metni src/data/sss-data.ts'ten gelir. Sayfada gorunen akordeon
