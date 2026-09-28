@@ -7,7 +7,6 @@ import details_thumb_3 from '@/assets/img/inner-project/showcase/3.jpg';
 import hero_gorsel from '@/assets/img/inner-project/showcase/background.jpg';
 import social_data from '@/data/social-data';
 import AnasayfaHizmetler, { AnasayfaHizmet } from '@/components/anasayfa-hizmetler';
-import HeroVideo from '@/components/hero-video';
 import {
   AnasayfaKanit,
   AnasayfaRehberler,
@@ -67,15 +66,10 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
             placeholder="blur"
             style={{ objectFit: "cover", objectPosition: "center" }}
           />
-          {/* Sahadan sessiz dongu: yalnizca Studio Gria'nin kendi drone cekimleri
-              (DJI Air 3S, 7-8 Haziran 2026), dikey kayitlardan kare kirpilmis 15 sn.
-              Tanitim filmindeki yer cekimleri Gria'ya ait olmadigi icin kullanilmaz.
-              Kaynak: Gria - Firmalar/The Oba Hotel/Kurgu/Drone/Air 3s/Video */}
-          <HeroVideo
-            masaustu="/assets/video/oba-drone-960.mp4"
-            mobil="/assets/video/oba-drone-640.mp4"
-            etiket="Sahadan: The Oba Hotel, drone çekimi"
-          />
+          {/* Hero videosu (src/components/hero-video.tsx) 28 Eyl 2026 itibariyla
+              kapali: kullanici kendi hero videosunu hazirlayacak. Gelince dosyalari
+              public/assets/video/ altina koyup HeroVideo bilesenini buraya
+              masaustu/mobil/etiket proplariyla eklemek yeterli. */}
         </div>
       </div>
       {/* hero */}
