@@ -65,7 +65,7 @@ export const blogYazilari: BlogYazisi[] = [
     baslik: "Sosyal medya ajansı fiyatları: bütçe neye göre belirlenir?",
     seoBaslik: "Sosyal Medya Ajansı Fiyatları 2026: Aylık Ücret Tablosu",
     seoAciklama:
-      "2026'da sosyal medya ajansı aylık ücretleri kapsama göre 8.000 ile 30.000 TL arasında. Fiyat tablosu, teklifte bakılacak kalemler ve ucuz teklifin maliyeti.",
+      "2026'da tam hizmet sosyal medya ajansı ücretleri: çekimsiz yönetim 25.000 TL'den, prodüksiyonlu 45.000 TL'den başlar. Fiyat tablosu ve teklifte bakılacaklar.",
     ozet:
       "Ajans tekliflerini karşılaştırırken bakmanız gereken kalemler, fiyatı gerçekten belirleyen değişkenler ve ucuz teklifin gizli maliyeti.",
     tarih: "2026-06-18",
@@ -82,24 +82,22 @@ export const blogYazilari: BlogYazisi[] = [
         ],
       },
       {
-        baslik: "2026 piyasa aralıkları: aylık ücret tablosu",
+        baslik: "2026'da tam hizmet ajans fiyatları: aylık ücret tablosu",
         paragraflar: [
-          "Ağustos 2026'da yayımlanmış Türkiye ajans fiyat rehberlerini taradık. Aylık hizmet ücretleri, reklam bütçesi hariç, kapsama göre kabaca şu aralıklarda seyrediyor:",
+          "Aşağıdaki aralıklar, sahada prodüksiyon yapan ve reklamı da yöneten tam hizmet bir ajansın 2026 fiyat düzeyini gösterir. Rakamlar reklam bütçesi hariçtir:",
         ],
         tablo: {
           basliklar: ["Hizmet kapsamı", "Aylık ücret (reklam bütçesi hariç)"],
           satirlar: [
-            ["Temel sosyal medya yönetimi", "8.000 - 12.000 TL"],
-            ["Orta kapsamlı sosyal medya yönetimi", "12.000 - 18.000 TL"],
-            ["Reklam yönetimi dahil tam kapsam", "18.000 - 30.000 TL"],
-            ["Kurumsal, çok kanallı yönetim", "35.000 TL ve üzeri"],
-            ["Yalnızca Meta reklam yönetimi, yerel işletme", "7.000 - 15.000 TL"],
-            ["Yalnızca Meta reklam yönetimi, e-ticaret", "15.000 - 85.000 TL"],
+            ["Sosyal medya yönetimi (çekimsiz: strateji, tasarım, yayın, rapor)", "25.000 - 35.000 TL"],
+            ["Prodüksiyonlu sosyal medya (aylık saha çekimi dahil)", "45.000 - 90.000 TL"],
+            ["Reklam yönetimi (Meta ve Google, tek başına)", "20.000 TL'den başlar"],
+            ["Entegre ve kurumsal (çok kanal, çok marka)", "90.000 TL ve üzeri"],
           ],
-          not: "Kaynak: Ağustos 2026'da yayımlanmış Türkiye ajans fiyat rehberlerinin derlemesi. Rakamlar yaklaşık aralıklardır ve reklam bütçesini içermez.",
+          not: "Kaynak: Studio Gria'nın 2026 teklifleri. Kesin ücret, kapsam netleştikten sonra teklif sunumunda yazılır.",
         },
         sonParagraflar: [
-          "Bu tablo bir fiyat listesi değil, piyasanın genel görünümüdür. Aynı aralıktaki iki teklif, üretimin sahada mı yoksa sizin gönderdiğiniz görsellerle mi yapıldığına göre bambaşka işler anlatabilir. Bir teklifi aralığın neresinde durduğuna göre değil, o ücrete ayda kaç özgün içerik ve kaç saha çekimi düştüğüne göre değerlendirin.",
+          "Piyasada bu rakamların çok altında teklifler de bulunur. Bunlar genellikle freelance ya da yalnızca sizin gönderdiğiniz görselleri paylaşan hizmetlerdir; sahada çekim, kurgu ve reklam yönetimi içermez. Teklifleri karşılaştırırken aralığa değil, o ücrete ayda kaç özgün içerik ve kaç saha çekimi düştüğüne bakın.",
         ],
       },
       {
@@ -139,9 +137,9 @@ export const blogYazilari: BlogYazisi[] = [
     ],
     guncelleme: "2026-09-28",
     kisaCevap:
-      "2026'da Türkiye'de sosyal medya ajanslarının aylık ücreti, reklam bütçesi hariç, kapsama göre yaklaşık 8.000 ile 30.000 TL arasında değişir; kurumsal çok kanallı işlerde 35.000 TL'yi aşar. Farkı belirleyen asıl kalem içeriğin kim tarafından üretildiğidir: yalnızca yayın yönetimi mi, yoksa sahada çekim, kurgu ve reklam yönetimi de dahil mi? Teklifleri aylık özgün içerik ve saha çekimi sayısıyla karşılaştırın.",
+      "2026'da sahada prodüksiyon yapan tam hizmet bir sosyal medya ajansında aylık ücret, reklam bütçesi hariç, çekimsiz yönetimde 25.000 TL'den, prodüksiyonlu yönetimde 45.000 TL'den başlar; entegre ve kurumsal işler 90.000 TL'yi aşar. Çok daha düşük teklifler genellikle yalnızca paylaşım yapan hizmetlerdir. Farkı, içeriğin kim tarafından ve sahada üretilip üretilmediği belirler.",
     anahtarCikarimlar: [
-      "2026'da aylık ajans ücretleri, reklam bütçesi hariç, kapsama göre kabaca 8.000 ile 30.000 TL arasındadır; kurumsal çok kanallı işler 35.000 TL'yi aşar.",
+      "2026'da tam hizmet ajanslarda aylık ücret, reklam bütçesi hariç, çekimsiz yönetimde 25.000 TL'den, prodüksiyonlu yönetimde 45.000 TL'den başlar.",
       "Fiyat farkının asıl kaynağı üretim biçimidir: yalnızca yayın yönetimi mi, yoksa sahada çekim ve kurgu da dahil mi?",
       "Sağlıklı bir teklifte aylık içerik adedi, saha çekim günü, revizyon hakkı ve raporlama sıklığı adetle yazılıdır.",
       "Reklam bütçesi ajans ücretinden ayrı bir kalemdir; tamamı doğrudan Meta ya da Google'a gider.",
@@ -152,12 +150,12 @@ export const blogYazilari: BlogYazisi[] = [
       {
         soru: "Sosyal medya ajansı aylık ne kadar tutar?",
         cevap:
-          "2026 piyasasında aylık ücretler, reklam bütçesi hariç, temel yönetimde 8.000 ile 12.000 TL, orta kapsamda 12.000 ile 18.000 TL, reklam yönetimi dahil tam kapsamda 18.000 ile 30.000 TL arasında seyrediyor. Kesin rakamı üretilen özgün içerik adedi, saha çekim günü sayısı, yönetilen platformlar ve reklam yönetiminin dahil olup olmadığı belirler. Studio Gria olarak önce ihtiyaç analizi yapar, ardından markaya özel bir teklif sunumu hazırlarız.",
+          "Sahada prodüksiyon yapan tam hizmet bir ajansta 2026'da aylık ücret, reklam bütçesi hariç, çekimsiz yönetimde 25.000 ile 35.000 TL, aylık saha çekimi içeren prodüksiyonlu yönetimde 45.000 ile 90.000 TL arasındadır. Kesin rakamı üretilen özgün içerik adedi, saha çekim günü sayısı, yönetilen platformlar ve reklam yönetiminin dahil olup olmadığı belirler. Studio Gria olarak önce ihtiyaç analizi yapar, ardından markaya özel bir teklif sunumu hazırlarız.",
       },
       {
         soru: "Meta reklam yönetimi ücreti ne kadar?",
         cevap:
-          "Yalnızca reklam yönetimi hizmetinde aylık ücret, yerel işletmeler için yaklaşık 7.000 ile 15.000 TL, satış odaklı e-ticaret hesaplarında 15.000 ile 85.000 TL arasında değişiyor. Bu ücret reklam bütçesinden ayrıdır; bütçe doğrudan Meta'ya ödenir.",
+          "Reklam yönetimini tek başına aldığınızda aylık ücret 20.000 TL'den başlar; hesap sayısı, kampanya hacmi ve raporlama ihtiyacı arttıkça yükselir. Bu ücret reklam bütçesinden ayrıdır; bütçe doğrudan Meta'ya ödenir.",
       },
       {
         soru: "Reklam bütçesi ajans ücretine dahil mi?",

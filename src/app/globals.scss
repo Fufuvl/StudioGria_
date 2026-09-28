@@ -758,3 +758,19 @@
     display: none;
   }
 }
+
+/* Footer Bolgeler kolonu: Istanbul geneline cikinca 17 ilce tek sutunda cok
+   uzuyordu. Adlar yan yana akar, tum ilce baglantilari HTML'de kalir. */
+.tp-footer-2-widget .tp-footer-2-widget-menu ul.sg-footer-bolgeler {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+
+  li {
+    margin-bottom: 0;
+  }
+
+  li a {
+    font-size: 16px;
+  }
+}

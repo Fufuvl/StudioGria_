@@ -151,7 +151,9 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
               <div className="tp-footer-2-widget footer-col-2-2">
                 <div className="tp-footer-2-widget-menu">
                   <h2 className="tp-footer-2-widget-title">Bölgeler</h2>
-                  <ul>
+                  {/* 17 ilce tek sutunda cok uzuyordu; adlar yan yana akar,
+                      tum baglantilar HTML'de kalir (globals.scss) */}
+                  <ul className="sg-footer-bolgeler">
                     {bolgeMenu.map((item) => (
                       <li key={item.title}>
                         <Link href={item.link}>{item.title}</Link>

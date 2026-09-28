@@ -65,8 +65,9 @@ const ContactLocation = () => {
           <h2 className="sg-hk-baslik">Hizmet verdiğimiz ilçeler</h2>
           <div className="sg-hk-metin">
             <p>
-              Batı İstanbul&apos;daki işletmelerle sahada çalışıyor, İstanbul ve
-              Türkiye genelindeki markaların hesaplarını uzaktan yönetiyoruz.
+              İstanbul&apos;un Avrupa ve Anadolu yakasındaki işletmelerle sahada
+              çalışıyor, Türkiye genelindeki markaların hesaplarını uzaktan
+              yönetiyoruz.
             </p>
             <p className="sg-hk-bolgeler">
               {bolgeler.map((b, i) => (

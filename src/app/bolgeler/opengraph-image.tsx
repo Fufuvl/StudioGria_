@@ -8,6 +8,6 @@ export const contentType = OG_TUR;
 export default function Gorsel() {
   return ogKart({
     ust: "Hizmet bölgeleri",
-    baslik: "Batı İstanbul'da sahadayız",
+    baslik: "İstanbul'un tamamında sahadayız",
   });
 }

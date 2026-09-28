@@ -85,9 +85,9 @@ export default function HakkimizdaIcerik() {
           <div className="sg-hk-metin">
             <p>
               Stüdyomuz {kurum.sokak}, {kurum.ilce} /{" "}
-              {kurum.il} adresinde. Batı İstanbul&apos;da çekim için
-              sahaya hızlı çıkıyoruz; İstanbul ve Türkiye genelindeki
-              markaların hesaplarını uzaktan yönetiyoruz.
+              {kurum.il} adresinde. İstanbul&apos;un Avrupa ve Anadolu
+              yakasında sahada çekim yapıyor, Türkiye genelindeki markaların
+              hesaplarını uzaktan yönetiyoruz.
             </p>
             <p className="sg-hk-bolgeler">
               {bolgeler.map((b, i) => (

@@ -7,6 +7,7 @@ import details_thumb_3 from '@/assets/img/inner-project/showcase/3.jpg';
 import hero_gorsel from '@/assets/img/inner-project/showcase/background.jpg';
 import social_data from '@/data/social-data';
 import AnasayfaHizmetler, { AnasayfaHizmet } from '@/components/anasayfa-hizmetler';
+import HeroVideo from '@/components/hero-video';
 import {
   AnasayfaKanit,
   AnasayfaRehberler,
@@ -66,6 +67,13 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
             placeholder="blur"
             style={{ objectFit: "cover", objectPosition: "center" }}
           />
+          {/* Sahadan sessiz dongu: The Oba Hotel tanitim filminden 16 sn.
+              Kaynak: Gria - Firmalar/The Oba Hotel/Cikti Reels/Tanitim-ObaHotel26-27.mp4 */}
+          <HeroVideo
+            masaustu="/assets/video/oba-hero-1280.mp4"
+            mobil="/assets/video/oba-hero-854.mp4"
+            etiket="Sahadan: The Oba Hotel, drone ve tanıtım filmi"
+          />
         </div>
       </div>
       {/* hero */}
@@ -88,7 +96,7 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
                 </div>
                 <div className="col-xl-8">
                   <div className="showcase-details-overview-right">
-                      <p className="tp_title_anim">Studio Gria, Büyükçekmece merkezli bir sosyal medya ajansıdır. İçerik planı, fotoğraf ve video çekimi, tasarım, Meta ve Google reklam yönetimi tek ekipte yürür; bu yüzden markanızın hesabı başka ajanslara parça parça dağılmaz. Otelden restorana, spor kulübünden e-ticaret markasına kadar 39&apos;dan fazla markayla çalıştık.</p>
+                      <p className="tp_title_anim">Studio Gria, İstanbul merkezli tam hizmet bir sosyal medya ajansıdır. İçerik planı, fotoğraf ve video çekimi, tasarım, Meta ve Google reklam yönetimi tek ekipte yürür; bu yüzden markanızın hesabı başka ajanslara parça parça dağılmaz. Otelden restorana, spor kulübünden e-ticaret markasına kadar 39&apos;dan fazla markayla çalıştık.</p>
                       <div className="showcase-details-overview-info">
                         <div className="showcase-details-overview-info-item tp_fade_bottom">
                             <div className="row align-items-center">
@@ -161,7 +169,7 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
                 </div>
                 <div className="col-xl-8">
                   <div className="showcase-details-overview-right tp_title_anim">
-                      <p>Sosyal medyanın işi beğeni toplamak değil, müşteri getirmektir. Bu yüzden her içeriği bir amaca bağlarız: mesaj, rezervasyon, form ya da satış. Çekimi sahada kendimiz yaparız, hazır şablon kullanmayız ve reklam bütçenizin nereye harcandığını her ay rakamla gösteririz. Büyükçekmece, Beylikdüzü, Esenyurt, Avcılar ve Başakşehir&apos;de aynı gün sahada olabiliyor, İstanbul ve Türkiye genelinde uzaktan yönetim yapıyoruz.</p>
+                      <p>Sosyal medyanın işi beğeni toplamak değil, müşteri getirmektir. Bu yüzden her içeriği bir amaca bağlarız: mesaj, rezervasyon, form ya da satış. Çekimi sahada kendimiz yaparız, hazır şablon kullanmayız ve reklam bütçenizin nereye harcandığını her ay rakamla gösteririz. İstanbul&apos;un iki yakasında da sahada çekim yapıyor, Türkiye genelindeki markaların hesaplarını uzaktan yönetiyoruz.</p>
                   </div>
                 </div>
             </div>

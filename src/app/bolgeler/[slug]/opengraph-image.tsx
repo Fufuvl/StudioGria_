@@ -15,6 +15,6 @@ export default function Gorsel({ params }: { params: { slug: string } }) {
   const kayit = bolgeler.find((b) => b.slug === params.slug);
   return ogKart({
     ust: "Hizmet bölgesi",
-    baslik: kayit?.h1 ?? "Batı İstanbul sosyal medya ajansı",
+    baslik: kayit?.h1 ?? "İstanbul sosyal medya ajansı",
   });
 }

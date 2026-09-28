@@ -13,9 +13,15 @@ import {
 } from "@/data/kurulus-data";
 import styles from "./bolgeler.module.scss";
 
-const sayfaBaslik = "Hizmet Bölgelerimiz: Batı İstanbul | Studio Gria";
+const sayfaBaslik = "İstanbul Sosyal Medya Ajansı: Hizmet Bölgeleri | Studio Gria";
 const sayfaAciklama =
-  "Büyükçekmece, Beylikdüzü, Esenyurt, Avcılar ve Başakşehir'de sosyal medya yönetimi, prodüksiyon ve reklam hizmeti. Stüdyomuz Büyükçekmece'de.";
+  "İstanbul'un Avrupa ve Anadolu yakasında sosyal medya yönetimi, prodüksiyon ve reklam hizmeti. İlçe ilçe nasıl çalıştığımızı görün, teklif alın.";
+
+// Iki yaka ayri listelenir; ilce sirasi bolge-data.ts'deki siradir
+const YAKALAR = [
+  { ad: "Avrupa Yakası", anahtar: "Avrupa" },
+  { ad: "Anadolu Yakası", anahtar: "Anadolu" },
+] as const;
 
 export const metadata: Metadata = {
   title: sayfaBaslik,
@@ -72,32 +78,40 @@ export default function BolgelerPage() {
           <div className={styles.kapsayici}>
             <span className={`${styles.rozet} sg-gir sg-gir-1`}>Hizmet bölgelerimiz</span>
             <h1 className={`${styles.heroBaslik} sg-gir sg-gir-2`}>
-              Batı İstanbul&apos;da sahadayız
+              İstanbul&apos;un tamamında sahadayız
             </h1>
             <p className={`${styles.heroSpot} sg-gir sg-gir-3`}>
-              Stüdyomuz Büyükçekmece&apos;de. Çekim gerektiren işlerde yakınlık
-              gerçek bir avantaj: plan yapmak yerine aynı gün sahaya çıkabiliyoruz.
-              Türkiye genelinde uzaktan yürüttüğümüz işler de var, ancak aşağıdaki
-              ilçelerde düzenli olarak yerindeyiz.
+              Stüdyomuz Büyükçekmece&apos;de, ekibimiz İstanbul&apos;un iki
+              yakasında çekim yapıyor. Çekim günlerini önceden takvimliyor, ekip ve
+              ekipmanla sahaya geliyoruz; Türkiye genelindeki markaların hesaplarını
+              ise uzaktan yönetiyoruz. Aşağıda her ilçenin işletme dokusuna göre
+              nasıl çalıştığımızı anlattık.
             </p>
           </div>
         </section>
 
-        <section className={styles.bolum}>
-          <div className={styles.kapsayici}>
-            <div className={styles.odakIzgara}>
-              {bolgeler.map((bolge) => (
-                <div className={styles.odakKart} key={bolge.slug}>
-                  <h2 className={styles.odakBaslik}>{bolge.ilce}</h2>
-                  <p className={styles.odakMetin}>{bolge.giris}</p>
-                  <Link className={styles.odakBag} href={`/bolgeler/${bolge.slug}`}>
-                    Detaylar
-                  </Link>
+        {YAKALAR.map((yaka) => {
+          const liste = bolgeler.filter((b) => b.yaka === yaka.anahtar);
+          if (liste.length === 0) return null;
+          return (
+            <section className={styles.bolum} key={yaka.anahtar}>
+              <div className={styles.kapsayici}>
+                <h2 className={styles.bolumBaslik}>{yaka.ad}</h2>
+                <div className={styles.odakIzgara}>
+                  {liste.map((bolge) => (
+                    <div className={styles.odakKart} key={bolge.slug}>
+                      <h3 className={styles.odakBaslik}>{bolge.ilce}</h3>
+                      <p className={styles.odakMetin}>{bolge.giris}</p>
+                      <Link className={styles.odakBag} href={`/bolgeler/${bolge.slug}`}>
+                        {bolge.ilce} sosyal medya ajansı
+                      </Link>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
+              </div>
+            </section>
+          );
+        })}
       </main>
 
       <FooterTwo topCls="" />

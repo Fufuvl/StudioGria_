@@ -83,12 +83,12 @@ export function AnasayfaBolgeler() {
       <div className="sg-hizmet-ic">
         <span className="sg-hizmet-rozet">Hizmet bölgelerimiz</span>
         <h2 id="anasayfa-bolgeler" className="sg-hizmet-baslik">
-          Batı İstanbul&apos;da sahadayız
+          İstanbul&apos;un her yerinde sahadayız
         </h2>
         <p className="sg-hizmet-spot">
-          Stüdyomuz {bulunmaEki(kurum.ilce)}. Çevre ilçelerdeki işletmelerle çekim için
-          aynı gün sahada olabiliyor, İstanbul ve Türkiye genelindeki markaların
-          hesaplarını uzaktan yönetiyoruz.
+          Stüdyomuz {bulunmaEki(kurum.ilce)}. Avrupa ve Anadolu yakasındaki markalar için
+          çekim günlerini önceden takvimliyor, ekip ve ekipmanla sahaya geliyoruz;
+          Türkiye genelindeki markaların hesaplarını uzaktan yönetiyoruz.
         </p>
         <ul className="sg-ana-bolge-liste">
           {bolgeler.map((bolge) => (
