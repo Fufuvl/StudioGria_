@@ -189,6 +189,64 @@
   }
 }
 
+/* Karsilastirma tablosu (fiyat araliklari gibi). Telefonda yatay kayar. */
+.tablo {
+  margin: 8px 0 22px;
+}
+
+.tabloKaydir {
+  overflow-x: auto;
+  border: 1px solid var(--cizgi);
+  background: #fff;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 14px clamp(12px, 2vw, 18px);
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--cizgi);
+  }
+
+  tbody tr:last-child th,
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  thead th {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--soluk);
+    background: var(--zemin);
+  }
+
+  tbody th {
+    font-weight: 500;
+    color: var(--murekkep);
+  }
+
+  td {
+    color: #3d4048;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabloNot {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--soluk);
+  margin-top: 10px;
+}
+
 /* ---------- yazi alti ---------- */
 .ilgili {
   padding: 44px 0 0;

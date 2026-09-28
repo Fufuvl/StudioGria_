@@ -17,6 +17,17 @@ import { surecAdimlari } from "@/data/surec-data";
 // Icerik veri dosyalarindan uretilir; sitede olmayan hicbir sey buraya
 // yazilmaz, sitede olan hicbir sey de burada eksik kalmaz.
 
+// Yazi icindeki karsilastirma tablosunu Markdown tabloya cevirir
+function tabloMetni(tablo: { basliklar: string[]; satirlar: string[][]; not?: string }) {
+  const satir = (hucreler: string[]) => `| ${hucreler.join(" | ")} |`;
+  return [
+    satir(tablo.basliklar),
+    satir(tablo.basliklar.map(() => "---")),
+    ...tablo.satirlar.map(satir),
+    ...(tablo.not ? ["", tablo.not] : []),
+  ].join("\n");
+}
+
 export const dynamic = "force-static";
 
 export function GET() {
@@ -74,6 +85,8 @@ ${yazi.bolumler
     (bolum) =>
       `#### ${bolum.baslik}\n\n${bolum.paragraflar.join("\n\n")}${
         bolum.liste ? `\n\n${bolum.liste.map((madde) => `- ${madde}`).join("\n")}` : ""
+      }${bolum.tablo ? `\n\n${tabloMetni(bolum.tablo)}` : ""}${
+        bolum.sonParagraflar ? `\n\n${bolum.sonParagraflar.join("\n\n")}` : ""
       }`,
   )
   .join("\n\n")}

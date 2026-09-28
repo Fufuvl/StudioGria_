@@ -2,6 +2,22 @@ import { Metadata } from "next";
 import PortfolioDetailsShowcaseMain from "@/page-components/portfolio/details/portfolio-showcase-details-main";
 import { hizmetler } from "@/data/hizmet-data";
 import { KIMLIK, SITE_URL, grafSemasi } from "@/data/kurulus-data";
+import { blogYazilari } from "@/data/blog-yazilari";
+
+// Ana sayfada one cikan rehberler. Footer en yeni 4 yaziyi zaten bagladigi
+// icin burada ticari niyeti en guclu, footer'da olmayan yazilar secilir.
+const ONE_CIKAN_YAZILAR = [
+  "sosyal-medya-ajansi-fiyatlari",
+  "sosyal-medya-ajansi-mi-kendim-mi",
+  "google-ads-mi-meta-ads-mi",
+];
+
+const oneCikanYazilar = ONE_CIKAN_YAZILAR.flatMap((slug) => {
+  const yazi = blogYazilari.find((y) => y.slug === slug);
+  return yazi ? [{ slug: yazi.slug, baslik: yazi.baslik, ozet: yazi.ozet, kategori: yazi.kategori }] : [];
+});
+
+const hizmetOzetleri = hizmetler.map((h) => ({ slug: h.slug, ad: h.ad, kisaAciklama: h.kisaAciklama }));
 
 // SEO: title arama niyetine gore kurgulanir, marka sonda kalir
 const sayfaBaslik = "Sosyal Medya Ajansı İstanbul | Studio Gria";
@@ -58,7 +74,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
       />
-      <PortfolioDetailsShowcaseMain />
+      <PortfolioDetailsShowcaseMain hizmetler={hizmetOzetleri} yazilar={oneCikanYazilar} />
     </>
   );
 }

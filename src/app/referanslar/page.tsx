@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ReferanslarMain from "@/page-components/referanslar/referanslar-main";
 import { referanslar } from "@/data/referans-data";
+import { yayindakiVakalar } from "@/data/vaka-data";
 import {
   KIMLIK,
   SITE_URL,
@@ -63,7 +64,11 @@ export default function ReferanslarSayfasi() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
       />
-      <ReferanslarMain />
+      <ReferanslarMain
+        vakaBaglantilari={Object.fromEntries(
+          yayindakiVakalar().map((v) => [v.marka, `/referanslar/${v.slug}`]),
+        )}
+      />
     </>
   );
 }

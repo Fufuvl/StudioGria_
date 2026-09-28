@@ -7,6 +7,7 @@ import HeaderEleven from "@/layouts/headers/header-eleven";
 import FooterTwo from "@/layouts/footers/footer-two";
 import { blogYazilari, yaziBul } from "@/data/blog-yazilari";
 import { hizmetBul } from "@/data/hizmet-data";
+import { yayindakiVakalar } from "@/data/vaka-data";
 import {
   KIMLIK,
   SITE_URL,
@@ -76,6 +77,9 @@ export default function BlogYaziPage({ params }: Props) {
     .map((slug) => hizmetBul(slug))
     .filter((hizmet): hizmet is NonNullable<typeof hizmet> => Boolean(hizmet));
 
+  // Bu yaziya bagli, musteri izniyle yayindaki vaka calismalari
+  const ilgiliVakalar = yayindakiVakalar().filter((vaka) => vaka.ilgiliYazilar.includes(yazi.slug));
+
   const yaziAdresi = `${SITE_URL}/blog/${yazi.slug}`;
   const guncelleme = yazi.guncelleme ?? yazi.tarih;
 
@@ -85,6 +89,8 @@ export default function BlogYaziPage({ params }: Props) {
     ...yazi.bolumler.flatMap((bolum) => [
       ...bolum.paragraflar,
       ...(bolum.liste ?? []),
+      ...(bolum.tablo?.satirlar.flat() ?? []),
+      ...(bolum.sonParagraflar ?? []),
     ]),
     ...yazi.anahtarCikarimlar,
     ...yazi.sorular.flatMap((kayit) => [kayit.soru, kayit.cevap]),
@@ -193,6 +199,42 @@ export default function BlogYaziPage({ params }: Props) {
                       ))}
                     </ul>
                   )}
+                  {bolum.tablo && (
+                    <figure className={styles.tablo}>
+                      <div className={styles.tabloKaydir}>
+                        <table>
+                          <thead>
+                            <tr>
+                              {bolum.tablo.basliklar.map((b) => (
+                                <th key={b} scope="col">{b}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {bolum.tablo.satirlar.map((satir) => (
+                              <tr key={satir[0]}>
+                                {satir.map((hucre, i) =>
+                                  i === 0 ? (
+                                    <th key={hucre} scope="row">{hucre}</th>
+                                  ) : (
+                                    <td key={hucre}>{hucre}</td>
+                                  ),
+                                )}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      {bolum.tablo.not && (
+                        <figcaption className={styles.tabloNot}>{bolum.tablo.not}</figcaption>
+                      )}
+                    </figure>
+                  )}
+                  {bolum.sonParagraflar?.map((paragraf) => (
+                    <p className={styles.paragraf} key={paragraf.slice(0, 40)}>
+                      {paragraf}
+                    </p>
+                  ))}
                 </section>
               ))}
 
@@ -223,6 +265,21 @@ export default function BlogYaziPage({ params }: Props) {
                 </h2>
                 <p className={styles.yazarBio}>{kurucu.biyografi}</p>
               </section>
+
+              {ilgiliVakalar.length > 0 && (
+                <div className={styles.ilgili}>
+                  <h2 className={styles.ilgiliBaslik}>Sahadan örnekler</h2>
+                  <ul className={styles.ilgiliListe}>
+                    {ilgiliVakalar.map((vaka) => (
+                      <li key={vaka.slug}>
+                        <Link className={styles.ilgiliBag} href={`/referanslar/${vaka.slug}`}>
+                          {vaka.baslik}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {ilgiliHizmetler.length > 0 && (
                 <div className={styles.ilgili}>

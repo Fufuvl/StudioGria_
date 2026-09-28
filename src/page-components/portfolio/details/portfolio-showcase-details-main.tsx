@@ -10,12 +10,16 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 import Wrapper from "@/layouts/wrapper";
 import HeaderEleven from "@/layouts/headers/header-eleven";
 import PortfolioDetailsShowcaseArea from "@/components/portfolio/details/portfolio-details-showcase-area";
+import type { AnasayfaHizmet } from "@/components/anasayfa-hizmetler";
+import type { AnasayfaYazi } from "@/components/anasayfa-ek";
 import FooterTwo from "@/layouts/footers/footer-two";
 // animation
 import { charAnimation, fadeAnimation, titleAnimation } from "@/utils/title-animation";
 
 
-const PortfolioDetailsShowcaseMain = () => {
+type Props = { hizmetler: AnasayfaHizmet[]; yazilar: AnasayfaYazi[] };
+
+const PortfolioDetailsShowcaseMain = ({ hizmetler, yazilar }: Props) => {
 
   useScrollSmooth();
 
@@ -39,7 +43,7 @@ const PortfolioDetailsShowcaseMain = () => {
         <div id="smooth-content">
           <main>
             {/* portfolio details area */}
-            <PortfolioDetailsShowcaseArea/>
+            <PortfolioDetailsShowcaseArea hizmetler={hizmetler} yazilar={yazilar} />
             {/* portfolio details area */}
           </main>
 

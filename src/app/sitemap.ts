@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { hizmetler } from "@/data/hizmet-data";
 import { blogYazilari } from "@/data/blog-yazilari";
 import { bolgeler } from "@/data/bolge-data";
+import { yayindakiVakalar } from "@/data/vaka-data";
 import { SITE_URL } from "@/data/kurulus-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -112,5 +113,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...sabitSayfalar, ...hizmetSayfalari, ...blogSayfalari, ...bolgeSayfalari];
+  // Vaka calismalari: yalnizca musteri izniyle yayina alinanlar
+  const vakaSayfalari: MetadataRoute.Sitemap = yayindakiVakalar().map((vaka) => ({
+    url: `${baseUrl}/referanslar/${vaka.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...sabitSayfalar, ...hizmetSayfalari, ...blogSayfalari, ...bolgeSayfalari, ...vakaSayfalari];
 }

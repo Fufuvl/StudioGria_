@@ -1,12 +1,15 @@
 import React from "react";
 import Link from "next/link";
-import { hizmetler } from "@/data/hizmet-data";
+
+export type AnasayfaHizmet = { slug: string; ad: string; kisaAciklama: string };
 
 // Ana sayfadan hizmet detay sayfalarina dogrudan ic link veren bolum.
 // Bu bolum eklenmeden once 10 hizmet sayfasi yalnizca /hizmetler listesinden
 // erisiliyordu; arama motorlari icin ana sayfadan gelen dogrudan bag
 // bu sayfalarin taranma ve siralanma sansini belirgin olcude artirir.
-export default function AnasayfaHizmetler() {
+// Liste sunucudaki page.tsx'ten gelir; hizmet-data.ts burada ice aktarilirsa
+// tum hizmet metinleri ve SSS'ler ana sayfanin JS paketine girer.
+export default function AnasayfaHizmetler({ hizmetler }: { hizmetler: AnasayfaHizmet[] }) {
   return (
     <section className="sg-hizmet-bolum" aria-labelledby="anasayfa-hizmetler">
       <div className="sg-hizmet-ic">

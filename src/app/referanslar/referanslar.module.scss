@@ -295,6 +295,23 @@
   max-width: 560px;
 }
 
+.detayBag {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 3px;
+
+  &:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+}
+
 .satirAcik .detay {
   max-height: 140px;
 }

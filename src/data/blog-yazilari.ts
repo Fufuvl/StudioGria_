@@ -5,10 +5,22 @@
 // Yazilar arama niyetine gore kurgulanir: baslik ziyaretcinin Google'a
 // yazdigi soruyu karsilar, bolum basliklari (h2) alt sorulari yanitlar.
 
+export type YaziTablosu = {
+  basliklar: string[];
+  satirlar: string[][];
+  // Tablonun altinda duran kaynak ve kapsam notu
+  not?: string;
+};
+
 export type YaziBolumu = {
   baslik: string;
   paragraflar: string[];
   liste?: string[];
+  // Fiyat araligi gibi karsilastirmali bilgi. Motorlar tablo bicimindeki
+  // veriyi dogrudan yanit olarak alintilamaya yatkindir.
+  tablo?: YaziTablosu;
+  // Tablodan sonra gelen paragraflar
+  sonParagraflar?: string[];
 };
 
 export type YaziSorusu = {
@@ -51,13 +63,13 @@ export const blogYazilari: BlogYazisi[] = [
   {
     slug: "sosyal-medya-ajansi-fiyatlari",
     baslik: "Sosyal medya ajansı fiyatları: bütçe neye göre belirlenir?",
-    seoBaslik: "Sosyal Medya Ajansı Fiyatları 2026: Neye Göre Değişir?",
+    seoBaslik: "Sosyal Medya Ajansı Fiyatları 2026: Aylık Ücret Tablosu",
     seoAciklama:
-      "Ajans teklifleri neden bu kadar farklı? Fiyatı belirleyen asıl kalem, teklifte mutlaka görmeniz gereken maddeler ve ucuz teklifin gizli maliyeti.",
+      "2026'da sosyal medya ajansı aylık ücretleri kapsama göre 8.000 ile 30.000 TL arasında. Fiyat tablosu, teklifte bakılacak kalemler ve ucuz teklifin maliyeti.",
     ozet:
       "Ajans tekliflerini karşılaştırırken bakmanız gereken kalemler, fiyatı gerçekten belirleyen değişkenler ve ucuz teklifin gizli maliyeti.",
     tarih: "2026-06-18",
-    okumaSuresi: 7,
+    okumaSuresi: 8,
     kategori: "Bütçe ve Süreç",
     giris:
       "Sosyal medya yönetimi için teklif toplayan çoğu işletme aynı sorunla karşılaşıyor: aynı işe benzeyen hizmet için birbirinden çok farklı fiyatlar geliyor. Aradaki farkın nereden geldiğini bilmeden karşılaştırma yapmak, çoğu zaman en ucuz teklifi seçip birkaç ay sonra baştan başlamak anlamına geliyor.",
@@ -67,6 +79,27 @@ export const blogYazilari: BlogYazisi[] = [
         paragraflar: [
           "Sosyal medya tekliflerinde en büyük fiyat farkı, içeriğin kim tarafından ve nasıl üretildiğinden doğar. Bir ajans yalnızca sizin gönderdiğiniz görselleri düzenleyip paylaşıyorsa bu bir yönetim hizmetidir ve maliyeti düşüktür. Ekip sahaya gelip çekim yapıyor, kurgu ve tasarım üretiyorsa bu bir prodüksiyon hizmetidir ve maliyeti buna göre artar.",
           "İki hizmet aynı isimle sunulduğu için teklifler yan yana konduğunda yanıltıcı görünür. Teklifi okurken ilk bakmanız gereken şey aylık kaç özgün içerik üretildiği ve bu içeriklerin kaçının sahada çekildiğidir.",
+        ],
+      },
+      {
+        baslik: "2026 piyasa aralıkları: aylık ücret tablosu",
+        paragraflar: [
+          "Ağustos 2026'da yayımlanmış Türkiye ajans fiyat rehberlerini taradık. Aylık hizmet ücretleri, reklam bütçesi hariç, kapsama göre kabaca şu aralıklarda seyrediyor:",
+        ],
+        tablo: {
+          basliklar: ["Hizmet kapsamı", "Aylık ücret (reklam bütçesi hariç)"],
+          satirlar: [
+            ["Temel sosyal medya yönetimi", "8.000 - 12.000 TL"],
+            ["Orta kapsamlı sosyal medya yönetimi", "12.000 - 18.000 TL"],
+            ["Reklam yönetimi dahil tam kapsam", "18.000 - 30.000 TL"],
+            ["Kurumsal, çok kanallı yönetim", "35.000 TL ve üzeri"],
+            ["Yalnızca Meta reklam yönetimi, yerel işletme", "7.000 - 15.000 TL"],
+            ["Yalnızca Meta reklam yönetimi, e-ticaret", "15.000 - 85.000 TL"],
+          ],
+          not: "Kaynak: Ağustos 2026'da yayımlanmış Türkiye ajans fiyat rehberlerinin derlemesi. Rakamlar yaklaşık aralıklardır ve reklam bütçesini içermez.",
+        },
+        sonParagraflar: [
+          "Bu tablo bir fiyat listesi değil, piyasanın genel görünümüdür. Aynı aralıktaki iki teklif, üretimin sahada mı yoksa sizin gönderdiğiniz görsellerle mi yapıldığına göre bambaşka işler anlatabilir. Bir teklifi aralığın neresinde durduğuna göre değil, o ücrete ayda kaç özgün içerik ve kaç saha çekimi düştüğüne göre değerlendirin.",
         ],
       },
       {
@@ -104,10 +137,11 @@ export const blogYazilari: BlogYazisi[] = [
         ],
       },
     ],
-    guncelleme: "2026-08-23",
+    guncelleme: "2026-09-28",
     kisaCevap:
-      "Sosyal medya ajansı fiyatını belirleyen asıl kalem, içeriğin kim tarafından üretildiğidir. Yalnızca sizin gönderdiğiniz görselleri düzenleyip paylaşan bir yönetim hizmeti ile sahaya gelip çekim, kurgu ve tasarım üreten bir prodüksiyon hizmeti aynı isimle sunulur, ancak maliyetleri farklıdır. Teklifleri karşılaştırırken aylık özgün içerik adedine ve bunların kaçının sahada çekildiğine bakın.",
+      "2026'da Türkiye'de sosyal medya ajanslarının aylık ücreti, reklam bütçesi hariç, kapsama göre yaklaşık 8.000 ile 30.000 TL arasında değişir; kurumsal çok kanallı işlerde 35.000 TL'yi aşar. Farkı belirleyen asıl kalem içeriğin kim tarafından üretildiğidir: yalnızca yayın yönetimi mi, yoksa sahada çekim, kurgu ve reklam yönetimi de dahil mi? Teklifleri aylık özgün içerik ve saha çekimi sayısıyla karşılaştırın.",
     anahtarCikarimlar: [
+      "2026'da aylık ajans ücretleri, reklam bütçesi hariç, kapsama göre kabaca 8.000 ile 30.000 TL arasındadır; kurumsal çok kanallı işler 35.000 TL'yi aşar.",
       "Fiyat farkının asıl kaynağı üretim biçimidir: yalnızca yayın yönetimi mi, yoksa sahada çekim ve kurgu da dahil mi?",
       "Sağlıklı bir teklifte aylık içerik adedi, saha çekim günü, revizyon hakkı ve raporlama sıklığı adetle yazılıdır.",
       "Reklam bütçesi ajans ücretinden ayrı bir kalemdir; tamamı doğrudan Meta ya da Google'a gider.",
@@ -118,7 +152,12 @@ export const blogYazilari: BlogYazisi[] = [
       {
         soru: "Sosyal medya ajansı aylık ne kadar tutar?",
         cevap:
-          "Aylık ücreti kapsam belirler: üretilen özgün içerik adedi, sahada geçirilen çekim günü sayısı, kaç platformun yönetildiği ve reklam yönetiminin dahil olup olmadığı. Bu kalemler netleşmeden verilen rakam karşılaştırılabilir değildir. Studio Gria olarak önce ihtiyaç analizi yapar, ardından markaya özel bir teklif sunumu hazırlarız.",
+          "2026 piyasasında aylık ücretler, reklam bütçesi hariç, temel yönetimde 8.000 ile 12.000 TL, orta kapsamda 12.000 ile 18.000 TL, reklam yönetimi dahil tam kapsamda 18.000 ile 30.000 TL arasında seyrediyor. Kesin rakamı üretilen özgün içerik adedi, saha çekim günü sayısı, yönetilen platformlar ve reklam yönetiminin dahil olup olmadığı belirler. Studio Gria olarak önce ihtiyaç analizi yapar, ardından markaya özel bir teklif sunumu hazırlarız.",
+      },
+      {
+        soru: "Meta reklam yönetimi ücreti ne kadar?",
+        cevap:
+          "Yalnızca reklam yönetimi hizmetinde aylık ücret, yerel işletmeler için yaklaşık 7.000 ile 15.000 TL, satış odaklı e-ticaret hesaplarında 15.000 ile 85.000 TL arasında değişiyor. Bu ücret reklam bütçesinden ayrıdır; bütçe doğrudan Meta'ya ödenir.",
       },
       {
         soru: "Reklam bütçesi ajans ücretine dahil mi?",

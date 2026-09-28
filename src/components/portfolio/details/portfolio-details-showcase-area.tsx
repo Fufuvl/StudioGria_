@@ -6,9 +6,18 @@ import details_thumb_2 from '@/assets/img/inner-project/showcase/16.jpg';
 import details_thumb_3 from '@/assets/img/inner-project/showcase/3.jpg';
 import hero_gorsel from '@/assets/img/inner-project/showcase/background.jpg';
 import social_data from '@/data/social-data';
-import AnasayfaHizmetler from '@/components/anasayfa-hizmetler';
+import AnasayfaHizmetler, { AnasayfaHizmet } from '@/components/anasayfa-hizmetler';
+import {
+  AnasayfaKanit,
+  AnasayfaRehberler,
+  AnasayfaBolgeler,
+  AnasayfaKapanis,
+  AnasayfaYazi,
+} from '@/components/anasayfa-ek';
 
-export default function PortfolioDetailsShowcaseArea() {
+type Props = { hizmetler: AnasayfaHizmet[]; yazilar: AnasayfaYazi[] };
+
+export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Props) {
   return (
     <>
      {/* hero: solda metin kolonu, sagda gorsel; yazi gorselin ustunde durmaz */}
@@ -61,8 +70,11 @@ export default function PortfolioDetailsShowcaseArea() {
       </div>
       {/* hero */}
 
+      {/* sosyal kanit: rakamlar ve referans seridi */}
+      <AnasayfaKanit />
+
       {/* hizmetler: ana sayfadan detay sayfalarina ic link */}
-      <AnasayfaHizmetler />
+      <AnasayfaHizmetler hizmetler={hizmetler} />
       {/* hizmetler */}
 
       {/* details overview */}
@@ -156,6 +168,11 @@ export default function PortfolioDetailsShowcaseArea() {
           </div>
       </div>
       {/* details overview */}
+
+      {/* rehberler, bolgeler ve kapanis: blog ve ilce sayfalarina ic link */}
+      <AnasayfaRehberler yazilar={yazilar} />
+      <AnasayfaBolgeler />
+      <AnasayfaKapanis />
     </>
   )
 }

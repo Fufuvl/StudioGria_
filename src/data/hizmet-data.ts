@@ -436,6 +436,11 @@ export const hizmetler: Hizmet[] = [
           "Etkiler; güvenlik ve görüntü kalitesi için uygun hava beklenir. Çekim günü buna göre birlikte planlanır, gerekirse ücretsiz ertelenir.",
       },
       {
+        soru: "Drone çekimi ne kadar tutar?",
+        cevap:
+          "Piyasada drone çekimi, süreye ve teslim edilen içeriğe göre kabaca 5.000 ile 25.000 TL arasında fiyatlanıyor. Fiyatı lokasyon sayısı, çekimin süresi, gerekli uçuş izinleri ve kurgunun dahil olup olmadığı belirler. Drone çekimini tek başına ya da prodüksiyon gününün parçası olarak planlayabilir, kapsamı netleştirdikten sonra teklif sunarız.",
+      },
+      {
         soru: "Drone çekimi için izin gerekir mi?",
         cevap:
           "Uçuşun yapılacağı bölgeye göre izin ve bildirim gereklilikleri değişir. Lokasyonu ilettiğinizde bölgenin uçuşa uygunluğunu ve gerekli izinleri çekim öncesinde biz kontrol eder, süreci planlamaya dahil ederiz.",

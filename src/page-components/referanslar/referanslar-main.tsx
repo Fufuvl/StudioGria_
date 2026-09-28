@@ -12,7 +12,9 @@ import styles from "@/app/referanslar/referanslar.module.scss";
 
 const TUMU = "Tümü";
 
-export default function ReferanslarMain() {
+// vakaBaglantilari: yayindaki vaka calismalari, marka adi -> sayfa adresi.
+// Sunucuda hesaplanir; vaka metinleri istemci paketine girmez.
+export default function ReferanslarMain({ vakaBaglantilari = {} }: { vakaBaglantilari?: Record<string, string> }) {
   const [aktifGrup, setAktifGrup] = useState<string>(TUMU);
   const [acikSatir, setAcikSatir] = useState<string | null>(null);
 
@@ -161,6 +163,11 @@ export default function ReferanslarMain() {
                   <div className={styles.detay}>
                     <div className={styles.detayIc}>
                       <p className={styles.detayMetin}>{item.is}</p>
+                      {vakaBaglantilari[item.ad] && (
+                        <Link className={styles.detayBag} href={vakaBaglantilari[item.ad]}>
+                          Vaka çalışmasını okuyun
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </li>
