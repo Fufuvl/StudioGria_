@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import logoDark from "@/assets/img/logo/logo-dark.png";
 import TeklifForm from "./teklif-form";
 import SosyalKanit from "@/components/sosyal-kanit";
@@ -12,12 +13,13 @@ import {
   grafSemasi,
   sssSemasi,
 } from "@/data/kurulus-data";
+import { META_PIXEL_ID } from "@/utils/meta-pixel";
 import styles from "./teklif.module.scss";
 
 export const metadata: Metadata = {
   title: "Sosyal Medya Ajansı Teklifi Alın | Studio Gria",
   description:
-    "Studio Gria sizi dinler, markanıza özel sosyal medya teklif sunumunu hazırlar. Formu doldurun, aynı gün dönüş yapalım. Kredi kartıyla ödeme kolaylığı.",
+    "Studio Gria sizi dinler, markanıza özel sosyal medya teklif sunumunu hazırlar. Formu doldurun, aynı gün dönüş yapalım. Sunum ücretsiz, karar sizin.",
   alternates: { canonical: "/teklif" },
   openGraph: {
     type: "website",
@@ -76,6 +78,45 @@ export default function TeklifSayfasi() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
       />
+      {/* REKLAM INIS SAYFASI OLCUMU (6 Eki 2026): sitenin genelinde olcum kodlari
+          hiz icin lazyOnload ile gec yuklenir. Reklamdan gelip hizla cikan
+          ziyaretcinin PageView'i kaybolmasin diye bu sayfada ayni kodlar
+          afterInteractive ile erken yuklenir. Kimlikler layout.tsx ile ayni
+          oldugu icin next/script ikinciyi yuklemez; cift PageView olusmaz. */}
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-4EWVJ0Y6EC"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4EWVJ0Y6EC');
+          `,
+        }}
+      />
+      <Script
+        id="meta-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '${META_PIXEL_ID}');
+            fbq('track', 'PageView');
+          `,
+        }}
+      />
       <header className={styles.ustBant}>
         <div className={styles.kapsayici}>
           {/* Sitenin gercek logosu kullanilir, metin logo degil */}
@@ -95,7 +136,7 @@ export default function TeklifSayfasi() {
       <section className={styles.hero}>
         <div className={styles.kapsayici}>
           <div className={styles.heroIzgara}>
-            <div>
+            <div className={styles.heroMetin}>
               <span className={`${styles.rozet} sg-gir sg-gir-1`}>Dijital Medya Ajansı</span>
               <h1 className={`${styles.baslik} sg-gir sg-gir-2`}>
                 Sosyal medyanız takipçi değil{" "}
@@ -106,27 +147,30 @@ export default function TeklifSayfasi() {
                 yapılan bir alan olmaktan çıkarır. İçerik, tasarım ve reklamı tek elden
                 yönetir, her ay ne yaptığımızı ve ne sonuç verdiğini gösteririz.
               </p>
-              <ul className={`${styles.maddeler} sg-gir sg-gir-4`}>
-                <li className={styles.madde}>
-                  <span className={styles.maddeIsaret}>+</span>
-                  Markanıza özel içerik yönü ve aylık yayın planı
-                </li>
-                <li className={styles.madde}>
-                  <span className={styles.maddeIsaret}>+</span>
-                  Profesyonel çekim, tasarım ve video kurgusu
-                </li>
-                <li className={styles.madde}>
-                  <span className={styles.maddeIsaret}>+</span>
-                  Google Ads ve Meta reklamlarının kurulumu ve takibi
-                </li>
-                <li className={styles.madde}>
-                  <span className={styles.maddeIsaret}>+</span>
-                  Tek muhatap, net takvim, ölçülebilir raporlama
-                </li>
-              </ul>
             </div>
 
-            <div id="teklif-formu" className="sg-gir sg-gir-3">
+            {/* Mobilde form maddelerden once gelir: reklamdan gelen ziyaretci
+                ilk ekranda formu gorur. Masaustunde maddeler metnin altinda kalir. */}
+            <ul className={`${styles.maddeler} sg-gir sg-gir-4`}>
+              <li className={styles.madde}>
+                <span className={styles.maddeIsaret}>+</span>
+                Markanıza özel içerik yönü ve aylık yayın planı
+              </li>
+              <li className={styles.madde}>
+                <span className={styles.maddeIsaret}>+</span>
+                Profesyonel çekim, tasarım ve video kurgusu
+              </li>
+              <li className={styles.madde}>
+                <span className={styles.maddeIsaret}>+</span>
+                Google Ads ve Meta reklamlarının kurulumu ve takibi
+              </li>
+              <li className={styles.madde}>
+                <span className={styles.maddeIsaret}>+</span>
+                Tek muhatap, net takvim, ölçülebilir raporlama
+              </li>
+            </ul>
+
+            <div id="teklif-formu" className={`${styles.heroForm} sg-gir sg-gir-3`}>
               <TeklifForm />
             </div>
           </div>

@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { trackLead } from "@/utils/meta-pixel";
 import { leadKaydetVeBekle, whatsappAc } from "@/utils/lead";
 import { BotTuzagi, useFormSuresi, useFormBileti } from "@/components/form/bot-tuzagi";
+import { atifKaydet } from "@/utils/atif";
 import styles from "./teklif.module.scss";
 
 type Alanlar = {
@@ -33,6 +34,11 @@ export default function TeklifForm() {
   const [tuzak, setTuzak] = useState("");
   const formSuresi = useFormSuresi();
   const bilet = useFormBileti();
+
+  // Reklamdan gelen ziyaretcinin UTM / fbclid bilgisini oturuma yaz
+  useEffect(() => {
+    atifKaydet();
+  }, []);
 
   const degistir = (olay: React.ChangeEvent<HTMLInputElement>) => {
     setVeri({ ...veri, [olay.target.name]: olay.target.value });

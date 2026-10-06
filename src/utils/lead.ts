@@ -1,3 +1,5 @@
+import { atifOku } from "./atif";
+
 // Form gönderimlerinin ortak akışı:
 // 1. Veri sunucuya kaydedilir (e-posta bildirimi)
 // 2. WhatsApp açılır
@@ -19,6 +21,7 @@ export type LeadVerisi = {
   website?: string;
   sureSaniye?: number;
   bilet?: string;
+  atif?: string;
 };
 
 // Sunucunun yanıtı:
@@ -35,7 +38,8 @@ export async function leadKaydetVeBekle(veri: LeadVerisi): Promise<LeadYaniti> {
     const yanit = await fetch("/api/lead", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(veri),
+      // Reklam kaynagi (UTM, fbclid) her formda otomatik eklenir
+      body: JSON.stringify({ ...veri, atif: veri.atif ?? atifOku() }),
       keepalive: true,
     });
     const govde = await yanit.json().catch(() => null);

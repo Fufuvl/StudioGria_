@@ -94,6 +94,8 @@ export async function POST(request: Request) {
   const hedef = temizle(veri.hedef, 300);
   const konu = temizle(veri.konu, 160);
   const mesaj = temizle(veri.mesaj, 2000);
+  // Reklam kaynagi: istemcinin oturumdan okudugu UTM / fbclid ozeti
+  const atif = temizle((veri as { atif?: unknown }).atif, 400);
 
   // Ad ya da iletisim bilgisi yoksa kaydedilecek bir lead yok demektir
   if (!adSoyad && !telefon && !mesaj) {
@@ -171,6 +173,7 @@ export async function POST(request: Request) {
       ${satir("Hedef", kacir(hedef))}
       ${satir("Konu", kacir(konu))}
       ${satir("Mesaj", kacir(mesaj))}
+      ${satir("Kaynak", kacir(atif || "Doğrudan / organik (UTM yok)"))}
       <p style="margin:16px 0 0;color:#666;font-size:12px">
         studiogria.com formundan otomatik olarak gonderildi.
       </p>

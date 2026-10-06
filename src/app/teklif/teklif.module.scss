@@ -42,8 +42,24 @@
 .heroIzgara {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 64px;
+  grid-template-areas:
+    "metin form"
+    "maddeler form";
+  grid-template-rows: auto 1fr;
+  column-gap: 64px;
   align-items: start;
+}
+
+.heroMetin {
+  grid-area: metin;
+}
+
+.heroForm {
+  grid-area: form;
+}
+
+.maddeler {
+  grid-area: maddeler;
 }
 
 .rozet {
@@ -397,9 +413,23 @@
 
 /* ---------- duyarli ---------- */
 @media (max-width: 991px) {
+  // Mobilde sira: baslik, form, maddeler. Form ilk ekrana yaklasir.
   .heroIzgara {
     grid-template-columns: 1fr;
-    gap: 44px;
+    grid-template-areas:
+      "metin"
+      "form"
+      "maddeler";
+    grid-template-rows: auto;
+    row-gap: 28px;
+  }
+
+  .rozet {
+    margin-bottom: 18px;
+  }
+
+  .spot {
+    margin-bottom: 0;
   }
 
   .formKart {
