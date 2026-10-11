@@ -20,7 +20,6 @@ import { META_PIXEL_ID } from "@/utils/meta-pixel";
 import {
   SITE_URL,
   kunye,
-  kurucu,
   calismaSaatleri,
   haritaAdresi,
   grafSemasi,
@@ -145,8 +144,6 @@ const siteBaglantilari = {
     eposta: kunye.eposta,
     harita: haritaAdresi,
     saatler: calismaSaatleri,
-    kurucuAd: kurucu.ad,
-    kurucuBiyografi: kurucu.biyografi,
   },
 };
 

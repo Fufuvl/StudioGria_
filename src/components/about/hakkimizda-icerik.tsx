@@ -72,15 +72,6 @@ export default function HakkimizdaIcerik() {
         </div>
 
         <div className="sg-hk-blok">
-          <h2 className="sg-hk-baslik">Kurucu</h2>
-          <div className="sg-hk-metin">
-            <p>
-              <strong>{kurum.kurucuAd}</strong>, {kurum.kurucuBiyografi}
-            </p>
-          </div>
-        </div>
-
-        <div className="sg-hk-blok">
           <h2 className="sg-hk-baslik">Nerede çalışıyoruz?</h2>
           <div className="sg-hk-metin">
             <p>

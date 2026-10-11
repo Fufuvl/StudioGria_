@@ -28,9 +28,10 @@ export const metadata: Metadata = {
   },
 };
 
-// AboutPage dugumu kurulus ve kurucu dugumlerine baglanir. Google'in
-// E-E-A-T degerlendirmesinde "bu markanin arkasinda kim var" sorusuna
-// yanit veren asil sayfa burasidir.
+// AboutPage dugumu kurulus dugumune baglanir. Google'in E-E-A-T
+// degerlendirmesinde "bu markanin arkasinda kim var" sorusuna yanit veren
+// asil sayfa burasidir. Kurucu sayfada gorunur metin olarak anilmadigi icin
+// (11 Eki 2026) semada da "mentions" ile gosterilmez.
 const sayfaSemasi = grafSemasi([
   {
     "@type": "AboutPage",
@@ -42,7 +43,6 @@ const sayfaSemasi = grafSemasi([
     isPartOf: { "@id": KIMLIK.website },
     about: { "@id": KIMLIK.kurulus },
     mainEntity: { "@id": KIMLIK.kurulus },
-    mentions: [{ "@id": KIMLIK.kurucu }],
   },
   kirintiSemasi([
     { ad: "Ana sayfa", yol: "/" },

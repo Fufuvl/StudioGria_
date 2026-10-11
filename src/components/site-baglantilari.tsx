@@ -20,8 +20,6 @@ export type Kurum = {
   eposta: string;
   harita: string;
   saatler: { gunler: string[]; acilis: string; kapanis: string }[];
-  kurucuAd: string;
-  kurucuBiyografi: string;
 };
 
 export type SiteBaglantilari = {
@@ -47,8 +45,6 @@ const Baglam = createContext<SiteBaglantilari>({
     eposta: "",
     harita: "",
     saatler: [],
-    kurucuAd: "",
-    kurucuBiyografi: "",
   },
 });
 
