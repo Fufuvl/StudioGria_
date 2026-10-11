@@ -6,7 +6,7 @@ import { leadKaydetVeBekle, whatsappAc } from "@/utils/lead";
 import { BotTuzagi, useFormSuresi, useFormBileti } from "@/components/form/bot-tuzagi";
 
 // Zaten form odakli olan sayfalarda popup gostermeyiz
-const POPUP_KAPALI_SAYFALAR = ["/teklif"];
+const POPUP_KAPALI_SAYFALAR = ["/teklif", "/ai-urun-gorseli"];
 
 export default function LeadPopup() {
   const pathname = usePathname();

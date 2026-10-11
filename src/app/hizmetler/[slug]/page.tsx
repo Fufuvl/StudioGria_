@@ -183,6 +183,26 @@ export default function HizmetDetayPage({ params }: Props) {
           </div>
         </section>
 
+        {/* Calisma modelleri: yalnizca birden fazla modeli olan hizmette gorunur */}
+        {hizmet.modeller && hizmet.modeller.length > 0 && (
+          <section className={styles.detaySss}>
+            <div className={styles.kapsayici}>
+              <h2 className={styles.bolumBaslik}>
+                İki çalışma modeli: <em>çekimli</em> ya da <em>çekimsiz</em>
+              </h2>
+              <div className={styles.adimlar} style={{ marginTop: "28px" }}>
+                {hizmet.modeller.map((model) => (
+                  <div className={styles.adim} key={model.ad}>
+                    <p className={styles.adimNo}>{model.etiket}</p>
+                    <h3 className={styles.adimBaslik}>{model.ad}</h3>
+                    <p className={styles.adimMetin}>{model.metin}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className={styles.detaySss}>
           <div className={styles.kapsayici}>
             <h2 className={styles.bolumBaslik}>Nasıl ilerliyoruz</h2>

@@ -79,4 +79,10 @@ export const sssKayitlari: SssKaydi[] = [
     cevap:
       "Çalışma modelini ve süreyi teklif sunumunda açıkça yazarız; sürpriz madde olmaz. Sosyal medya yönetiminde anlamlı sonuç için en az üç aylık bir çalışma öneriyoruz, çünkü ilk ayın büyük kısmı marka dilini ve üretim ritmini oturtmakla geçer. Proje bazlı prodüksiyon işlerinde süre kısıtı yoktur.",
   },
+  {
+    id: 12,
+    soru: "Çekim yapmadan sosyal medya yönetimi mümkün mü?",
+    cevap:
+      "Evet. Sosyal medya yönetimini iki modelle yürütüyoruz. Çekimli modelde ekibimiz mekanınıza gelir ve çekimi kendi ekipmanımızla yapar. Çekimsiz modelde çekim günü planlanmaz; içerik, elinizdeki ürün ve mekan görsellerinden markanızın diline uygun biçimde hazırlanır ve süreç uzaktan yürür. Hangi modelin size uygun olduğuna ilk görüşmede birlikte karar veririz.",
+  },
 ];

@@ -12,7 +12,7 @@ import { useSiteBaglantilari } from "@/components/site-baglantilari";
 // kurum bilgisi yazilmaz.
 
 const ilkeler = [
-  "Çekimi sahada kendimiz yaparız; hazır şablon ve stok görselle hesap doldurmayız.",
+  "İki modelle çalışırız: çekim gereken işte sahaya kendi ekibimizle çıkar, çekim gerekmeyen işte elinizdeki görsellerle üretiriz. Hazır şablon ve stok görselle hesap doldurmayız.",
   "Her içeriği bir amaca bağlarız: mesaj, rezervasyon, form ya da satış.",
   "Reklam bütçesi ajans ücretinden ayrıdır ve doğrudan sizin hesabınızdan platforma harcanır.",
   "Her ayın sonunda neyin yayınlandığını ve ne sonuç verdiğini rakamla raporlarız.",

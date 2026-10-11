@@ -76,8 +76,8 @@ const AiSolutionsMain = () => {
               günler içinde kampanyaya hazır görseller ve reklam filmleri.
             </p>
             <div className={`${styles.dugmeler} sg-gir sg-gir-4`}>
-              <Link className={styles.anaDugme} href="/teklif">
-                Markanız için teklif alın
+              <Link className={styles.anaDugme} href="/ai-urun-gorseli">
+                Ürün görseli: 3 kare 1.000 TL
               </Link>
               <a className={styles.ikinciDugme} href="#ornekler">
                 Örnekleri görün
@@ -185,11 +185,11 @@ const AiSolutionsMain = () => {
               Ürününüzü <em>bir sonraki seviyede</em> gösterin
             </h2>
             <p className={styles.kapanisMetin}>
-              Sizi dinleyip markanıza özel teklif sunumunu hazırlayalım. Sunum
-              ücretsiz, karar sizin.
+              Bir ürünün üç katalog karesi 1.000 TL. Ürün fotoğrafınızı gönderin,
+              ilk ürünü birlikte üretelim.
             </p>
-            <Link className={styles.kapanisDugme} href="/teklif">
-              Teklif İste
+            <Link className={styles.kapanisDugme} href="/ai-urun-gorseli">
+              Fiyatı ve örnekleri görün
             </Link>
           </div>
         </section>

@@ -117,6 +117,11 @@ const VIEW_CONTENT_PAGES: {
     content_name: "Teklif Sayfası",
     content_category: "Kampanya",
   },
+  {
+    match: (p) => p === "/ai-urun-gorseli",
+    content_name: "AI Ürün Görseli Sayfası",
+    content_category: "Kampanya",
+  },
 ];
 
 export function getViewContentParams(pathname: string): PixelEventParams | null {

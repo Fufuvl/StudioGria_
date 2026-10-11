@@ -16,6 +16,9 @@ export type Hizmet = {
   giris: string;
   aciklama: string[];
   dahil: string[];
+  // Hizmetin birden fazla calisma modeli varsa (ornek: cekimli ve cekimsiz
+  // sosyal medya yonetimi) detay sayfasinda ayri bir bolum olarak gosterilir.
+  modeller?: { etiket: string; ad: string; metin: string }[];
   sss: HizmetSSS[];
   gorsel: string;
   gorselAlt: string;
@@ -27,17 +30,17 @@ export const hizmetler: Hizmet[] = [
     ikon: "megafon",
     ad: "Sosyal Medya Yönetimi",
     kisaAciklama:
-      "İçerik planından yayına, hesabınızın tamamını tek elden yönetiriz.",
+      "Hesabınızı tek elden yönetiriz: sahada çekimli ya da çekim günü olmadan, iki modelle.",
     seoBaslik: "Sosyal Medya Yönetimi Hizmeti | Studio Gria",
     seoAciklama:
-      "İşletmeler için sosyal medya yönetimi: aylık içerik planı, profesyonel çekim, tasarım, yayın ve raporlama tek elden. İstanbul merkezli, Türkiye geneli hizmet.",
+      "İşletmeler için sosyal medya yönetimi: içerik planı, tasarım, yayın ve rapor tek elden. Çekimli ya da çekimsiz iki model. İstanbul merkezli, Türkiye geneli.",
     giris:
       "Sosyal medya hesabınız markanızın vitrini. Rastgele paylaşımlarla değil, planlı ve ölçülebilir bir üretimle yönetilmesi gerekir.",
     aciklama: [
       "Studio Gria olarak hesabınızı bir içerik takvimi üzerinden yönetiriz. Markanızın sesine uygun içerik yönünü birlikte belirler, aylık planı önceden onayınıza sunar, üretimi ve yayını biz üstleniriz. Böylece hesabınız düzenli, tutarlı ve her zaman güncel kalır.",
       "Her ayın sonunda neyin yayınlandığını ve ne sonuç verdiğini gösteren bir rapor alırsınız. Beğeni sayısına değil, işinize dokunan sonuçlara bakarız: erişim, profil ziyareti, gelen mesaj ve web sitesi trafiği.",
       "Bu hizmet en çok düzenli içerik ihtiyacı olan ama bunu kendi içinde sürdüremeyen işletmelere uygun: restoran ve kafeler, oteller, klinikler, spor kulüpleri, perakende mağazaları ve e-ticaret markaları. Her sektörde hesabın işi farklıdır. Bir restoranda amaç rezervasyon ve masa doluluğu, bir klinikte güven ve randevu, bir e-ticaret markasında ürün sayfasına giden trafiktir. İçerik planını bu amaca göre kurar, her paylaşımın hangi hedefe hizmet ettiğini baştan belirleriz.",
-      "Çalışma düzeni basittir. Ay başlamadan içerik planı onayınıza gelir, çekim günleri takvime işlenir, tasarım ve metinler yayından önce size gösterilir. Ay içinde hangi içeriğin erişim, profil ziyareti ve mesaj getirdiğini izler, sonraki ayın planını bu veriyle düzeltiriz. Böylece hesap tahmine göre değil, gerçekten işe yarayan içerik türlerine göre büyür. Reklam yönetimi de alıyorsanız organik içerik ile reklam aynı takvimde kurgulanır.",
+      "Çalışma düzeni basittir. Ay başlamadan içerik planı onayınıza gelir. Çekimli modelde çekim günleri takvime işlenir, çekimsiz modelde kullanılacak görseller ayın başında toplanır. Tasarım ve metinler yayından önce size gösterilir. Ay içinde hangi içeriğin erişim, profil ziyareti ve mesaj getirdiğini izler, sonraki ayın planını bu veriyle düzeltiriz. Böylece hesap tahmine göre değil, gerçekten işe yarayan içerik türlerine göre büyür. Reklam yönetimi de alıyorsanız organik içerik ile reklam aynı takvimde kurgulanır.",
     ],
     dahil: [
       "Aylık içerik planı ve yayın takvimi",
@@ -46,7 +49,32 @@ export const hizmetler: Hizmet[] = [
       "Ay sonu performans raporu",
       "Platform stratejisi: Instagram, Facebook, TikTok, LinkedIn",
     ],
+    modeller: [
+      {
+        etiket: "Model 01",
+        ad: "Çekimli yönetim",
+        metin:
+          "Ekibimiz mekanınıza gelir; fotoğraf ve video çekimini kendi ekipmanımızla yapar. Mekanın, ekibin ve atmosferin anlatılması gereken işletmeler için: restoran, otel, klinik, spor kulübü.",
+      },
+      {
+        etiket: "Model 02",
+        ad: "Çekimsiz yönetim",
+        metin:
+          "Çekim günü planlanmaz. İçerik, elinizdeki ürün ve mekan görsellerinden markanızın diline uygun biçimde hazırlanır; gerektiğinde yapay zeka destekli üretim devreye girer. Süreç uzaktan yürür, şehriniz fark etmez.",
+      },
+      {
+        etiket: "Karar",
+        ad: "Hangisi size uygun?",
+        metin:
+          "Ürün odaklı markalarda ve e-ticarette çoğu zaman çekimsiz model yeterlidir; çekim günü olmadığı için daha ekonomik bir başlangıçtır. Hangi modelin uygun olduğuna ilk görüşmede birlikte karar veririz.",
+      },
+    ],
     sss: [
+      {
+        soru: "Çekim yapmadan sosyal medya yönetimi mümkün mü?",
+        cevap:
+          "Evet. Çekimsiz modelde çekim günü planlanmaz; içerik, elinizdeki ürün ve mekan görsellerinden markanızın diline uygun biçimde hazırlanır. Süreç uzaktan yürüdüğü için İstanbul dışındaki markalarla da bu modelle çalışıyoruz.",
+      },
       {
         soru: "Kaç içerik üretiyorsunuz?",
         cevap:

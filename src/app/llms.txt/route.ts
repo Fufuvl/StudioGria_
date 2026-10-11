@@ -83,6 +83,7 @@ ${bolgeler
 - [Hakkımızda](${SITE_URL}/about-us): stüdyonun hikayesi ve çalışma disiplini
 - [Referanslar](${SITE_URL}/referanslar): birlikte çalışılan 39'dan fazla marka, sektöre göre filtrelenebilir
 - [Yapay zeka destekli çözümler](${SITE_URL}/ai-destekli-cozumler): set kurmadan ürün görseli ve reklam videosu üretimi
+- [Yapay zeka ile ürün görseli](${SITE_URL}/ai-urun-gorseli): bir ürünün üç katalog karesi 1.000 TL, başlangıç paketi 5 ürün 15 kare 5.000 TL
 - [Sıkça sorulan sorular](${SITE_URL}/faq)
 - [Teklif formu](${SITE_URL}/teklif)
 - [İletişim](${SITE_URL}/contact)

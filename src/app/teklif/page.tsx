@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
 import logoDark from "@/assets/img/logo/logo-dark.png";
 import TeklifForm from "./teklif-form";
+import ErkenOlcum from "@/components/erken-olcum";
 import SosyalKanit from "@/components/sosyal-kanit";
 import ReferansSerit from "@/components/referans-serit";
 import { surecAdimlari } from "@/data/surec-data";
@@ -13,7 +13,6 @@ import {
   grafSemasi,
   sssSemasi,
 } from "@/data/kurulus-data";
-import { META_PIXEL_ID } from "@/utils/meta-pixel";
 import styles from "./teklif.module.scss";
 
 export const metadata: Metadata = {
@@ -41,7 +40,17 @@ const sorular = [
   {
     soru: "İçerikleri siz mi üretiyorsunuz?",
     cevap:
-      "Evet. Çekim, tasarım, kurgu ve metin bizde. İhtiyaca göre yapay zeka destekli görsel ve video üretimini de aynı hatta ekliyoruz.",
+      "Evet. Tasarım, kurgu ve metin bizde. Çekimli modelde çekimi kendi ekibimizle yaparız; çekimsiz modelde elinizdeki görsellerden ve yapay zeka destekli üretimden yararlanırız.",
+  },
+  {
+    soru: "Çekim günü olmadan sosyal medya yönetimi mümkün mü?",
+    cevap:
+      "Evet. Çekimsiz modelde çekim günü planlanmaz; içerik, elinizdeki ürün ve mekan görsellerinden markanızın diline uygun biçimde hazırlanır. Süreç uzaktan yürür, bulunduğunuz şehir fark etmez.",
+  },
+  {
+    soru: "Hangi model bana uygun?",
+    cevap:
+      "Mekanın, ekibin ve atmosferin anlatılması gereken işletmelerde çekimli model öne çıkar. Ürün odaklı markalarda ve e-ticarette çoğu zaman çekimsiz model yeterlidir. Hangisinin uygun olduğuna ilk görüşmede birlikte karar veririz.",
   },
   {
     soru: "Reklam yönetimi dahil mi?",
@@ -78,45 +87,8 @@ export default function TeklifSayfasi() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: sayfaSemasi }}
       />
-      {/* REKLAM INIS SAYFASI OLCUMU (6 Eki 2026): sitenin genelinde olcum kodlari
-          hiz icin lazyOnload ile gec yuklenir. Reklamdan gelip hizla cikan
-          ziyaretcinin PageView'i kaybolmasin diye bu sayfada ayni kodlar
-          afterInteractive ile erken yuklenir. Kimlikler layout.tsx ile ayni
-          oldugu icin next/script ikinciyi yuklemez; cift PageView olusmaz. */}
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-4EWVJ0Y6EC"
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-4EWVJ0Y6EC');
-          `,
-        }}
-      />
-      <Script
-        id="meta-pixel"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${META_PIXEL_ID}');
-            fbq('track', 'PageView');
-          `,
-        }}
-      />
+      {/* Olcum kodlari bu sayfada erken yuklenir: src/components/erken-olcum.tsx */}
+      <ErkenOlcum />
       <header className={styles.ustBant}>
         <div className={styles.kapsayici}>
           {/* Sitenin gercek logosu kullanilir, metin logo degil */}
@@ -158,7 +130,7 @@ export default function TeklifSayfasi() {
               </li>
               <li className={styles.madde}>
                 <span className={styles.maddeIsaret}>+</span>
-                Profesyonel çekim, tasarım ve video kurgusu
+                İki çalışma modeli: ekibimiz gelir ve çeker ya da çekim günü olmadan yürütür
               </li>
               <li className={styles.madde}>
                 <span className={styles.maddeIsaret}>+</span>
@@ -171,7 +143,7 @@ export default function TeklifSayfasi() {
             </ul>
 
             <div id="teklif-formu" className={`${styles.heroForm} sg-gir sg-gir-3`}>
-              <TeklifForm />
+              <TeklifForm whatsappMesaj="Merhaba, sosyal medya yönetimi için teklif almak istiyorum." />
             </div>
           </div>
         </div>

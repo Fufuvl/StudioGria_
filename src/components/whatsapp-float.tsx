@@ -3,8 +3,9 @@ import { usePathname } from "next/navigation";
 import { trackContact } from "@/utils/meta-pixel";
 
 // Mobilde her sayfada duran WhatsApp butonu.
-// Teklif sayfasinda gosterilmez, orada zaten form var.
-const GIZLI_SAYFALAR = ["/teklif"];
+// Inis sayfalarinda gosterilmez: orada form ve sayfanin kendi on dolgulu
+// WhatsApp dugmesi var.
+const GIZLI_SAYFALAR = ["/teklif", "/ai-urun-gorseli"];
 
 export default function WhatsappFloat() {
   const pathname = usePathname();

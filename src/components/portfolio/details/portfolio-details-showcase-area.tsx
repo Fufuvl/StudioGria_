@@ -165,7 +165,7 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
                 </div>
                 <div className="col-xl-8">
                   <div className="showcase-details-overview-right tp_title_anim">
-                      <p>Sosyal medyanın işi beğeni toplamak değil, müşteri getirmektir. Bu yüzden her içeriği bir amaca bağlarız: mesaj, rezervasyon, form ya da satış. Çekimi sahada kendimiz yaparız, hazır şablon kullanmayız ve reklam bütçenizin nereye harcandığını her ay rakamla gösteririz. İstanbul&apos;un iki yakasında da sahada çekim yapıyor, Türkiye genelindeki markaların hesaplarını uzaktan yönetiyoruz.</p>
+                      <p>Sosyal medyanın işi beğeni toplamak değil, müşteri getirmektir. Bu yüzden her içeriği bir amaca bağlarız: mesaj, rezervasyon, form ya da satış. İki modelle çalışırız: çekim gereken işte sahaya kendi ekibimizle çıkar, çekim gerekmeyen işte elinizdeki görsellerle üretiriz. Hazır şablon kullanmayız ve reklam bütçenizin nereye harcandığını her ay rakamla gösteririz. İstanbul&apos;un iki yakasında da sahada çekim yapıyor, Türkiye genelindeki markaların hesaplarını uzaktan yönetiyoruz.</p>
                   </div>
                 </div>
             </div>
