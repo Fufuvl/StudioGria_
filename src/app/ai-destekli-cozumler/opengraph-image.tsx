@@ -9,6 +9,6 @@ export default function Gorsel() {
   return ogKart({
     ust: "AI destekli çözümler",
     baslik: "Stüdyo kurmadan stüdyo kalitesinde görsel",
-    gorsel: "/assets/img/ai-solutions/brand-mix/matcha-hero.jpg",
+    gorsel: "/assets/img/ai-solutions/galeri/star-termos-termos-studyo-portresi-yapay-zeka-gorseli.jpg",
   });
 }

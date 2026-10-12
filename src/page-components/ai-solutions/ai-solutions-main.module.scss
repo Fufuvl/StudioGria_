@@ -199,6 +199,25 @@
   white-space: nowrap;
 }
 
+.galeriAlt {
+  margin: 28px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--soluk);
+  max-width: 760px;
+}
+
+.galeriBag {
+  color: var(--murekkep);
+  border-bottom: 1px solid rgba(22, 24, 29, 0.4);
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    color: var(--murekkep);
+    border-color: var(--murekkep);
+  }
+}
+
 /* ---------- degerler ---------- */
 .degerler {
   background: #fff;

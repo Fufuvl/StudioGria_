@@ -107,14 +107,14 @@ const luceaVakalari: Vaka[] = [
 const starTermosVakalari: Vaka[] = [
   {
     no: "03",
-    ad: "Pipetli termos",
+    ad: "Elegant serisi",
     marka: "Star Termos",
-    dosya: "star-termos-pipetli-termos",
-    onceEtiket: "Gönderilen fotoğraf",
-    onceAlt: "markanın gönderdiği, ofiste telefonla çekilmiş fotoğraf",
+    dosya: "star-termos-elegant-termos",
+    onceEtiket: "Katalog fotoğrafı",
+    onceAlt: "markanın beyaz fonlu katalog fotoğrafı",
     aciklama:
-      "Ofiste telefonla çekilmiş fotoğraftan çalışma masasında kullanım karesi ve yosun üzerinde ürün karesi.",
-    kareler: ["çalışma masasında kullanım karesi", "yosun üzerinde ürün karesi"],
+      "Beyaz fonlu katalog fotoğrafından piknik sofrasında iki modelli kare.",
+    kareler: ["piknik sofrasında modelli kare", "piknik örtüsünde kitap okuyan modelli kare"],
   },
   {
     no: "04",
@@ -137,6 +137,28 @@ const starTermosVakalari: Vaka[] = [
     aciklama:
       "Beyaz fonlu katalog fotoğrafından narlı sofra sahnesi ve buz üzerinde ürün karesi.",
     kareler: ["narlı sofra sahnesi", "buz ve limonla ürün karesi"],
+  },
+];
+
+// Star Termos icin uretilen, yaninda ayri bir urun fotografi gosterilmeyen kareler
+const digerKareler = [
+  {
+    dosya: "star-termos-pipetli-termos-sokak-yapay-zeka-gorseli.jpg",
+    ad: "Pipetli termos",
+    sahne: "Sokak",
+    alt: "Star Termos pipetli termos: yapay zeka ile üretilmiş, trençkotlu modelle sokak karesi",
+  },
+  {
+    dosya: "star-termos-pipetli-termos-metro-yapay-zeka-gorseli.jpg",
+    ad: "Pipetli termos",
+    sahne: "Metro",
+    alt: "Star Termos pipetli termos: yapay zeka ile üretilmiş, metroda modelli kare",
+  },
+  {
+    dosya: "star-termos-pembe-termos-studyo-yapay-zeka-gorseli.jpg",
+    ad: "Termos",
+    sahne: "Stüdyo",
+    alt: "Star Termos pembe termos: yapay zeka ile üretilmiş, stüdyoda modelli portre karesi",
   },
 ];
 
@@ -456,15 +478,38 @@ export default function AiUrunGorseliSayfasi() {
             Takıdan termosa, <em>aynı yöntem</em>
           </h2>
           <p className={styles.bolumSpot}>
-            Star Termos&apos;un ürün fotoğrafları bazen telefondan, bazen
-            katalogdan geldi. Yöntem değişmedi: ürün aynı kalır, sahne markanın
-            diline göre kurulur.
+            Star Termos&apos;ta beyaz fonlu katalog fotoğraflarından yola
+            çıktık. Yöntem değişmedi: ürün aynı kalır, sahne markanın diline
+            göre kurulur.
           </p>
 
           <div className={styles.vakalar}>
             {starTermosVakalari.map((vaka) => (
               <VakaSatiri vaka={vaka} key={vaka.dosya} />
             ))}
+          </div>
+
+          <div className={styles.serit}>
+            <p className={styles.seritBaslik}>Aynı markadan başka kareler</p>
+            <div className={styles.seritIzgara}>
+              {digerKareler.map((kare) => (
+                <figure className={styles.seritOge} key={kare.dosya}>
+                  <div className={styles.seritKare}>
+                    <Image
+                      className={`${styles.gorsel} ${styles.yakin}`}
+                      src={`${GORSEL}/${kare.dosya}`}
+                      alt={kare.alt}
+                      fill
+                      sizes="(max-width: 767px) 64vw, 400px"
+                    />
+                  </div>
+                  <figcaption className={styles.seritEtiket}>
+                    <span className={styles.seritAd}>{kare.ad}</span>
+                    <span>{kare.sahne}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
 
           <p className={styles.aciklamaNot}>

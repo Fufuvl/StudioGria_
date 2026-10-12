@@ -451,8 +451,58 @@
 }
 
 .vakaKare:hover .yakin,
+.seritKare:hover .yakin,
 .kare:hover .yakin {
   transform: scale(1.035);
+}
+
+/* ---------- serit: ayni markadan baska kareler ---------- */
+.serit {
+  margin-top: clamp(40px, 5vw, 72px);
+  padding-top: clamp(28px, 3.5vw, 44px);
+  border-top: 1px solid var(--cizgi);
+}
+
+.seritBaslik {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--soluk);
+  margin: 0 0 22px;
+}
+
+.seritIzgara {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 28px);
+}
+
+.seritOge {
+  margin: 0;
+}
+
+.seritKare {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #ececea;
+}
+
+.seritEtiket {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--soluk);
+}
+
+.seritAd {
+  color: var(--murekkep);
+  font-weight: 600;
 }
 
 .aciklamaNot {
@@ -1002,6 +1052,26 @@
 
   .vakaAciklama {
     font-size: 13.5px;
+  }
+
+  // Mobilde serit yana kayar: kareler kucultulmez, bir sonraki kare ucundan gorunur
+  .seritIzgara {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-right: -18px;
+    padding-right: 18px;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .seritOge {
+    flex: 0 0 64%;
+    scroll-snap-align: start;
   }
 
   .dahilListe {

@@ -41,17 +41,17 @@ const sorular = [
   {
     soru: "İçerikleri siz mi üretiyorsunuz?",
     cevap:
-      "Evet. Tasarım, kurgu ve metin bizde. Çekimli modelde çekimi kendi ekibimizle yaparız; çekimsiz modelde elinizdeki görsellerden ve yapay zeka destekli üretimden yararlanırız.",
+      "Evet. Tasarım, kurgu ve metin bizde. Prodüksiyonlu modelde çekimi kendi ekibimizle yaparız; prodüksiyonsuz modelde elinizdeki görsellerden ve yapay zeka destekli üretimden yararlanırız.",
   },
   {
     soru: "Çekim günü olmadan sosyal medya yönetimi mümkün mü?",
     cevap:
-      "Evet. Çekimsiz modelde çekim günü planlanmaz; içerik, elinizdeki ürün ve mekan görsellerinden markanızın diline uygun biçimde hazırlanır. Süreç uzaktan yürür, bulunduğunuz şehir fark etmez.",
+      "Evet. Prodüksiyonsuz modelde çekim günü planlanmaz; içerik, elinizdeki ürün ve mekan görsellerinden markanızın diline uygun biçimde hazırlanır. Süreç uzaktan yürür, bulunduğunuz şehir fark etmez.",
   },
   {
     soru: "Hangi model bana uygun?",
     cevap:
-      "Mekanın, ekibin ve atmosferin anlatılması gereken işletmelerde çekimli model öne çıkar. Ürün odaklı markalarda ve e-ticarette çoğu zaman çekimsiz model yeterlidir. Hangisinin uygun olduğuna ilk görüşmede birlikte karar veririz.",
+      "Mekanın, ekibin ve atmosferin anlatılması gereken işletmelerde prodüksiyonlu model öne çıkar. Ürün odaklı markalarda ve e-ticarette çoğu zaman prodüksiyonsuz model yeterlidir. Hangisinin uygun olduğuna ilk görüşmede birlikte karar veririz.",
   },
   {
     soru: "Reklam yönetimi dahil mi?",

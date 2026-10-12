@@ -65,7 +65,7 @@ export const blogYazilari: BlogYazisi[] = [
     baslik: "Sosyal medya ajansı fiyatları: bütçe neye göre belirlenir?",
     seoBaslik: "Sosyal Medya Ajansı Fiyatları 2026: Aylık Ücret Tablosu",
     seoAciklama:
-      "2026'da tam hizmet sosyal medya ajansı ücretleri: çekimsiz yönetim 25.000 TL'den, prodüksiyonlu 45.000 TL'den başlar. Fiyat tablosu ve teklifte bakılacaklar.",
+      "2026'da tam hizmet sosyal medya ajansı ücretleri: prodüksiyonsuz yönetim 25.000 TL'den, prodüksiyonlu 45.000 TL'den başlar. Fiyat tablosu ve teklif kalemleri.",
     ozet:
       "Ajans tekliflerini karşılaştırırken bakmanız gereken kalemler, fiyatı gerçekten belirleyen değişkenler ve ucuz teklifin gizli maliyeti.",
     tarih: "2026-06-18",
@@ -89,7 +89,7 @@ export const blogYazilari: BlogYazisi[] = [
         tablo: {
           basliklar: ["Hizmet kapsamı", "Aylık ücret (reklam bütçesi hariç)"],
           satirlar: [
-            ["Sosyal medya yönetimi (çekimsiz: strateji, tasarım, yayın, rapor)", "25.000 - 35.000 TL"],
+            ["Sosyal medya yönetimi (prodüksiyonsuz: strateji, tasarım, yayın, rapor)", "25.000 - 35.000 TL"],
             ["Prodüksiyonlu sosyal medya (aylık saha çekimi dahil)", "45.000 - 90.000 TL"],
             ["Reklam yönetimi (Meta ve Google, tek başına)", "20.000 TL'den başlar"],
             ["Entegre ve kurumsal (çok kanal, çok marka)", "90.000 TL ve üzeri"],
@@ -137,9 +137,9 @@ export const blogYazilari: BlogYazisi[] = [
     ],
     guncelleme: "2026-09-28",
     kisaCevap:
-      "2026'da sahada prodüksiyon yapan tam hizmet bir sosyal medya ajansında aylık ücret, reklam bütçesi hariç, çekimsiz yönetimde 25.000 TL'den, prodüksiyonlu yönetimde 45.000 TL'den başlar; entegre ve kurumsal işler 90.000 TL'yi aşar. Çok daha düşük teklifler genellikle yalnızca paylaşım yapan hizmetlerdir. Farkı, içeriğin kim tarafından ve sahada üretilip üretilmediği belirler.",
+      "2026'da sahada prodüksiyon yapan tam hizmet bir sosyal medya ajansında aylık ücret, reklam bütçesi hariç, prodüksiyonsuz yönetimde 25.000 TL'den, prodüksiyonlu yönetimde 45.000 TL'den başlar; entegre ve kurumsal işler 90.000 TL'yi aşar. Çok daha düşük teklifler genellikle yalnızca paylaşım yapan hizmetlerdir. Farkı, içeriğin kim tarafından ve sahada üretilip üretilmediği belirler.",
     anahtarCikarimlar: [
-      "2026'da tam hizmet ajanslarda aylık ücret, reklam bütçesi hariç, çekimsiz yönetimde 25.000 TL'den, prodüksiyonlu yönetimde 45.000 TL'den başlar.",
+      "2026'da tam hizmet ajanslarda aylık ücret, reklam bütçesi hariç, prodüksiyonsuz yönetimde 25.000 TL'den, prodüksiyonlu yönetimde 45.000 TL'den başlar.",
       "Fiyat farkının asıl kaynağı üretim biçimidir: yalnızca yayın yönetimi mi, yoksa sahada çekim ve kurgu da dahil mi?",
       "Sağlıklı bir teklifte aylık içerik adedi, saha çekim günü, revizyon hakkı ve raporlama sıklığı adetle yazılıdır.",
       "Reklam bütçesi ajans ücretinden ayrı bir kalemdir; tamamı doğrudan Meta ya da Google'a gider.",
@@ -150,7 +150,7 @@ export const blogYazilari: BlogYazisi[] = [
       {
         soru: "Sosyal medya ajansı aylık ne kadar tutar?",
         cevap:
-          "Sahada prodüksiyon yapan tam hizmet bir ajansta 2026'da aylık ücret, reklam bütçesi hariç, çekimsiz yönetimde 25.000 ile 35.000 TL, aylık saha çekimi içeren prodüksiyonlu yönetimde 45.000 ile 90.000 TL arasındadır. Kesin rakamı üretilen özgün içerik adedi, saha çekim günü sayısı, yönetilen platformlar ve reklam yönetiminin dahil olup olmadığı belirler. Studio Gria olarak önce ihtiyaç analizi yapar, ardından markaya özel bir teklif sunumu hazırlarız.",
+          "Sahada prodüksiyon yapan tam hizmet bir ajansta 2026'da aylık ücret, reklam bütçesi hariç, prodüksiyonsuz yönetimde 25.000 ile 35.000 TL, aylık saha çekimi içeren prodüksiyonlu yönetimde 45.000 ile 90.000 TL arasındadır. Kesin rakamı üretilen özgün içerik adedi, saha çekim günü sayısı, yönetilen platformlar ve reklam yönetiminin dahil olup olmadığı belirler. Studio Gria olarak önce ihtiyaç analizi yapar, ardından markaya özel bir teklif sunumu hazırlarız.",
       },
       {
         soru: "Meta reklam yönetimi ücreti ne kadar?",

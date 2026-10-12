@@ -1,13 +1,14 @@
-// Sosyal medya yonetiminin iki calisma modeli: cekimli ve cekimsiz.
+// Sosyal medya yonetiminin iki calisma modeli: produksiyonlu ve produksiyonsuz.
+// Adlandirma kullanici karari (12 Eki 2026): "cekimli / cekimsiz" denmez.
 // Ana sayfa, hizmet sayfasi ve /teklif ayni bolumu (components/iki-model.tsx)
 // bu dosyadan besler; metin tek yerden degisir.
 //
 // Icerik teklif dosyasindaki iki paket hattiyla aynidir (cekim dahil paketler
-// ve dijital uretim paketleri). Sitede fiyat yazilmaz; cekimsiz modelin
+// ve dijital uretim paketleri). Sitede fiyat yazilmaz; produksiyonsuz modelin
 // gerekcesi "yapay zeka oldugu icin ucuz" degil, "cekim gunu maliyeti olmadigi
 // icin ekonomik" olarak anlatilir.
 
-export type ModelAnahtari = "cekimli" | "cekimsiz";
+export type ModelAnahtari = "produksiyonlu" | "produksiyonsuz";
 
 export type CalismaModeli = {
   anahtar: ModelAnahtari;
@@ -25,9 +26,9 @@ export type CalismaModeli = {
 
 export const calismaModelleri: CalismaModeli[] = [
   {
-    anahtar: "cekimli",
+    anahtar: "produksiyonlu",
     etiket: "Model 01",
-    ad: "Çekimli yönetim",
+    ad: "Prodüksiyonlu yönetim",
     ozet: "Ekibimiz işletmenize gelir; fotoğrafı ve videoyu kendi ekipmanıyla çeker.",
     gorsel: "/assets/img/inner-project/showcase/16.jpg",
     gorselAlt: "Studio Gria ekibinin bir restoranda çektiği sofra karesi",
@@ -45,9 +46,9 @@ export const calismaModelleri: CalismaModeli[] = [
     ],
   },
   {
-    anahtar: "cekimsiz",
+    anahtar: "produksiyonsuz",
     etiket: "Model 02",
-    ad: "Çekimsiz yönetim",
+    ad: "Prodüksiyonsuz yönetim",
     ozet: "Çekim günü planlanmaz; içerik elinizdeki görsellerden stüdyoda üretilir.",
     gorsel: "/assets/img/ai-solutions/urun-gorseli/lucea-vesper-bileklik-yapay-zeka-gorseli-2.jpg",
     gorselAlt: "Markanın gönderdiği fotoğraftan stüdyoda üretilmiş bileklik karesi",

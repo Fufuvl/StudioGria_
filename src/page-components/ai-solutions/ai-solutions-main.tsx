@@ -7,21 +7,24 @@ import HeaderEleven from "@/layouts/headers/header-eleven";
 import FooterTwo from "@/layouts/footers/footer-two";
 import styles from "./ai-solutions-main.module.scss";
 
-// Galeri: tamami yapay zeka ile uretilmis calisma ornekleri.
-// Farkli en boy oranlari masonry dizilimde dogal bir ritim kurar.
+// Galeri: tamami yapay zeka ile uretilmis calisma ornekleri. Kareler yalniz
+// Lucea Jewelry ve Star Termos islerinden secilir (kullanici karari, 12 Eki 2026).
+// Farkli en boy oranlari masonry dizilimde dogal bir ritim kurar; en ve boy
+// dosyanin gercek olculeridir.
+const GALERI = "/assets/img/ai-solutions/galeri";
 const galeri = [
-  { ad: "Sokak Çekimi", tag: "Matchakizi", gorsel: "/assets/img/ai-solutions/brand-mix/matcha-street.jpg" },
-  { ad: "Editoryal Portre", tag: "Lucea", gorsel: "/assets/img/ai-solutions/brand-mix/lucea-portrait.jpg" },
-  { ad: "Gün Batımı", tag: "Luxera", gorsel: "/assets/img/ai-solutions/brand-mix/luxera-goldenhour.jpg" },
-  { ad: "Restoran Sahnesi", tag: "Entepe", gorsel: "/assets/img/ai-solutions/brand-mix/entepe-dining.jpg" },
-  { ad: "Hareket Halinde", tag: "Matchakizi", gorsel: "/assets/img/ai-solutions/brand-mix/matcha-on-the-go.jpg" },
-  { ad: "Doku Detayı", tag: "Entepe", gorsel: "/assets/img/ai-solutions/brand-mix/entepe-material.jpg" },
-  { ad: "Ürün Vitrini", tag: "Lucea", gorsel: "/assets/img/ai-solutions/brand-mix/lucea-necklace-display.jpg" },
-  { ad: "Makro Çekim", tag: "Luxera", gorsel: "/assets/img/ai-solutions/brand-mix/luxera-macro.jpg" },
-  { ad: "Ana Ürün Karesi", tag: "Matchakizi", gorsel: "/assets/img/ai-solutions/brand-mix/matcha-hero.jpg" },
-  { ad: "İç Mekan", tag: "Entepe", gorsel: "/assets/img/ai-solutions/brand-mix/entepe-bedroom.jpg" },
-  { ad: "Kompozisyon", tag: "Lucea", gorsel: "/assets/img/ai-solutions/brand-mix/lucea-rings-composition.jpg" },
-  { ad: "Kıyı Sahnesi", tag: "Luxera", gorsel: "/assets/img/ai-solutions/brand-mix/luxera-dunes.jpg" },
+  { ad: "Sokak karesi", tag: "Star Termos", dosya: "star-termos-pipetli-termos-sokak-karesi", en: 1000, boy: 1241 },
+  { ad: "Editoryal portre", tag: "Lucea Jewelry", dosya: "lucea-yuzuk-editoryal-portre", en: 896, boy: 1200 },
+  { ad: "Stüdyo portresi", tag: "Star Termos", dosya: "star-termos-termos-studyo-portresi", en: 1000, boy: 1241 },
+  { ad: "Buz üzerinde ürün karesi", tag: "Lucea Jewelry", dosya: "lucea-verdelle-kupe-buz-uzerinde", en: 1000, boy: 1000 },
+  { ad: "Metro karesi", tag: "Star Termos", dosya: "star-termos-pipetli-termos-metro-karesi", en: 1000, boy: 1241 },
+  { ad: "Ürün vitrini", tag: "Lucea Jewelry", dosya: "lucea-kolye-urun-vitrini", en: 669, boy: 1200 },
+  { ad: "Piknik sahnesi", tag: "Star Termos", dosya: "star-termos-termos-piknik-sahnesi", en: 1000, boy: 1241 },
+  { ad: "Araç içi portre", tag: "Lucea Jewelry", dosya: "lucea-sia-kupe-arac-ici-portre", en: 1000, boy: 1339 },
+  { ad: "Boğaz manzarası", tag: "Star Termos", dosya: "star-termos-termos-bogaz-manzarasi", en: 1000, boy: 1241 },
+  { ad: "Yakın portre", tag: "Lucea Jewelry", dosya: "lucea-cendre-kupe-yakin-portre", en: 1000, boy: 1000 },
+  { ad: "Servis anı", tag: "Star Termos", dosya: "star-termos-termos-servis-ani", en: 1000, boy: 1241 },
+  { ad: "Kompozisyon", tag: "Lucea Jewelry", dosya: "lucea-yuzuk-kompozisyon", en: 896, boy: 1200 },
 ];
 
 const degerler = [
@@ -100,15 +103,15 @@ const AiSolutionsMain = () => {
               {galeri.map((oge, sira) => (
                 <figure
                   className={styles.galeriOge}
-                  key={oge.gorsel}
+                  key={oge.dosya}
                   style={{ animationDelay: `${Math.min(sira * 70, 700)}ms` }}
                 >
                   <Image
                     className={styles.galeriGorsel}
-                    src={oge.gorsel}
-                    alt={`${oge.tag} için yapay zeka ile üretilmiş ${oge.ad.toLocaleLowerCase("tr-TR")} görseli`}
-                    width={640}
-                    height={800}
+                    src={`${GALERI}/${oge.dosya}-yapay-zeka-gorseli.jpg`}
+                    alt={`${oge.tag} için yapay zeka ile üretilmiş ${oge.ad.toLocaleLowerCase("tr-TR")}`}
+                    width={oge.en}
+                    height={oge.boy}
                     sizes="(max-width: 575px) 100vw, (max-width: 991px) 50vw, 400px"
                   />
                   <figcaption className={styles.galeriEtiket}>
@@ -118,6 +121,13 @@ const AiSolutionsMain = () => {
                 </figure>
               ))}
             </div>
+            <p className={styles.galeriAlt}>
+              Kareler Lucea Jewelry ve Star Termos için ürettiğimiz işlerdendir;
+              karelerde görünen kişiler yapay zeka ile üretilmiştir.{" "}
+              <Link className={styles.galeriBag} href="/ai-urun-gorseli">
+                Markaların gönderdiği fotoğraflarla yan yana görün
+              </Link>
+            </p>
           </div>
         </section>
 

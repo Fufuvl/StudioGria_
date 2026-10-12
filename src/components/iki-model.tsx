@@ -3,7 +3,7 @@ import Image from "next/image";
 import ModelBag from "@/components/model-bag";
 import { calismaModelleri, modelOrtaklari } from "@/data/model-data";
 
-// Sosyal medya yonetiminin iki calisma modeli: cekimli ve cekimsiz.
+// Sosyal medya yonetiminin iki calisma modeli: produksiyonlu ve produksiyonsuz.
 // Studio Gria'yi ayiran teklif budur; ana sayfa, hizmet sayfasi ve /teklif
 // ayni bolumu gosterir. Kartlar yan yana durur ve satirlar karsilikli okunur
 // (alt izgara), boylece ziyaretci iki modeli tek bakista karsilastirir.
@@ -28,7 +28,8 @@ export default function IkiModel({
       <div className="sg-hizmet-ic" style={genislik === 1280 ? undefined : { maxWidth: genislik }}>
         <span className="sg-hizmet-rozet">{rozet}</span>
         <h2 id={`${kimlik}-baslik`} className="sg-hizmet-baslik">
-          İki çalışma modeli: <em>çekimli</em> ya da <em>çekimsiz</em>
+          İki çalışma modeli: <em>prodüksiyonlu</em> ya da{" "}
+          <em>prodüksiyonsuz</em>
         </h2>
         <p className="sg-hizmet-spot">
           Strateji, içerik planı, reklam yönetimi ve rapor iki modelde de

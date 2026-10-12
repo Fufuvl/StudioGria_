@@ -8,9 +8,11 @@ import {
   kirintiSemasi,
 } from "@/data/kurulus-data";
 
-const sayfaBaslik = "Yapay Zeka ile Ürün Görseli ve Reklam İçeriği | Studio Gria";
+// Baslik bu sayfanin isini (ornek galerisi) tasir; "urun gorseli / urun
+// fotografi" aramalarinin hedefi /ai-urun-gorseli sayfasidir.
+const sayfaBaslik = "Yapay Zeka ile Üretilmiş Görsel Örnekleri | Studio Gria";
 const sayfaAciklama =
-  "Stüdyo kurmadan stüdyo kalitesinde görsel: yapay zeka destekli ürün çekimi, kampanya görseli ve video üretimi. Set maliyeti olmadan günler içinde teslim.";
+  "Lucea Jewelry ve Star Termos için yapay zeka ile ürettiğimiz görseller: editoryal portre, ürün karesi, sokak ve stüdyo sahneleri. Set ve stüdyo kurmadan.";
 
 export const metadata: Metadata = {
   title: sayfaBaslik,

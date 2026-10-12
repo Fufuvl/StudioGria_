@@ -9,5 +9,6 @@ export default function Gorsel() {
   return ogKart({
     ust: "Yapay zeka ile ürün görseli",
     baslik: "Tek fotoğraftan üç katalog karesi",
+    gorsel: "/assets/img/ai-solutions/urun-gorseli/lucea-marea-kupe-yapay-zeka-gorseli-1.jpg",
   });
 }

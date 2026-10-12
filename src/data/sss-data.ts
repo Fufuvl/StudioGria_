@@ -83,6 +83,6 @@ export const sssKayitlari: SssKaydi[] = [
     id: 12,
     soru: "Çekim yapmadan sosyal medya yönetimi mümkün mü?",
     cevap:
-      "Evet. Sosyal medya yönetimini iki modelle yürütüyoruz. Çekimli modelde ekibimiz mekanınıza gelir ve çekimi kendi ekipmanımızla yapar. Çekimsiz modelde çekim günü planlanmaz; içerik, elinizdeki ürün ve mekan görsellerinden markanızın diline uygun biçimde hazırlanır ve süreç uzaktan yürür. Hangi modelin size uygun olduğuna ilk görüşmede birlikte karar veririz.",
+      "Evet. Sosyal medya yönetimini iki modelle yürütüyoruz. Prodüksiyonlu modelde ekibimiz mekanınıza gelir ve çekimi kendi ekipmanımızla yapar. Prodüksiyonsuz modelde çekim günü planlanmaz; içerik, elinizdeki ürün ve mekan görsellerinden markanızın diline uygun biçimde hazırlanır ve süreç uzaktan yürür. Hangi modelin size uygun olduğuna ilk görüşmede birlikte karar veririz.",
   },
 ];

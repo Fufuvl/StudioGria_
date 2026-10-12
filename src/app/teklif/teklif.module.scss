@@ -471,7 +471,7 @@
   position: static;
 }
 
-// Cekimli / cekimsiz: acilir liste yerine uc gorunur secenek
+// Produksiyonlu / produksiyonsuz: acilir liste yerine uc gorunur secenek
 .modeller {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -569,13 +569,19 @@
   }
 }
 
-@media (max-width: 380px) {
-  .modelNot {
-    display: none;
+// Telefonda secenekler alt alta dizilir: uzun model adlari kesilmez,
+// ad solda, kisa aciklama sagda durur
+@media (max-width: 575px) {
+  .modeller {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 
   .modelSecenek {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
     min-height: 46px;
-    justify-content: center;
   }
 }

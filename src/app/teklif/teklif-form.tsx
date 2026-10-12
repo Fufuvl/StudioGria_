@@ -24,7 +24,7 @@ export type TeklifFormAyar = {
   kaynak?: string;
   baslik?: string;
   spot?: string;
-  // Cekimli / cekimsiz secimi. Sosyal medya disindaki sayfalarda kapatilir.
+  // Produksiyonlu / produksiyonsuz secimi. Sosyal medya disindaki sayfalarda kapatilir.
   modelSecimi?: boolean;
   // Model secimi kapaliyken bildirim e-postasinin "Konu" satirina yazilir
   konu?: string;
@@ -41,8 +41,8 @@ export type TeklifFormAyar = {
 // Sosyal medya yonetiminin iki calisma modeli. "anahtar" adres cubugundaki
 // ?model= degeriyle ve iki-model.tsx icindeki baglantilarla eslesir.
 const MODELLER = [
-  { anahtar: "cekimli", ad: "Çekimli", not: "Ekibimiz çeker" },
-  { anahtar: "cekimsiz", ad: "Çekimsiz", not: "Çekim günü yok" },
+  { anahtar: "produksiyonlu", ad: "Prodüksiyonlu", not: "Ekibimiz çeker" },
+  { anahtar: "produksiyonsuz", ad: "Prodüksiyonsuz", not: "Çekim günü yok" },
   { anahtar: "kararsiz", ad: "Kararsızım", not: "Birlikte seçelim" },
 ];
 

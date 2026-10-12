@@ -1,9 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import details_thumb_1 from '@/assets/img/inner-project/showcase/15.jpg';
-import details_thumb_2 from '@/assets/img/inner-project/showcase/16.jpg';
-import details_thumb_3 from '@/assets/img/inner-project/showcase/3.jpg';
 import hero_gorsel from '@/assets/img/inner-project/showcase/background.jpg';
 import social_data from '@/data/social-data';
 import AnasayfaHizmetler, { AnasayfaHizmet } from '@/components/anasayfa-hizmetler';
@@ -135,30 +132,6 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
           </div>
       </div>
       {/* details overview */}
-
-      {/* details thumb */}
-      <div className="showcase-details-thumb-wrap pb-40">
-          <div className="container container-1430">
-            <div className="row gx-80">
-                <div className="col-xl-6 col-lg-6">
-                  <div className="showcase-details-thumb mb-80">
-                      <Image data-speed=".8" src={details_thumb_1} alt="Studio Gria prodüksiyon çalışmasından mekan çekimi" sizes="(max-width: 991px) 100vw, 50vw" style={{height: "auto"}}/>
-                  </div>
-                </div>
-                <div className="col-xl-6 col-lg-6">
-                  <div className="showcase-details-thumb mb-80">
-                  <Image data-speed=".8" src={details_thumb_2} alt="Studio Gria prodüksiyon çalışmasından ürün ve marka çekimi" sizes="(max-width: 991px) 100vw, 50vw" style={{height: "auto"}}/>
-                  </div>
-                </div>
-                <div className="col-xl-12">
-                  <div className="showcase-details-thumb mb-80">
-                  <Image data-speed=".8" src={details_thumb_3} alt="Studio Gria prodüksiyon çalışmasından geniş açı tanıtım karesi" sizes="(max-width: 1430px) 100vw, 1430px" style={{height: "auto"}}/>
-                  </div>
-                </div>
-            </div>
-          </div>
-      </div>
-      {/* details thumb */}
 
       {/* details overview */}
       <div className="showcase-details-overview pb-120">

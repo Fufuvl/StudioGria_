@@ -435,7 +435,7 @@
   margin-top: 48px;
 }
 
-/* Iki calisma modeli: cekimli ve cekimsiz (components/iki-model.tsx).
+/* Iki calisma modeli: produksiyonlu ve produksiyonsuz (components/iki-model.tsx).
    Kartlar alt izgarayla hizalanir; satirlar iki kartta karsilikli durur. */
 .sg-model {
   background: #fff;
@@ -882,6 +882,14 @@
   .tp-inner-header-menu > nav > ul > li > a {
     font-size: 14.5px;
   }
+}
+
+/* Sabit ust menu: sayfa kaydirilinca menu zemini acik renge doner. Tema
+   kurali (public/assets/scss/main.scss) menuyu sabitken de saydam biraktigi
+   icin menu yazilari gorsellerin ve koyu bolumlerin ustunde okunmuyordu. */
+.tp-inner-header-area.header-sticky:not(.tp-inner-header-white) {
+  background-color: rgba(250, 249, 247, 0.94) !important;
+  backdrop-filter: blur(10px);
 }
 
 /* Footer iletisim bilgileri buyuk harfe cevrilmez: Turkce buyuk harf kurali

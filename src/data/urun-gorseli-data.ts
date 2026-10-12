@@ -104,6 +104,6 @@ export const urunGorseliSorulari = [
   {
     soru: "Sosyal medyamı da yönetebilir misiniz?",
     cevap:
-      "Evet. Görsel üretimini aylık sosyal medya yönetimiyle birleştirebiliriz. Çekim günü gerektirmeyen çekimsiz modelimiz ürün odaklı markalar için uygundur.",
+      "Evet. Görsel üretimini aylık sosyal medya yönetimiyle birleştirebiliriz. Çekim günü gerektirmeyen prodüksiyonsuz modelimiz ürün odaklı markalar için uygundur.",
   },
 ];
