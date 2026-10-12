@@ -6,6 +6,7 @@ import TeklifForm from "./teklif-form";
 import ErkenOlcum from "@/components/erken-olcum";
 import SosyalKanit from "@/components/sosyal-kanit";
 import ReferansSerit from "@/components/referans-serit";
+import IkiModel from "@/components/iki-model";
 import { surecAdimlari } from "@/data/surec-data";
 import {
   KIMLIK,
@@ -157,6 +158,9 @@ export default function TeklifSayfasi() {
       </div>
 
       <ReferansSerit />
+
+      {/* Iki model: kartlardaki baglanti formdaki model secimini doldurur */}
+      <IkiModel rozet="Çalışma modelleri" zemin="krem" genislik={1192} />
 
       <section className={styles.bolum}>
         <div className={styles.kapsayici}>

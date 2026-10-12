@@ -16,9 +16,9 @@ export type Hizmet = {
   giris: string;
   aciklama: string[];
   dahil: string[];
-  // Hizmetin birden fazla calisma modeli varsa (ornek: cekimli ve cekimsiz
-  // sosyal medya yonetimi) detay sayfasinda ayri bir bolum olarak gosterilir.
-  modeller?: { etiket: string; ad: string; metin: string }[];
+  // Cekimli / cekimsiz iki modelle sunulan hizmette detay sayfasi iki model
+  // bolumunu (components/iki-model.tsx, veri: model-data.ts) gosterir.
+  ikiModel?: boolean;
   sss: HizmetSSS[];
   gorsel: string;
   gorselAlt: string;
@@ -49,26 +49,7 @@ export const hizmetler: Hizmet[] = [
       "Ay sonu performans raporu",
       "Platform stratejisi: Instagram, Facebook, TikTok, LinkedIn",
     ],
-    modeller: [
-      {
-        etiket: "Model 01",
-        ad: "Çekimli yönetim",
-        metin:
-          "Ekibimiz mekanınıza gelir; fotoğraf ve video çekimini kendi ekipmanımızla yapar. Mekanın, ekibin ve atmosferin anlatılması gereken işletmeler için: restoran, otel, klinik, spor kulübü.",
-      },
-      {
-        etiket: "Model 02",
-        ad: "Çekimsiz yönetim",
-        metin:
-          "Çekim günü planlanmaz. İçerik, elinizdeki ürün ve mekan görsellerinden markanızın diline uygun biçimde hazırlanır; gerektiğinde yapay zeka destekli üretim devreye girer. Süreç uzaktan yürür, şehriniz fark etmez.",
-      },
-      {
-        etiket: "Karar",
-        ad: "Hangisi size uygun?",
-        metin:
-          "Ürün odaklı markalarda ve e-ticarette çoğu zaman çekimsiz model yeterlidir; çekim günü olmadığı için daha ekonomik bir başlangıçtır. Hangi modelin uygun olduğuna ilk görüşmede birlikte karar veririz.",
-      },
-    ],
+    ikiModel: true,
     sss: [
       {
         soru: "Çekim yapmadan sosyal medya yönetimi mümkün mü?",

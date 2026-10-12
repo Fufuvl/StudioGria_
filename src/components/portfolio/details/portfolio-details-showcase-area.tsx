@@ -7,6 +7,8 @@ import details_thumb_3 from '@/assets/img/inner-project/showcase/3.jpg';
 import hero_gorsel from '@/assets/img/inner-project/showcase/background.jpg';
 import social_data from '@/data/social-data';
 import AnasayfaHizmetler, { AnasayfaHizmet } from '@/components/anasayfa-hizmetler';
+import IkiModel from '@/components/iki-model';
+import AnasayfaUrunGorseli from '@/components/anasayfa-urun-gorseli';
 import {
   AnasayfaKanit,
   AnasayfaRehberler,
@@ -76,6 +78,10 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
 
       {/* sosyal kanit: rakamlar ve referans seridi */}
       <AnasayfaKanit />
+
+      {/* iki hizmet hatti: sosyal medyada iki model ve yapay zeka ile urun gorseli */}
+      <IkiModel />
+      <AnasayfaUrunGorseli />
 
       {/* hizmetler: ana sayfadan detay sayfalarina ic link */}
       <AnasayfaHizmetler hizmetler={hizmetler} />
