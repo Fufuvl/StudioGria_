@@ -625,14 +625,20 @@
   }
 }
 
-/* Ana sayfa: yapay zeka ile urun gorseli bandi. Ikinci hizmet hattini
-   fiyatiyla birlikte gosterir ve /ai-urun-gorseli sayfasina baglar. */
+/* Ana sayfa: yapay zeka ile urun gorseli bolumu. Ikinci hizmet hattini
+   fiyatiyla birlikte gosterir ve /ai-urun-gorseli sayfasina baglar.
+   Zemin aciktir: ust menu saydam oldugu icin koyu zeminde okunmaz. */
 .sg-urun {
-  background: #16181d;
+  background: #fff;
   padding: clamp(64px, 8vw, 120px) 0;
 
   em {
     font-style: italic;
+  }
+
+  .sg-hizmet-spot {
+    margin-bottom: 0;
+    max-width: 460px;
   }
 }
 
@@ -643,71 +649,8 @@
   align-items: center;
 }
 
-.sg-urun-rozet {
-  display: block;
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 20px;
-}
-
-.sg-urun-baslik {
-  font-family: var(--tp-ff-heading), sans-serif;
-  font-size: clamp(30px, 3.8vw, 52px);
-  line-height: 1.1;
-  // Global baslik rengi koyu; koyu zeminde beyaza cekilir
-  color: #fff;
-  margin: 0 0 20px;
-}
-
-.sg-urun-spot {
-  font-size: clamp(15px, 1.2vw, 17px);
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0 0 34px;
-  max-width: 460px;
-}
-
 .sg-urun-eylem {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px 22px;
-}
-
-.sg-urun-dugme {
-  display: inline-block;
-  padding: 15px 34px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #16181d;
-  background: #fff;
-  border-radius: 3px;
-  transition: opacity 0.25s ease;
-
-  &:hover {
-    color: #16181d;
-    opacity: 0.88;
-  }
-}
-
-.sg-urun-bag {
-  display: inline-block;
-  padding: 10px 2px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-  transition: border-color 0.25s ease;
-
-  &:hover {
-    color: #fff;
-    font-style: italic;
-    border-color: #fff;
-  }
+  margin-top: 34px;
 }
 
 .sg-urun-kareler {
@@ -723,14 +666,16 @@
   margin: 0;
   overflow: hidden;
   border-radius: 4px;
-  background: #2c2f36;
+  background: #ececea;
 }
 
 .sg-urun-once {
   margin: 0;
   padding: 5px 5px 0;
   background: #fff;
+  border: 1px solid rgba(22, 24, 29, 0.12);
   border-radius: 4px;
+  box-shadow: 0 14px 34px rgba(22, 24, 29, 0.1);
 }
 
 .sg-urun-once-kare {

@@ -80,7 +80,7 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
       <AnasayfaKanit />
 
       {/* iki hizmet hatti: sosyal medyada iki model ve yapay zeka ile urun gorseli */}
-      <IkiModel />
+      <IkiModel zemin="krem" />
       <AnasayfaUrunGorseli />
 
       {/* hizmetler: ana sayfadan detay sayfalarina ic link */}

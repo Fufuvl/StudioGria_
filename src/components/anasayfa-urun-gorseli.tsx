@@ -19,19 +19,19 @@ export default function AnasayfaUrunGorseli() {
       <div className="sg-hizmet-ic">
         <div className="sg-urun-izgara">
           <div>
-            <span className="sg-urun-rozet">Yapay zeka ile ürün görseli</span>
-            <h2 id="anasayfa-urun-gorseli" className="sg-urun-baslik">
+            <span className="sg-hizmet-rozet">Yapay zeka ile ürün görseli</span>
+            <h2 id="anasayfa-urun-gorseli" className="sg-hizmet-baslik">
               Bir ürünün <em>üç katalog karesi</em> {"1.000 TL"}
             </h2>
-            <p className="sg-urun-spot">
+            <p className="sg-hizmet-spot">
               Ürün fotoğrafınızı gönderirsiniz. Ürün olduğu gibi kalır;
               sahnesini, ışığını ve zeminini biz kurarız.
             </p>
-            <div className="sg-urun-eylem">
-              <Link className="sg-urun-dugme" href="/ai-urun-gorseli">
+            <div className="sg-hizmet-alt sg-urun-eylem">
+              <Link className="sg-split-cta" href="/ai-urun-gorseli">
                 Fiyatı ve örnekleri görün
               </Link>
-              <Link className="sg-urun-bag" href="/ai-destekli-cozumler">
+              <Link className="sg-split-link" href="/ai-destekli-cozumler">
                 Tüm AI çalışmaları
               </Link>
             </div>
