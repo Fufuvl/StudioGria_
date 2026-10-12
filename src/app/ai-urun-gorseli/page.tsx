@@ -73,10 +73,13 @@ type Vaka = {
   ad: string;
   marka: string;
   dosya: string;
-  onceEtiket: string;
-  onceAlt: string;
+  // Markadan gelen urun fotografi elimizde yoksa satir yalniz karelerle kurulur
+  onceEtiket?: string;
+  onceAlt?: string;
   aciklama: string;
   kareler: [string, string];
+  // Kareler ad kalibina uymuyorsa dosya adlari acikca verilir
+  kareDosyalari?: [string, string];
 };
 
 const luceaVakalari: Vaka[] = [
@@ -129,36 +132,37 @@ const starTermosVakalari: Vaka[] = [
   },
   {
     no: "05",
-    ad: "Beyaz termos",
+    ad: "Pipetli termos",
     marka: "Star Termos",
-    dosya: "star-termos-beyaz-termos",
-    onceEtiket: "Katalog fotoğrafı",
-    onceAlt: "markanın beyaz fonlu katalog fotoğrafı",
-    aciklama:
-      "Beyaz fonlu katalog fotoğrafından narlı sofra sahnesi ve buz üzerinde ürün karesi.",
-    kareler: ["narlı sofra sahnesi", "buz ve limonla ürün karesi"],
+    dosya: "star-termos-pipetli-termos",
+    aciklama: "Sokakta ve metroda, günlük kullanımın içinde iki modelli kare.",
+    kareler: ["trençkotlu modelle sokak karesi", "metroda modelli kare"],
+    kareDosyalari: [
+      "star-termos-pipetli-termos-sokak-yapay-zeka-gorseli.jpg",
+      "star-termos-pipetli-termos-metro-yapay-zeka-gorseli.jpg",
+    ],
   },
 ];
 
 // Star Termos icin uretilen, yaninda ayri bir urun fotografi gosterilmeyen kareler
 const digerKareler = [
   {
-    dosya: "star-termos-pipetli-termos-sokak-yapay-zeka-gorseli.jpg",
-    ad: "Pipetli termos",
-    sahne: "Sokak",
-    alt: "Star Termos pipetli termos: yapay zeka ile üretilmiş, trençkotlu modelle sokak karesi",
-  },
-  {
-    dosya: "star-termos-pipetli-termos-metro-yapay-zeka-gorseli.jpg",
-    ad: "Pipetli termos",
-    sahne: "Metro",
-    alt: "Star Termos pipetli termos: yapay zeka ile üretilmiş, metroda modelli kare",
-  },
-  {
     dosya: "star-termos-pembe-termos-studyo-yapay-zeka-gorseli.jpg",
     ad: "Termos",
     sahne: "Stüdyo",
     alt: "Star Termos pembe termos: yapay zeka ile üretilmiş, stüdyoda modelli portre karesi",
+  },
+  {
+    dosya: "star-termos-termos-piknik-yapay-zeka-gorseli.jpg",
+    ad: "Termos",
+    sahne: "Piknik",
+    alt: "Star Termos termos: yapay zeka ile üretilmiş, piknik sofrasında modelli kare",
+  },
+  {
+    dosya: "star-termos-termos-bogaz-yapay-zeka-gorseli.jpg",
+    ad: "Termos",
+    sahne: "Boğaz",
+    alt: "Star Termos termos: yapay zeka ile üretilmiş, Boğaz manzaralı çay sofrası karesi",
   },
 ];
 
@@ -266,25 +270,27 @@ function WhatsappIkon() {
 // uretilen iki kare.
 function VakaSatiri({ vaka }: { vaka: Vaka }) {
   return (
-    <article className={styles.vaka}>
+    <article className={`${styles.vaka} ${vaka.onceEtiket ? "" : styles.vakaOncesiz}`}>
       <div className={styles.vakaMetin}>
         <p className={styles.vakaNo}>{vaka.no}</p>
         <h3 className={styles.vakaAd}>{vaka.ad}</h3>
         <p className={styles.vakaMarka}>{vaka.marka}</p>
         <p className={styles.vakaAciklama}>{vaka.aciklama}</p>
       </div>
-      <figure className={styles.vakaOnce}>
-        <div className={styles.vakaOnceKare}>
-          <Image
-            className={styles.gorsel}
-            src={`${GORSEL}/${vaka.dosya}-urun-fotografi.jpg`}
-            alt={`${vaka.marka} ${vaka.ad}: ${vaka.onceAlt}`}
-            fill
-            sizes="(max-width: 767px) 46vw, 220px"
-          />
-        </div>
-        <figcaption className={styles.vakaEtiket}>{vaka.onceEtiket}</figcaption>
-      </figure>
+      {vaka.onceEtiket && (
+        <figure className={styles.vakaOnce}>
+          <div className={styles.vakaOnceKare}>
+            <Image
+              className={styles.gorsel}
+              src={`${GORSEL}/${vaka.dosya}-urun-fotografi.jpg`}
+              alt={`${vaka.marka} ${vaka.ad}: ${vaka.onceAlt}`}
+              fill
+              sizes="(max-width: 767px) 46vw, 220px"
+            />
+          </div>
+          <figcaption className={styles.vakaEtiket}>{vaka.onceEtiket}</figcaption>
+        </figure>
+      )}
       {vaka.kareler.map((kare, sira) => (
         <figure
           className={`${styles.vakaKare} ${sira === 0 ? styles.vakaA : styles.vakaB}`}
@@ -292,7 +298,11 @@ function VakaSatiri({ vaka }: { vaka: Vaka }) {
         >
           <Image
             className={`${styles.gorsel} ${styles.yakin}`}
-            src={`${GORSEL}/${vaka.dosya}-yapay-zeka-gorseli-${sira + 1}.jpg`}
+            src={`${GORSEL}/${
+              vaka.kareDosyalari
+                ? vaka.kareDosyalari[sira]
+                : `${vaka.dosya}-yapay-zeka-gorseli-${sira + 1}.jpg`
+            }`}
             alt={`${vaka.marka} ${vaka.ad}: yapay zeka ile üretilmiş ${kare}`}
             fill
             sizes="(max-width: 767px) 46vw, 430px"

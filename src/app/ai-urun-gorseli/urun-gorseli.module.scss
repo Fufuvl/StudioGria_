@@ -367,6 +367,12 @@
   }
 }
 
+// Urun fotografi olmayan satir: metin tek basina durur, kareler ayni yerde kalir
+.vakaOncesiz {
+  grid-template-rows: auto;
+  grid-template-areas: "metin a b";
+}
+
 .vakaMetin {
   grid-area: metin;
 }
@@ -1040,6 +1046,16 @@
   .vakaOnce {
     align-self: start;
     max-width: none;
+  }
+
+  .vakaOncesiz {
+    grid-template-areas:
+      "metin metin"
+      "a b";
+
+    .vakaMetin {
+      padding: 0 0 6px;
+    }
   }
 
   .vakaMetin {

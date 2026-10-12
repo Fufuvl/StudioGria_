@@ -1,0 +1,380 @@
+.sayfa {
+  // Renk kurali: tek murekkep, beyaz ve gri tonlari; vurgu italikle
+  --murekkep: #16181d;
+  --soluk: #6b6b6b;
+  --zemin: #faf9f7;
+  --cizgi: rgba(22, 24, 29, 0.12);
+
+  background: var(--zemin);
+  color: var(--murekkep);
+
+  em {
+    font-style: italic;
+  }
+}
+
+.kapsayici {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  padding: 170px 0 48px;
+}
+
+.rozet {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--soluk);
+  margin-bottom: 22px;
+}
+
+.baslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(34px, 5vw, 60px);
+  line-height: 1.07;
+  color: var(--murekkep);
+  margin: 0 0 24px;
+  max-width: 880px;
+}
+
+.spot {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--soluk);
+  margin: 0 0 36px;
+  max-width: 600px;
+}
+
+// Soru gruplarina sayfa ici gecis
+.gezinti {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gezintiBag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  font-size: 14px;
+  color: var(--murekkep);
+  background: #fff;
+  border: 1px solid var(--cizgi);
+  border-radius: 3px;
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    color: var(--murekkep);
+    border-color: var(--murekkep);
+  }
+}
+
+.gezintiAdet {
+  font-size: 12px;
+  color: var(--soluk);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- govde ---------- */
+.govde {
+  padding: 24px 0 clamp(72px, 9vw, 120px);
+}
+
+.izgara {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.grup {
+  padding-top: clamp(28px, 4vw, 48px);
+  // Sabit ust menunun altinda kalmasin
+  scroll-margin-top: 96px;
+
+  &:first-child {
+    padding-top: 12px;
+  }
+}
+
+.grupBaslik {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.2;
+  color: var(--murekkep);
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--murekkep);
+}
+
+.grupNo {
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--soluk);
+}
+
+.soru {
+  border-bottom: 1px solid var(--cizgi);
+
+  &[open] .arti {
+    transform: rotate(45deg);
+  }
+}
+
+.soruBaslik {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--murekkep);
+    outline-offset: 4px;
+  }
+}
+
+.soruMetin {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(17px, 1.5vw, 20px);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--murekkep);
+  margin: 0;
+}
+
+.arti {
+  flex: none;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--murekkep);
+  transition: transform 0.25s ease;
+}
+
+.cevap {
+  padding: 0 48px 26px 0;
+
+  p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--soluk);
+    margin: 0;
+  }
+}
+
+.cevapBag {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--murekkep);
+  border-bottom: 1px solid rgba(22, 24, 29, 0.35);
+  padding-bottom: 4px;
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    color: var(--murekkep);
+    border-color: var(--murekkep);
+  }
+}
+
+/* ---------- yan: dogrudan yazin ---------- */
+.yan {
+  position: sticky;
+  top: 110px;
+  padding-top: 12px;
+}
+
+.yanKart {
+  background: #fff;
+  border: 1px solid var(--cizgi);
+  border-radius: 4px;
+  padding: clamp(24px, 2.6vw, 34px);
+}
+
+.yanRozet {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--soluk);
+  margin: 0 0 16px;
+}
+
+.yanBaslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(22px, 2vw, 27px);
+  line-height: 1.2;
+  color: var(--murekkep);
+  margin: 0 0 12px;
+}
+
+.yanMetin {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--soluk);
+  margin: 0 0 24px;
+}
+
+.yanDugme {
+  display: block;
+  padding: 16px 20px;
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: #fff;
+  background: var(--murekkep);
+  border-radius: 3px;
+  transition: opacity 0.25s ease;
+
+  &:hover {
+    color: #fff;
+    opacity: 0.86;
+  }
+}
+
+.yanBag {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--murekkep);
+  border-bottom: 1px solid rgba(22, 24, 29, 0.35);
+  padding-bottom: 3px;
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    color: var(--murekkep);
+    border-color: var(--murekkep);
+  }
+}
+
+.yanListe {
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--cizgi);
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 5px 0;
+  }
+
+  a {
+    color: var(--murekkep);
+  }
+}
+
+.yanEtiket {
+  color: var(--soluk);
+}
+
+/* ---------- kapanis ---------- */
+.kapanis {
+  background: var(--murekkep);
+  color: #fff;
+  padding: 78px 0;
+  text-align: center;
+}
+
+.kapanisBaslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(26px, 3.4vw, 38px);
+  line-height: 1.2;
+  color: #fff;
+  margin: 0 0 16px;
+}
+
+.kapanisMetin {
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 auto 30px;
+  max-width: 560px;
+}
+
+.kapanisDugme {
+  display: inline-block;
+  padding: 16px 40px;
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--murekkep);
+  background: #fff;
+  border-radius: 3px;
+  transition: opacity 0.25s ease;
+
+  &:hover {
+    color: var(--murekkep);
+    opacity: 0.88;
+  }
+}
+
+/* ---------- duyarli ---------- */
+@media (max-width: 991px) {
+  .hero {
+    padding-top: 130px;
+  }
+
+  .izgara {
+    grid-template-columns: 1fr;
+  }
+
+  .yan {
+    position: static;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .kapsayici {
+    padding: 0 18px;
+  }
+
+  .spot {
+    font-size: 16px;
+  }
+
+  .gezintiBag {
+    padding: 10px 13px;
+    font-size: 13px;
+  }
+
+  .cevap {
+    padding-right: 8px;
+  }
+
+  .soruBaslik {
+    gap: 16px;
+    padding: 18px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arti {
+    transition: none;
+  }
+}
