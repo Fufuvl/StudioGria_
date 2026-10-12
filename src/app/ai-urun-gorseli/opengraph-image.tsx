@@ -8,6 +8,6 @@ export const contentType = OG_TUR;
 export default function Gorsel() {
   return ogKart({
     ust: "Yapay zeka ile ürün görseli",
-    baslik: "Bir ürünün üç katalog karesi 1.000 TL",
+    baslik: "Tek fotoğraftan üç katalog karesi",
   });
 }

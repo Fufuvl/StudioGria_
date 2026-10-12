@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Sabit sayfa, hizmet ve bolge iceriginin son gercek degisim tarihi. Her
   // derlemede "bugun" yazmak Google'in lastmod sinyalini tamamen yok
   // saymasina yol acar; icerik degistiginde bu tarih elle guncellenir.
-  const lastModified = new Date("2026-10-11");
+  const lastModified = new Date("2026-10-12");
 
   // Blog listesinin tazeligi en yeni yazinin tarihinden gelir; her derlemede
   // "bugun" yazmak arama motorlarina yanlis tazelik sinyali verir.

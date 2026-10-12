@@ -49,7 +49,7 @@ export const calismaModelleri: CalismaModeli[] = [
     etiket: "Model 02",
     ad: "Çekimsiz yönetim",
     ozet: "Çekim günü planlanmaz; içerik elinizdeki görsellerden stüdyoda üretilir.",
-    gorsel: "/assets/img/ai-solutions/urun-gorseli/vesper-2.jpg",
+    gorsel: "/assets/img/ai-solutions/urun-gorseli/lucea-vesper-bileklik-yapay-zeka-gorseli-2.jpg",
     gorselAlt: "Markanın gönderdiği fotoğraftan stüdyoda üretilmiş bileklik karesi",
     gorselKonum: "center 46%",
     gorselNot: "Stüdyoda üretilen kare",

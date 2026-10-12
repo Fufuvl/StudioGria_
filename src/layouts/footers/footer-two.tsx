@@ -25,7 +25,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
     { title: "Hakkımızda", link: "/about-us" },
     { title: "Hizmetlerimiz", link: "/hizmetler" },
     { title: "AI Destekli Çözümler", link: "/ai-destekli-cozumler" },
-    { title: "AI Ürün Görseli", link: "/ai-urun-gorseli" },
+    { title: "Yapay Zeka Ürün Görseli", link: "/ai-urun-gorseli" },
     { title: "Referanslar", link: "/referanslar" },
     { title: "Blog", link: "/blog" },
     { title: "Hizmet Bölgelerimiz", link: "/bolgeler" },

@@ -169,6 +169,14 @@ export default function HizmetDetayPage({ params }: Props) {
                     {paragraf}
                   </p>
                 ))}
+                {hizmet.ilgiliSayfa && (
+                  <p className={styles.detayParagraf}>
+                    <Link className={styles.metinBag} href={hizmet.ilgiliSayfa.yol}>
+                      {hizmet.ilgiliSayfa.baglanti}
+                    </Link>{" "}
+                    {hizmet.ilgiliSayfa.metin}
+                  </p>
+                )}
               </div>
               <aside className={styles.dahilKutu}>
                 <h2 className={styles.dahilBaslik}>Neler dahil</h2>

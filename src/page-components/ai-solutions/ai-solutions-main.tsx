@@ -77,7 +77,7 @@ const AiSolutionsMain = () => {
             </p>
             <div className={`${styles.dugmeler} sg-gir sg-gir-4`}>
               <Link className={styles.anaDugme} href="/ai-urun-gorseli">
-                Ürün görseli: 3 kare 1.000 TL
+                Yapay zeka ile ürün görseli
               </Link>
               <a className={styles.ikinciDugme} href="#ornekler">
                 Örnekleri görün
@@ -185,11 +185,11 @@ const AiSolutionsMain = () => {
               Ürününüzü <em>bir sonraki seviyede</em> gösterin
             </h2>
             <p className={styles.kapanisMetin}>
-              Bir ürünün üç katalog karesi 1.000 TL. Ürün fotoğrafınızı gönderin,
-              ilk ürünü birlikte üretelim.
+              Ürün fotoğrafınızı gönderin; her ürün için üç katalog karesi
+              hazırlayalım. İlk ürünü birlikte üretiriz.
             </p>
             <Link className={styles.kapanisDugme} href="/ai-urun-gorseli">
-              Fiyatı ve örnekleri görün
+              Ürün görseli örneklerini görün
             </Link>
           </div>
         </section>

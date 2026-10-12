@@ -5,6 +5,13 @@ import { bolgeler } from "@/data/bolge-data";
 import { sssKayitlari } from "@/data/sss-data";
 import { referanslar } from "@/data/referans-data";
 import { surecAdimlari } from "@/data/surec-data";
+import { calismaModelleri, modelOrtaklari } from "@/data/model-data";
+import {
+  urunGorseliAdimlari,
+  urunGorseliDahil,
+  urunGorseliOzet,
+  urunGorseliSorulari,
+} from "@/data/urun-gorseli-data";
 
 // /llms-full.txt
 //
@@ -66,6 +73,38 @@ ${hizmet.dahil.map((madde) => `- ${madde}`).join("\n")}
 Sıkça sorulanlar:
 ${hizmet.sss.map((kayit) => `S: ${kayit.soru}\nC: ${kayit.cevap}`).join("\n\n")}`);
   });
+
+  // --- Sosyal medya yonetiminde iki calisma modeli ---
+  parcalar.push(`\n\n## Sosyal medya yönetiminde iki çalışma modeli
+Adres: ${SITE_URL}/hizmetler/sosyal-medya-yonetimi
+
+Strateji, içerik planı, reklam yönetimi ve rapor iki modelde de aynıdır. Fark, içeriğin nerede üretildiğidir: sahada ya da stüdyoda.
+
+${calismaModelleri
+  .map(
+    (model) =>
+      `### ${model.ad}\n${model.ozet}\n${model.satirlar
+        .map((satir) => `- ${satir.baslik}: ${satir.deger}`)
+        .join("\n")}`,
+  )
+  .join("\n\n")}
+
+İki modelde de aynı: ${modelOrtaklari.join(", ")}.`);
+
+  // --- Yapay zeka ile urun gorseli (kendi inis sayfasi) ---
+  parcalar.push(`\n\n## Yapay zeka ile ürün görseli
+Adres: ${SITE_URL}/ai-urun-gorseli
+
+${urunGorseliOzet}
+
+Her üründe dahil olanlar:
+${urunGorseliDahil.map((madde) => `- ${madde}`).join("\n")}
+
+Süreç:
+${urunGorseliAdimlari.map((adim) => `${adim.no}. ${adim.baslik}: ${adim.metin}`).join("\n")}
+
+Sıkça sorulanlar:
+${urunGorseliSorulari.map((kayit) => `S: ${kayit.soru}\nC: ${kayit.cevap}`).join("\n\n")}`);
 
   // --- Rehber icerikler ---
   parcalar.push(`\n\n## Rehber içerikler\n`);

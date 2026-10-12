@@ -451,8 +451,7 @@
 }
 
 .vakaKare:hover .yakin,
-.kare:hover .yakin,
-.grupKare:hover .yakin {
+.kare:hover .yakin {
   transform: scale(1.035);
 }
 
@@ -462,55 +461,6 @@
   line-height: 1.65;
   color: var(--soluk);
   max-width: 720px;
-}
-
-/* ---------- urun gruplari ---------- */
-.gruplar {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 1.6vw, 22px);
-  margin-top: clamp(36px, 4vw, 56px);
-}
-
-.grup {
-  margin: 0;
-}
-
-.grupKare {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border-radius: 4px;
-  background: #ececea;
-}
-
-.grupOnce {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  z-index: 1;
-  width: 34%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  border-radius: 3px;
-  border: 4px solid #fff;
-  background: #fff;
-  box-shadow: 0 10px 26px rgba(22, 24, 29, 0.22);
-}
-
-.grupAd {
-  font-family: var(--tp-ff-heading), sans-serif;
-  font-size: 17px;
-  color: var(--murekkep);
-  margin: 14px 0 3px;
-}
-
-.grupMarka {
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--soluk);
-  margin: 0;
 }
 
 .bolumAlt {
@@ -565,8 +515,8 @@
   margin: 0;
 }
 
-/* ---------- fiyat ---------- */
-.fiyatlar {
+/* ---------- kapsam: baslangic yollari ---------- */
+.paketler {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: clamp(36px, 4vw, 56px);
@@ -576,7 +526,7 @@
   overflow: hidden;
 }
 
-.fiyat {
+.paket {
   display: flex;
   flex-direction: column;
   padding: clamp(26px, 3vw, 42px);
@@ -587,21 +537,21 @@
   }
 }
 
-.fiyatOne {
+.paketOne {
   background: var(--murekkep);
   border-right-color: var(--murekkep);
 
-  .fiyatAd,
-  .fiyatTutar {
+  .paketAd,
+  .paketOlcu {
     color: #fff;
   }
 
-  .fiyatEk,
-  .fiyatMetin {
+  .paketEk,
+  .paketMetin {
     color: rgba(255, 255, 255, 0.7);
   }
 
-  .fiyatBag {
+  .paketBag {
     color: #fff;
     border-color: rgba(255, 255, 255, 0.5);
 
@@ -612,7 +562,7 @@
   }
 }
 
-.fiyatAd {
+.paketAd {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -625,7 +575,7 @@
   margin: 0 0 clamp(28px, 3.4vw, 48px);
 }
 
-.fiyatIsaret {
+.paketIsaret {
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -636,7 +586,7 @@
   white-space: nowrap;
 }
 
-.fiyatTutar {
+.paketOlcu {
   font-family: var(--tp-ff-heading), sans-serif;
   font-size: clamp(34px, 3.8vw, 52px);
   line-height: 1;
@@ -646,13 +596,13 @@
   font-variant-numeric: tabular-nums;
 }
 
-.fiyatEk {
+.paketEk {
   font-size: 13px;
   color: var(--soluk);
   margin: 0 0 22px;
 }
 
-.fiyatMetin {
+.paketMetin {
   font-size: 14.5px;
   line-height: 1.65;
   color: var(--soluk);
@@ -660,7 +610,7 @@
   flex-grow: 1;
 }
 
-.fiyatBag {
+.paketBag {
   align-self: flex-start;
   font-size: 12px;
   font-weight: 600;
@@ -713,26 +663,6 @@
 
 .dahilIsaret {
   color: var(--soluk);
-}
-
-.kiyas {
-  margin: clamp(28px, 3vw, 40px) 0 0;
-  padding: clamp(20px, 2.4vw, 30px) clamp(20px, 2.6vw, 34px);
-  background: #fff;
-  border: 1px solid var(--cizgi);
-  border-radius: 4px;
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--murekkep);
-}
-
-.kiyasEtiket {
-  display: block;
-  font-size: 11.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--soluk);
-  margin-bottom: 8px;
 }
 
 .dipnot {
@@ -957,9 +887,6 @@
 
 /* ---------- duyarli ---------- */
 @media (max-width: 1100px) {
-  .gruplar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 
   .adimlar {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1013,11 +940,11 @@
     gap: 28px;
   }
 
-  .fiyatlar {
+  .paketler {
     grid-template-columns: 1fr;
   }
 
-  .fiyat {
+  .paket {
     border-right: 0;
     border-bottom: 1px solid var(--cizgi);
 
@@ -1026,11 +953,11 @@
     }
   }
 
-  .fiyatOne {
+  .paketOne {
     border-bottom-color: var(--murekkep);
   }
 
-  .fiyatAd {
+  .paketAd {
     margin-bottom: 22px;
   }
 

@@ -19,6 +19,8 @@ export type Hizmet = {
   // Cekimli / cekimsiz iki modelle sunulan hizmette detay sayfasi iki model
   // bolumunu (components/iki-model.tsx, veri: model-data.ts) gosterir.
   ikiModel?: boolean;
+  // Hizmetin kendi inis sayfasi varsa detay sayfasi oraya metin ici bag verir
+  ilgiliSayfa?: { yol: string; baglanti: string; metin: string };
   sss: HizmetSSS[];
   gorsel: string;
   gorselAlt: string;
@@ -55,6 +57,16 @@ export const hizmetler: Hizmet[] = [
         soru: "Çekim yapmadan sosyal medya yönetimi mümkün mü?",
         cevap:
           "Evet. Çekimsiz modelde çekim günü planlanmaz; içerik, elinizdeki ürün ve mekan görsellerinden markanızın diline uygun biçimde hazırlanır. Süreç uzaktan yürüdüğü için İstanbul dışındaki markalarla da bu modelle çalışıyoruz.",
+      },
+      {
+        soru: "E-ticaret markaları için sosyal medya yönetimi yapıyor musunuz?",
+        cevap:
+          "Evet. Ürün odaklı markalar ve e-ticaret için çekimsiz modeli öneriyoruz: çekim günü planlanmaz, içerik elinizdeki ürün fotoğraflarından stüdyoda üretilir ve süreç Türkiye genelinde uzaktan yürür. İçerik planı ürün sayfanıza giden trafiğe göre kurulur.",
+      },
+      {
+        soru: "Sosyal medya çekimleri pakete dahil mi?",
+        cevap:
+          "Çekimli modelde evet: ekibimiz işletmenize gelir, fotoğrafı ve videoyu kendi ekipmanıyla çeker; çekim günü pakete dahildir. Çekimsiz modelde çekim günü planlanmaz, bu yüzden çekim günü maliyeti de oluşmaz.",
       },
       {
         soru: "Kaç içerik üretiyorsunuz?",
@@ -217,6 +229,12 @@ export const hizmetler: Hizmet[] = [
       "Sınırsız mekan, mevsim ve doku varyasyonu",
       "Reklam ve e-ticaret için format uyarlamaları",
     ],
+    ilgiliSayfa: {
+      yol: "/ai-urun-gorseli",
+      baglanti: "Yapay zeka ile ürün görseli",
+      metin:
+        "sayfasında markaların gönderdiği fotoğrafları ve aynı ürünlerden ürettiğimiz kareleri yan yana görebilirsiniz.",
+    },
     sss: [
       {
         soru: "AI görseller yapay mı görünüyor?",

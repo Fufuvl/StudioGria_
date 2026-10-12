@@ -13,18 +13,27 @@ import {
   kirintiSemasi,
   sssSemasi,
 } from "@/data/kurulus-data";
+import {
+  urunGorseliAdimlari as adimlar,
+  urunGorseliDahil as dahil,
+  urunGorseliSorulari as sorular,
+} from "@/data/urun-gorseli-data";
 import styles from "./urun-gorseli.module.scss";
 
 // Yapay zeka ile urun gorseli inis sayfasi. Reklamin sattigi teklifle ayni
-// basligi, ayni fiyati ve ayni ilk adimi (fotografi gonder) tasir.
+// basligi ve ayni ilk adimi (fotografi gonder) tasir.
 // Sayfa gorsel sattigi icin kanit metinle degil kareyle verilir: markanin
 // gonderdigi fotograf kucuk, ayni urunden uretilen kareler buyuk durur.
-// Fiyat ve kapsam maddeleri teklif dosyasiyla aynidir; degisirse ikisi birlikte
-// guncellenir.
+// Sayfada fiyat yazilmaz (kullanici karari, 12 Eki 2026); kapsam maddeleri
+// teklif dosyasiyla aynidir. Gorseller yalniz Lucea Jewelry ve Star Termos
+// islerinden secilir.
+//
+// Arama: baslik ve aciklama "yapay zeka urun fotografi / urun gorseli"
+// sorgu kumesini tasir; fiyat ve arac niyetli sorgular SSS'de karsilanir.
 
-const sayfaBaslik = "Yapay Zeka ile Ürün Görseli: 3 Kare 1.000 TL | Studio Gria";
+const sayfaBaslik = "Yapay Zeka ile Ürün Fotoğrafı ve Ürün Görseli | Studio Gria";
 const sayfaAciklama =
-  "Ürün fotoğrafınızı gönderin; ürününüz olduğu gibi kalır, sahnesi yapay zeka ile kurulur. Bir ürünün üç katalog karesi 1.000 TL, başlangıç paketi 5.000 TL.";
+  "Ürün fotoğrafınızı gönderin, katalog karelerini yapay zeka ile üretelim. Ürün olduğu gibi kalır; sahne, ışık ve model markanıza göre kurulur. Çekim günü yok.";
 
 export const metadata: Metadata = {
   title: sayfaBaslik,
@@ -55,13 +64,29 @@ const genelAdres = whatsapp(GENEL_MESAJ);
 
 const GORSEL = "/assets/img/ai-solutions/urun-gorseli";
 
-// Her vakada "once" markanin gonderdigi fotograf, kareler ayni urun icin
-// uretilen gorsellerdir. Eslesmeler kaynak arsivdeki urun adlarina gore yapildi.
-const vakalar = [
+// Her vakada "once" markadan gelen urun fotografi, kareler ayni urun icin
+// uretilen gorsellerdir. Lucea eslesmeleri kaynak arsivdeki urun adlarina,
+// Star Termos eslesmeleri markanin urun fotograflarina gore yapildi.
+// Dosya adi kalibi: {dosya}-urun-fotografi.jpg ve {dosya}-yapay-zeka-gorseli-N.jpg
+type Vaka = {
+  no: string;
+  ad: string;
+  marka: string;
+  dosya: string;
+  onceEtiket: string;
+  onceAlt: string;
+  aciklama: string;
+  kareler: [string, string];
+};
+
+const luceaVakalari: Vaka[] = [
   {
     no: "01",
     ad: "Solis küpe",
-    anahtar: "solis",
+    marka: "Lucea Jewelry",
+    dosya: "lucea-solis-kupe",
+    onceEtiket: "Gönderilen fotoğraf",
+    onceAlt: "markanın gönderdiği, tezgah üstünde çekilmiş fotoğraf",
     aciklama:
       "Tezgah üstünde çekilmiş fotoğraftan modelli editoryal kare ve taş üzerinde ürün karesi.",
     kareler: ["modelli editoryal kare", "taş üzerinde ürün karesi"],
@@ -69,46 +94,49 @@ const vakalar = [
   {
     no: "02",
     ad: "Vesper bileklik",
-    anahtar: "vesper",
+    marka: "Lucea Jewelry",
+    dosya: "lucea-vesper-bileklik",
+    onceEtiket: "Gönderilen fotoğraf",
+    onceAlt: "markanın gönderdiği, tezgah üstünde çekilmiş fotoğraf",
     aciklama:
       "Tezgah üstünde çekilmiş fotoğraftan modelli kare ve koyu zeminde yakın plan.",
     kareler: ["modelli kare", "koyu zeminde yakın plan"],
   },
-  {
-    no: "03",
-    ad: "Rebela küpe",
-    anahtar: "rebela",
-    aciklama:
-      "Tezgah üstünde çekilmiş fotoğraftan modelli kare ve siyah kum üzerinde ürün karesi.",
-    kareler: ["modelli kare", "siyah kum üzerinde ürün karesi"],
-  },
 ];
 
-const gruplar = [
+const starTermosVakalari: Vaka[] = [
   {
-    ad: "Termos",
+    no: "03",
+    ad: "Pipetli termos",
     marka: "Star Termos",
-    gorsel: "/assets/img/ai-solutions/once-sonra/termos-sonra.jpg",
-    once: "/assets/img/ai-solutions/once-sonra/termos-once.jpg",
-    konum: "center 25%",
+    dosya: "star-termos-pipetli-termos",
+    onceEtiket: "Gönderilen fotoğraf",
+    onceAlt: "markanın gönderdiği, ofiste telefonla çekilmiş fotoğraf",
+    aciklama:
+      "Ofiste telefonla çekilmiş fotoğraftan çalışma masasında kullanım karesi ve yosun üzerinde ürün karesi.",
+    kareler: ["çalışma masasında kullanım karesi", "yosun üzerinde ürün karesi"],
   },
   {
-    ad: "İçecek",
-    marka: "Matchakizi",
-    gorsel: "/assets/img/ai-solutions/brand-mix/matcha-hero.jpg",
-    konum: "center",
+    no: "04",
+    ad: "Yeşil termos",
+    marka: "Star Termos",
+    dosya: "star-termos-yesil-termos",
+    onceEtiket: "Katalog fotoğrafı",
+    onceAlt: "markanın beyaz fonlu katalog fotoğrafı",
+    aciklama:
+      "Beyaz fonlu katalog fotoğrafından koyu zeminde ürün karesi ve kafe masasında servis karesi.",
+    kareler: ["koyu zeminde ürün karesi", "kafe masasında kahve servisi karesi"],
   },
   {
-    ad: "Mobilya",
-    marka: "Entepe",
-    gorsel: "/assets/img/ai-solutions/brand-mix/entepe-dining.jpg",
-    konum: "center",
-  },
-  {
-    ad: "Parfüm",
-    marka: "Luxera",
-    gorsel: "/assets/img/ai-solutions/brand-mix/luxera-rocks.jpg",
-    konum: "center",
+    no: "05",
+    ad: "Beyaz termos",
+    marka: "Star Termos",
+    dosya: "star-termos-beyaz-termos",
+    onceEtiket: "Katalog fotoğrafı",
+    onceAlt: "markanın beyaz fonlu katalog fotoğrafı",
+    aciklama:
+      "Beyaz fonlu katalog fotoğrafından narlı sofra sahnesi ve buz üzerinde ürün karesi.",
+    kareler: ["narlı sofra sahnesi", "buz ve limonla ürün karesi"],
   },
 ];
 
@@ -128,146 +156,59 @@ const sozler = [
   },
 ];
 
-const fiyatlar = [
+// Uc baslangic yolu. Sayfada tutar yazilmaz; teklif urun sayisina gore
+// WhatsApp'tan ya da formdan iletilir.
+const paketler = [
   {
     ad: "Tek ürün",
-    tutar: "1.000 TL",
-    ek: "+ KDV",
-    metin: "Bir ürün, üç katalog karesi. Denemek için en kısa yol.",
+    olcu: "3 kare",
+    ek: "Bir ürün",
+    metin: "Denemek için en kısa yol. Sonucu kendi ürününüzde görürsünüz.",
     eylem: "Tek ürünle başlayın",
     mesaj:
-      "Merhaba, web sitenizden yazıyorum. Tek ürün için üç kare (1.000 TL) hakkında bilgi almak istiyorum.",
+      "Merhaba, web sitenizden yazıyorum. Tek ürün için üç kare hakkında bilgi almak istiyorum.",
   },
   {
     ad: "Başlangıç paketi",
-    tutar: "5.000 TL",
-    ek: "+ KDV · 5 ürün, 15 kare",
+    olcu: "15 kare",
+    ek: "5 ürün",
     metin:
       "İlk ürünü birlikte üretiyoruz; onaylarsanız kalan ürünler seri üretime geçer.",
     eylem: "Paketle başlayın",
     mesaj:
-      "Merhaba, web sitenizden yazıyorum. Başlangıç paketi (5 ürün, 15 kare, 5.000 TL) hakkında bilgi almak istiyorum.",
+      "Merhaba, web sitenizden yazıyorum. Başlangıç paketi (5 ürün, 15 kare) hakkında bilgi almak istiyorum.",
     one: true,
   },
   {
-    ad: "10 ürün ve üzeri",
-    tutar: "Size özel",
-    ek: "Ürün sayısı arttıkça birim fiyat düşer",
-    metin: "Kataloğunuzun büyüklüğüne göre mağazanıza özel teklif hazırlıyoruz.",
+    ad: "Katalog",
+    olcu: "10+ ürün",
+    ek: "Mağazanıza özel plan",
+    metin:
+      "Ürün sayısı arttıkça ürün başına maliyet düşer. Kataloğunuzun büyüklüğüne göre teklif hazırlıyoruz.",
     eylem: "Kataloğunuz için teklif alın",
     mesaj:
       "Merhaba, web sitenizden yazıyorum. 10 ürün ve üzeri kataloğum için ürün görseli teklifi almak istiyorum.",
   },
 ];
 
-const dahil = [
-  "Ürün başına üç farklı kare",
-  "Sahne konsepti ve stil tasarımı",
-  "Elle rötuş ve aslına sadakat kontrolü",
-  "E-ticaret ve sosyal medya formatları",
-  "Yüksek çözünürlükte teslim",
-  "Ticari kullanım hakkı",
-];
-
-const adimlar = [
-  {
-    no: "01",
-    baslik: "Fotoğrafı gönderirsiniz",
-    metin:
-      "Ürününüzün net göründüğü fotoğrafı WhatsApp'tan iletirsiniz. Telefonla çekilmiş olması yeterlidir.",
-  },
-  {
-    no: "02",
-    baslik: "Sahneyi biz kurarız",
-    metin:
-      "Fon, mekan, model ve ışık kararını markanızın diline göre ekibimiz verir.",
-  },
-  {
-    no: "03",
-    baslik: "İlk ürünü onaylarsınız",
-    metin:
-      "İlk ürünün üç karesini size sunarız. Onayınızla kalan ürünler seri üretime geçer.",
-  },
-  {
-    no: "04",
-    baslik: "Kareler teslim edilir",
-    metin:
-      "Her kare elle rötuşlanır; e-ticaret ve sosyal medya formatlarında, yüksek çözünürlükte teslim edilir.",
-  },
-];
-
-const sorular = [
-  {
-    soru: "Ürünümün kendisi değişiyor mu?",
-    cevap:
-      "Hayır. Ürününüz olduğu gibi kalır; yapay zeka ile kurulan kısım sahne, ışık ve zemindir. Logo, renk ve ürün detayları her karede elle kontrol edilir.",
-  },
-  {
-    soru: "Nasıl bir fotoğraf göndermeliyim?",
-    cevap:
-      "Ürünün net göründüğü, iyi ışıkta çekilmiş bir fotoğraf yeterlidir; telefonla çekilmiş olabilir. Birkaç açıdan fotoğraf gönderirseniz kareler daha tutarlı olur.",
-  },
-  {
-    soru: "Sahneye kim karar veriyor?",
-    cevap:
-      "Sahne konseptini ekibimiz kurar: fon, mekan, model ve ışık markanızın diline göre seçilir. İlk ürünün karelerini görürsünüz; onaylarsanız kalan ürünler aynı dille üretilir.",
-  },
-  {
-    soru: "Karelerdeki modeller gerçek mi?",
-    cevap:
-      "Hayır. Modelli karelerdeki kişiler yapay zeka ile üretilir ve gerçek bir kişiyi göstermez. Bu sayede model ve çekim günü maliyeti oluşmaz.",
-  },
-  {
-    soru: "Ne kadar sürede teslim ediyorsunuz?",
-    cevap:
-      "Önce ilk ürünün karelerini onayınıza sunarız. Onaydan sonra kalan ürünler seri üretime geçer; teslim tarihi ürün sayısına göre teklifte yazılır.",
-  },
-  {
-    soru: "Kareleri nerede kullanabilirim?",
-    cevap:
-      "Kendi mağazanızda, sosyal medyada ve reklamlarınızda kullanabilirsiniz. Ticari kullanım hakkı fiyata dahildir.",
-  },
-  {
-    soru: "Video da üretiyor musunuz?",
-    cevap:
-      "Evet. Aynı üretim hattıyla ürün videosu ve yapay zeka destekli reklam filmi de hazırlıyoruz.",
-  },
-  {
-    soru: "Sosyal medyamı da yönetebilir misiniz?",
-    cevap:
-      "Evet. Görsel üretimini aylık sosyal medya yönetimiyle birleştirebiliriz. Çekim günü gerektirmeyen çekimsiz modelimiz ürün odaklı markalar için uygundur.",
-  },
-];
-
 const sayfaAdresi = `${SITE_URL}/ai-urun-gorseli`;
 
-// Fiyat sayfada gorunur oldugu icin yapisal veride de Offer olarak verilir.
+// Sayfada tutar yazilmadigi icin yapisal veride Offer yoktur; hizmetin
+// tanimi ve ornek gorselleri verilir.
 const sayfaSemasi = grafSemasi([
   {
     "@type": "Service",
     "@id": `${sayfaAdresi}#hizmet`,
     name: "Yapay zeka ile ürün görseli üretimi",
+    alternateName: "Yapay zeka ile ürün fotoğrafı",
     serviceType: "Ürün görseli üretimi",
     description: sayfaAciklama,
     url: sayfaAdresi,
     provider: { "@id": KIMLIK.kurulus },
     areaServed: { "@type": "Country", name: "Türkiye" },
-    offers: [
-      {
-        "@type": "Offer",
-        name: "Bir ürün, üç katalog karesi",
-        price: "1000",
-        priceCurrency: "TRY",
-        url: sayfaAdresi,
-      },
-      {
-        "@type": "Offer",
-        name: "Başlangıç paketi: 5 ürün, 15 kare",
-        price: "5000",
-        priceCurrency: "TRY",
-        url: sayfaAdresi,
-      },
-    ],
+    image: [1, 2, 3].map(
+      (sira) => `${SITE_URL}${GORSEL}/lucea-marea-kupe-yapay-zeka-gorseli-${sira}.jpg`,
+    ),
   },
   {
     "@type": "WebPage",
@@ -278,6 +219,10 @@ const sayfaSemasi = grafSemasi([
     inLanguage: "tr-TR",
     isPartOf: { "@id": KIMLIK.website },
     about: { "@id": `${sayfaAdresi}#hizmet` },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}${GORSEL}/lucea-marea-kupe-yapay-zeka-gorseli-1.jpg`,
+    },
   },
   sssSemasi(sorular, "/ai-urun-gorseli"),
   kirintiSemasi([
@@ -292,6 +237,47 @@ function WhatsappIkon() {
     <svg className={styles.ikon} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
     </svg>
+  );
+}
+
+// Bir urunun satiri: solda markadan gelen fotograf, saginda ayni urunden
+// uretilen iki kare.
+function VakaSatiri({ vaka }: { vaka: Vaka }) {
+  return (
+    <article className={styles.vaka}>
+      <div className={styles.vakaMetin}>
+        <p className={styles.vakaNo}>{vaka.no}</p>
+        <h3 className={styles.vakaAd}>{vaka.ad}</h3>
+        <p className={styles.vakaMarka}>{vaka.marka}</p>
+        <p className={styles.vakaAciklama}>{vaka.aciklama}</p>
+      </div>
+      <figure className={styles.vakaOnce}>
+        <div className={styles.vakaOnceKare}>
+          <Image
+            className={styles.gorsel}
+            src={`${GORSEL}/${vaka.dosya}-urun-fotografi.jpg`}
+            alt={`${vaka.marka} ${vaka.ad}: ${vaka.onceAlt}`}
+            fill
+            sizes="(max-width: 767px) 46vw, 220px"
+          />
+        </div>
+        <figcaption className={styles.vakaEtiket}>{vaka.onceEtiket}</figcaption>
+      </figure>
+      {vaka.kareler.map((kare, sira) => (
+        <figure
+          className={`${styles.vakaKare} ${sira === 0 ? styles.vakaA : styles.vakaB}`}
+          key={kare}
+        >
+          <Image
+            className={`${styles.gorsel} ${styles.yakin}`}
+            src={`${GORSEL}/${vaka.dosya}-yapay-zeka-gorseli-${sira + 1}.jpg`}
+            alt={`${vaka.marka} ${vaka.ad}: yapay zeka ile üretilmiş ${kare}`}
+            fill
+            sizes="(max-width: 767px) 46vw, 430px"
+          />
+        </figure>
+      ))}
+    </article>
   );
 }
 
@@ -318,7 +304,7 @@ export default function AiUrunGorseliSayfasi() {
           </Link>
           <nav className={styles.gezinti} aria-label="Sayfa içi">
             <a className={styles.gezintiBag} href="#ornekler">Örnekler</a>
-            <a className={styles.gezintiBag} href="#fiyat">Fiyat</a>
+            <a className={styles.gezintiBag} href="#kapsam">Kapsam</a>
             <a className={styles.gezintiBag} href="#surec">Süreç</a>
             <a className={styles.gezintiBag} href="#sorular">Sorular</a>
           </nav>
@@ -345,12 +331,13 @@ export default function AiUrunGorseliSayfasi() {
                   Yapay zeka ile ürün görseli
                 </span>
                 <span className={`${styles.slogan} sg-gir sg-gir-2`}>
-                  Bir ürünün <em>üç katalog karesi</em> {"1.000 TL"}
+                  Tek fotoğraftan <em>üç katalog karesi</em>
                 </span>
               </h1>
               <p className={`${styles.spot} sg-gir sg-gir-3`}>
                 Ürününüzün net bir fotoğrafını gönderin. Ürün olduğu gibi kalır;
-                sahnesini, ışığını ve zeminini biz kurarız.
+                sahnesini, ışığını ve zeminini biz kurarız. Stüdyo, model ve
+                çekim günü gerekmez.
               </p>
               <div id="hero-eylem" className={`${styles.eylemler} sg-gir sg-gir-4`}>
                 <a
@@ -374,7 +361,7 @@ export default function AiUrunGorseliSayfasi() {
                   <span className={styles.kareNo}>01</span>
                   <Image
                     className={`${styles.gorsel} ${styles.yakin}`}
-                    src={`${GORSEL}/marea-1.jpg`}
+                    src={`${GORSEL}/lucea-marea-kupe-yapay-zeka-gorseli-1.jpg`}
                     alt="Marea küpe için yapay zeka ile üretilmiş, tenis kortunda modelli katalog karesi"
                     fill
                     priority
@@ -385,7 +372,7 @@ export default function AiUrunGorseliSayfasi() {
                   <span className={styles.kareNo}>02</span>
                   <Image
                     className={`${styles.gorsel} ${styles.yakin}`}
-                    src={`${GORSEL}/marea-2.jpg`}
+                    src={`${GORSEL}/lucea-marea-kupe-yapay-zeka-gorseli-2.jpg`}
                     alt="Marea küpe için yapay zeka ile üretilmiş, profilden modelli yakın plan kare"
                     fill
                     priority
@@ -397,7 +384,7 @@ export default function AiUrunGorseliSayfasi() {
                   <span className={styles.kareNo}>03</span>
                   <Image
                     className={`${styles.gorsel} ${styles.yakin}`}
-                    src={`${GORSEL}/marea-3.jpg`}
+                    src={`${GORSEL}/lucea-marea-kupe-yapay-zeka-gorseli-3.jpg`}
                     alt="Marea küpe için yapay zeka ile üretilmiş, kırmızı toz zeminde ürün karesi"
                     fill
                     sizes="(max-width: 991px) 42vw, 280px"
@@ -408,7 +395,7 @@ export default function AiUrunGorseliSayfasi() {
                 <div className={styles.onceKare}>
                   <Image
                     className={styles.gorsel}
-                    src={`${GORSEL}/marea-once.jpg`}
+                    src={`${GORSEL}/lucea-marea-kupe-urun-fotografi.jpg`}
                     alt="Marea küpenin tezgah üstünde telefonla çekilmiş fotoğrafı"
                     fill
                     sizes="(max-width: 991px) 30vw, 200px"
@@ -445,7 +432,7 @@ export default function AiUrunGorseliSayfasi() {
 
       <section id="ornekler" className={`${styles.bolum} ${styles.capa}`}>
         <div className={styles.kapsayici}>
-          <span className={styles.bolumRozet}>Gerçek işlerden</span>
+          <span className={styles.bolumRozet}>Takı · Lucea Jewelry</span>
           <h2 className={styles.bolumBaslik}>
             Gönderilen fotoğraf, <em>teslim edilen kareler</em>
           </h2>
@@ -455,100 +442,36 @@ export default function AiUrunGorseliSayfasi() {
           </p>
 
           <div className={styles.vakalar}>
-            {vakalar.map((vaka) => (
-              <article className={styles.vaka} key={vaka.anahtar}>
-                <div className={styles.vakaMetin}>
-                  <p className={styles.vakaNo}>{vaka.no}</p>
-                  <h3 className={styles.vakaAd}>{vaka.ad}</h3>
-                  <p className={styles.vakaMarka}>Lucea Jewelry</p>
-                  <p className={styles.vakaAciklama}>{vaka.aciklama}</p>
-                </div>
-                <figure className={styles.vakaOnce}>
-                  <div className={styles.vakaOnceKare}>
-                    <Image
-                      className={styles.gorsel}
-                      src={`${GORSEL}/${vaka.anahtar}-once.jpg`}
-                      alt={`${vaka.ad}: markanın gönderdiği, tezgah üstünde çekilmiş fotoğraf`}
-                      fill
-                      sizes="(max-width: 767px) 46vw, 220px"
-                    />
-                  </div>
-                  <figcaption className={styles.vakaEtiket}>Gönderilen fotoğraf</figcaption>
-                </figure>
-                <figure className={`${styles.vakaKare} ${styles.vakaA}`}>
-                  <Image
-                    className={`${styles.gorsel} ${styles.yakin}`}
-                    src={`${GORSEL}/${vaka.anahtar}-1.jpg`}
-                    alt={`${vaka.ad}: yapay zeka ile üretilmiş ${vaka.kareler[0]}`}
-                    fill
-                    sizes="(max-width: 767px) 46vw, 430px"
-                  />
-                </figure>
-                <figure className={`${styles.vakaKare} ${styles.vakaB}`}>
-                  <Image
-                    className={`${styles.gorsel} ${styles.yakin}`}
-                    src={`${GORSEL}/${vaka.anahtar}-2.jpg`}
-                    alt={`${vaka.ad}: yapay zeka ile üretilmiş ${vaka.kareler[1]}`}
-                    fill
-                    sizes="(max-width: 767px) 46vw, 430px"
-                  />
-                </figure>
-              </article>
+            {luceaVakalari.map((vaka) => (
+              <VakaSatiri vaka={vaka} key={vaka.dosya} />
             ))}
           </div>
-
-          <p className={styles.aciklamaNot}>
-            Örnekler Lucea Jewelry için ürettiğimiz işlerden seçilmiştir. Modelli
-            karelerdeki kişiler yapay zeka ile üretilmiştir; gerçek bir kişiyi
-            göstermez.
-          </p>
         </div>
       </section>
 
       <section className={`${styles.bolum} ${styles.bolumBeyaz}`}>
         <div className={styles.kapsayici}>
-          <span className={styles.bolumRozet}>Ürün grupları</span>
+          <span className={styles.bolumRozet}>Termos · Star Termos</span>
           <h2 className={styles.bolumBaslik}>
             Takıdan termosa, <em>aynı yöntem</em>
           </h2>
           <p className={styles.bolumSpot}>
-            Yöntem ürün grubuna göre değişmez: ürün aynı kalır, sahne markanın
+            Star Termos&apos;un ürün fotoğrafları bazen telefondan, bazen
+            katalogdan geldi. Yöntem değişmedi: ürün aynı kalır, sahne markanın
             diline göre kurulur.
           </p>
 
-          <div className={styles.gruplar}>
-            {gruplar.map((grup) => (
-              <figure className={styles.grup} key={grup.ad}>
-                <div className={styles.grupKare}>
-                  <Image
-                    className={`${styles.gorsel} ${styles.yakin}`}
-                    src={grup.gorsel}
-                    alt={`${grup.marka} için yapay zeka ile üretilmiş ${grup.ad.toLocaleLowerCase("tr-TR")} görseli`}
-                    fill
-                    sizes="(max-width: 1100px) 46vw, 280px"
-                    style={{ objectPosition: grup.konum }}
-                  />
-                  {grup.once && (
-                    <div className={styles.grupOnce}>
-                      <Image
-                        className={styles.gorsel}
-                        src={grup.once}
-                        alt={`${grup.marka}: gönderilen ürün fotoğrafı`}
-                        fill
-                        sizes="110px"
-                        style={{ objectPosition: "center 40%" }}
-                      />
-                    </div>
-                  )}
-                </div>
-                <figcaption>
-                  <p className={styles.grupAd}>{grup.ad}</p>
-                  <p className={styles.grupMarka}>{grup.marka}</p>
-                </figcaption>
-              </figure>
+          <div className={styles.vakalar}>
+            {starTermosVakalari.map((vaka) => (
+              <VakaSatiri vaka={vaka} key={vaka.dosya} />
             ))}
           </div>
 
+          <p className={styles.aciklamaNot}>
+            Örnekler Lucea Jewelry ve Star Termos için ürettiğimiz işlerden
+            seçilmiştir. Karelerde görünen kişiler yapay zeka ile üretilmiştir;
+            gerçek bir kişiyi göstermez.
+          </p>
           <div className={styles.bolumAlt}>
             <Link className={styles.ikinciBag} href="/ai-destekli-cozumler">
               Tüm yapay zeka çalışmalarını görün
@@ -574,37 +497,37 @@ export default function AiUrunGorseliSayfasi() {
         </div>
       </section>
 
-      <section id="fiyat" className={`${styles.bolum} ${styles.capa}`}>
+      <section id="kapsam" className={`${styles.bolum} ${styles.capa}`}>
         <div className={styles.kapsayici}>
-          <span className={styles.bolumRozet}>Fiyat</span>
+          <span className={styles.bolumRozet}>Kapsam</span>
           <h2 className={styles.bolumBaslik}>
-            Fiyat açık: <em>ürün başına {"1.000 TL"}</em>
+            Her ürün için <em>üç katalog karesi</em>
           </h2>
           <p className={styles.bolumSpot}>
-            Her ürün için üç farklı kare teslim edilir. Ürün sayısı arttıkça
-            birim fiyat düşer.
+            Tek üründen tüm kataloğa aynı yöntemle çalışırız. Teklifiniz ürün
+            sayınıza göre hazırlanır; fotoğrafı gönderdiğiniz gün dönüş yaparız.
           </p>
 
-          <div className={styles.fiyatlar}>
-            {fiyatlar.map((fiyat) => (
+          <div className={styles.paketler}>
+            {paketler.map((paket) => (
               <div
-                className={`${styles.fiyat} ${fiyat.one ? styles.fiyatOne : ""}`}
-                key={fiyat.ad}
+                className={`${styles.paket} ${paket.one ? styles.paketOne : ""}`}
+                key={paket.ad}
               >
-                <p className={styles.fiyatAd}>
-                  {fiyat.ad}
-                  {fiyat.one && <span className={styles.fiyatIsaret}>Önerilen</span>}
+                <p className={styles.paketAd}>
+                  {paket.ad}
+                  {paket.one && <span className={styles.paketIsaret}>Önerilen</span>}
                 </p>
-                <p className={styles.fiyatTutar}>{fiyat.tutar}</p>
-                <p className={styles.fiyatEk}>{fiyat.ek}</p>
-                <p className={styles.fiyatMetin}>{fiyat.metin}</p>
+                <p className={styles.paketOlcu}>{paket.olcu}</p>
+                <p className={styles.paketEk}>{paket.ek}</p>
+                <p className={styles.paketMetin}>{paket.metin}</p>
                 <a
-                  className={styles.fiyatBag}
-                  href={whatsapp(fiyat.mesaj)}
+                  className={styles.paketBag}
+                  href={whatsapp(paket.mesaj)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {fiyat.eylem}
+                  {paket.eylem}
                 </a>
               </div>
             ))}
@@ -622,19 +545,9 @@ export default function AiUrunGorseliSayfasi() {
             </ul>
           </div>
 
-          <p className={styles.kiyas}>
-            <span className={styles.kiyasEtiket}>Piyasa kıyası</span>
-            Türkiye&apos;de modelli ürün çekimi ürün başına 1.500 ile 4.000 TL
-            arasındadır; üstüne günlük 5.000 ile 15.000 TL model ücreti eklenir.
-            Aynı sahneyi set ve model olmadan, ürün başına 1.000 TL&apos;ye
-            üretiyoruz.
-          </p>
-
           <p className={styles.dipnot}>
-            Fiyatlara KDV dahil değildir. Ödeme kredi kartıyla ve taksitle
-            yapılabilir. Ek kare ya da farklı sahne talebi ayrıca
-            fiyatlandırılır. Piyasa kıyası, Studio Gria&apos;nın Temmuz 2026
-            piyasa araştırmasına dayanır.
+            Ödeme kredi kartıyla ve taksitle yapılabilir. Ek kare ya da farklı
+            sahne talebi ayrıca tekliflendirilir.
           </p>
         </div>
       </section>
@@ -661,9 +574,9 @@ export default function AiUrunGorseliSayfasi() {
         <div className={styles.kapsayici}>
           <div className={styles.sssIzgara}>
             <div>
-              <span className={styles.bolumRozet}>Sık sorulanlar</span>
+              <span className={styles.bolumRozet}>Sorular</span>
               <h2 className={styles.bolumBaslik}>
-                Karar vermeden önce <em>sorulanlar</em>
+                Yapay zeka ile ürün görseli: <em>sık sorulanlar</em>
               </h2>
               <p className={styles.bolumSpot}>
                 Aradığınız cevap burada yoksa{" "}
@@ -763,6 +676,9 @@ export default function AiUrunGorseliSayfasi() {
             <Link className={styles.altBag} href="/">Ana sayfa</Link>
             <Link className={styles.altBag} href="/ai-destekli-cozumler">
               AI destekli çözümler
+            </Link>
+            <Link className={styles.altBag} href="/hizmetler/ai-uretim-reklam-filmleri">
+              AI reklam filmleri
             </Link>
             <Link className={styles.altBag} href="/hizmetler/sosyal-medya-yonetimi">
               Sosyal medya yönetimi

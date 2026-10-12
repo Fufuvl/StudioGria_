@@ -399,6 +399,18 @@
   margin: 0 0 20px;
 }
 
+// Paragraf icindeki sayfa bagi
+.metinBag {
+  color: var(--murekkep);
+  border-bottom: 1px solid rgba(22, 24, 29, 0.4);
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    color: var(--murekkep);
+    border-color: var(--murekkep);
+  }
+}
+
 .dahilKutu {
   border: 1px solid var(--cizgi);
   border-radius: 4px;
