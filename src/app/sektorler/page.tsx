@@ -98,6 +98,7 @@ export default function SektorlerSayfasi() {
                         src={sektor.kapak}
                         alt={sektor.kapakAlt ?? ""}
                         fill
+                        style={sektor.kapakKonum ? { objectPosition: sektor.kapakKonum } : undefined}
                         sizes="(max-width: 767px) 100vw, 260px"
                       />
                     </div>

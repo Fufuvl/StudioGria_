@@ -4,9 +4,10 @@
 // KURAL: her sektor kendi kanitiyla anlatilir. Gorsel ve video yalniz o
 // sektorde gercekten yaptigimiz isten gelir; referans adlari referans-data.ts
 // ile birebir aynidir. Kanitimiz olmayan sektor icin sayfa acilmaz.
-// Tek istisna klinik acilis gorseli: kullanici 17 Eki 2026'da stok gorsele
-// izin verdi ("Stok olacak ama yapacak bir sey yok"); sayfada "Temsili gorsel"
-// diye yazar, ilk klinik cekimimizle degisir.
+// Istisna: klinik, spor kulubu ve sanayi acilis gorselleri stok (kullanici izni
+// 17-18 Eki 2026; sayfada "Temsili gorsel" yazar). Spor ve sanayi gorsellerini
+// kullanici secip gonderecek; o zamana kadar bu iki sayfada galeri yok.
+// Sanayi sayfasinda Entepe Mobilya kullanilmaz (18 Eki 2026 kullanici karari).
 //
 // Hukuk burosu icin sayfa ACILMAZ: TBB Reklam Yasagi Yonetmeligi Md. 7/e
 // (RG 9.8.2024, sayi 32627) avukatlara arama motoru siralama yontemlerini ve
@@ -103,6 +104,7 @@ export type Sektor = {
   // Merkez sayfasindaki kart gorseli; yoksa kart tipografik kurulur
   kapak?: string;
   kapakAlt?: string;
+  kapakKonum?: string; // kart kirpmasinda object-position, varsayilan orta
 };
 
 const URUN = "/assets/img/ai-solutions/urun-gorseli";
@@ -727,7 +729,12 @@ export const sektorler: Sektor[] = [
       { deger: "5 kayıt", etiket: "17 günde, Büyükçekmece Atletik" },
       { deger: "5 marka", etiket: "spor ve çocuk sporunda" },
     ],
-    acilis: { tur: "musteri-video", kimlik: "my-gym-buyukcekmece" },
+    acilis: {
+      tur: "gorsel",
+      src: "/assets/img/sektor/spor/spor-kulubu-antrenman.jpg",
+      alt: "Basketbol antrenörü salonda genç oyunculara oyun planını anlatıyor",
+      not: "Temsilî görsel. Spor kulübünde içeriğin kaynağı saha: antrenman, maç ve kulübün kendi insanları.",
+    },
     nedenBaslik: "Spor kulübünde reklam ve sosyal medya *ne işe yarar*",
     nedenler: [
       {
@@ -749,47 +756,8 @@ export const sektorler: Sektor[] = [
     kanitRozet: "İki kulüp, iki kayıt dönemi",
     kanitBaslik: "Reklamın ölçüsü *mesaj ve kayıt*",
     kanitSpot:
-      "Rakamlar iki kulübün Meta reklam hesabından okundu; kayıt sayısı kulübün bildirimi. Altında Beylikdüzü İhtisas'ın maç günü çekimleri ve sezon tasarımları, My Gym için hazırladığımız gönderiler.",
+      "Rakamlar iki kulübün Meta reklam hesabından okundu; kayıt sayısı kulübün bildirimi. Hesaplamanın ayrıntısı vaka sayfalarında.",
     vakalar: ["buyukcekmece-atletik-kayit-kampanyasi", "beylikduzu-ihtisas-mesaj-kampanyasi"],
-    galeri: [
-      {
-        src: "/assets/img/sektor/spor/beylikduzu-ihtisas-oyuncular.jpg",
-        alt: "Beylikdüzü İhtisas formalı basketbolcu, iki kişiyle Türk bayrağı önünde",
-        etiket: "Beylikdüzü İhtisas · maç günü çekimi",
-        oran: "dikey",
-      },
-      {
-        src: "/assets/img/sektor/spor/beylikduzu-ihtisas-salonda.jpg",
-        alt: "Beylikdüzü İhtisas formalı basketbolcu salonda kulüpten biriyle birlikte",
-        etiket: "Beylikdüzü İhtisas · maç günü çekimi",
-        oran: "dikey",
-      },
-      {
-        src: "/assets/img/sektor/spor/beylikduzu-ihtisas-cenk-aydin-yola-devam.jpg",
-        alt: "Beylikdüzü İhtisas oyuncusu Cenk Aydın için 'Yola devam' sezon tasarımı",
-        etiket: "Beylikdüzü İhtisas · sezon tasarımı",
-        oran: "dikey",
-      },
-      {
-        src: "/assets/img/sektor/spor/beylikduzu-ihtisas-selim-salman-aileye-hosgeldin.jpg",
-        alt: "Beylikdüzü İhtisas'a katılan Selim Salman için 'Aileye hoş geldin' tasarımı",
-        etiket: "Beylikdüzü İhtisas · transfer tasarımı",
-        oran: "dikey",
-      },
-      {
-        src: "/assets/img/sektor/spor/my-gym-ilk-gun-gonderisi.jpg",
-        alt: "My Gym için hazırlanan 'İlk gün ağladı, şimdi dersten çıkmak istemiyor' gönderisi",
-        etiket: "My Gym · veliye dönük gönderi",
-        oran: "dikey",
-      },
-      {
-        src: "/assets/img/sektor/spor/my-gym-hiperaktif-degil-gonderisi.jpg",
-        alt: "My Gym için hazırlanan 'Hiperaktif değil, enerjisini doğru kullanamıyor' gönderisi",
-        etiket: "My Gym · veliye dönük gönderi",
-        oran: "dikey",
-      },
-    ],
-    musteriSozu: "my-gym-buyukcekmece",
     referanslar: [
       "Beşiktaş Spor Kulübü",
       "Beylikdüzü İhtisas Spor Kulübü",
@@ -874,8 +842,8 @@ export const sektorler: Sektor[] = [
     ],
     whatsappMesaj:
       "Merhaba, web sitenizden yazıyorum. Spor kulübümüz için reklam ve sosyal medya hakkında bilgi almak istiyorum.",
-    kapak: "/assets/img/sektor/spor/beylikduzu-ihtisas-oyuncular.jpg",
-    kapakAlt: "Beylikdüzü İhtisas basketbolcuları maç günü, ekibimizin çekiminden",
+    kapak: "/assets/img/sektor/spor/spor-kulubu-antrenman.jpg",
+    kapakAlt: "Basketbol antrenörü genç oyunculara oyun planını anlatıyor (temsilî görsel)",
   },
 
   {
@@ -1055,21 +1023,21 @@ export const sektorler: Sektor[] = [
     formSektor: "Sanayi / üretim",
     seoBaslik: "Fabrika Tanıtım Filmi ve Ürün Kataloğu | Studio Gria",
     seoAciklama:
-      "Üretim firmaları için fabrika tanıtım filmi, drone ile tesis çekimi, ürün kataloğu ve B2B sosyal medya. Ulus Metal, Deva Makine, Liva Gaz ve Entepe Mobilya.",
+      "Üretim firmaları için fabrika tanıtım filmi, drone ile tesis çekimi, ürün kataloğu ve B2B sosyal medya. Ulus Metal, Deva Makine ve Liva Gaz referanslarımızdan.",
     rozet: "Fabrika tanıtım filmi ve ürün kataloğu",
     slogan: "Üretiminiz *alıcının masasına* gitsin",
     spot:
       "Sanayide alıcı çoğu zaman tesisi gezmeden, kataloğu ve filmi görerek karar verir. Üretim hattını, tesisin ölçeğini ve ürünü kurumsal bir dille çekiyor; katalog sayfalarını, fuar ve satış sunumu videolarını aynı görsel dilde hazırlıyoruz.",
     kunye: [
-      { deger: "6 marka", etiket: "sanayi ve üretimde" },
-      { deger: "196 sayfa", etiket: "tek katalog, tek dil" },
+      { deger: "5 marka", etiket: "sanayi ve üretimde" },
+      { deger: "Film + katalog", etiket: "tek görsel dil" },
       { deger: "Drone", etiket: "ile tesis ölçeği" },
     ],
     acilis: {
       tur: "gorsel",
-      src: "/assets/img/sektor/sanayi/entepe-mobilya-katalog-oturma-grubu.jpg",
-      alt: "Entepe Mobilya kataloğundan oturma grubu sayfası",
-      not: "Entepe Mobilya için hazırladığımız 196 sayfalık katalogdan bir sayfa.",
+      src: "/assets/img/sektor/sanayi/fabrika-tanitim-filmi-cekimi.jpg",
+      alt: "Kameraman bir atölyede metal ekipmanla çalışan işçiyi çekiyor",
+      not: "Temsilî görsel. Fabrika çekiminin planı vardiya düzenine ve iş güvenliği kurallarına göre kurulur.",
     },
     nedenBaslik: "Sanayide tanıtım filmi ve katalog *ne işe yarar*",
     nedenler: [
@@ -1089,49 +1057,29 @@ export const sektorler: Sektor[] = [
           "Çekim planını vardiya düzenine ve iş güvenliği kurallarına göre birlikte kurarız; hat çalışırken çekilecek planlarla duruş gerektirenleri önceden ayırırız.",
       },
     ],
-    kanitRozet: "Entepe Mobilya",
-    kanitBaslik: "196 sayfa, *tek bir dil*",
+    kanitRozet: "Nasıl çalışırız",
+    kanitBaslik: "Bir fabrika filminin *dört adımı*",
     kanitSpot:
-      "Entepe Mobilya için hazırladığımız katalogdan sayfalar. Ulus Metal, Deva Makine ve Liva Gaz için yaptığımız prodüksiyon çalışmaları da bu alandaki referanslarımız arasında.",
-    galeri: [
+      "Her fabrika çekimi aynı yoldan geçer. Plan önceden kurulduğu için çekim günü üretim durmaz; Ulus Metal, Deva Makine ve Liva Gaz bu alandaki prodüksiyon referanslarımızdan.",
+    adimlar: [
       {
-        src: "/assets/img/sektor/sanayi/entepe-mobilya-katalog-zamansiz-tasarim.jpg",
-        alt: "Entepe Mobilya kataloğunda yemek masası, sandalye ve oturma grubu sayfası",
-        etiket: "Entepe Mobilya · katalog",
-        oran: "yatay",
+        baslik: "Keşif",
+        metin: "Tesisi gezer, filmin kime gideceğini ve hangi hattın, hangi anın çekileceğini belirleriz.",
       },
       {
-        src: "/assets/img/sektor/sanayi/entepe-mobilya-katalog-kose-koltuk.jpg",
-        alt: "Entepe Mobilya kataloğunda köşe koltuk takımı",
-        etiket: "Entepe Mobilya · katalog",
-        oran: "yatay",
+        baslik: "Plan",
+        metin: "Planları vardiya düzenine ve iş güvenliği kurallarına göre sıralar, çekim gününün akışını tesisle birlikte onaylarız.",
       },
       {
-        src: "/assets/img/sektor/sanayi/entepe-mobilya-katalog-salon.jpg",
-        alt: "Entepe Mobilya kataloğunda geniş camlı salonda oturma grubu",
-        etiket: "Entepe Mobilya · katalog",
-        oran: "yatay",
+        baslik: "Çekim",
+        metin: "Üretim hattı, kalite kontrol, ekip ve drone ile tesis aynı gün; hat çalışırken çekilecek planlarla duruş isteyenler ayrıdır.",
       },
       {
-        src: "/assets/img/sektor/sanayi/entepe-mobilya-katalog-yemek-masasi.jpg",
-        alt: "Entepe Mobilya kataloğunda yemek masası ve sandalyeler",
-        etiket: "Entepe Mobilya · katalog",
-        oran: "yatay",
-      },
-      {
-        src: "/assets/img/sektor/sanayi/entepe-mobilya-katalog-yatak.jpg",
-        alt: "Entepe Mobilya kataloğunda yatak ve komodin",
-        etiket: "Entepe Mobilya · katalog",
-        oran: "yatay",
-      },
-      {
-        src: "/assets/img/sektor/sanayi/entepe-mobilya-katalog-dunya-haritasi.jpg",
-        alt: "Entepe Mobilya kataloğunda dünya haritalı marka sayfası",
-        etiket: "Entepe Mobilya · katalog",
-        oran: "yatay",
+        baslik: "Kurgu",
+        metin: "Uzun film, fuar ve satış sunumu için kısa kurgular, sosyal medya için dikey versiyonlar.",
       },
     ],
-    referanslar: ["Ulus Metal", "Deva Makine", "Liva Gaz", "Entepe Mobilya", "Koç Gıda", "Star Termos"],
+    referanslar: ["Ulus Metal", "Deva Makine", "Liva Gaz", "Koç Gıda", "Star Termos"],
     yapilanlar: [
       {
         baslik: "Fabrika tanıtım filmi",
@@ -1204,8 +1152,9 @@ export const sektorler: Sektor[] = [
     ilgiliYazilar: ["yapay-zeka-ile-reklam-filmi", "google-ads-mi-meta-ads-mi", "sosyal-medya-ajansi-fiyatlari"],
     whatsappMesaj:
       "Merhaba, web sitenizden yazıyorum. Firmamız için tanıtım filmi ve katalog hakkında bilgi almak istiyorum.",
-    kapak: "/assets/img/sektor/sanayi/entepe-mobilya-katalog-oturma-grubu.jpg",
-    kapakAlt: "Entepe Mobilya kataloğundan oturma grubu sayfası",
+    kapak: "/assets/img/sektor/sanayi/fabrika-tanitim-filmi-cekimi.jpg",
+    kapakAlt: "Kameraman bir atölyede üretimi çekiyor (temsilî görsel)",
+    kapakKonum: "30% 50%",
   },
 
   {
