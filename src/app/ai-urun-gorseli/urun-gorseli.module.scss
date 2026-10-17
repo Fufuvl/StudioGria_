@@ -5,7 +5,7 @@
 .sayfa {
   --murekkep: #16181d;
   --soluk: #6b6b6b;
-  --zemin: #faf9f7;
+  --zemin: #fff;
   --cizgi: rgba(22, 24, 29, 0.12);
 
   background: var(--zemin);
@@ -35,7 +35,7 @@
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(250, 249, 247, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--cizgi);
@@ -909,7 +909,7 @@
   z-index: 70;
   display: none;
   padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-  background: rgba(250, 249, 247, 0.96);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid var(--cizgi);

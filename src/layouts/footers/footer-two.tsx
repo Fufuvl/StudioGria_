@@ -50,17 +50,17 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
   // site geneli baglanan sayfalardi; yalnizca tek bir hub sayfasindan (/hizmetler,
   // /blog) baglanan 14 sayfanin tamami "kesfedildi, dizine eklenmedi" durumundaydi.
   // Bolge sayfalarinda ise yontem calisti. Ayni yontem bu iki gruba uygulaniyor.
-  // Sektor sayfalari hizmet listesinin sonunda, sektor adiyla baglanir
-  const hizmetMenu = [
-    ...hizmetler.map((hizmet) => ({
-      title: hizmet.ad,
-      link: `/hizmetler/${hizmet.slug}`,
-    })),
-    ...sektorler.map((sektor) => ({
-      title: sektor.ad,
-      link: `/sektorler/${sektor.slug}`,
-    })),
-  ];
+  const hizmetMenu = hizmetler.map((hizmet) => ({
+    title: hizmet.ad,
+    link: `/hizmetler/${hizmet.slug}`,
+  }));
+
+  // Sektor sayfalari ayni sutunda, hizmetlerin altinda; sekiz ad bolgeler gibi
+  // yan yana akar ki sutun uzamasin
+  const sektorMenu = sektorler.map((sektor) => ({
+    title: sektor.ad,
+    link: `/sektorler/${sektor.slug}`,
+  }));
 
   // Blog listesi tarihe gore siralanir; yeni yazi eklendiginde footer kendiliginden
   // guncellenir, en yeni dort yazi site geneli baglanti alir.
@@ -148,6 +148,16 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
                   <h2 className="tp-footer-2-widget-title">Hizmetler</h2>
                   <ul>
                     {hizmetMenu.map((item) => (
+                      <li key={item.title}>
+                        <Link href={item.link}>{item.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="tp-footer-2-widget-menu mt-30">
+                  <h2 className="tp-footer-2-widget-title">Sektörler</h2>
+                  <ul className="sg-footer-bolgeler">
+                    {sektorMenu.map((item) => (
                       <li key={item.title}>
                         <Link href={item.link}>{item.title}</Link>
                       </li>

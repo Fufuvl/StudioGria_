@@ -6,7 +6,8 @@
   --soluk: #6b6b6b;
   --metin: #3d4048;
   --cizgi: rgba(22, 24, 29, 0.12);
-  --krem: #faf9f7;
+  // 17 Eki 2026 kullanici karari: butun sayfalarda zemin saf beyaz
+  --krem: #fff;
   background: #fff;
   color: var(--murekkep);
 
@@ -244,7 +245,21 @@
   text-align: center;
 }
 
-/* Klinik acilisi: yonetmeligin ozeti */
+/* Tek gorsel acilis: katalog sayfasi ya da temsili gorsel */
+.acilisTek {
+  margin: 0;
+  width: 100%;
+}
+
+.acilisTekKare {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--cizgi);
+}
+
+/* Klinik ve egitim: mevzuat ozeti kanit bolumunde */
 .mevzuat {
   width: 100%;
   border: 1px solid var(--murekkep);
@@ -324,6 +339,122 @@
   margin: 20px 0 0;
   font-size: 12px;
   color: var(--soluk);
+}
+
+.vakalar + .galeri,
+.galeri + .mevzuat,
+.mevzuat + .adimlar,
+.galeri + .buyukAlinti,
+.mevzuat + .buyukAlinti,
+.adimlar + .buyukAlinti {
+  margin-top: clamp(28px, 3vw, 44px);
+}
+
+/* Galeri: 6 sutunluk izgara; yatay kare 3, dikey kare 2 sutun kaplar */
+.galeri {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+}
+
+.galeriKare {
+  margin: 0;
+}
+
+.galeriYatay {
+  grid-column: span 3;
+
+  .galeriCerceve {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+.galeriDikey {
+  grid-column: span 2;
+
+  .galeriCerceve {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+.galeriCerceve {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--cizgi);
+}
+
+.galeriEtiket {
+  margin-top: 10px;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--soluk);
+}
+
+/* Spor: vaka kartlari, rakamlar vaka sayfasindan */
+.vakalar {
+  list-style: none;
+  margin: 0 0 clamp(28px, 3vw, 44px);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+}
+
+.vakaBag {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(22px, 2.4vw, 32px);
+  border: 1px solid var(--cizgi);
+  border-radius: 4px;
+  color: var(--murekkep);
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    color: var(--murekkep);
+    border-color: var(--murekkep);
+  }
+}
+
+.vakaUst {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--soluk);
+  margin-bottom: 20px;
+}
+
+.vakaRakamlar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 22px;
+  flex-grow: 1;
+
+  dt {
+    font-family: var(--tp-ff-heading), sans-serif;
+    font-size: clamp(26px, 2.6vw, 36px);
+    line-height: 1.05;
+    font-weight: 500;
+  }
+
+  dd {
+    margin: 6px 0 0;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--metin);
+  }
+}
+
+.vakaOk {
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--murekkep);
+  padding-bottom: 2px;
 }
 
 /* ---------- Bolumler ---------- */
@@ -987,6 +1118,34 @@
 
   .mevzuatIzgara {
     grid-template-columns: 1fr;
+  }
+
+  .vakalar {
+    grid-template-columns: 1fr;
+  }
+
+  .vakaRakamlar dt {
+    font-size: 24px;
+  }
+
+  .galeri {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .galeriYatay {
+    grid-column: span 2;
+  }
+
+  .galeriDikey {
+    grid-column: span 1;
+  }
+
+  .galeriTekMobil {
+    grid-column: span 2;
+
+    .galeriCerceve {
+      aspect-ratio: 3 / 2;
+    }
   }
 
   .digerIzgara {

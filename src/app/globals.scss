@@ -48,7 +48,7 @@
   display: grid;
   grid-template-columns: minmax(440px, 0.92fr) 1.08fr;
   min-height: clamp(520px, 74vh, 720px);
-  background: #faf9f7;
+  background: #fff;
   // ScrollSmoother icerigi header'in arkasina aldigi icin header payi birakilir
   padding-top: 106px;
 }
@@ -328,7 +328,7 @@
 
 /* Ana sayfa hizmet bolumu: hizmet detay sayfalarina dogrudan ic link verir */
 .sg-hizmet-bolum {
-  background: #faf9f7;
+  background: #fff;
   padding: clamp(64px, 8vw, 120px) 0;
 }
 
@@ -451,7 +451,7 @@
 }
 
 .sg-model-krem {
-  background: #faf9f7;
+  background: #fff;
 
   .sg-model-kart {
     background: #fff;
@@ -470,7 +470,7 @@
   display: grid;
   grid-row: span 8;
   grid-template-rows: subgrid;
-  background: #faf9f7;
+  background: #fff;
   border: 1px solid rgba(22, 24, 29, 0.12);
   border-radius: 4px;
   overflow: hidden;
@@ -888,7 +888,7 @@
    kurali (public/assets/scss/main.scss) menuyu sabitken de saydam biraktigi
    icin menu yazilari gorsellerin ve koyu bolumlerin ustunde okunmuyordu. */
 .tp-inner-header-area.header-sticky:not(.tp-inner-header-white) {
-  background-color: rgba(250, 249, 247, 0.94) !important;
+  background-color: rgba(255, 255, 255, 0.94) !important;
   backdrop-filter: blur(10px);
 }
 

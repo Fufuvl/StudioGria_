@@ -13,11 +13,12 @@ import ModelBag from "@/components/model-bag";
 import {
   sektorler,
   sektorBul,
-  mevzuatKarti,
-  klinikAdimlari,
   type Sektor,
+  type SektorGaleriKaresi,
   type SektorGorselSatiri,
+  type SektorKurali,
 } from "@/data/sektor-data";
+import { yayindakiVakalar } from "@/data/vaka-data";
 import { musteriSozleri, musteriSozuBul, musteriVideoSemalari, VIDEO_YOLU } from "@/data/musteri-sozleri-data";
 import { hizmetBul } from "@/data/hizmet-data";
 import { blogYazilari } from "@/data/blog-yazilari";
@@ -150,29 +151,86 @@ function Acilis({ sektor }: { sektor: Sektor }) {
     );
   }
 
-  // Klinik: yonetmeligin ozeti acilis gorselinin yerini alir
+  // Tek gorsel: katalog sayfasi ya da (klinikte) temsili gorsel
+  return (
+    <figure className={s.acilisTek}>
+      <div className={s.acilisTekKare}>
+        <Image
+          className={s.gorsel}
+          src={acilis.src}
+          alt={acilis.alt}
+          fill
+          priority
+          sizes="(max-width: 991px) 92vw, 46vw"
+        />
+      </div>
+      <figcaption className={s.acilisNot}>
+        <span>{acilis.not}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
+// Mevzuat ozeti: sol sutun izin verilen ya da zorunlu olan, sag sutun yasak
+function KuralKarti({ kural }: { kural: SektorKurali }) {
   return (
     <div className={s.mevzuat}>
-      <p className={s.mevzuatBaslik}>{mevzuatKarti.baslik}</p>
+      <p className={s.mevzuatBaslik}>{kural.baslik}</p>
       <div className={s.mevzuatIzgara}>
         <div>
-          <p className={s.mevzuatEtiket}>Yapılabilir</p>
+          <p className={s.mevzuatEtiket}>{kural.serbestEtiket ?? "Yapılabilir"}</p>
           <ul className={s.mevzuatListe}>
-            {mevzuatKarti.serbest.map((madde) => (
+            {kural.serbest.map((madde) => (
               <li key={madde}>{madde}</li>
             ))}
           </ul>
         </div>
         <div>
-          <p className={`${s.mevzuatEtiket} ${s.mevzuatYasak}`}>Yapılamaz</p>
+          <p className={`${s.mevzuatEtiket} ${s.mevzuatYasak}`}>{kural.yasakEtiket ?? "Yapılamaz"}</p>
           <ul className={`${s.mevzuatListe} ${s.mevzuatListeYasak}`}>
-            {mevzuatKarti.yasak.map((madde) => (
+            {kural.yasak.map((madde) => (
               <li key={madde}>{madde}</li>
             ))}
           </ul>
         </div>
       </div>
-      <p className={s.mevzuatKaynak}>Resmî Gazete 12.11.2025, sayı 33075, Madde 5 ve 7</p>
+      <p className={s.mevzuatKaynak}>{kural.kaynak}</p>
+    </div>
+  );
+}
+
+// Yatay kare iki, dikey kare uc sutun kaplar; veri sirasi satirlari doldurur.
+// Telefonda dikeyler ikili satira dizilir; tek sayida dikey dizisinin sonuncusu
+// yalniz kalmasin diye telefonda tam satir ve yatay kesimle gosterilir.
+function Galeri({ kareler }: { kareler: SektorGaleriKaresi[] }) {
+  const tekKalan = new Set<number>();
+  let dizi = 0;
+  kareler.forEach((kare, sira) => {
+    dizi = kare.oran === "dikey" ? dizi + 1 : 0;
+    const sonraki = kareler[sira + 1];
+    if (dizi > 0 && (!sonraki || sonraki.oran !== "dikey") && dizi % 2 === 1) tekKalan.add(sira);
+  });
+  return (
+    <div className={s.galeri}>
+      {kareler.map((kare, sira) => (
+        <figure
+          className={`${s.galeriKare} ${kare.oran === "yatay" ? s.galeriYatay : s.galeriDikey} ${
+            tekKalan.has(sira) ? s.galeriTekMobil : ""
+          }`}
+          key={kare.src}
+        >
+          <div className={s.galeriCerceve}>
+            <Image
+              className={s.gorsel}
+              src={kare.src}
+              alt={kare.alt}
+              fill
+              sizes={kare.oran === "yatay" ? "(max-width: 767px) 92vw, 560px" : "(max-width: 767px) 46vw, 370px"}
+            />
+          </div>
+          <figcaption className={s.galeriEtiket}>{kare.etiket}</figcaption>
+        </figure>
+      ))}
     </div>
   );
 }
@@ -210,6 +268,9 @@ export default function SektorSayfasi({ params }: Props) {
     .map((slug) => blogYazilari.find((y) => y.slug === slug))
     .filter((y): y is NonNullable<typeof y> => Boolean(y));
   const digerSektorler = sektorler.filter((d) => d.slug !== sektor.slug);
+  const vakalar = (sektor.vakalar ?? [])
+    .map((slug) => yayindakiVakalar().find((v) => v.slug === slug))
+    .filter((v): v is NonNullable<typeof v> => Boolean(v));
 
   // Acilista gosterilen musteri videosu asagidaki bolumde tekrar edilmez
   const acilisMusteri = sektor.acilis.tur === "musteri-video" ? sektor.acilis.kimlik : undefined;
@@ -227,7 +288,7 @@ export default function SektorSayfasi({ params }: Props) {
         description: v.aciklama,
         thumbnailUrl: `${SITE_URL}${VIDEO_SEKTOR}/${v.dosya}.jpg`,
         contentUrl: `${SITE_URL}${VIDEO_SEKTOR}/${v.dosya}.mp4`,
-        uploadDate: "2026-10-17",
+        uploadDate: v.yuklenme ?? "2026-10-17",
         duration: `PT${v.sureSaniye}S`,
         inLanguage: "tr-TR",
       })),
@@ -254,7 +315,7 @@ export default function SektorSayfasi({ params }: Props) {
       inLanguage: "tr-TR",
       isPartOf: { "@id": KIMLIK.website },
       about: { "@id": `${adres}#hizmet` },
-      dateModified: "2026-10-17",
+      dateModified: "2026-10-18",
     },
     sssSemasi(sektor.sorular, `/sektorler/${sektor.slug}`),
     kirintiSemasi([
@@ -362,9 +423,36 @@ export default function SektorSayfasi({ params }: Props) {
               </div>
             )}
 
-            {sektor.acilis.tur === "mevzuat" && (
+            {vakalar.length > 0 && (
+              <ul className={s.vakalar}>
+                {vakalar.map((vaka) => (
+                  <li className={s.vaka} key={vaka.slug}>
+                    <Link className={s.vakaBag} href={`/referanslar/${vaka.slug}`}>
+                      <span className={s.vakaUst}>
+                        {vaka.marka} · {vaka.donem}
+                      </span>
+                      <dl className={s.vakaRakamlar}>
+                        {vaka.rakamlar.slice(0, 3).map((r) => (
+                          <div key={r.etiket}>
+                            <dt>{r.deger}</dt>
+                            <dd>{r.etiket}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                      <span className={s.vakaOk}>Vakayı okuyun</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {sektor.galeri && <Galeri kareler={sektor.galeri} />}
+
+            {sektor.kural && <KuralKarti kural={sektor.kural} />}
+
+            {sektor.adimlar && (
               <ol className={s.adimlar}>
-                {klinikAdimlari.map((adim, sira) => (
+                {sektor.adimlar.map((adim, sira) => (
                   <li className={s.adim} key={adim.baslik}>
                     <span className={s.adimNo}>{String(sira + 1).padStart(2, "0")}</span>
                     <h3 className={s.adimBaslik}>{adim.baslik}</h3>

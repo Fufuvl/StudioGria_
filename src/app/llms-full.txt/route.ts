@@ -174,7 +174,11 @@ ${sektor.yapilanlar.map((oge) => `- ${oge.baslik}: ${oge.metin}`).join("\n")}
 
 Bu alanda çalıştığımız markalar: ${sektor.referanslar.join(", ")}.
 
-${sektor.model.neden}
+${sektor.model.neden}${
+      sektor.kural
+        ? `\n\n${sektor.kural.baslik} (${sektor.kural.kaynak}). ${sektor.kural.serbestEtiket ?? "Yapılabilir"}: ${sektor.kural.serbest.join("; ")}. ${sektor.kural.yasakEtiket ?? "Yapılamaz"}: ${sektor.kural.yasak.join("; ")}.`
+        : ""
+    }
 
 ${sektor.sorular.map((kayit) => `S: ${kayit.soru}\nC: ${kayit.cevap}`).join("\n\n")}${
       sektor.dipNot ? `\n\n${sektor.dipNot}` : ""

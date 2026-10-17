@@ -84,10 +84,10 @@ export function AnasayfaSektorler() {
       <div className="sg-hizmet-ic">
         <span className="sg-hizmet-rozet">Sektörler</span>
         <h2 id="anasayfa-sektorler" className="sg-hizmet-baslik">
-          En çok iş çıkardığımız <em>dört sektör</em>
+          Sekiz sektör, <em>sekiz ayrı dil</em>
         </h2>
         <p className="sg-hizmet-spot">
-          Her sektörün içeriği başka bir şeyle güven kurar. Bu dört alanda ne yaptığımızı kendi
+          Her sektörün içeriği başka bir şeyle güven kurar. Bu alanlarda ne yaptığımızı kendi
           işlerimiz ve müşterilerimizin sözleriyle anlatıyoruz.
         </p>
         <ul className="sg-hizmet-liste">

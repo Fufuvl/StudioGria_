@@ -13,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // derlemede "bugun" yazmak Google'in lastmod sinyalini tamamen yok
   // saymasina yol acar; icerik degistiginde bu tarih elle guncellenir.
   const lastModified = new Date("2026-10-17");
+  // 18 Eki 2026: dort yeni sektor sayfasi, klinik acilis gorseli
+  const sektorGuncelleme = new Date("2026-10-18");
 
   // Blog listesinin tazeligi en yeni yazinin tarihinden gelir; her derlemede
   // "bugun" yazmak arama motorlarina yanlis tazelik sinyali verir.
@@ -66,7 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/sektorler`,
-      lastModified,
+      lastModified: sektorGuncelleme,
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -129,7 +131,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Sektor sayfalari: sektor + hizmet aramalari icin
   const sektorSayfalari: MetadataRoute.Sitemap = sektorler.map((sektor) => ({
     url: `${baseUrl}/sektorler/${sektor.slug}`,
-    lastModified,
+    lastModified: sektorGuncelleme,
     changeFrequency: "monthly",
     priority: 0.8,
   }));

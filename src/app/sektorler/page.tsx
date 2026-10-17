@@ -12,12 +12,12 @@ import { musteriVideoSemalari } from "@/data/musteri-sozleri-data";
 import { KIMLIK, SITE_URL, grafSemasi, kirintiSemasi } from "@/data/kurulus-data";
 import s from "./sektor.module.scss";
 
-// Sektor sayfalarinin merkezi. Dort sektorun kendi sayfasi var; kalan
+// Sektor sayfalarinin merkezi. Sekiz sektorun kendi sayfasi var; kalan
 // sektorler referans gruplariyla gosterilir ve referanslar sayfasina baglanir.
 
 const sayfaBaslik = "Sektörlere Göre Sosyal Medya Yönetimi | Studio Gria";
 const sayfaAciklama =
-  "Güzellik merkezi, kafe ve restoran, e-ticaret ve klinikler için sektöre özel sosyal medya yönetimi ve reklam. 39'dan fazla markadan örneklerle.";
+  "Spor kulübü, otel, sanayi, eğitim, güzellik, kafe ve restoran, e-ticaret ve klinikler için sektöre özel sosyal medya, prodüksiyon ve reklam.";
 
 export const metadata: Metadata = {
   title: sayfaBaslik,
@@ -79,8 +79,9 @@ export default function SektorlerSayfasi() {
               </span>
             </h1>
             <p className={`${s.spot} sg-gir sg-gir-3`}>
-              Güzellik merkezinde güveni uzman kurar, kafede ürün, e-ticarette kare, klinikte
-              hekimin bilgisi. Aşağıdaki dört sektörde ne yaptığımızı kendi işlerimizle anlatıyoruz.
+              Güzellik merkezinde güveni uzman kurar, kafede ürün, otelde manzara, spor kulübünde
+              saha, klinikte hekimin bilgisi. Aşağıdaki sekiz sektörde ne yaptığımızı kendi
+              işlerimizle anlatıyoruz.
             </p>
           </div>
         </section>
@@ -102,7 +103,7 @@ export default function SektorlerSayfasi() {
                     </div>
                   ) : (
                     <div className={`${s.merkezGorsel} ${s.merkezTipo}`} aria-hidden="true">
-                      Reklam değil, güvenilir bilgilendirme
+                      {sektor.ad}
                     </div>
                   )}
                   <div className={s.merkezMetin}>
@@ -126,8 +127,9 @@ export default function SektorlerSayfasi() {
               Çalıştığımız <em>bütün alanlar</em>
             </h2>
             <p className={s.bolumSpot}>
-              Spor kulübünden sanayiye, otelden eğitime. Ayrı sayfası olmayan sektörler için de
-              teklif hazırlıyoruz; aşağıda her alanda birlikte çalıştığımız markalar var.
+              Ayrı sayfası olmayan alanlarda da teklif hazırlıyoruz; aşağıda her alanda birlikte
+              çalıştığımız markalar var. Drone çekimi ve tanıtım filmi sektörden bağımsız olarak da
+              tek iş halinde planlanabilir.
             </p>
             <ul className={s.grupIzgara}>
               {gruplar.map(({ grup, markalar }) => (
@@ -143,6 +145,12 @@ export default function SektorlerSayfasi() {
               </Link>
               <Link className={s.ikinciBag} href="/referanslar">
                 Referanslarımız
+              </Link>
+              <Link className={s.ikinciBag} href="/hizmetler/drone-cekimleri">
+                Drone çekimi
+              </Link>
+              <Link className={s.ikinciBag} href="/hizmetler/fotograf-video-produksiyon">
+                Tanıtım filmi ve prodüksiyon
               </Link>
             </div>
           </div>
