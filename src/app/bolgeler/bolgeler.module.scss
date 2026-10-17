@@ -194,3 +194,52 @@
     padding: 28px 22px;
   }
 }
+
+/* Ilceye ozgu sorular. details/summary ile acilir; ilk soru acik gelir. */
+.sorular {
+  max-width: 860px;
+  border-top: 1px solid var(--cizgi);
+}
+
+.soru {
+  border-bottom: 1px solid var(--cizgi);
+
+  &[open] .soruBaslik::after {
+    transform: rotate(45deg);
+  }
+}
+
+.soruBaslik {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 22px 0;
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.4;
+  color: var(--murekkep);
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    content: "+";
+    flex-shrink: 0;
+    font-family: var(--tp-ff-body), sans-serif;
+    font-size: 22px;
+    line-height: 1;
+    transition: transform 0.25s ease;
+  }
+}
+
+.soruCevap {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #3d4048;
+  margin: 0;
+  padding: 0 40px 24px 0;
+}

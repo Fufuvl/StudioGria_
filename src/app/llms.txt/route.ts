@@ -3,6 +3,8 @@ import { hizmetler } from "@/data/hizmet-data";
 import { yazilariSirala } from "@/data/blog-yazilari";
 import { bolgeler } from "@/data/bolge-data";
 import { sosyalKanit } from "@/data/sosyal-kanit-data";
+import { sektorler } from "@/data/sektor-data";
+import { musteriSozleri } from "@/data/musteri-sozleri-data";
 
 // /llms.txt
 //
@@ -52,6 +54,8 @@ Studio Gria; içerik üretimi, tasarım ve reklam yönetimini tek ekipte birleş
 - İçerik üretimi ajansa aittir: çekim, tasarım, kurgu ve metin Studio Gria tarafından yapılır. Hazır şablon kullanılmaz.
 - Reklam bütçesi ajans ücretinden ayrıdır ve doğrudan müşterinin kendi hesabından platforma harcanır.
 - Ödeme kredi kartıyla yapılabilir.
+- Sosyal medya yönetiminin iki modeli vardır. Prodüksiyonlu yönetim: aylık saha çekimi dahil, içerik ekibimizin çekimiyle üretilir. Prodüksiyonsuz yönetim: çekim günü yoktur; içerik markanın gönderdiği fotoğraflar ve yapay zeka ile üretilen görsellerle kurulur, uzaktan yürür.
+- Genel aylık fiyat bandı (2026): prodüksiyonsuz yönetim 25.000-35.000 TL, prodüksiyonlu yönetim 30.000-60.000 TL. Kesin tutar içerik adedi, çekim günü ve reklam yönetiminin kapsamına göre her işletmeye özel teklifte belirlenir. Ayrıntı: [Sosyal medya ajansı fiyatları](${SITE_URL}/blog/sosyal-medya-ajansi-fiyatlari).
 
 ## Hizmetler
 
@@ -60,6 +64,20 @@ ${hizmetler
     (hizmet) =>
       `- [${hizmet.ad}](${SITE_URL}/hizmetler/${hizmet.slug}): ${hizmet.kisaAciklama}`,
   )
+  .join("\n")}
+
+## Sektörler
+
+${sektorler
+  .map((sektor) => `- [${sektor.rozet}](${SITE_URL}/sektorler/${sektor.slug}): ${sektor.seoAciklama}`)
+  .join("\n")}
+
+## Müşteri yorumları
+
+Kamera karşısında Studio Gria ile çalışmayı anlatan müşteriler (videolar sitede, [Sektörler](${SITE_URL}/sektorler) sayfasında):
+
+${musteriSozleri
+  .map((soz) => `- ${soz.ad}${soz.rol ? `, ${soz.rol}` : ""} (${soz.marka}, ${soz.sektor.toLowerCase()}): "${soz.alinti}"`)
   .join("\n")}
 
 ## Rehber içerikler
@@ -88,6 +106,10 @@ ${bolgeler
 - [Teklif formu](${SITE_URL}/teklif)
 - [İletişim](${SITE_URL}/contact)
 - [Gizlilik politikası ve KVKK aydınlatma metni](${SITE_URL}/gizlilik)
+
+## Güncelleme
+
+Bu dosya sitenin veri dosyalarından üretilir. Son içerik güncellemesi: 17 Ekim 2026.
 
 ## Tam metin
 

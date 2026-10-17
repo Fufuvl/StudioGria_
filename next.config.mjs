@@ -51,6 +51,16 @@ const nextConfig = {
       { source: "/contact-us", destination: "/contact", permanent: true },
       { source: "/product-page/:slug*", destination: "/hizmetler", permanent: true },
       { source: "/shop", destination: "/hizmetler", permanent: true },
+      // Bing dizininde kalan eski sablon sayfasi ("Glowia"), canlida 404 veriyordu
+      // (16 Eki 2026 denetimi). Adres kodlanmis ve kodlanmamis haliyle eslenir.
+      { source: "/kopyas%C4%B1-bond", destination: "/", permanent: true },
+      { source: "/kopyası-bond", destination: "/", permanent: true },
+      // Sektor sayfalarina tahmin edilen kisa adresler
+      { source: "/sektor", destination: "/sektorler", permanent: true },
+      { source: "/guzellik-merkezi", destination: "/sektorler/guzellik-merkezi-sosyal-medya-yonetimi", permanent: true },
+      { source: "/restoran", destination: "/sektorler/restoran-kafe-sosyal-medya-yonetimi", permanent: true },
+      { source: "/e-ticaret", destination: "/sektorler/e-ticaret-reklam-ve-sosyal-medya", permanent: true },
+      { source: "/klinik", destination: "/sektorler/klinik-sosyal-medya-yonetimi", permanent: true },
     ];
   },
 };

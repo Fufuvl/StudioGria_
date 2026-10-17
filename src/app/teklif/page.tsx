@@ -7,6 +7,8 @@ import ErkenOlcum from "@/components/erken-olcum";
 import SosyalKanit from "@/components/sosyal-kanit";
 import ReferansSerit from "@/components/referans-serit";
 import IkiModel from "@/components/iki-model";
+import MusteriSozleri from "@/components/musteri-sozleri";
+import { musteriVideoSemalari } from "@/data/musteri-sozleri-data";
 import { surecAdimlari } from "@/data/surec-data";
 import {
   KIMLIK,
@@ -79,6 +81,7 @@ const sayfaSemasi = grafSemasi([
     about: { "@id": KIMLIK.kurulus },
   },
   sssSemasi(sorular, "/teklif"),
+  ...musteriVideoSemalari(),
 ]);
 
 export default function TeklifSayfasi() {
@@ -158,6 +161,9 @@ export default function TeklifSayfasi() {
       </div>
 
       <ReferansSerit />
+
+      {/* Karar aninda kanit: musteriler kamera karsisinda anlatiyor */}
+      <MusteriSozleri />
 
       {/* Iki model: kartlardaki baglanti formdaki model secimini doldurur */}
       <IkiModel rozet="Çalışma modelleri" zemin="krem" genislik={1192} />

@@ -2,6 +2,9 @@
 // uretir; yayinda olanlar site haritasina, referanslar sayfasina ve ilgili
 // blog yazisina baglanir.
 //
+// Yayin izni: 17 Eki 2026, kullanici "herhangi bir musteri portfoyumuzu
+// hepsini sitede kullanabiliriz" dedi; iki spor vakasi yayina alindi.
+//
 // KURAL: rakamlar yalnizca reklam hesabindan okunan ya da musterinin bildirdigi
 // gercek degerlerdir, yuvarlanmaz ve tahmin eklenmez. Musteri yayina izin
 // vermeden `yayinda: true` yapilmaz; kapali kayit sayfa uretmez (404).
@@ -38,13 +41,13 @@ export type VakaCalismasi = {
 export const vakalar: VakaCalismasi[] = [
   {
     slug: "buyukcekmece-atletik-kayit-kampanyasi",
-    yayinda: false,
+    yayinda: true,
     marka: "Büyükçekmece Atletik Spor Kulübü",
     sektor: "Spor okulu",
     ilce: "Büyükçekmece",
     donem: "7-23 Eylül 2026",
     baslik: "Büyükçekmece Atletik: 17 günde 70 mesaj konuşması, 5 yeni kayıt",
-    seoBaslik: "Spor Okulu Kayıt Kampanyası: Büyükçekmece Atletik Vakası",
+    seoBaslik: "Spor Okulu Reklam Vakası: Büyükçekmece Atletik",
     seoAciklama:
       "Büyükçekmece Atletik Spor Kulübü kayıt döneminde Meta mesaj reklamlarıyla 17 günde 70 konuşma ve 5 yeni kayıt aldı. Kayıt başı maliyet aylık aidatın altında.",
     ozet:
@@ -75,13 +78,13 @@ export const vakalar: VakaCalismasi[] = [
   },
   {
     slug: "beylikduzu-ihtisas-mesaj-kampanyasi",
-    yayinda: false,
+    yayinda: true,
     marka: "Beylikdüzü İhtisas Spor Kulübü",
     sektor: "Spor kulübü",
     ilce: "Beylikdüzü",
     donem: "Haziran-Eylül 2026",
     baslik: "Beylikdüzü İhtisas: yaz kayıt döneminde 468 mesaj konuşması",
-    seoBaslik: "Spor Kulübü Reklam Kampanyası: Beylikdüzü İhtisas Vakası",
+    seoBaslik: "Spor Kulübü Reklam Vakası: Beylikdüzü İhtisas",
     seoAciklama:
       "Beylikdüzü İhtisas Spor Kulübü altyapı kayıtları için Meta mesaj reklamlarıyla Haziran-Eylül 2026'da 468 konuşma aldı; konuşma başı maliyet ₺84,30.",
     ozet:

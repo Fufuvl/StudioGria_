@@ -8,6 +8,7 @@ import FooterTwo from "@/layouts/footers/footer-two";
 import { blogYazilari, yaziBul } from "@/data/blog-yazilari";
 import { hizmetBul } from "@/data/hizmet-data";
 import { yayindakiVakalar } from "@/data/vaka-data";
+import { sektorler } from "@/data/sektor-data";
 import {
   KIMLIK,
   SITE_URL,
@@ -79,6 +80,8 @@ export default function BlogYaziPage({ params }: Props) {
 
   // Bu yaziya bagli, musteri izniyle yayindaki vaka calismalari
   const ilgiliVakalar = yayindakiVakalar().filter((vaka) => vaka.ilgiliYazilar.includes(yazi.slug));
+  // Bu yaziyi rehber olarak gosteren sektor sayfalari (ters baglanti)
+  const ilgiliSektorler = sektorler.filter((sektor) => sektor.ilgiliYazilar.includes(yazi.slug));
 
   const yaziAdresi = `${SITE_URL}/blog/${yazi.slug}`;
   const guncelleme = yazi.guncelleme ?? yazi.tarih;
@@ -274,6 +277,21 @@ export default function BlogYaziPage({ params }: Props) {
                       <li key={vaka.slug}>
                         <Link className={styles.ilgiliBag} href={`/referanslar/${vaka.slug}`}>
                           {vaka.baslik}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {ilgiliSektorler.length > 0 && (
+                <div className={styles.ilgili}>
+                  <h2 className={styles.ilgiliBaslik}>Sektörünüze özel sayfalar</h2>
+                  <ul className={styles.ilgiliListe}>
+                    {ilgiliSektorler.map((sektor) => (
+                      <li key={sektor.slug}>
+                        <Link className={styles.ilgiliBag} href={`/sektorler/${sektor.slug}`}>
+                          {sektor.rozet}
                         </Link>
                       </li>
                     ))}

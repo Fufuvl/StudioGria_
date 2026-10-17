@@ -6,6 +6,7 @@ import HeaderEleven from "@/layouts/headers/header-eleven";
 import FooterTwo from "@/layouts/footers/footer-two";
 import Wrapper from "@/layouts/wrapper";
 import Sayac from "@/components/sayac";
+import MusteriSozleri from "@/components/musteri-sozleri";
 import { referanslar, referansGruplari, sektorSayisi } from "@/data/referans-data";
 import { sosyalKanit } from "@/data/sosyal-kanit-data";
 import styles from "@/app/referanslar/referanslar.module.scss";
@@ -175,6 +176,8 @@ export default function ReferanslarMain({ vakaBaglantilari = {} }: { vakaBaglant
             })}
           </ul>
         </div>
+
+        <MusteriSozleri />
 
         <section className={styles.kapanis}>
           <div className={styles.kapsayici}>

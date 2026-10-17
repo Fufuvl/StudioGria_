@@ -3,6 +3,7 @@ import PortfolioDetailsShowcaseMain from "@/page-components/portfolio/details/po
 import { hizmetler } from "@/data/hizmet-data";
 import { KIMLIK, SITE_URL, grafSemasi } from "@/data/kurulus-data";
 import { blogYazilari } from "@/data/blog-yazilari";
+import { musteriVideoSemalari } from "@/data/musteri-sozleri-data";
 
 // Ana sayfada one cikan rehberler. Footer en yeni 4 yaziyi zaten bagladigi
 // icin burada ticari niyeti en guclu, footer'da olmayan yazilar secilir.
@@ -65,6 +66,7 @@ const sayfaSemasi = grafSemasi([
       })),
     },
   },
+  ...musteriVideoSemalari(),
 ]);
 
 export default function Home() {

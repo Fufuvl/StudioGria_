@@ -22,6 +22,12 @@ const menu_data: IMenuDT[] = [
     dropdown_menus: []
   },
   {
+    id: 7,
+    title: 'Sektörler',
+    link: '/sektorler',
+    dropdown_menus: []
+  },
+  {
     id: 4,
     title: 'AI Destekli Çözümler',
     link: '/ai-destekli-cozumler',
@@ -71,6 +77,12 @@ export const mobile_menu_data: {
       id: 3,
       title: 'Hizmetlerimiz',
       link: '/hizmetler',
+      dropdown_menus: []
+    },
+    {
+      id: 9,
+      title: 'Sektörler',
+      link: '/sektorler',
       dropdown_menus: []
     },
     {

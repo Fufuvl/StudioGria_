@@ -26,6 +26,8 @@ export type SiteBaglantilari = {
   hizmetler: { ad: string; slug: string }[];
   yazilar: { baslik: string; slug: string }[];
   bolgeler: { ilce: string; slug: string }[];
+  // ad: alt bilgi baglanti metni; etiket ve ozet ana sayfa bolumu icin
+  sektorler: { ad: string; slug: string; etiket: string; ozet: string }[];
   // kurulus-data.ts istemcide ice aktarilmaz (hizmet katalogunu da ceker)
   kurum: Kurum;
 };
@@ -34,6 +36,7 @@ const Baglam = createContext<SiteBaglantilari>({
   hizmetler: [],
   yazilar: [],
   bolgeler: [],
+  sektorler: [],
   kurum: {
     ad: "Studio Gria",
     aciklama: "",

@@ -29,6 +29,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
     { title: "Referanslar", link: "/referanslar" },
     { title: "Blog", link: "/blog" },
     { title: "Hizmet Bölgelerimiz", link: "/bolgeler" },
+    { title: "Sektörler", link: "/sektorler" },
     { title: "Sıkça Sorulanlar", link: "/faq" },
     { title: "Teklif Al", link: "/teklif" },
     { title: "İletişim", link: "/contact" },
@@ -37,7 +38,7 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
 
   // Bolge sayfalari footer'dan da baglanir; yerel sayfalarin site icinde
   // yalnizca tek bir yerden erisilebilir olmasi taranmalarini zorlastirirdi.
-  const { hizmetler, yazilar, bolgeler, kurum } = useSiteBaglantilari();
+  const { hizmetler, yazilar, bolgeler, sektorler, kurum } = useSiteBaglantilari();
 
   const bolgeMenu = bolgeler.map((bolge) => ({
     title: bolge.ilce,
@@ -49,10 +50,17 @@ export default function FooterTwo({ whiteFooter = false,topCls='footer-top' }: I
   // site geneli baglanan sayfalardi; yalnizca tek bir hub sayfasindan (/hizmetler,
   // /blog) baglanan 14 sayfanin tamami "kesfedildi, dizine eklenmedi" durumundaydi.
   // Bolge sayfalarinda ise yontem calisti. Ayni yontem bu iki gruba uygulaniyor.
-  const hizmetMenu = hizmetler.map((hizmet) => ({
-    title: hizmet.ad,
-    link: `/hizmetler/${hizmet.slug}`,
-  }));
+  // Sektor sayfalari hizmet listesinin sonunda, sektor adiyla baglanir
+  const hizmetMenu = [
+    ...hizmetler.map((hizmet) => ({
+      title: hizmet.ad,
+      link: `/hizmetler/${hizmet.slug}`,
+    })),
+    ...sektorler.map((sektor) => ({
+      title: sektor.ad,
+      link: `/sektorler/${sektor.slug}`,
+    })),
+  ];
 
   // Blog listesi tarihe gore siralanir; yeni yazi eklendiginde footer kendiliginden
   // guncellenir, en yeni dort yazi site geneli baglanti alir.

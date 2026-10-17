@@ -75,6 +75,40 @@ export function AnasayfaRehberler({ yazilar }: { yazilar: AnasayfaYazi[] }) {
   );
 }
 
+// Sektor sayfalari: ana sayfadan site geneli baglanti alirlar
+export function AnasayfaSektorler() {
+  const { sektorler } = useSiteBaglantilari();
+  if (sektorler.length === 0) return null;
+  return (
+    <section className="sg-hizmet-bolum sg-ana-sektor" aria-labelledby="anasayfa-sektorler">
+      <div className="sg-hizmet-ic">
+        <span className="sg-hizmet-rozet">Sektörler</span>
+        <h2 id="anasayfa-sektorler" className="sg-hizmet-baslik">
+          En çok iş çıkardığımız <em>dört sektör</em>
+        </h2>
+        <p className="sg-hizmet-spot">
+          Her sektörün içeriği başka bir şeyle güven kurar. Bu dört alanda ne yaptığımızı kendi
+          işlerimiz ve müşterilerimizin sözleriyle anlatıyoruz.
+        </p>
+        <ul className="sg-hizmet-liste">
+          {sektorler.map((sektor) => (
+            <li key={sektor.slug} className="sg-hizmet-kart">
+              <Link href={`/sektorler/${sektor.slug}`} className="sg-hizmet-bag">
+                <span className="sg-ana-kategori">{sektor.etiket}</span>
+                <h3 className="sg-hizmet-ad">{sektor.ad}</h3>
+                <p className="sg-hizmet-metin">{sektor.ozet}</p>
+                <span className="sg-hizmet-ok" aria-hidden="true">
+                  Sayfayı açın
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 export function AnasayfaBolgeler() {
   const { bolgeler, kurum } = useSiteBaglantilari();
   if (bolgeler.length === 0) return null;

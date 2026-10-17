@@ -33,6 +33,8 @@ export type TeklifFormAyar = {
   sektorEtiket?: string;
   sektorOrnek?: string;
   sektorHata?: string;
+  // Sektor sayfasindan gelen formda sektor alani hazir dolu gelir
+  sektorOnDeger?: string;
   hedefEtiket?: string;
   hedefOrnek?: string;
   whatsappMesaj?: string;
@@ -73,11 +75,13 @@ export default function TeklifForm({
   sektorEtiket = "Sektör",
   sektorOrnek = "Restoran, otel, klinik, mağaza",
   sektorHata = "Sektörünüzü giriniz",
+  sektorOnDeger = "",
   hedefEtiket = "Hedefiniz (isteğe bağlı)",
   hedefOrnek = "Daha fazla rezervasyon, bilinirlik, satış",
   whatsappMesaj = "Merhaba, teklif almak istiyorum.",
 }: TeklifFormAyar) {
-  const [veri, setVeri] = useState<Alanlar>(BOS);
+  const ilkVeri: Alanlar = { ...BOS, sektor: sektorOnDeger };
+  const [veri, setVeri] = useState<Alanlar>(ilkVeri);
   const [model, setModel] = useState("");
   const [hatalar, setHatalar] = useState<Partial<Alanlar>>({});
   const [gonderiliyor, setGonderiliyor] = useState(false);
@@ -175,7 +179,7 @@ export default function TeklifForm({
       whatsappAc(`https://wa.me/${WHATSAPP_NUMARA}?text=${mesaj}`);
     }
 
-    setVeri(BOS);
+    setVeri(ilkVeri);
     setTuzak("");
     setGonderiliyor(false);
     setGonderildi(true);

@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { hizmetler } from "@/data/hizmet-data";
 import { blogYazilari } from "@/data/blog-yazilari";
 import { bolgeler } from "@/data/bolge-data";
+import { sektorler } from "@/data/sektor-data";
 import { yayindakiVakalar } from "@/data/vaka-data";
 import { SITE_URL } from "@/data/kurulus-data";
 
@@ -11,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Sabit sayfa, hizmet ve bolge iceriginin son gercek degisim tarihi. Her
   // derlemede "bugun" yazmak Google'in lastmod sinyalini tamamen yok
   // saymasina yol acar; icerik degistiginde bu tarih elle guncellenir.
-  const lastModified = new Date("2026-10-12");
+  const lastModified = new Date("2026-10-17");
 
   // Blog listesinin tazeligi en yeni yazinin tarihinden gelir; her derlemede
   // "bugun" yazmak arama motorlarina yanlis tazelik sinyali verir.
@@ -59,6 +60,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/bolgeler`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/sektorler`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -119,6 +126,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Sektor sayfalari: sektor + hizmet aramalari icin
+  const sektorSayfalari: MetadataRoute.Sitemap = sektorler.map((sektor) => ({
+    url: `${baseUrl}/sektorler/${sektor.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   // Vaka calismalari: yalnizca musteri izniyle yayina alinanlar
   const vakaSayfalari: MetadataRoute.Sitemap = yayindakiVakalar().map((vaka) => ({
     url: `${baseUrl}/referanslar/${vaka.slug}`,
@@ -127,5 +142,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...sabitSayfalar, ...hizmetSayfalari, ...blogSayfalari, ...bolgeSayfalari, ...vakaSayfalari];
+  return [
+    ...sabitSayfalar,
+    ...hizmetSayfalari,
+    ...sektorSayfalari,
+    ...blogSayfalari,
+    ...bolgeSayfalari,
+    ...vakaSayfalari,
+  ];
 }

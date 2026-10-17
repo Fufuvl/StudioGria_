@@ -1,0 +1,268 @@
+// Musteri yorumlari (components/musteri-sozleri.tsx). Renk kurali sitenin geri
+// kalaniyla ayni: murekkep #16181d, beyaz, gri; vurgu italik.
+
+.bolum {
+  padding: clamp(72px, 9vw, 128px) 0;
+
+  em {
+    font-style: italic;
+  }
+
+  // Sitenin genel p rengi koyu zeminde okunmaz; metin bolum rengini alir
+  p,
+  h2,
+  span {
+    color: inherit;
+  }
+}
+
+.koyu {
+  background: #16181d;
+  color: #fff;
+}
+
+.acik {
+  background: #faf9f7;
+  color: #16181d;
+}
+
+.ic {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+}
+
+.bas {
+  max-width: 760px;
+  margin-bottom: clamp(36px, 4.5vw, 64px);
+}
+
+.rozet {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0.62;
+}
+
+.baslik {
+  font-family: var(--tp-ff-heading), sans-serif;
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1.14;
+  margin: 0 0 20px;
+  color: inherit;
+}
+
+.spot {
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.7;
+  margin: 0;
+  opacity: 0.68;
+}
+
+.izgara {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 36px);
+
+  &.tek {
+    grid-template-columns: minmax(0, 360px);
+  }
+
+  &.iki {
+    grid-template-columns: repeat(2, minmax(0, 380px));
+  }
+}
+
+.kart {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ekran {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #0d0e11;
+}
+
+.oynat {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 14, 17, 0) 55%, rgba(13, 14, 17, 0.55) 100%);
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover .dugme,
+  &:focus-visible .dugme {
+    transform: translate(-50%, -50%) scale(1.06);
+    background: #fff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: -4px;
+  }
+}
+
+.afis {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+
+  .oynat:hover & {
+    transform: scale(1.02);
+  }
+}
+
+.dugme {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #16181d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease, background 0.25s ease;
+
+  svg {
+    width: 26px;
+    height: 26px;
+    margin-left: 3px;
+  }
+}
+
+.sure {
+  position: absolute;
+  z-index: 2;
+  right: 14px;
+  bottom: 14px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #0d0e11;
+}
+
+.alt {
+  padding-top: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.alinti {
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+  flex-grow: 1;
+
+  p {
+    font-family: var(--tp-ff-heading), sans-serif;
+    font-style: italic;
+    font-size: clamp(17px, 1.45vw, 21px);
+    line-height: 1.4;
+    margin: 0;
+    color: inherit;
+  }
+}
+
+.kim {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 14px;
+  border-top: 1px solid currentColor;
+  border-top-color: rgba(127, 127, 127, 0.35);
+}
+
+.ad {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.marka {
+  font-size: 13px;
+  opacity: 0.62;
+}
+
+.altBag {
+  margin-top: clamp(36px, 4vw, 56px);
+}
+
+.bag {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 4px;
+
+  &:hover {
+    color: inherit;
+    opacity: 0.7;
+  }
+}
+
+// Telefonda kartlar yatay kaydirilir; ikinci kartin kenari gorunur ki
+// kaydirilabildigi anlasilsin.
+@media (max-width: 767px) {
+  .izgara {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 74%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 calc(-1 * clamp(20px, 5vw, 60px));
+    padding: 0 clamp(20px, 5vw, 60px) 8px;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.tek,
+    &.iki {
+      grid-template-columns: none;
+    }
+
+    &.tek {
+      grid-auto-columns: 82%;
+    }
+  }
+
+  .kart {
+    scroll-snap-align: start;
+  }
+}

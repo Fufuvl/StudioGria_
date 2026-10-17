@@ -16,6 +16,7 @@ import { SiteBaglantilariSaglayici } from "@/components/site-baglantilari";
 import { hizmetler } from "@/data/hizmet-data";
 import { yazilariSirala } from "@/data/blog-yazilari";
 import { bolgeler } from "@/data/bolge-data";
+import { sektorler } from "@/data/sektor-data";
 import { META_PIXEL_ID } from "@/utils/meta-pixel";
 import {
   SITE_URL,
@@ -133,6 +134,13 @@ const siteBaglantilari = {
     .slice(0, 4)
     .map((y) => ({ baslik: y.baslik, slug: y.slug })),
   bolgeler: bolgeler.map((b) => ({ ilce: b.ilce, slug: b.slug })),
+  sektorler: sektorler.map((s) => ({
+    ad: s.altBilgiAd,
+    slug: s.slug,
+    etiket: s.ad,
+    // Ana sayfa karti icin spot metninin ilk cumlesi
+    ozet: s.spot.split(/(?<=\.)\s/)[0],
+  })),
   kurum: {
     ad: kunye.ad,
     aciklama: kunye.aciklama,

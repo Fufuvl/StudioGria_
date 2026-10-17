@@ -1072,3 +1072,25 @@
     font-size: 16px;
   }
 }
+
+/* Ana sayfa sektor bolumu (components/anasayfa-ek.tsx) */
+.sg-ana-sektor em {
+  font-style: italic;
+}
+
+/* Dort sektor karti tek satirda; tablette iki, telefonda tek sutun */
+.sg-ana-sektor .sg-hizmet-liste {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1199px) {
+  .sg-ana-sektor .sg-hizmet-liste {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .sg-ana-sektor .sg-hizmet-liste {
+    grid-template-columns: 1fr;
+  }
+}

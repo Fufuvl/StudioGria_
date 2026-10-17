@@ -25,7 +25,8 @@ export default function LeadPopup() {
 
   useEffect(() => {
     // Teklif sayfasinda sayfanin kendisi zaten bir form, popup gereksiz
-    if (pathname && POPUP_KAPALI_SAYFALAR.includes(pathname)) return;
+    // Sektor sayfalarinin kendi teklif formu var; acilir pencere ikinci kez sormaz
+    if (pathname && (POPUP_KAPALI_SAYFALAR.includes(pathname) || pathname.startsWith("/sektorler/"))) return;
     // Session'da daha önce gösterildiyse tekrar açma
     if (sessionStorage.getItem("sg_popup_shown")) return;
 

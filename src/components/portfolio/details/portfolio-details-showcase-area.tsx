@@ -5,12 +5,14 @@ import hero_gorsel from '@/assets/img/inner-project/showcase/background.jpg';
 import social_data from '@/data/social-data';
 import AnasayfaHizmetler, { AnasayfaHizmet } from '@/components/anasayfa-hizmetler';
 import IkiModel from '@/components/iki-model';
+import MusteriSozleri from '@/components/musteri-sozleri';
 import AnasayfaUrunGorseli from '@/components/anasayfa-urun-gorseli';
 import {
   AnasayfaKanit,
   AnasayfaRehberler,
   AnasayfaBolgeler,
   AnasayfaKapanis,
+  AnasayfaSektorler,
   AnasayfaYazi,
 } from '@/components/anasayfa-ek';
 
@@ -76,12 +78,16 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
       {/* sosyal kanit: rakamlar ve referans seridi */}
       <AnasayfaKanit />
 
+      {/* musteri yorumlari: uc isletme kamera karsisinda Studio Gria'yi anlatiyor */}
+      <MusteriSozleri referansBagi />
+
       {/* iki hizmet hatti: sosyal medyada iki model ve yapay zeka ile urun gorseli */}
       <IkiModel zemin="krem" />
       <AnasayfaUrunGorseli />
 
       {/* hizmetler: ana sayfadan detay sayfalarina ic link */}
       <AnasayfaHizmetler hizmetler={hizmetler} />
+      <AnasayfaSektorler />
       {/* hizmetler */}
 
       {/* details overview */}

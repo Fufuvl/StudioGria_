@@ -15,6 +15,7 @@ import {
   grafSemasi,
   kirintiSemasi,
   kunye,
+  sssSemasi,
 } from "@/data/kurulus-data";
 import styles from "../bolgeler.module.scss";
 
@@ -105,6 +106,8 @@ export default function BolgePage({ params }: Props) {
       { ad: "Hizmet bölgelerimiz", yol: "/bolgeler" },
       { ad: bolge.ilce, yol: `/bolgeler/${bolge.slug}` },
     ]),
+    // Ilceye ozgu sorular; Google semadaki cevabin sayfada gorunmesini sart kosar
+    ...(bolge.sorular?.length ? [sssSemasi(bolge.sorular, `/bolgeler/${bolge.slug}`)] : []),
   ]);
 
   return (
@@ -170,6 +173,24 @@ export default function BolgePage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {bolge.sorular && bolge.sorular.length > 0 && (
+          <section className={styles.bolum}>
+            <div className={styles.kapsayici}>
+              <h2 className={styles.bolumBaslik}>
+                {bulunmaEki(bolge.ilce)} işletmelerin sorduğu sorular
+              </h2>
+              <div className={styles.sorular}>
+                {bolge.sorular.map((kayit, sira) => (
+                  <details className={styles.soru} key={kayit.soru} open={sira === 0}>
+                    <summary className={styles.soruBaslik}>{kayit.soru}</summary>
+                    <p className={styles.soruCevap}>{kayit.cevap}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className={styles.bolum}>
           <div className={styles.kapsayici}>

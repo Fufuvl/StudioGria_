@@ -1,3 +1,4 @@
+import { musteriVideoSemalari } from "@/data/musteri-sozleri-data";
 import type { Metadata } from "next";
 import ReferanslarMain from "@/page-components/referanslar/referanslar-main";
 import { referanslar } from "@/data/referans-data";
@@ -55,6 +56,7 @@ const sayfaSemasi = grafSemasi([
     { ad: "Ana sayfa", yol: "/" },
     { ad: "Referanslarımız", yol: "/referanslar" },
   ]),
+  ...musteriVideoSemalari(),
 ]);
 
 export default function ReferanslarSayfasi() {

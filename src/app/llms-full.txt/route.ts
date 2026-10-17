@@ -4,6 +4,8 @@ import { yazilariSirala } from "@/data/blog-yazilari";
 import { bolgeler } from "@/data/bolge-data";
 import { sssKayitlari } from "@/data/sss-data";
 import { referanslar } from "@/data/referans-data";
+import { sektorler } from "@/data/sektor-data";
+import { musteriSozleri } from "@/data/musteri-sozleri-data";
 import { surecAdimlari } from "@/data/surec-data";
 import { calismaModelleri, modelOrtaklari } from "@/data/model-data";
 import {
@@ -150,8 +152,45 @@ ${bolge.doku.join("\n\n")}
 Bu bölgede öne çıkan çalışmalar:
 ${bolge.odak.map((odak) => `- ${odak.baslik}: ${odak.metin}`).join("\n")}
 
-${bolge.mesafeNotu}`);
+${bolge.mesafeNotu}${
+      bolge.sorular?.length
+        ? `\n\n${bolge.sorular.map((kayit) => `S: ${kayit.soru}\nC: ${kayit.cevap}`).join("\n\n")}`
+        : ""
+    }`);
   });
+
+  // --- Sektorler ---
+  parcalar.push(`\n\n## Sektörler\n`);
+  sektorler.forEach((sektor) => {
+    parcalar.push(`\n### ${sektor.rozet}
+Kaynak: ${SITE_URL}/sektorler/${sektor.slug}
+
+${sektor.spot}
+
+${sektor.nedenler.map((neden) => `- ${neden.baslik}: ${neden.metin}`).join("\n")}
+
+Yaptıklarımız:
+${sektor.yapilanlar.map((oge) => `- ${oge.baslik}: ${oge.metin}`).join("\n")}
+
+Bu alanda çalıştığımız markalar: ${sektor.referanslar.join(", ")}.
+
+${sektor.model.neden}
+
+${sektor.sorular.map((kayit) => `S: ${kayit.soru}\nC: ${kayit.cevap}`).join("\n\n")}${
+      sektor.dipNot ? `\n\n${sektor.dipNot}` : ""
+    }`);
+  });
+
+  // --- Musteri yorumlari ---
+  parcalar.push(`\n\n## Müşteri yorumları\n`);
+  parcalar.push(
+    musteriSozleri
+      .map(
+        (soz) =>
+          `- ${soz.ad}${soz.rol ? `, ${soz.rol}` : ""} (${soz.marka}, ${soz.sektor.toLowerCase()}): "${soz.alinti}" ${soz.ozet}`,
+      )
+      .join("\n"),
+  );
 
   // --- Referanslar ---
   parcalar.push(`\n\n## Birlikte çalışılan markalar\n`);
