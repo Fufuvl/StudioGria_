@@ -94,8 +94,9 @@ export const hizmetler: Hizmet[] = [
           "Evet. Aylık plan, tasarımlar ve metinler yayından önce onayınıza sunulur. Onay vermediğiniz içerik yayınlanmaz.",
       },
     ],
-    gorsel: "/assets/img/home-05/project/obahotel/1.jpg",
-    gorselAlt: "Otel için üretilmiş sosyal medya içeriği",
+    // Oba Hotel yer ve yemek kareleri Gria cekimi degil (28 Eyl 2026); kendi isimiz
+    gorsel: "/assets/video/sektor/milvero-coffee-urun-reels.jpg",
+    gorselAlt: "Milvero Coffee hesabı için çektiğimiz ürün Reels'inden bir kare",
   },
   {
     slug: "fotograf-video-produksiyon",
