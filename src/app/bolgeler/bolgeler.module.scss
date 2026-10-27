@@ -127,6 +127,14 @@
   }
 }
 
+// Reklam bolumunun altindaki ic baglantilar (27 Eki 2026)
+.reklamBaglar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  margin-top: 8px;
+}
+
 .cta {
   padding: 40px;
   background: #fff;

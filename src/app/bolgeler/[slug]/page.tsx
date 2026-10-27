@@ -174,6 +174,26 @@ export default function BolgePage({ params }: Props) {
           </div>
         </section>
 
+        {bolge.reklam && (
+          <section className={styles.bolum}>
+            <div className={styles.kapsayici}>
+              <h2 className={styles.bolumBaslik}>{bolge.reklam.baslik}</h2>
+              <div className={styles.dokuMetin}>
+                {bolge.reklam.paragraflar.map((paragraf) => (
+                  <p key={paragraf.slice(0, 40)}>{paragraf}</p>
+                ))}
+              </div>
+              <div className={styles.reklamBaglar}>
+                {bolge.reklam.baglar.map((bag) => (
+                  <Link className={styles.odakBag} href={bag.yol} key={bag.yol}>
+                    {bag.ad}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {bolge.sorular && bolge.sorular.length > 0 && (
           <section className={styles.bolum}>
             <div className={styles.kapsayici}>

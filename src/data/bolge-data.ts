@@ -22,6 +22,15 @@ export type Bolge = {
   // Ilceye ozgu sorular: sayfada akordeon, FAQPage semasi buradan uretilir.
   // Cevaplar o ilcenin dokusundan cikar; baska ilceden kopyalanmaz.
   sorular?: { soru: string; cevap: string }[];
+  // "[ilce] reklam ajansi" aramasi icin ilceye ozgu reklam bolumu (27 Eki 2026).
+  // Metin o ilcenin musterisinden ve oradaki gercek isten cikar; ilce adi
+  // degistirilerek baska sayfaya kopyalanmaz.
+  reklam?: {
+    baslik: string;
+    paragraflar: string[];
+    // Bolum altindaki ic baglantilar: hizmet, vaka, sektor ya da rehber
+    baglar: { ad: string; yol: string }[];
+  };
 };
 
 export const bolgeler: Bolge[] = [
@@ -29,9 +38,9 @@ export const bolgeler: Bolge[] = [
     slug: "buyukcekmece-sosyal-medya-ajansi",
     ilce: "Büyükçekmece",
     yaka: "Avrupa",
-    seoBaslik: "Büyükçekmece Sosyal Medya Ajansı | Studio Gria",
+    seoBaslik: "Büyükçekmece Sosyal Medya Ajansı ve Reklam Ajansı",
     seoAciklama:
-      "Büyükçekmece'de sosyal medya yönetimi, içerik üretimi ve reklam hizmeti. Stüdyomuz Büyükçekmece'de; çekim için aynı gün sahadayız. Teklif alın.",
+      "Büyükçekmece'de sosyal medya yönetimi, içerik üretimi, Meta ve Google reklam yönetimi. Stüdyomuz Büyükçekmece'de; çekim için aynı gün sahadayız.",
     h1: "Büyükçekmece sosyal medya ajansı",
     giris:
       "Studio Gria'nın merkezi Büyükçekmece'de. Bu ilçedeki işletmelerle çalışırken çekim planlamak için takvim ayarlamıyoruz; ekip aynı gün sahada olabiliyor. Yakınlık, özellikle düzenli içerik üretimi gereken işlerde belirgin bir hız farkı yaratıyor.",
@@ -60,6 +69,19 @@ export const bolgeler: Bolge[] = [
         hizmetSlug: "sosyal-medya-yonetimi",
       },
     ],
+    reklam: {
+      baslik: "Büyükçekmece'de reklam ajansı: Meta ve Google reklamları",
+      paragraflar: [
+        "Büyükçekmece'de reklamın işi, ilçe içindeki doğru kişiye ulaşmak. Göl ve sahil hattındaki bir mekân için Meta reklamı atmosferle ilgi uyandırır; kursa, oto servise ya da acil bir hizmete ihtiyaç duyan kişi ise çoğu zaman Google'da ilçe adını yazarak arar. Bu yüzden iki kanalı, ilçedeki müşterinin karar verme biçimine göre ayırıyoruz.",
+        "Kayıt dönemi gibi kısa pencereli işlerde Meta reklamını konuşma başlatma hedefiyle ve ilçeyle sınırlı kuruyoruz. Büyükçekmece Atletik Spor Kulübü'nün Eylül kayıt kampanyası bu kurgunun ilçedeki örneği: 17 günde 70 konuşma ve kulübün bildirimine göre 5 yeni kayıt.",
+        "Reklam bütçesi ajans ücretinden ayrıdır ve doğrudan işletmenin kendi reklam hesabından harcanır. Sonucu tıklamayla değil; mesaj, form ya da kayıt başına maliyetle raporluyoruz.",
+      ],
+      baglar: [
+        { ad: "Reklam yönetimi", yol: "/hizmetler/reklam-yonetimi" },
+        { ad: "Atletik kayıt kampanyası", yol: "/referanslar/buyukcekmece-atletik-kayit-kampanyasi" },
+        { ad: "Google Ads mı Meta Ads mı?", yol: "/blog/google-ads-mi-meta-ads-mi" },
+      ],
+    },
     mesafeNotu: "Stüdyomuz Büyükçekmece'de, çekim için aynı gün sahada olabiliyoruz.",
     sorular: [
       {
@@ -77,6 +99,16 @@ export const bolgeler: Bolge[] = [
         cevap:
           "Reklam, İstanbul geneline değil mahalle ölçeğine hedeflenir. Yerel bir işletme için geniş kitleye reklam vermek bütçe israfıdır; hedeflemeyi ilçe ve çevresiyle sınırlayıp bütçeyi gerçekten müşteri olabilecek kişilere yönlendiririz. Konut projelerinin çevresinde büyüyen perakendede bu yaklaşım, geniş kitleye yayılan kampanyalardan daha verimli çalışır.",
       },
+      {
+        soru: "Büyükçekmece'de reklam ajansı ücreti ne kadar?",
+        cevap:
+          "Studio Gria'da reklam yönetimini tek başına aldığınızda aylık ücret 20.000 TL'den başlar; hesap sayısı ve kampanya hacmi arttıkça yükselir. Reklam bütçesi bu ücrete dahil değildir, doğrudan işletmenin reklam hesabından Meta'ya ya da Google'a ödenir. Sosyal medya yönetimiyle birlikte çalışıldığında kapsam ve ücret teklif sunumunda birlikte belirlenir.",
+      },
+      {
+        soru: "Büyükçekmece'deki işletmem için Google reklamı mı, Meta reklamı mı?",
+        cevap:
+          "Müşteriniz sizi arıyorsa Google, görünce karar veriyorsa Meta önce gelir. Büyükçekmece'de kurs, oto servis ve acil hizmetler Google'da ilçe adıyla aranır; göl çevresindeki mekânlar ve perakende ise çoğunlukla Instagram'da görülerek seçilir. Sınırlı bütçede tek kanalla başlayıp sonucu yedi günlük toplamla okumak gerekir.",
+      },
     ],
   },
 
@@ -84,9 +116,9 @@ export const bolgeler: Bolge[] = [
     slug: "beylikduzu-sosyal-medya-ajansi",
     ilce: "Beylikdüzü",
     yaka: "Avrupa",
-    seoBaslik: "Beylikdüzü Sosyal Medya Ajansı | Studio Gria",
+    seoBaslik: "Beylikdüzü Sosyal Medya Ajansı ve Reklam Ajansı",
     seoAciklama:
-      "Beylikdüzü'nde sosyal medya yönetimi, ürün çekimi ve Meta reklam yönetimi. Perakende ve spor kulüpleriyle çalışma deneyimimizle teklif alın.",
+      "Beylikdüzü'nde sosyal medya yönetimi, ürün çekimi, Meta ve Google reklam yönetimi. Perakende ve spor kulüpleriyle çalışma deneyimimizle teklif alın.",
     h1: "Beylikdüzü sosyal medya ajansı",
     giris:
       "Beylikdüzü, Avrupa yakasının en yoğun perakende hatlarından biri. Aynı caddede birbirine çok yakın rakiplerin bulunduğu bir ilçede sosyal medya, fiyat rekabetine girmeden ayrışmanın en pratik yolu.",
@@ -115,6 +147,19 @@ export const bolgeler: Bolge[] = [
         hizmetSlug: "reklam-yonetimi",
       },
     ],
+    reklam: {
+      baslik: "Beylikdüzü'nde reklam ajansı: yoğun rekabette Meta ve Google",
+      paragraflar: [
+        "Beylikdüzü'nde aynı hizmeti veren çok sayıda işletme aynı kitleye reklam veriyor. Bu yoğunlukta bütçeyi büyütmek yerine hedeflemeyi daraltmak daha çok sonuç getiriyor: Meta'da reklamı caddenin ve çevresindeki sitelerin yarıçapına, Google'da ilçe adını içeren aramalara odaklıyoruz. İlçe adı geçen aramalarda tıklama, İstanbul geneli aramalara göre genelde daha ucuzdur ve arayan kişi karara daha yakındır.",
+        "Spor kulüplerinde mesaj reklamı veli iletişimini form beklemeden başlatıyor. Beylikdüzü İhtisas Spor Kulübü'nün altyapı kayıtları için yaz boyunca yürüttüğümüz kampanya 468 konuşma getirdi; konuşma başı maliyet ₺84,30 oldu.",
+        "Perakendede kreatif hedeflemeden önce gelir. Ürünü hareket ve detayla gösteren kısa video, aynı caddedeki rakiplerin sabit görsellerinden ayrışır. Reklam görsellerini kendi çekimimizden üretiyoruz.",
+      ],
+      baglar: [
+        { ad: "Reklam yönetimi", yol: "/hizmetler/reklam-yonetimi" },
+        { ad: "İhtisas mesaj kampanyası", yol: "/referanslar/beylikduzu-ihtisas-mesaj-kampanyasi" },
+        { ad: "Spor kulübü reklamı", yol: "/sektorler/spor-kulubu-ve-spor-okulu-reklam" },
+      ],
+    },
     mesafeNotu: "Büyükçekmece'deki stüdyomuza yaklaşık on beş dakika mesafede.",
     sorular: [
       {
@@ -132,6 +177,16 @@ export const bolgeler: Bolge[] = [
         cevap:
           "Hizmet işletmelerinde randevuya en çok dönüşen içerik, ekip tanıtımı ve öncesi-sonrası anlatımıdır. Kuaför, güzellik merkezi gibi işletmelerde bu formatlar diğerlerinin önüne geçer. Diş kliniği gibi sağlık alanlarında öncesi-sonrası ve vaat içeren paylaşımlar sağlık mevzuatıyla sınırlı olduğundan, orada süreç ve ekip anlatımıyla ilerleriz.",
       },
+      {
+        soru: "Beylikdüzü'nde reklam ajansı seçerken nelere bakmalıyım?",
+        cevap:
+          "Dört şeye bakın: hedeflemeyi ilçe ve semt ölçeğinde kurabiliyor mu, reklam görsellerini kendisi üretiyor mu, sonucu tıklamayla değil mesaj, form ya da satış başına maliyetle raporluyor mu ve reklam bütçesini ajans ücretinden ayrı tutuyor mu. Rekabetin yoğun olduğu bir ilçede bu dördü, bütçenin ne kadarının müşteriye dönüştüğünü belirler.",
+      },
+      {
+        soru: "Beylikdüzü'nde spor kulübü kayıt dönemi reklamı nasıl kurulur?",
+        cevap:
+          "Kayıt penceresi açılmadan önce, kulübün çevresiyle sınırlı ve velilere yönelik bir Meta mesaj reklamı kurulur; reklam doğrudan kulüple yazışmayı başlatır. Branş başına ayrı reklam seti, hangi branşın daha çok ilgi gördüğünü gösterir. Çocuk sporcu görselleri yalnız veli izniyle kullanılır.",
+      },
     ],
   },
 
@@ -139,9 +194,9 @@ export const bolgeler: Bolge[] = [
     slug: "esenyurt-sosyal-medya-ajansi",
     ilce: "Esenyurt",
     yaka: "Avrupa",
-    seoBaslik: "Esenyurt Sosyal Medya Ajansı | Studio Gria",
+    seoBaslik: "Esenyurt Sosyal Medya Ajansı ve Reklam Ajansı",
     seoAciklama:
-      "Esenyurt'ta üretici ve toptancı firmalar için sosyal medya yönetimi, ürün çekimi ve B2B içerik üretimi. Tesis çekimi ve katalog prodüksiyonu.",
+      "Esenyurt'ta üretici, toptancı ve yerel işletmeler için sosyal medya yönetimi, tesis çekimi, Meta ve Google reklam yönetimi. Teklif alın.",
     h1: "Esenyurt sosyal medya ajansı",
     giris:
       "Esenyurt'un ticari yapısı çevresindeki ilçelerden belirgin şekilde ayrılıyor. Burada perakende kadar üretim ve toptan satış ağırlıkta, dolayısıyla sosyal medyanın işlevi de farklı: hedef kitle son tüketici değil, çoğu zaman başka bir işletme.",
@@ -170,6 +225,19 @@ export const bolgeler: Bolge[] = [
         hizmetSlug: "drone-cekimleri",
       },
     ],
+    reklam: {
+      baslik: "Esenyurt'ta reklam ajansı: üretici ve yerel işletme için iki ayrı kurgu",
+      paragraflar: [
+        "Esenyurt'ta reklam iki farklı kitleye konuşur. Üretici ve toptancı firmada alıcı başka bir işletmedir: Google'da ürün adı ve “toptan”, “üretici” gibi kalıplarla arama yapan satın almacıyı yakalamak ilk iştir. Meta reklamı burada tesis ve üretim hattı videosuyla güven kurar. Tek bir bayi ya da kurumsal alıcı talebi onlarca perakende mesajından değerli olduğu için ölçümü form ve telefon üzerine kuruyoruz.",
+        "Yerel hizmet işletmesinde tablo farklı. İlçenin nüfus yoğunluğu sayesinde dar yarıçaplı bir Meta mesaj reklamı kısa sürede yeterli konuşma topluyor. Bu işletmelerde reklamı Google İşletme Profili'yle birlikte ele alıyoruz, çünkü reklamı gören kişi çoğu zaman önce haritadaki yorumlara bakıyor.",
+        "Esenyurt'ta termos üreticisi Star Termos'un sosyal medya ve reklam yönetimini yürütüyoruz.",
+      ],
+      baglar: [
+        { ad: "Reklam yönetimi", yol: "/hizmetler/reklam-yonetimi" },
+        { ad: "Fabrika tanıtım filmi ve katalog", yol: "/sektorler/fabrika-ve-sanayi-tanitim-filmi" },
+        { ad: "Google İşletme Profili rehberi", yol: "/blog/google-isletme-profili-optimizasyonu" },
+      ],
+    },
     mesafeNotu: "Stüdyomuza yaklaşık yirmi dakika mesafede, tesis çekimleri için düzenli olarak bölgedeyiz.",
     sorular: [
       {
@@ -186,6 +254,16 @@ export const bolgeler: Bolge[] = [
         soru: "Esenyurt'taki yerel işletmem için aylık sosyal medya yönetimi ne kadar tutar?",
         cevap:
           "Genel bantta prodüksiyonsuz model 25.000-35.000 TL, prodüksiyonlu model 30.000-60.000 TL aralığındadır; kesin tutar işletmenin ihtiyacına göre teklifte belirlenir. Prodüksiyonsuzda çekim günü yoktur, yönetim uzaktan yürür. Prodüksiyonlu modelde aylık saha çekimi dahildir. Yerel hizmet işletmeleri için hedeflemeyi mahalle ölçeğinde kurabiliriz. Hangi modelin uygun olduğu, işletmenin ihtiyacı konuşulduktan sonra net hale gelir.",
+      },
+      {
+        soru: "Esenyurt'taki üretici firma için Google reklamı işe yarar mı?",
+        cevap:
+          "Çoğu zaman ilk kanal odur. Kurumsal alıcı ve bayi adayı tedarikçiyi Google'da ürün adı ve “toptan”, “üretici” gibi kalıplarla arar; reklam bu aramaya cevap verir ve kişiyi ürün ya da teklif sayfasına götürür. Meta reklamı ise tesis ve üretim videosuyla güven kurar. Ölçüm tıklama değil, gelen form ve telefon talebidir.",
+      },
+      {
+        soru: "Esenyurt'ta yerel işletmem için reklam bütçesi nasıl belirlenir?",
+        cevap:
+          "Bütçe, bir müşterinin size kazandırdığından geriye doğru hesaplanır. Önce mesaj ya da form başına ne kadar ödeyebileceğinizi belirleyin, sonra hedeflemeyi işletmenin çevresiyle sınırlayın. Studio Gria'nın yönettiği müşteri hesaplarında 2026'da mesaj kampanyalarında konuşma başı maliyetin ortası 165 TL; karar ilk günlere göre değil, yedi günlük toplamla verilir.",
       },
     ],
   },
@@ -304,9 +382,9 @@ export const bolgeler: Bolge[] = [
     slug: "kucukcekmece-sosyal-medya-ajansi",
     ilce: "Küçükçekmece",
     yaka: "Avrupa",
-    seoBaslik: "Küçükçekmece Sosyal Medya Ajansı | Studio Gria",
+    seoBaslik: "Küçükçekmece Sosyal Medya Ajansı ve Reklam Ajansı",
     seoAciklama:
-      "Küçükçekmece'de sosyal medya yönetimi, içerik üretimi ve reklam hizmeti. Halkalı, Sefaköy ve Atakent'teki yerel işletmeler için teklif alın.",
+      "Küçükçekmece'de sosyal medya yönetimi, içerik üretimi, Meta ve Google reklam yönetimi. Halkalı, Sefaköy ve Atakent'teki işletmeler için teklif alın.",
     h1: "Küçükçekmece sosyal medya ajansı",
     giris:
       "Küçükçekmece, yoğun konut dokusuyla İstanbul'un en kalabalık ilçelerinden biri ve ticari hayatı da buna göre şekilleniyor. Büyük zincirlerin değil, mahallesinde tanınan yerel işletmelerin ağırlıkta olduğu bir ilçe; burada sosyal medyanın işi, yakındaki müşteriye işletmenin varlığını ve farkını düzenli olarak hatırlatmak.",
@@ -335,6 +413,19 @@ export const bolgeler: Bolge[] = [
         hizmetSlug: "fotograf-video-produksiyon",
       },
     ],
+    reklam: {
+      baslik: "Küçükçekmece'de reklam ajansı: semt semt Meta ve Google",
+      paragraflar: [
+        "Küçükçekmece'de reklamın birimi ilçe değil, semttir. Halkalı'daki bir kuaförün müşterisi çoğunlukla Halkalı'da, Atakent'teki bir kursunki Atakent'te oturur. Meta reklamını işletmenin çevresindeki birkaç kilometrelik yarıçapla kuruyor, Google'da ise semt ve ilçe adını içeren aramalara odaklanıyoruz.",
+        "Kurs ve anaokulunda reklam veliyi doğrudan mesaja taşır; görselde öğrenci yerine ekip, ortam ve işleyiş gösterilir. Klinikte ise sağlık mevzuatı reklamı, fiyatı ve kampanyayı yasaklar. Orada reklam yerine bilgilendirici içerik ve eksiksiz bir Google İşletme Profili öne çıkar; bunu ilk görüşmede açıkça konuşuyoruz.",
+        "Göl çevresindeki mekânlarda reklamın konusu menüden çok manzara ve atmosferdir. Reklam görselini mekânda, ışığın doğru olduğu saatte çektiğimiz kısa videodan üretiyoruz.",
+      ],
+      baglar: [
+        { ad: "Reklam yönetimi", yol: "/hizmetler/reklam-yonetimi" },
+        { ad: "Okul ve kurs sosyal medya", yol: "/sektorler/egitim-kurumu-sosyal-medya-yonetimi" },
+        { ad: "Klinik sosyal medya", yol: "/sektorler/klinik-sosyal-medya-yonetimi" },
+      ],
+    },
     mesafeNotu:
       "Büyükçekmece'deki stüdyomuzun doğusundaki komşu ilçe; planlı çekimlerin yanında gerektiğinde aynı gün sahada olabiliyoruz.",
     sorular: [
@@ -352,6 +443,16 @@ export const bolgeler: Bolge[] = [
         soru: "Mahalledeki fırın ya da kuaför için kısa video ne sıklıkla çekilmeli?",
         cevap:
           "Düzenli ve samimi kısa videolar hesabı canlı tutar; sıklık işletmeye göre teklifte belirlenir. Çekim günlerini toplu planlayarak birkaç haftalık içeriği tek seferde üretebiliyoruz. Zincir olmayan bir işletmede içerik yakınlığı ve tanıdıklığı taşımalı, uzaktan çekilmiş kurumsal bir tanıtım gibi durmamalıdır. Hesap bu sayede mahallenin tanıdığı, güvenilir bir işletme gibi görünür.",
+      },
+      {
+        soru: "Küçükçekmece'de kurs ya da anaokulu reklamında nelere dikkat edilmeli?",
+        cevap:
+          "Reklam öğrenci görseli kullanılmadan, ekip, ortam ve işleyiş gösterilerek hazırlanır; yalnız kurumun izinli olduğu faaliyetler anlatılır. Hedefleme kurumun çevresindeki semtle sınırlanır ve reklam veliyi doğrudan mesaja taşır. Kayıt dönemi kampanyası, kayıt penceresi açılmadan önce başlatılır.",
+      },
+      {
+        soru: "Küçükçekmece'deki klinik reklam verebilir mi?",
+        cevap:
+          "Hayır, sağlık mevzuatı klinik ve muayenehanelerde reklamı, fiyatı, kampanyayı ve hasta teşekkürünü yasaklar. Bu yüzden klinik için reklam yönetimi önermiyoruz. Yerine hekimin bilgisini mevzuata uygun anlatan içerik, eksiksiz bir Google İşletme Profili ve haritada görünürlük öne çıkar.",
       },
     ],
   },

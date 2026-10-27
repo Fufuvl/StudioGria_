@@ -104,7 +104,7 @@ export const blogYazilari: BlogYazisi[] = [
         baslik: "Dijital ajans ve reklam ajansı fiyatları neden farklı görünür?",
         paragraflar: [
           "“Dijital ajans”, “sosyal medya ajansı” ve “reklam ajansı” adları çoğu zaman birbirinin yerine kullanılır, ama tekliflerde farklı kapsamları gösterir. Sosyal medya ajansı içerik üretimini ve hesap yönetimini, reklam ajansı Meta ve Google reklamlarının kurulumunu ve takibini üstlenir. Dijital ajans ise bunlara ek olarak web sitesi, arama motoru görünürlüğü ve marka kimliği gibi işleri de yapar.",
-          "Bu yüzden iki dijital ajans teklifi arasındaki fark çoğu zaman fiyat değil, kapsam farkıdır. Yukarıdaki tabloda reklam yönetimi tek başına 20.000 TL'den başlar. İçerik üretimi ve reklam birlikte alındığında prodüksiyonlu sosyal medya aralığına, birden fazla kanal ve marka yönetildiğinde entegre aralığa geçilir. Web sitesi ve kimlik tasarımı gibi işler genellikle aylık ücrete değil, proje bazlı ayrı bir teklife yazılır.",
+          "Bu yüzden iki dijital ajans teklifi arasındaki fark çoğu zaman fiyat değil, kapsam farkıdır. Yukarıdaki tabloda reklam yönetimi tek başına 20.000 TL'den başlar; içerik üretimiyle birlikte alındığında ücret, sosyal medya satırlarındaki aralıklara göre teklifte belirlenir. Birden fazla kanal ve marka yönetildiğinde entegre aralığa geçilir. Web sitesi ve kimlik tasarımı gibi işler genellikle aylık ücrete değil, proje bazlı ayrı bir teklife yazılır.",
         ],
       },
       {
