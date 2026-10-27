@@ -1,6 +1,8 @@
 import { gsap, Power2 } from "gsap";
-import $ from "jquery";
-import { SplitText } from "@/plugins";
+// HIZ (27 Eki 2026): jQuery ve @/plugins toplu dosyasi kaldirildi. Toplu
+// dosya tp-cursor uzerinden jQuery'yi (~85 KB) ana sayfaya, hakkimizda ve
+// iletisim sayfalarina tasiyordu. Secici kontrolleri DOM API'siyle yapilir.
+import { SplitText } from "@/plugins/gsap";
 
 function heroTitleAnim() {
   const heroArea = document.querySelector(".tp-hero-2-area");
@@ -57,10 +59,9 @@ function bounceAnimation() {
     gsap.from(bounce, { y: -100, opacity: 0 });
     let mybtn = gsap.utils.toArray(bounce);
     mybtn.forEach((btn: any) => {
-      const $this = $(btn);
       gsap.to(btn, {
         scrollTrigger: {
-          trigger: $this.closest(".tp-btn-trigger"),
+          trigger: btn.closest(".tp-btn-trigger"),
           start: "top center",
           markers: false,
         },
@@ -74,10 +75,9 @@ function bounceAnimation() {
     gsap.from(bounce, { y: -100, opacity: 0 });
     let mybtn2 = gsap.utils.toArray(bounce);
     mybtn2.forEach((btn: any) => {
-      const $this = $(btn);
       gsap.to(btn, {
         scrollTrigger: {
-          trigger: $this.closest(".tp-btn-trigger"),
+          trigger: btn.closest(".tp-btn-trigger"),
           start: "bottom bottom",
           markers: false,
         },
@@ -124,7 +124,7 @@ function charAnimation() {
 
 // fade left animation
 function fadeAnimation() {
-  if ($(".tp_fade_bottom").length > 0) {
+  if (document.querySelector(".tp_fade_bottom")) {
     gsap.set(".tp_fade_bottom", { y: 100, opacity: 0 });
     const fadeArray = gsap.utils.toArray(".tp_fade_bottom");
     fadeArray.forEach((item: any, i) => {
@@ -143,7 +143,7 @@ function fadeAnimation() {
     });
   }
 
-  if ($(".tp_fade_top").length > 0) {
+  if (document.querySelector(".tp_fade_top")) {
     gsap.set(".tp_fade_top", { y: -100, opacity: 0 });
     const fadetopArray = gsap.utils.toArray(".tp_fade_top");
     fadetopArray.forEach((item: any, i) => {
@@ -162,7 +162,7 @@ function fadeAnimation() {
     });
   }
 
-  if ($(".tp_fade_left").length > 0) {
+  if (document.querySelector(".tp_fade_left")) {
     gsap.set(".tp_fade_left", { x: -100, opacity: 0 });
     const fadeleftArray = gsap.utils.toArray(".tp_fade_left");
     fadeleftArray.forEach((item: any, i) => {
@@ -181,7 +181,7 @@ function fadeAnimation() {
     });
   }
 
-  if ($(".tp_fade_right").length > 0) {
+  if (document.querySelector(".tp_fade_right")) {
     gsap.set(".tp_fade_right", { x: 100, opacity: 0 });
     const faderightArray = gsap.utils.toArray(".tp_fade_right");
     faderightArray.forEach((item: any, i) => {
@@ -199,7 +199,7 @@ function fadeAnimation() {
       });
     });
   }
-  if ($(".tp_fade_anim").length > 0) {
+  if (document.querySelector(".tp_fade_anim")) {
     const fadeArrayup = gsap.utils.toArray(".tp_fade_anim");
     fadeArrayup.forEach((t: any, e) => {
       let r = "bottom",
@@ -407,25 +407,24 @@ function revelAnimationTwo() {
 
 function zoomAnimation() {
   // zoom in
-  if ($(".anim-zoomin").length > 0) {
-    $(".anim-zoomin").each(function () {
-      // Add wrap <div>.
-      $(this).wrap('<div class="anim-zoomin-wrap"></div>');
-
-      // Add overflow hidden.
-      $(".anim-zoomin-wrap").css({ overflow: "hidden" });
-
-      const $this = $(this);
-      const $asiWrap = $this.parents(".anim-zoomin-wrap");
+  const zoomOgeleri = document.querySelectorAll<HTMLElement>(".anim-zoomin");
+  if (zoomOgeleri.length > 0) {
+    zoomOgeleri.forEach((oge) => {
+      // Ogeyi tasma gizli bir sarmalayiciya al
+      const sarmal = document.createElement("div");
+      sarmal.className = "anim-zoomin-wrap";
+      sarmal.style.overflow = "hidden";
+      oge.parentNode?.insertBefore(sarmal, oge);
+      sarmal.appendChild(oge);
 
       let tp_ZoomIn = gsap.timeline({
         scrollTrigger: {
-          trigger: $asiWrap,
+          trigger: sarmal,
           start: "top 90%",
           markers: false,
         },
       });
-      tp_ZoomIn.from($this, {
+      tp_ZoomIn.from(oge, {
         duration: 1.5,
         autoAlpha: 0,
         scale: 1.4,
@@ -437,7 +436,7 @@ function zoomAnimation() {
 };
 
 function titleAnimation() {
-  if ($('.tp_title_anim').length > 0) {
+  if (document.querySelector(".tp_title_anim")) {
     let splitTitleLines = gsap.utils.toArray(".tp_title_anim");
     splitTitleLines.forEach((splitTextLine: any) => {
       const tl = gsap.timeline({

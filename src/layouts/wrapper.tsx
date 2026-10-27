@@ -2,9 +2,9 @@
 import React from "react";
 import BackToTop from "@/components/back-to-top";
 import ThemeSetting from "@/components/theme-setting";
-if (typeof window !== "undefined") {
-  require("bootstrap/dist/js/bootstrap.bundle.min");
-}
+// HIZ (27 Eki 2026): bootstrap.bundle.min (~84 KB) her sayfada yukleniyordu.
+// Derlenmis 62 sayfanin hicbirinde data-bs-* yok; menu, offcanvas ve acilir
+// pencere React durumuyla calisiyor. Bootstrap'in yalniz CSS'i kullaniliyor.
 
 interface WrapperProps {
   children: React.ReactNode;

@@ -61,6 +61,10 @@ const nextConfig = {
       { source: "/restoran", destination: "/sektorler/restoran-kafe-sosyal-medya-yonetimi", permanent: true },
       { source: "/e-ticaret", destination: "/sektorler/e-ticaret-reklam-ve-sosyal-medya", permanent: true },
       { source: "/klinik", destination: "/sektorler/klinik-sosyal-medya-yonetimi", permanent: true },
+      // Google aramasinda ve yapay zeka ozelliklerinde gosterim alan hatali
+      // adresler 404 veriyordu (27 Eki 2026 denetimi, D1).
+      { source: "/blog/meta-reklammadaki-butce-nasil-belirlenir", destination: "/blog/meta-reklam-butcesi-nasil-belirlenir", permanent: true },
+      { source: "/bolgelaer/:slug*", destination: "/bolgeler/:slug*", permanent: true },
     ];
   },
 };

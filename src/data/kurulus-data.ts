@@ -36,7 +36,10 @@ export const kunye = {
     postaKodu: "34535",
     ulke: "TR",
   },
-  logo: `${SITE_URL}/assets/img/logo/logo-white-new.png`,
+  // Google logoyu beyaz zeminde gosterir. Eski logo-white-new.png tamamen
+  // beyaz ve saydamdi, orada gorunmuyordu (27 Eki 2026 denetimi). Bu dosya
+  // siyah yazi logosu, beyaz zemin, 1200x1200.
+  logo: `${SITE_URL}/assets/img/logo/logo-sema-kare.png`,
   // Fiyat bandi: schema.org'un bekledigi kaba gosterge. Gercek fiyat
   // yazilmaz, teklif sunumunda verilir.
   fiyatBandi: "₺₺",
@@ -72,6 +75,10 @@ export const koordinat: { enlem: number; boylam: number } | null = {
 // olarak yer alir; Google'in web sitesi ile Isletme Profili'ni ayni varlik
 // olarak eslestirmesini kolaylastirir.
 export const haritaAdresi = "https://www.google.com/maps?cid=13148170818970902705";
+
+// sameAs'e altbilgide ikonu olmayan varlik sayfalari. Behance, YouTube ve
+// Apple Business Connect profilleri acildiginda adresleri buraya eklenir.
+const ekVarlikAdresleri = [haritaAdresi];
 
 export const kurucu = {
   ad: "Fuat Dilek",
@@ -151,6 +158,8 @@ export function kurulusSemasi() {
       "@type": "ImageObject",
       "@id": `${SITE_URL}/#logo`,
       url: kunye.logo,
+      width: 1200,
+      height: 1200,
     },
     image: kunye.logo,
     description: kunye.aciklama,
@@ -160,7 +169,7 @@ export function kurulusSemasi() {
     address: postaAdresi(),
     // Sosyal hesaplar sitenin altbilgisiyle ayni kaynaktan gelir, boylece
     // ikisi arasinda adres farki olusamaz.
-    sameAs: social_data.map((hesap) => hesap.link),
+    sameAs: [...social_data.map((hesap) => hesap.link), ...ekVarlikAdresleri],
     areaServed: hizmetBolgeleri.map((bolge) => ({
       "@type": "AdministrativeArea",
       name: bolge,

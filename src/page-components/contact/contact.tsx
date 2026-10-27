@@ -2,7 +2,7 @@
 import { gsap } from "gsap";
 import React from "react";
 import useScrollSmooth from "@/hooks/use-scroll-smooth";
-import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins";
+import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins/gsap";
 import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 

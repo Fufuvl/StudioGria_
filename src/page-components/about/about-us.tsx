@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import React from "react";
 import { useGSAP } from "@gsap/react";
 import useScrollSmooth from "@/hooks/use-scroll-smooth";
-import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins";
+import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins/gsap";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
@@ -15,9 +15,9 @@ import AboutUsArea from "@/components/about/about-us-area";
 import FunFactOne from "@/components/fun-fact/fun-fact-one";
 import HakkimizdaIcerik from "@/components/about/hakkimizda-icerik";
 // animation
+// hoverBtn ve teamMarqueAnim kaldirildi (27 Eki 2026): sayfada .tp-hover-btn
+// ve .tp-team-item yok, ikisi de yalniz jQuery'yi (~85 KB) indiriyordu.
 import { charAnimation, fadeAnimation, titleAnimation } from "@/utils/title-animation";
-import { hoverBtn } from "@/utils/hover-btn";
-import { teamMarqueAnim } from "@/utils/scroll-marque";
 
 const AboutUsMain = () => {
   useScrollSmooth();
@@ -27,7 +27,6 @@ const AboutUsMain = () => {
       charAnimation();
       titleAnimation();
       fadeAnimation();
-      hoverBtn();
     }, 100);
     return () => clearTimeout(timer);
   });

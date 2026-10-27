@@ -1,8 +1,9 @@
 'use client'
 import { useEffect, useRef, useState } from "react";
-import $ from "jquery";
 
-
+// HIZ (27 Eki 2026): jQuery yalniz sitede hic kullanilmayan
+// adjustMenuBackground (tp-header-3 sablonu) icin import ediliyordu ve
+// header-eleven uzerinden her sayfaya ~85 KB iniyordu. Fonksiyon kaldirildi.
 const useSticky = () => {
   const [sticky, setSticky] = useState(false);
   const headerRef = useRef<HTMLDivElement | null>(null);
@@ -22,7 +23,6 @@ const useSticky = () => {
     if (setHeaderHeight) {
       const headerElements = document.querySelectorAll<HTMLDivElement>('.tp-header-height');
       headerElements.forEach(element => {
-        console.log('setHeaderHeight', setHeaderHeight,element);
         element.style.height = `${setHeaderHeight}px`;
       });
     }
@@ -38,23 +38,8 @@ const useSticky = () => {
     });
   };
 
-  function adjustMenuBackground() {
-    if ($('.tp-header-3-area').length > 0) {
-      const menuBox = $('.tp-header-3-menu-box');
-      const menuBoxWidth = menuBox.width()!;
-      const menuBoxHeight = menuBox.height()!;
-      $('.menu-bg').css({
-        'width': menuBoxWidth + 46,
-        'height': menuBoxHeight,
-        'left': menuBox.offset()!.left
-      })
-    }
-  }
-  
-
-
   useEffect(() => {
-    window.addEventListener("scroll", stickyHeader);
+    window.addEventListener("scroll", stickyHeader, { passive: true });
 
     return (): void => {
       window.removeEventListener("scroll", stickyHeader);
@@ -65,7 +50,6 @@ const useSticky = () => {
     sticky,
     headerRef,
     headerFullWidth,
-    adjustMenuBackground,
   };
 };
 

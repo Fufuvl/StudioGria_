@@ -63,9 +63,9 @@ export const blogYazilari: BlogYazisi[] = [
   {
     slug: "sosyal-medya-ajansi-fiyatlari",
     baslik: "Sosyal medya ajansı fiyatları: bütçe neye göre belirlenir?",
-    seoBaslik: "Sosyal Medya Ajansı Fiyatları 2026: Aylık Ücret Tablosu",
+    seoBaslik: "Sosyal Medya Ajansı Fiyatları 2026: Dijital Ajans Ücretleri",
     seoAciklama:
-      "2026'da tam hizmet sosyal medya ajansı ücretleri: prodüksiyonsuz yönetim 25.000 TL'den, prodüksiyonlu 30.000 TL'den başlar. Fiyat tablosu ve teklif kalemleri.",
+      "2026 sosyal medya ve dijital ajans fiyatları: prodüksiyonsuz yönetim aylık 25.000 TL'den, prodüksiyonlu 30.000 TL'den. Teklifte olması gereken kalemler.",
     ozet:
       "Ajans tekliflerini karşılaştırırken bakmanız gereken kalemler, fiyatı gerçekten belirleyen değişkenler ve ucuz teklifin gizli maliyeti.",
     tarih: "2026-06-18",
@@ -101,7 +101,14 @@ export const blogYazilari: BlogYazisi[] = [
         ],
       },
       {
-        baslik: "Bir teklifte mutlaka görmeniz gereken kalemler",
+        baslik: "Dijital ajans ve reklam ajansı fiyatları neden farklı görünür?",
+        paragraflar: [
+          "“Dijital ajans”, “sosyal medya ajansı” ve “reklam ajansı” adları çoğu zaman birbirinin yerine kullanılır, ama tekliflerde farklı kapsamları gösterir. Sosyal medya ajansı içerik üretimini ve hesap yönetimini, reklam ajansı Meta ve Google reklamlarının kurulumunu ve takibini üstlenir. Dijital ajans ise bunlara ek olarak web sitesi, arama motoru görünürlüğü ve marka kimliği gibi işleri de yapar.",
+          "Bu yüzden iki dijital ajans teklifi arasındaki fark çoğu zaman fiyat değil, kapsam farkıdır. Yukarıdaki tabloda reklam yönetimi tek başına 20.000 TL'den başlar. İçerik üretimi ve reklam birlikte alındığında prodüksiyonlu sosyal medya aralığına, birden fazla kanal ve marka yönetildiğinde entegre aralığa geçilir. Web sitesi ve kimlik tasarımı gibi işler genellikle aylık ücrete değil, proje bazlı ayrı bir teklife yazılır.",
+        ],
+      },
+      {
+        baslik: "Sosyal medya fiyat teklifinde mutlaka olması gereken kalemler",
         paragraflar: [
           "Kapsamı net yazılmamış teklif, birkaç ay sonra ek fatura olarak geri döner. Sağlıklı bir teklifte şu kalemlerin adet ve sıklık bilgisiyle yer alması gerekir:",
         ],
@@ -135,7 +142,7 @@ export const blogYazilari: BlogYazisi[] = [
         ],
       },
     ],
-    guncelleme: "2026-10-17",
+    guncelleme: "2026-10-27",
     kisaCevap:
       "2026'da sahada prodüksiyon yapan tam hizmet bir sosyal medya ajansında aylık ücret, reklam bütçesi hariç, prodüksiyonsuz yönetimde 25.000 TL'den, prodüksiyonlu yönetimde 30.000 TL'den başlar; entegre ve kurumsal işler 90.000 TL'yi aşar. Çok daha düşük teklifler genellikle yalnızca paylaşım yapan hizmetlerdir. Farkı, içeriğin kim tarafından ve sahada üretilip üretilmediği belirler.",
     anahtarCikarimlar: [
@@ -172,8 +179,18 @@ export const blogYazilari: BlogYazisi[] = [
         cevap:
           "Aylık özgün içerik adedi ve formatı, sahada çekim yapılacak gün sayısı, tasarım revizyon hakkı, reklam yönetiminin dahil olup olmadığı, raporlama sıklığı ve raporun içeriği, sözleşme süresi ile fesih koşulları. Kapsamı net yazılmamış teklif birkaç ay sonra ek fatura olarak geri döner.",
       },
+      {
+        soru: "Dijital ajans fiyatları neye göre değişir?",
+        cevap:
+          "Kapsama göre değişir: yalnız sosyal medya yönetimi mi, sahada çekim de var mı, Meta ve Google reklam yönetimi dahil mi, web sitesi ve arama motoru çalışması isteniyor mu. 2026'da tam hizmet bir ajansta aylık ücret, reklam bütçesi hariç, 25.000 TL'den başlar; çok kanallı ve çok markalı kurumsal işler 90.000 TL'yi aşar. Web sitesi gibi işler çoğunlukla ayrı bir proje teklifiyle fiyatlanır.",
+      },
+      {
+        soru: "Sosyal medya fiyat teklifi isterken ajansa ne göndermeliyim?",
+        cevap:
+          "Sektörünüzü ve hedefinizi (mesaj, satış, kayıt ya da bilinirlik), yönetilecek hesapları, ayda beklediğiniz içerik sayısını, çekim yapılıp yapılmayacağını, reklam yönetiminin dahil olup olmayacağını ve düşündüğünüz bütçe aralığını yazın. Bu bilgiler olmadan gelen teklifler birbiriyle karşılaştırılamaz. Studio Gria'da teklif sunumu bu bilgiler ve kısa bir ön görüşmeyle hazırlanır.",
+      },
     ],
-    etiketler: ["sosyal medya ajansı fiyatları", "ajans teklifi karşılaştırma", "içerik üretimi maliyeti", "reklam bütçesi"],
+    etiketler: ["sosyal medya ajansı fiyatları", "dijital ajans fiyatları", "sosyal medya fiyat teklifi", "ajans teklifi karşılaştırma", "içerik üretimi maliyeti", "reklam bütçesi"],
     ilgiliHizmetler: ["sosyal-medya-yonetimi", "reklam-yonetimi", "fotograf-video-produksiyon"],
   },
 
@@ -574,10 +591,10 @@ export const blogYazilari: BlogYazisi[] = [
 
   {
     slug: "google-ads-mi-meta-ads-mi",
-    baslik: "Google Ads mı, Meta Ads mı? Sektöre göre doğru seçim",
-    seoBaslik: "Google Ads mı Meta Ads mı? Sektöre Göre Doğru Seçim",
+    baslik: "Google Ads mı, Meta reklamı mı? Bütçe ve sektöre göre doğru seçim",
+    seoBaslik: "Google Ads mı Meta Ads mı? Bütçe ve Sektöre Göre Seçim",
     seoAciklama:
-      "Google Ads talebi yakalar, Meta Ads talep yaratır. Restoran, klinik, e-ticaret ve B2B için hangi kanalın önce gelmesi gerektiğini sade bir dille anlatıyoruz.",
+      "Google Ads talebi yakalar, Meta reklamı talep yaratır. Yeni başlayan için hangi kanal önce gelir, günlük kaç TL ile test edilir? Sektöre göre doğru sıra.",
     ozet:
       "Google Ads ile Meta Ads arasındaki mantık farkı, sektöre göre hangi kanalın önce gelmesi gerektiği ve sınırlı bütçede doğru sıralama.",
     tarih: "2026-09-28",
@@ -623,6 +640,15 @@ export const blogYazilari: BlogYazisi[] = [
         ],
       },
       {
+        baslik: "Yeni başlayan için günlük kaç TL ile test edilir?",
+        paragraflar: [
+          "Sabit bir rakam yoktur; test bütçesi, kanalın bir sonucu kaça getirdiğinden hesaplanır. Amaç, ilk haftanın sonunda karar verecek kadar veri toplamaktır.",
+          "Google Ads'te hesap tıklama fiyatıyla yapılır. Örnek olarak, Google Anahtar Kelime Planlayıcı'ya göre İstanbul'da reklam ve sosyal medya hizmeti aramalarında sayfanın üstünde görünmek için tıklama başına yaklaşık 20 ile 250 TL teklif gerekiyor; geniş “İstanbul” aramalarında bu rakam 685 TL'ye çıkıyor (Ekim 2026). Tıklama 60 ile 150 TL arasındaysa günlük 150 TL, ayda kabaca 30 ile 75 tıklama demektir. Bu, ilk okuma için alt sınırdır; ilçe adı geçen dar aramalar daha ucuzdur.",
+          "Meta'da ölçü öğrenme aşamasıdır. Meta, bir reklam setinin bu aşamadan çıkması için yedi günde yaklaşık 50 sonuç gerektiğini belirtir. Günlük bütçe kabaca hedef sonuç maliyeti çarpı 50 bölü 7'dir. Studio Gria'nın yönettiği müşteri hesaplarında 2026'da mesaj kampanyalarında konuşma başı maliyetin ortası 165 TL; bu maliyetle haftada 50 konuşma, günde yaklaşık 1.180 TL demektir. Çoğu işletme bunun altında başlar. O durumda bütçeyi tek bir reklam setinde toplayın ve sonucu yedi günlük toplamla okuyun.",
+          "İki kanalda da ilk üç günün rakamıyla karar vermeyin. Studio Gria'da test bütçesini, hedef maliyet ve sektörün gerçek maliyet aralığıyla kampanya kurulmadan önce birlikte hesaplıyoruz.",
+        ],
+      },
+      {
         baslik: "İki kanalı birlikte kullanmak",
         paragraflar: [
           "Bütçe büyüdükçe iki kanal birbirini besler. Meta reklamıyla markanızı tanıyan biri birkaç gün sonra Google'da adınızı arayabilir; Google'dan sitenize gelip karar vermeden ayrılan biri ise Instagram'da hatırlatma reklamıyla yeniden karşılaşabilir. Bu zincir kurulduğunda iki kanalın toplam etkisi, ayrı ayrı çalıştıkları döneme göre daha güçlü olur.",
@@ -661,6 +687,11 @@ export const blogYazilari: BlogYazisi[] = [
           "Müşterilerinizin sizi nasıl bulduğuna bakın. Hizmetinizi Google'da arıyorlarsa Google Ads, sosyal medyada görünce karar veriyorlarsa Instagram reklamı önce gelir. Bütçe sınırlıysa tek kanalla başlayıp sonuç aldıktan sonra ikincisini eklemek daha verimlidir.",
       },
       {
+        soru: "Yeni başlayan biri reklamı günlük kaç TL ile test etmeli?",
+        cevap:
+          "Google Ads'te tıklama fiyatına bakılır: İstanbul'da hizmet aramalarında tıklama 60 ile 150 TL arasındaysa günlük 150 TL ayda kabaca 30 ile 75 tıklama getirir ve ilk okuma için alt sınırdır. Meta'da öğrenme aşaması için yedi günde yaklaşık 50 sonuç gerekir; günlük bütçe kabaca hedef sonuç maliyeti çarpı 50 bölü 7'dir. İki kanalda da karar yedi günlük toplamla verilir.",
+      },
+      {
         soru: "Restoranlar için hangi reklam kanalı daha etkili?",
         cevap:
           "Restoranlarda karar genelde görselle verilir, bu yüzden Meta Ads çoğu zaman önce gelir. Google tarafında ise reklamdan önce Google İşletme Profili ve harita görünürlüğü toparlanmalıdır; mekan arayan kişi çoğunlukla haritadan seçim yapar.",
@@ -676,7 +707,8 @@ export const blogYazilari: BlogYazisi[] = [
           "Hayır. Studio Gria'da reklam bütçesi ajans ücretinden ayrıdır ve doğrudan sizin reklam hesabınızdan Google ya da Meta'ya harcanır. Ajans ücreti kampanya kurgusu, reklam görselleri, düzenli takip ve raporlama karşılığıdır.",
       },
     ],
-    etiketler: ["google ads mı meta ads mı", "google ads", "meta ads", "instagram reklamı", "reklam bütçesi"],
+    guncelleme: "2026-10-27",
+    etiketler: ["google ads mı meta ads mı", "google ads", "meta ads", "meta reklamı", "instagram reklamı", "reklam bütçesi", "reklam test bütçesi"],
     ilgiliHizmetler: ["reklam-yonetimi"],
   },
 
@@ -795,10 +827,10 @@ export const blogYazilari: BlogYazisi[] = [
 
   {
     slug: "meta-reklam-hesabi-kisitlandi",
-    baslik: "Meta reklam hesabınız kısıtlandı mı? Adım adım ne yapmalı",
-    seoBaslik: "Meta Reklam Hesabı Kısıtlandı mı? Adım Adım Çözüm",
+    baslik: "Meta reklam hesabınız kısıtlandı mı? Hesap Kalitesi ekranından adım adım çözüm",
+    seoBaslik: "Meta Hesap Kalitesi: Reklam Hesabı Kısıtlandı, Ne Yapmalı?",
     seoAciklama:
-      "Reklamınız mı reddedildi, hesabınız mı kısıtlandı? Farkı, sık nedenleri, Hesap Kalitesi ekranından itiraz adımlarını ve tekrarını önlemeyi anlatıyoruz.",
+      "Meta Hesap Kalitesi ekranı nerede, ne gösterir? Reklam hesabı kısıtlandığında inceleme isteme adımları, sık nedenler ve tekrarını önleyen kontrol listesi.",
     ozet:
       "Reklam reddi ile hesap kısıtlaması arasındaki fark, sık görülen nedenler, Hesap Kalitesi ekranından itiraz adımları ve tekrarını önleme yolları.",
     tarih: "2026-09-28",
@@ -890,6 +922,11 @@ export const blogYazilari: BlogYazisi[] = [
     ],
     sorular: [
       {
+        soru: "Meta Hesap Kalitesi ekranı nerede ve ne gösterir?",
+        cevap:
+          "Hesap Kalitesi ekranı facebook.com/accountquality adresinden açılır; Meta Business Suite ve Reklam Yöneticisi'nden de ulaşılır. Ekranda kısıtlanan varlık (reklam hesabı, işletme portföyü, sayfa ya da kişisel profil), kısıtlamanın gerekçe başlığı ve varsa inceleme talep etme seçeneği görünür. Kısıtlama bildirimi geldiğinde ilk bakılacak yer burasıdır.",
+      },
+      {
         soru: "Meta reklam hesabım neden kısıtlandı?",
         cevap:
           "En sık nedenler reklam politikalarına aykırı içerik, kısa sürede tekrarlanan retler, ödeme sorunları, güvenlik şüphesi ve sorunlu açılış sayfalarıdır. Meta ayrıntılı gerekçeyi her zaman paylaşmaz, ancak Hesap Kalitesi ekranında gerekçe başlığını görebilirsiniz.",
@@ -915,8 +952,10 @@ export const blogYazilari: BlogYazisi[] = [
       "facebook reklam hesabı kapatıldı",
       "instagram reklamı reddedildi",
       "hesap kalitesi",
+      "meta hesap kalitesi",
       "meta reklam politikaları",
     ],
+    guncelleme: "2026-10-27",
     ilgiliHizmetler: ["reklam-yonetimi"],
   },
 
@@ -1041,10 +1080,10 @@ export const blogYazilari: BlogYazisi[] = [
 
   {
     slug: "yapay-zeka-ile-reklam-filmi",
-    baslik: "Yapay zeka ile reklam filmi nasıl yapılır?",
-    seoBaslik: "Yapay Zeka ile Reklam Filmi Nasıl Yapılır? Süreç ve Sınırlar",
+    baslik: "Yapay zeka ile reklam filmi ve reklam videosu nasıl yapılır?",
+    seoBaslik: "Yapay Zeka ile Reklam Filmi ve Videosu Nasıl Yapılır?",
     seoAciklama:
-      "Yapay zeka reklam filmi hangi adımlarla üretilir, klasik çekimden neyle ayrılır, hangi ürünlere uyar? Marka tutarlılığı ve hibrit kullanım için pratik rehber.",
+      "Yapay zeka ile reklam filmi ve reklam videosu adım adım nasıl üretilir: brief, senaryo, sahne üretimi, kurgu ve ses. Klasik çekimden farkı ve uyduğu ürünler.",
     ozet:
       "Yapay zeka reklam filminin üretim adımları, klasik çekimden farkı, hangi işlere uyup hangilerine uymadığı ve marka tutarlılığı için hibrit yaklaşım.",
     tarih: "2026-09-28",
@@ -1055,6 +1094,20 @@ export const blogYazilari: BlogYazisi[] = [
     kisaCevap:
       "Yapay zeka ile reklam filmi bir komutla değil, klasik prodüksiyon kadar planlı bir süreçle üretilir: brief, senaryo, stil referansı, sahne üretimi, kurgu ve ses. Set, ekip ve mekan maliyetinin çoğunu ortadan kaldırır; emek deneme, seçme ve kurguya kayar. Ürünü hayali mekanlarda göstermeye uygundur, gerçek bir deneyimin kanıt olarak gösterilmesi gereken işlerde ise gerçek çekim tercih edilmelidir.",
     bolumler: [
+      {
+        baslik: "Adım adım: yapay zeka ile reklam videosu nasıl yapılır?",
+        paragraflar: [
+          "Birkaç saniyelik bir sosyal medya videosundan otuz saniyelik reklam filmine kadar süreç aynı altı adımdan geçer. Sonraki bölümler her adımı ayrıntısıyla anlatıyor:",
+        ],
+        liste: [
+          "Brief: filmin kime, hangi duyguyla ve hangi sonuç için konuşacağı yazılır.",
+          "Senaryo ve sahne listesi: sahne sırası, süreler, metin ve ses planı belirlenir.",
+          "Stil referansı: renk, ışık ve kamera dili tek bir görsel dünyada toplanır; ürünün referans görselleri hazırlanır.",
+          "Sahne üretimi: her sahne çok sayıda denemeyle üretilir; ürünün ve markanın her karede aynı kalıp kalmadığı kontrol edilir.",
+          "Kurgu ve ses: seçilen sahneler kurgulanır, müzik, seslendirme ve yazılar eklenir.",
+          "Yayın: farklı yerleşimler için formatlar hazırlanır ve yapay zeka kullanımı şeffaf biçimde belirtilir.",
+        ],
+      },
       {
         baslik: "Süreç brief ile başlar, komutla değil",
         paragraflar: [
@@ -1155,16 +1208,18 @@ export const blogYazilari: BlogYazisi[] = [
       "yapay zeka video üretimi",
       "reklam filmi prodüksiyon",
       "yapay zeka ürün görseli",
+      "yapay zeka ile reklam videosu",
     ],
+    guncelleme: "2026-10-27",
     ilgiliHizmetler: ["ai-uretim-reklam-filmleri", "fotograf-video-produksiyon"],
   },
 
   {
     slug: "google-isletme-profili-optimizasyonu",
-    baslik: "Google İşletme Profili nasıl optimize edilir? Haritalarda üst sıraya çıkmak",
-    seoBaslik: "Google İşletme Profili Nasıl Optimize Edilir?",
+    baslik: "Google İşletme Profili optimizasyonu: Haritalarda üst sıraya çıkmanın adımları",
+    seoBaslik: "Google İşletme Profili Optimizasyonu: Adım Adım Rehber",
     seoAciklama:
-      "Google Haritalar'da üst sıraya çıkmak için kategori, ad, adres ve telefon tutarlılığı, fotoğraf, yorum ve web sitesi uyumunu adım adım anlatıyoruz.",
+      "Google İşletme optimizasyonu adım adım: kategori, ad ve adres tutarlılığı, fotoğraf, yorum ve hizmet alanıyla Haritalar'da yerel trafiği artırın.",
     ozet:
       "Google Haritalar'da üst sıraya çıkmak için kategori seçimi, ad, adres ve telefon tutarlılığı, fotoğraf, yorum ve web sitesi uyumunu adım adım anlatan rehber.",
     tarih: "2026-09-28",
@@ -1181,6 +1236,23 @@ export const blogYazilari: BlogYazisi[] = [
           "Google, yerel sonuçları üç ana unsura göre sıraladığını açıklıyor: alaka, mesafe ve öne çıkma. Alaka, profilinizin aranan şeyle ne kadar örtüştüğüdür; kategoriler, hizmetler ve açıklama bunu belirler. Mesafe, işletmenizin arama yapan kişiye ya da aranan konuma uzaklığıdır ve sizin değiştiremeyeceğiniz tek unsurdur. Öne çıkma ise işletmenizin ne kadar bilindiğidir; yorumlar, puan, web sitenize verilen bağlantılar ve işletmenizin internetteki genel varlığı buna katkı sağlar.",
           "Bu üç unsurdan ikisi sizin elinizdedir. Profil optimizasyonu, alakayı netleştirmek ve öne çıkmayı zaman içinde güçlendirmek demektir.",
           "Aynı aramayı yapan iki kişi, bulundukları konuma göre farklı sonuçlar görebilir. Bu yüzden sıralamanızı yalnızca kendi bilgisayarınızdan kontrol etmek yanıltıcı olabilir; hizmet verdiğiniz farklı mahallelerden yapılan aramalarda nasıl göründüğünüz daha gerçekçi bir tablo verir.",
+        ],
+      },
+      {
+        baslik: "Adım adım Google İşletme Profili optimizasyonu: kontrol listesi",
+        paragraflar: [
+          "Profili ilk kez düzenleyen bir işletme şu sırayla ilerleyebilir. Her maddenin ayrıntısı sonraki bölümlerde:",
+        ],
+        liste: [
+          "Birincil kategoriyi işi en dar ve doğru anlatan kategori olarak seçin; ek kategorileri gerçekten sunduğunuz hizmetlerle sınırlı tutun.",
+          "İşletme adını tabeladaki gibi yazın; ada anahtar kelime eklemeyin.",
+          "Adres ve telefonu web sitenizde, sosyal hesaplarınızda ve rehberlerde harfi harfine aynı yazın.",
+          "Çalışma saatlerini gerçekten ulaşılabildiğiniz saatlere göre girin, resmi tatilleri ayrıca işaretleyin.",
+          "Hizmetleri ve hizmet verdiğiniz bölgeleri tek tek ekleyin.",
+          "Mekândan, ekipten ve işten gerçek fotoğraflar yükleyin; düzenli olarak yenileyin.",
+          "Haftada bir gönderi paylaşarak profili güncel tutun.",
+          "Her müşteriden yorum isteyin ve gelen her yoruma hizmet adını anarak yanıt verin.",
+          "Profildeki web sitesi bağlantısının adresinizi ve hizmetlerinizi gösteren bir sayfaya gittiğini kontrol edin.",
         ],
       },
       {
@@ -1277,6 +1349,7 @@ export const blogYazilari: BlogYazisi[] = [
       "google yorumları",
       "işletme profili optimizasyonu",
     ],
+    guncelleme: "2026-10-27",
     ilgiliHizmetler: ["web-site-seo-geo", "sosyal-medya-yonetimi"],
   },
 ];

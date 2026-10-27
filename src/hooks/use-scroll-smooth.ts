@@ -1,7 +1,7 @@
 "use client";
 import { gsap } from "gsap";
 import { useState } from "react";
-import { ScrollSmoother} from '@/plugins';
+import { ScrollSmoother } from "@/plugins/gsap";
 import { useGSAP } from "@gsap/react";
 
 export default function useScrollSmooth() {
