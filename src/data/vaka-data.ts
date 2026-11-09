@@ -16,6 +16,13 @@ export type VakaRakami = {
   etiket: string;
 };
 
+export type VakaTablosu = {
+  baslik: string;
+  basliklar: string[];
+  satirlar: string[][];
+  not?: string;
+};
+
 export type VakaCalismasi = {
   slug: string;
   yayinda: boolean;
@@ -32,6 +39,10 @@ export type VakaCalismasi = {
   durum: string[];
   yapilanlar: string[];
   sonuc: string[];
+  // "Ne yaptik" bolumunden sonra duran kurulum ve akis tablolari
+  tablolar?: VakaTablosu[];
+  // Sonuctan sonra: bu vakadan cikan, baska isletmeye tasinabilir dersler
+  ogrenilenler?: string[];
   // Rakamlarin kaynagi, sayfada gorunur
   kaynakNotu: string;
   ilgiliHizmetler: string[];
@@ -71,6 +82,36 @@ export const vakalar: VakaCalismasi[] = [
       "7-23 Eylül arasında ₺10.680 reklam harcamasıyla 34.020 kişiye ulaşıldı, 70 kişi kulüple konuşma başlattı ve kulübün bildirimine göre bu konuşmalardan 5 yeni kayıt çıktı.",
       "Kayıt başı reklam maliyeti ₺2.136 oldu. Bir öğrencinin aylık aidatı ₺4.000 olduğu için her kaydın ilk ay aidatı, o kaydı getiren reklam maliyetinin yaklaşık iki katı.",
     ],
+    tablolar: [
+      {
+        baslik: "Kampanya kurulumu",
+        basliklar: ["Kalem", "Değer"],
+        satirlar: [
+          ["Reklam hedefi", "Mesaj (konuşma başlatma)"],
+          ["Dönem", "7-23 Eylül 2026, 17 gün"],
+          ["Günlük bütçe", "₺700"],
+          ["Reklam sayısı", "2"],
+          ["Toplam reklam harcaması", "₺10.680"],
+          ["Görüntülenme", "84.133"],
+        ],
+      },
+      {
+        baslik: "Reklamı gören kişiden kayda: adım adım maliyet",
+        basliklar: ["Adım", "Kişi", "Adım başı maliyet"],
+        satirlar: [
+          ["Reklamı gördü", "34.020", "₺0,31"],
+          ["Kulübe mesaj attı", "70", "₺152,57"],
+          ["Kayıt oldu", "5", "₺2.136"],
+        ],
+        not: "Mesaj atan 70 kişinin 66'sı kulübe ilk kez yazan ailelerdi. Mesajdan kayda dönüş %7,1: her 14 konuşmadan biri kayıt oldu.",
+      },
+    ],
+    ogrenilenler: [
+      "Kayıt reklamının başarısı konuşma sayısıyla değil, kayıtla ölçülür. Kulüpten kayıt sayısını almadan kampanyanın işe yarayıp yaramadığı bilinemezdi; bu yüzden ölçümü baştan kayda bağladık.",
+      "Mesajdan kayda dönüş oranı bir sonraki dönemin bütçesini hesaplamayı sağlar. Bu kampanyada her 14 konuşmadan biri kayıt oldu; hedeflenen kayıt sayısı 14 ile ve konuşma başı maliyetle çarpıldığında gereken reklam bütçesi ortaya çıkar.",
+      "Doğru karşılaştırma reklam maliyeti ile kaydın getirdiği gelirdir. Bir kaydın reklam maliyeti (₺2.136) tek aylık aidatın (₺4.000) yarısı kadardı; 5 öğrencinin ilk ay aidatı (₺20.000) toplam reklam harcamasının 1,9 katı oldu.",
+      "Form yerine doğrudan mesaj, velinin aklındaki soruyu o anda sormasını sağlar. 70 konuşmanın 66'sı kulübe ilk kez yazan ailelerdendi.",
+    ],
     kaynakNotu:
       "Rakamlar Meta reklam hesabından 7-23 Eylül 2026 dönemi için okunmuştur. Kayıt sayısı ve aidat tutarı kulübün bildirimidir.",
     ilgiliHizmetler: ["reklam-yonetimi", "sosyal-medya-yonetimi"],
@@ -107,8 +148,37 @@ export const vakalar: VakaCalismasi[] = [
       "Haziran-Eylül 2026 arasında ₺39.452 reklam harcamasıyla 154.600 kişiye ulaşıldı ve 468 kişi kulüple konuşma başlattı.",
       "Konuşma başı maliyet ₺84,30 oldu.",
     ],
+    tablolar: [
+      {
+        baslik: "Kampanya kurulumu: branş başına ayrı reklam seti",
+        basliklar: ["Reklam seti", "Yayına giriş", "Günlük bütçe"],
+        satirlar: [
+          ["Voleybol", "3 Haziran", "₺500"],
+          ["Basketbol", "3 Haziran", "₺400"],
+          ["Voleybol 2", "1 Temmuz", "₺300"],
+          ["Voleybol 3", "3 Ağustos", "₺400"],
+        ],
+        not: "Tek mesaj kampanyası, dört reklam seti, sekiz reklam. Her sette biri Reels olmak üzere en az iki reklam yayında kaldı. Kampanya 19 Eylül'de kayıt dönemi bitince kapatıldı.",
+      },
+      {
+        baslik: "Dönem dönem sonuç",
+        basliklar: ["Gösterge", "Haziran-Eylül", "1-19 Eylül"],
+        satirlar: [
+          ["Reklam harcaması", "₺39.452", "₺10.200"],
+          ["Konuşma", "468", "141"],
+          ["Konuşma başı", "₺84,30", "₺72,34"],
+          ["Erişilen kişi", "154.600", "64.720"],
+        ],
+        not: "Haziran-Eylül sütunu kampanyanın tamamıdır (537.792 görüntülenme); 1-19 Eylül, kayıt döneminin son haftalarıdır.",
+      },
+    ],
+    ogrenilenler: [
+      "Her branşı kendi reklam setinde yürütmek, bütçeyi branş başına ayrı ayarlamayı sağlar. Yaz boyunca Temmuz ve Ağustos'ta yeni voleybol setleri eklendi; tek bir genel reklamla bu ayar yapılamazdı.",
+      "Ailelerin karar verdiği dönem reklamın en verimli çalıştığı dönemdir. Kayıt döneminin son haftalarında (1-19 Eylül) konuşma başı maliyet kampanya ortalamasının altındaydı: ₺84,30'a karşı ₺72,34.",
+      "Reklamın hedefi doğrudan mesaj olduğunda kayıt soruları kulübe form beklemeden ulaşır. Bir sonraki adım konuşmaların kaça kayda döndüğünü kulüpten almak; bu oran bütçenin kayıt hedefinden geriye hesaplanmasını sağlar.",
+    ],
     kaynakNotu:
-      "Rakamlar Meta reklam hesabından Haziran-Eylül 2026 dönemi için okunmuştur.",
+      "Rakamlar Meta reklam hesabından Haziran-Eylül 2026 ve 1-19 Eylül 2026 dönemleri için okunmuştur.",
     ilgiliHizmetler: ["reklam-yonetimi", "sosyal-medya-yonetimi"],
     ilgiliYazilar: ["spor-kulubu-sosyal-medya-yonetimi", "meta-reklam-butcesi-nasil-belirlenir"],
   },

@@ -121,6 +121,41 @@ export default function VakaSayfasi({ params }: Props) {
           </div>
         </section>
 
+        {vaka.tablolar?.map((tablo) => (
+          <section className={styles.bolum} key={tablo.baslik}>
+            <div className={styles.kapsayici}>
+              <h2 className={styles.bolumBaslik}>{tablo.baslik}</h2>
+              <figure className={vakaStil.tablo}>
+                <div className={vakaStil.tabloKaydir}>
+                  <table>
+                    <thead>
+                      <tr>
+                        {tablo.basliklar.map((b) => (
+                          <th key={b} scope="col">{b}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {tablo.satirlar.map((satir) => (
+                        <tr key={satir[0]}>
+                          {satir.map((hucre, i) =>
+                            i === 0 ? (
+                              <th key={`${i}-${hucre}`} scope="row">{hucre}</th>
+                            ) : (
+                              <td key={`${i}-${hucre}`}>{hucre}</td>
+                            ),
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {tablo.not && <figcaption className={vakaStil.kaynak}>{tablo.not}</figcaption>}
+              </figure>
+            </div>
+          </section>
+        ))}
+
         <section className={styles.bolum}>
           <div className={styles.kapsayici}>
             <h2 className={styles.bolumBaslik}>Sonuç</h2>
@@ -132,6 +167,22 @@ export default function VakaSayfasi({ params }: Props) {
             <p className={vakaStil.kaynak}>{vaka.kaynakNotu}</p>
           </div>
         </section>
+
+        {vaka.ogrenilenler && vaka.ogrenilenler.length > 0 && (
+          <section className={styles.bolum}>
+            <div className={styles.kapsayici}>
+              <h2 className={styles.bolumBaslik}>Bu vakadan öğrendiklerimiz</h2>
+              <ol className={vakaStil.adimlar}>
+                {vaka.ogrenilenler.map((madde, i) => (
+                  <li key={madde.slice(0, 40)}>
+                    <span className={vakaStil.no}>{String(i + 1).padStart(2, "0")}</span>
+                    <p>{madde}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+        )}
 
         <section className={styles.bolum}>
           <div className={styles.kapsayici}>

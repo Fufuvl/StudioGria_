@@ -1023,7 +1023,7 @@ export const sektorler: Sektor[] = [
     formSektor: "Sanayi / üretim",
     seoBaslik: "Fabrika Tanıtım Filmi ve Ürün Kataloğu | Studio Gria",
     seoAciklama:
-      "Üretim firmaları için fabrika tanıtım filmi, drone ile tesis çekimi, ürün kataloğu ve B2B sosyal medya. Ulus Metal, Deva Makine ve Liva Gaz referanslarımızdan.",
+      "Üretim firmaları için fabrika tanıtım filmi, drone ile tesis çekimi, ürün kataloğu ve B2B sosyal medya. Referanslar: Ulus Metal, Deva Makine, Liva Gaz.",
     rozet: "Fabrika tanıtım filmi ve ürün kataloğu",
     slogan: "Üretiminiz *alıcının masasına* gitsin",
     spot:

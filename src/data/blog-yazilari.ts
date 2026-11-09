@@ -827,20 +827,40 @@ export const blogYazilari: BlogYazisi[] = [
 
   {
     slug: "meta-reklam-hesabi-kisitlandi",
-    baslik: "Meta reklam hesabınız kısıtlandı mı? Hesap Kalitesi ekranından adım adım çözüm",
-    seoBaslik: "Meta Hesap Kalitesi: Reklam Hesabı Kısıtlandı, Ne Yapmalı?",
+    baslik: "Meta Hesap Kalitesi nedir, nasıl kontrol edilir? Reklam hesabı kısıtlandığında adım adım çözüm",
+    seoBaslik: "Meta Hesap Kalitesi Nedir? Kontrol ve Kısıtlama Çözümü",
     seoAciklama:
-      "Meta Hesap Kalitesi ekranı nerede, ne gösterir? Reklam hesabı kısıtlandığında inceleme isteme adımları, sık nedenler ve tekrarını önleyen kontrol listesi.",
+      "Meta Hesap Kalitesi ekranı nedir, nereden açılır, ne gösterir? Reklam hesabı kısıtlandığında inceleme isteme adımları ve tekrarını önleyen kontrol listesi.",
     ozet:
-      "Reklam reddi ile hesap kısıtlaması arasındaki fark, sık görülen nedenler, Hesap Kalitesi ekranından itiraz adımları ve tekrarını önleme yolları.",
+      "Hesap Kalitesi ekranı nedir ve nasıl kontrol edilir, reklam reddi ile hesap kısıtlaması arasındaki fark, itiraz adımları ve tekrarını önleme yolları.",
     tarih: "2026-09-28",
     okumaSuresi: 7,
     kategori: "Reklam Yönetimi",
     giris:
       "Kampanya yayındayken gelen “reklam hesabınız kısıtlandı” bildirimi, özellikle satışları reklama bağlı işletmeler için panik anıdır. Bu anda yapılan aceleci hamleler, örneğin yeni hesap açıp aynı reklamı tekrar yayınlamak, durumu çoğu zaman daha da zorlaştırır. Bu yazıda önce neyle karşı karşıya olduğunuzu nasıl anlayacağınızı, ardından itiraz sürecini ve tekrarını önlemek için neler yapılabileceğini anlatıyoruz.",
     kisaCevap:
-      "Meta reklam hesabınız kısıtlandıysa önce Hesap Kalitesi ekranında hangi varlığın etkilendiğini ve gerekçeyi kontrol edin. Sorunlu reklamı ya da ayarı düzeltin, ardından aynı ekrandan inceleme talep edin. Bu süreçte yeni hesap açıp aynı reklamı yayınlamayın; Meta bunu kuralları dolanma girişimi sayabilir ve sorun diğer varlıklarınıza yayılabilir.",
+      "Meta Hesap Kalitesi, reklam yöneten profilinizin, işletme portföylerinizin, reklam hesaplarınızın ve sayfalarınızın kısıtlama durumunu tek yerde gösteren ekrandır; facebook.com/accountquality adresinden açılır. Hesabınız kısıtlandıysa önce burada hangi varlığın etkilendiğini ve gerekçeyi görün, sorunu düzeltin, ardından aynı ekrandan inceleme talep edin. Bu sürede yeni hesap açıp aynı reklamı yayınlamayın.",
     bolumler: [
+      {
+        baslik: "Meta Hesap Kalitesi nedir, nereden açılır?",
+        paragraflar: [
+          "Hesap Kalitesi (İngilizce arayüzde Account Quality), Meta'nın reklam tarafındaki sağlık ekranıdır. Reklamları yöneten kişisel profilinizin reklam yetkisini, yönettiğiniz işletme portföylerini, reklam hesaplarını, Facebook sayfalarını ve bağlı Instagram hesaplarını tek bir yerde listeler. Bir varlıkta kısıtlama ya da reddedilmiş reklam varsa burada görünür.",
+          "Ekran facebook.com/accountquality adresinden açılır. Meta Business Suite ve Reklam Yöneticisi'nde bir kısıtlama ya da ret bildirimi geldiğinde bildirimdeki bağlantı da sizi aynı ekrana götürür. Ekranı, reklamları yöneten profille oturum açmışken açmanız gerekir; her profil yalnızca kendi yönettiği varlıkları görür.",
+        ],
+      },
+      {
+        baslik: "Hesap Kalitesi nasıl kontrol edilir?",
+        paragraflar: [
+          "Kontrol birkaç dakika sürer ve yalnızca sorun olduğunda değil, büyük bir kampanyadan önce de yapılmalıdır. Sırası şöyledir:",
+        ],
+        liste: [
+          "Reklamları yöneten profille oturum açıkken facebook.com/accountquality adresini açın.",
+          "Listeden kontrol etmek istediğiniz işletme portföyünü ya da kişisel profilinizi seçin.",
+          "Her varlığın yanında bir kısıtlama ya da uyarı olup olmadığına bakın: reklam hesabı, sayfa, Instagram hesabı ve profilinizin reklam yetkisi ayrı ayrı görünür.",
+          "Reddedilen reklamlar varsa hangi reklamın hangi politika gerekçesiyle reddedildiğini okuyun; tekrar eden bir gerekçe, hesabın ileride kısıtlanabileceğinin erken işaretidir.",
+          "Bir kısıtlama görürseniz aşağıdaki bölümlerde anlatılan sırayla ilerleyin: önce teşhis, sonra düzeltme, en son inceleme talebi.",
+        ],
+      },
       {
         baslik: "Reklam reddi mi, hesap kısıtlaması mı?",
         paragraflar: [
@@ -953,9 +973,11 @@ export const blogYazilari: BlogYazisi[] = [
       "instagram reklamı reddedildi",
       "hesap kalitesi",
       "meta hesap kalitesi",
+      "meta hesap kalitesi nedir",
+      "hesap kalitesi nasıl kontrol edilir",
       "meta reklam politikaları",
     ],
-    guncelleme: "2026-10-27",
+    guncelleme: "2026-11-09",
     ilgiliHizmetler: ["reklam-yonetimi"],
   },
 
@@ -1080,10 +1102,10 @@ export const blogYazilari: BlogYazisi[] = [
 
   {
     slug: "yapay-zeka-ile-reklam-filmi",
-    baslik: "Yapay zeka ile reklam filmi ve reklam videosu nasıl yapılır?",
-    seoBaslik: "Yapay Zeka ile Reklam Filmi ve Videosu Nasıl Yapılır?",
+    baslik: "Yapay zeka ile reklam filmi ve reklam videosu nasıl yapılır? Adımlar ve araçlar",
+    seoBaslik: "Yapay Zeka ile Reklam Videosu Nasıl Yapılır? 6 Adım, Araçlar",
     seoAciklama:
-      "Yapay zeka ile reklam filmi ve reklam videosu adım adım nasıl üretilir: brief, senaryo, sahne üretimi, kurgu ve ses. Klasik çekimden farkı ve uyduğu ürünler.",
+      "Yapay zeka ile reklam filmi ve videosu adım adım: brief, sahne üretimi, kurgu ve ses. Hangi araçlar kullanılır, hazır araçlar ne zaman yeter, ne zaman yetmez?",
     ozet:
       "Yapay zeka reklam filminin üretim adımları, klasik çekimden farkı, hangi işlere uyup hangilerine uymadığı ve marka tutarlılığı için hibrit yaklaşım.",
     tarih: "2026-09-28",
@@ -1106,6 +1128,26 @@ export const blogYazilari: BlogYazisi[] = [
           "Sahne üretimi: her sahne çok sayıda denemeyle üretilir; ürünün ve markanın her karede aynı kalıp kalmadığı kontrol edilir.",
           "Kurgu ve ses: seçilen sahneler kurgulanır, müzik, seslendirme ve yazılar eklenir.",
           "Yayın: farklı yerleşimler için formatlar hazırlanır ve yapay zeka kullanımı şeffaf biçimde belirtilir.",
+        ],
+      },
+      {
+        baslik: "Yapay zeka ile reklam videosu yapmak için hangi araçlar kullanılır?",
+        paragraflar: [
+          "Tek bir araçla reklam filmi çıkmaz; her aşamanın kendi araç türü vardır. Görseli bir model, hareketi başka bir model üretir; ses ve kurgu ayrı yazılımlarda tamamlanır. Aşağıdaki tablo bu aşamaları ve kendi üretimlerimizde kullandığımız araçlardan örnekleri gösteriyor.",
+        ],
+        tablo: {
+          basliklar: ["Aşama", "Örnek araçlar"],
+          satirlar: [
+            ["Görsel: ürün ve sahne", "Nano Banana, Flux"],
+            ["Video: görselden hareket", "Kling, Seedance"],
+            ["Platform: modeller tek yerde", "Higgsfield"],
+            ["Kurgu: yazı, renk, ses", "Premiere Pro, After Effects"],
+          ],
+          not: "Araçlar hızla değişiyor; aynı aşama için hangi modelin seçileceği ürüne ve sahneye göre belirlenir.",
+        },
+        sonParagraflar: [
+          "Metinden hazır reklam videosu üreten çevrim içi araçlar da var. Bunlar bir fikri hızlıca denemek ya da basit bir duyuru videosu çıkarmak için işe yarar. Ürünün kendisinin her karede birebir aynı görünmesi, logonun ve ambalajın bozulmaması, filmin markanın diğer içerikleriyle aynı dili konuşması gerektiğinde ise hazır şablon yetmez; aşağıda anlatılan brief, stil referansı ve sahne sahne kontrol süreci gerekir.",
+          "Araç seçiminde asıl soru hangi aracın en iyi olduğu değil, ürünün gerçek fotoğrafını koruyup korumadığıdır. Ürün görselini referans olarak alan ve sahneden sahneye aynı tutabilen araçlar reklam işinde öne çıkar.",
         ],
       },
       {
@@ -1182,6 +1224,11 @@ export const blogYazilari: BlogYazisi[] = [
     ],
     sorular: [
       {
+        soru: "Yapay zeka ile reklam videosu yapmak için hangi araçlar kullanılır?",
+        cevap:
+          "Her aşama için ayrı araç kullanılır: ürün ve sahne görseli için görsel üretim modelleri (örneğin Nano Banana, Flux), görselden hareketli sahne için video üretim modelleri (örneğin Kling, Seedance), kurgu, yazı ve renk için Premiere Pro ya da After Effects gibi kurgu yazılımları. Metinden hazır video üreten araçlar hızlı taslak için yeterlidir, ürünün birebir korunması gereken reklam işlerinde yetmez.",
+      },
+      {
         soru: "Yapay zeka ile reklam filmi yapmak ne kadar sürer?",
         cevap:
           "Süre sahne sayısına, filmin uzunluğuna ve revizyon ihtiyacına göre değişir. Set, mekan ve hava koşulları beklenmediği için planlama klasik çekime göre hızlanır, ancak deneme, seçme ve kurgu aşamaları da zaman ister. Kesin takvim, kapsam netleştikten sonra teklif sunumunda yazılır.",
@@ -1210,7 +1257,7 @@ export const blogYazilari: BlogYazisi[] = [
       "yapay zeka ürün görseli",
       "yapay zeka ile reklam videosu",
     ],
-    guncelleme: "2026-10-27",
+    guncelleme: "2026-11-09",
     ilgiliHizmetler: ["ai-uretim-reklam-filmleri", "fotograf-video-produksiyon"],
   },
 
