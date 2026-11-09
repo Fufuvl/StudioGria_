@@ -41,7 +41,7 @@ export const bolgeler: Bolge[] = [
     seoBaslik: "Büyükçekmece Sosyal Medya Ajansı ve Reklam Ajansı",
     seoAciklama:
       "Büyükçekmece'de sosyal medya yönetimi, içerik üretimi, Meta ve Google reklam yönetimi. Stüdyomuz Büyükçekmece'de; çekim için aynı gün sahadayız.",
-    h1: "Büyükçekmece sosyal medya ajansı",
+    h1: "Büyükçekmece sosyal medya ve reklam ajansı",
     giris:
       "Studio Gria'nın merkezi Büyükçekmece'de. Bu ilçedeki işletmelerle çalışırken çekim planlamak için takvim ayarlamıyoruz; ekip aynı gün sahada olabiliyor. Yakınlık, özellikle düzenli içerik üretimi gereken işlerde belirgin bir hız farkı yaratıyor.",
     doku: [
@@ -77,7 +77,7 @@ export const bolgeler: Bolge[] = [
         "Reklam bütçesi ajans ücretinden ayrıdır ve doğrudan işletmenin kendi reklam hesabından harcanır. Sonucu tıklamayla değil; mesaj, form ya da kayıt başına maliyetle raporluyoruz.",
       ],
       baglar: [
-        { ad: "Reklam yönetimi", yol: "/hizmetler/reklam-yonetimi" },
+        { ad: "Reklam ajansı hizmetimiz", yol: "/hizmetler/reklam-yonetimi" },
         { ad: "Atletik kayıt kampanyası", yol: "/referanslar/buyukcekmece-atletik-kayit-kampanyasi" },
         { ad: "Google Ads mı Meta Ads mı?", yol: "/blog/google-ads-mi-meta-ads-mi" },
       ],
@@ -119,7 +119,7 @@ export const bolgeler: Bolge[] = [
     seoBaslik: "Beylikdüzü Sosyal Medya Ajansı ve Reklam Ajansı",
     seoAciklama:
       "Beylikdüzü'nde sosyal medya yönetimi, ürün çekimi, Meta ve Google reklam yönetimi. Perakende ve spor kulüpleriyle çalışma deneyimimizle teklif alın.",
-    h1: "Beylikdüzü sosyal medya ajansı",
+    h1: "Beylikdüzü sosyal medya ve reklam ajansı",
     giris:
       "Beylikdüzü, Avrupa yakasının en yoğun perakende hatlarından biri. Aynı caddede birbirine çok yakın rakiplerin bulunduğu bir ilçede sosyal medya, fiyat rekabetine girmeden ayrışmanın en pratik yolu.",
     doku: [
@@ -155,7 +155,7 @@ export const bolgeler: Bolge[] = [
         "Perakendede kreatif hedeflemeden önce gelir. Ürünü hareket ve detayla gösteren kısa video, aynı caddedeki rakiplerin sabit görsellerinden ayrışır. Reklam görsellerini kendi çekimimizden üretiyoruz.",
       ],
       baglar: [
-        { ad: "Reklam yönetimi", yol: "/hizmetler/reklam-yonetimi" },
+        { ad: "Reklam ajansı hizmetimiz", yol: "/hizmetler/reklam-yonetimi" },
         { ad: "İhtisas mesaj kampanyası", yol: "/referanslar/beylikduzu-ihtisas-mesaj-kampanyasi" },
         { ad: "Spor kulübü reklamı", yol: "/sektorler/spor-kulubu-ve-spor-okulu-reklam" },
       ],
@@ -197,7 +197,7 @@ export const bolgeler: Bolge[] = [
     seoBaslik: "Esenyurt Sosyal Medya Ajansı ve Reklam Ajansı",
     seoAciklama:
       "Esenyurt'ta üretici, toptancı ve yerel işletmeler için sosyal medya yönetimi, tesis çekimi, Meta ve Google reklam yönetimi. Teklif alın.",
-    h1: "Esenyurt sosyal medya ajansı",
+    h1: "Esenyurt sosyal medya ve reklam ajansı",
     giris:
       "Esenyurt'un ticari yapısı çevresindeki ilçelerden belirgin şekilde ayrılıyor. Burada perakende kadar üretim ve toptan satış ağırlıkta, dolayısıyla sosyal medyanın işlevi de farklı: hedef kitle son tüketici değil, çoğu zaman başka bir işletme.",
     doku: [
@@ -233,7 +233,7 @@ export const bolgeler: Bolge[] = [
         "Esenyurt'ta termos üreticisi Star Termos'un sosyal medya ve reklam yönetimini yürütüyoruz.",
       ],
       baglar: [
-        { ad: "Reklam yönetimi", yol: "/hizmetler/reklam-yonetimi" },
+        { ad: "Reklam ajansı hizmetimiz", yol: "/hizmetler/reklam-yonetimi" },
         { ad: "Fabrika tanıtım filmi ve katalog", yol: "/sektorler/fabrika-ve-sanayi-tanitim-filmi" },
         { ad: "Google İşletme Profili rehberi", yol: "/blog/google-isletme-profili-optimizasyonu" },
       ],
@@ -385,7 +385,7 @@ export const bolgeler: Bolge[] = [
     seoBaslik: "Küçükçekmece Sosyal Medya Ajansı ve Reklam Ajansı",
     seoAciklama:
       "Küçükçekmece'de sosyal medya yönetimi, içerik üretimi, Meta ve Google reklam yönetimi. Halkalı, Sefaköy ve Atakent'teki işletmeler için teklif alın.",
-    h1: "Küçükçekmece sosyal medya ajansı",
+    h1: "Küçükçekmece sosyal medya ve reklam ajansı",
     giris:
       "Küçükçekmece, yoğun konut dokusuyla İstanbul'un en kalabalık ilçelerinden biri ve ticari hayatı da buna göre şekilleniyor. Büyük zincirlerin değil, mahallesinde tanınan yerel işletmelerin ağırlıkta olduğu bir ilçe; burada sosyal medyanın işi, yakındaki müşteriye işletmenin varlığını ve farkını düzenli olarak hatırlatmak.",
     doku: [
@@ -421,7 +421,7 @@ export const bolgeler: Bolge[] = [
         "Göl çevresindeki mekânlarda reklamın konusu menüden çok manzara ve atmosferdir. Reklam görselini mekânda, ışığın doğru olduğu saatte çektiğimiz kısa videodan üretiyoruz.",
       ],
       baglar: [
-        { ad: "Reklam yönetimi", yol: "/hizmetler/reklam-yonetimi" },
+        { ad: "Reklam ajansı hizmetimiz", yol: "/hizmetler/reklam-yonetimi" },
         { ad: "Okul ve kurs sosyal medya", yol: "/sektorler/egitim-kurumu-sosyal-medya-yonetimi" },
         { ad: "Klinik sosyal medya", yol: "/sektorler/klinik-sosyal-medya-yonetimi" },
       ],

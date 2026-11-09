@@ -147,7 +147,7 @@ export default function HizmetDetayPage({ params }: Props) {
             </div>
             <div className={styles.detayHeroIzgara}>
               <div>
-                <h1 className={styles.detayBaslik}>{hizmet.ad}</h1>
+                <h1 className={styles.detayBaslik}>{hizmet.baslik ?? hizmet.ad}</h1>
                 <p className={styles.detayGiris}>{hizmet.giris}</p>
                 <Link className={styles.kapanisDugme} href="/teklif" style={{ background: "#16181d", color: "#fff" }}>
                   Bu hizmet için teklif alın

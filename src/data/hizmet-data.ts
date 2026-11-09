@@ -13,6 +13,9 @@ export type Hizmet = {
   kisaAciklama: string;
   seoBaslik: string;
   seoAciklama: string;
+  // Sayfa basligi (H1). Yoksa `ad` kullanilir; `ad` menude, kartta ve
+  // kirintida kisa ad olarak kalir.
+  baslik?: string;
   giris: string;
   aciklama: string[];
   dahil: string[];
@@ -158,9 +161,10 @@ export const hizmetler: Hizmet[] = [
     ad: "Reklam Yönetimi",
     kisaAciklama:
       "Google Ads ve Meta Ads kampanyalarınızı kurar, günlük takip ederiz.",
-    seoBaslik: "Google Ads ve Meta Ads Reklam Yönetimi | Studio Gria",
+    seoBaslik: "Reklam Ajansı İstanbul: Google Ads ve Meta Reklam Yönetimi",
     seoAciklama:
-      "Google Ads ve Meta Ads reklam yönetimi: kampanya kurulumu, hedef kitle kurgusu, reklam görseli üretimi, günlük takip ve bütçe optimizasyonu.",
+      "Dijital reklam ajansı: Google Ads ve Meta reklam yönetimi, kampanya kurulumu, ölçüm ve günlük takip. Beylikdüzü, Büyükçekmece ve Batı İstanbul'dan vakalar.",
+    baslik: "Reklam Ajansı: Google ve Meta Reklam Yönetimi",
     giris:
       "Reklam bütçesi doğru kurgulanmadığında en hızlı para kaybettiren kanaldır. Doğru kurgulandığında ise en hızlı müşteri getiren kanal.",
     aciklama: [
@@ -168,7 +172,13 @@ export const hizmetler: Hizmet[] = [
       "Kampanyalar günlük takip edilir; bütçe işe yarayan reklamlara kaydırılır, yorulan kreatifler yenilenir. Reklam bütçeniz kendi hesabınızdan harcanır, her ay ne harcandığını ve ne kazandırdığını net görürsünüz.",
       "Reklam yönetimi hedefi net olan her işletme için anlamlıdır, ama hedefin türü kurguyu değiştirir. Restoran, klinik ya da spor okulu gibi yerel işletmelerde genellikle mesaj, arama veya form toplanır ve hedefleme ilçe ve çevresiyle sınırlanır. E-ticarette ise satış ve sepet verisiyle çalışılır; katalog reklamları ve yeniden pazarlama devreye girer. Google tarafında arama reklamları sizi zaten arayan kişiyi yakalar, Meta tarafında ise henüz aramayan ama ilgilenebilecek kitleye ulaşılır.",
       "Kampanya kurulmadan önce ölçüm altyapısı kontrol edilir: piksel, dönüşüm olayları ve form ya da mesaj akışı doğru çalışmıyorsa reklam verisi yanıltıcı olur. Yayından sonra her kampanya kendi hedef metriğiyle okunur; mesaj kampanyasında mesaj başı maliyet, satış kampanyasında reklam harcamasının getirisi takip edilir. Beğeni ve erişim tek başına başarı sayılmaz. Yeni kreatifler düzenli olarak test edilir ve kazanan versiyon bir sonraki üretimin yönünü belirler.",
+      "Ofisimiz Büyükçekmece'de; Beylikdüzü, Esenyurt, Küçükçekmece ve Avcılar'daki işletmelerin reklamlarını yakından yönetiyor, gerektiğinde reklam görselini ve videosunu da kendi ekibimizle çekiyoruz. Bu bölgede yürüttüğümüz iki spor kampanyası rakamlarıyla yayında: Büyükçekmece Atletik'in kayıt kampanyası 17 günde 70 konuşma ve 5 yeni kayıt getirdi, Beylikdüzü İhtisas'ın yaz boyunca süren mesaj kampanyası 468 konuşmaya ulaştı ve konuşma başı maliyet ₺84,30 oldu.",
     ],
+    ilgiliSayfa: {
+      yol: "/referanslar/buyukcekmece-atletik-kayit-kampanyasi",
+      baglanti: "Büyükçekmece Atletik vakası",
+      metin: "kayıt reklamının kurulumunu, adım adım maliyetini ve bu kampanyadan öğrendiklerimizi anlatıyor.",
+    },
     dahil: [
       "Kampanya kurulumu ve hedef kitle kurgusu",
       "Piksel, dönüşüm ve olay takibi kurulumu",
@@ -177,6 +187,16 @@ export const hizmetler: Hizmet[] = [
       "Aylık performans raporu",
     ],
     sss: [
+      {
+        soru: "Reklam ajansı olarak hangi reklamları yönetiyorsunuz?",
+        cevap:
+          "Dijital reklam yönetiyoruz: Google'da arama, görüntülü ağ ve YouTube reklamları, Meta'da Instagram ve Facebook reklamları. Kampanyanın kurulumu, ölçüm altyapısı, reklam görseli ve metni, günlük takip ve aylık rapor bizde. Tabela, billboard ya da basılı reklam gibi açık hava işleri yapmıyoruz.",
+      },
+      {
+        soru: "Beylikdüzü ve çevresindeki işletmelerle çalışıyor musunuz?",
+        cevap:
+          "Evet. Ofisimiz Büyükçekmece'de; Beylikdüzü, Esenyurt, Küçükçekmece ve Avcılar'daki işletmelerle yüz yüze çalışıyoruz. Yerel işletmelerde reklamı ilçe ve çevresiyle sınırlı kurar, kişiyi çoğunlukla doğrudan mesaja ya da aramaya yönlendiririz.",
+      },
       {
         soru: "Minimum reklam bütçesi ne olmalı?",
         cevap:
