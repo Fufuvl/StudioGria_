@@ -31,6 +31,11 @@ export type Bolge = {
     // Bolum altindaki ic baglantilar: hizmet, vaka, sektor ya da rehber
     baglar: { ad: string; yol: string }[];
   };
+  // Bu ilcede gercekten calistigimiz markalar (18 Kas 2026). Yalniz konumu
+  // bilinen ve sitede zaten yayinda olan musteriler yazilir; tahmin edilmez.
+  yerelMusteriler?: { ad: string; is: string; yol?: string }[];
+  // Sayfada gosterilecek musteri yorumu videolari (musteri-sozleri-data kimligi)
+  videoKimlikleri?: string[];
 };
 
 export const bolgeler: Bolge[] = [
@@ -82,7 +87,16 @@ export const bolgeler: Bolge[] = [
         { ad: "Google Ads mı Meta Ads mı?", yol: "/blog/google-ads-mi-meta-ads-mi" },
       ],
     },
-    mesafeNotu: "Stüdyomuz Büyükçekmece'de, çekim için aynı gün sahada olabiliyoruz.",
+    mesafeNotu: "Stüdyomuz Büyükçekmece Mimaroba'da, çekim için aynı gün sahada olabiliyoruz.",
+    yerelMusteriler: [
+      {
+        ad: "Büyükçekmece Atletik Spor Kulübü",
+        is: "Kayıt dönemi mesaj reklamı ve sosyal medya",
+        yol: "/referanslar/buyukcekmece-atletik-kayit-kampanyasi",
+      },
+      { ad: "My Gym Büyükçekmece", is: "Sosyal medya ve reklam yönetimi" },
+    ],
+    videoKimlikleri: ["my-gym-buyukcekmece"],
     sorular: [
       {
         soru: "Büyükçekmece'de göl çevresindeki restoran için sosyal medya ajansı ne yapar?",
@@ -161,6 +175,13 @@ export const bolgeler: Bolge[] = [
       ],
     },
     mesafeNotu: "Büyükçekmece'deki stüdyomuza yaklaşık on beş dakika mesafede.",
+    yerelMusteriler: [
+      {
+        ad: "Beylikdüzü İhtisas Spor Kulübü",
+        is: "Altyapı kayıtları için mesaj reklamı ve sosyal medya",
+        yol: "/referanslar/beylikduzu-ihtisas-mesaj-kampanyasi",
+      },
+    ],
     sorular: [
       {
         soru: "Beylikdüzü'nde mağazam için ürün videosu nasıl çekilir?",
@@ -1077,6 +1098,28 @@ export const bolgeler: Bolge[] = [
     ],
   },
 ];
+
+// Batı İstanbul: Büyükçekmece'deki stüdyomuza en yakın, sahada en sık
+// bulunduğumuz ilçeler. Ana sayfa, bölgeler sayfası, hizmet sayfaları ve
+// ilçe sayfalarındaki "komşu ilçeler" listesi bu sırayı kullanır (18 Kas 2026).
+export const BATI_ISTANBUL: string[] = [
+  "buyukcekmece-sosyal-medya-ajansi",
+  "beylikduzu-sosyal-medya-ajansi",
+  "esenyurt-sosyal-medya-ajansi",
+  "avcilar-sosyal-medya-ajansi",
+  "kucukcekmece-sosyal-medya-ajansi",
+  "basaksehir-sosyal-medya-ajansi",
+  "silivri-sosyal-medya-ajansi",
+];
+
+export function batiIstanbulMu(slug: string): boolean {
+  return BATI_ISTANBUL.includes(slug);
+}
+
+export const batiIstanbulBolgeleri: Bolge[] = BATI_ISTANBUL.flatMap((slug) => {
+  const b = bolgeler.find((x) => x.slug === slug);
+  return b ? [b] : [];
+});
 
 export function bolgeBul(slug: string): Bolge | undefined {
   return bolgeler.find((bolge) => bolge.slug === slug);

@@ -21,9 +21,13 @@ const oneCikanYazilar = ONE_CIKAN_YAZILAR.flatMap((slug) => {
 const hizmetOzetleri = hizmetler.map((h) => ({ slug: h.slug, ad: h.ad, kisaAciklama: h.kisaAciklama }));
 
 // SEO: title arama niyetine gore kurgulanir, marka sonda kalir
-const sayfaBaslik = "Sosyal Medya Ajansı İstanbul | Studio Gria";
+// 18 Kas 2026: ana sayfa yerel kimliğe çekildi. Google İşletme Profili'nin
+// web sitesi bağlantısı bu sayfaya iner; harita paketinde ilçe uyumu buradan
+// okunur. "sosyal medya ajansı istanbul" baş kelimesine oynanmıyor
+// (DENETIM-2026-10-27, Yapılmayacaklar).
+const sayfaBaslik = "Büyükçekmece Sosyal Medya ve Reklam Ajansı | Studio Gria";
 const sayfaAciklama =
-  "İstanbul merkezli sosyal medya ajansı: içerik üretimi, profesyonel çekim ve Meta reklam yönetimi tek elden. 39'dan fazla marka ile çalıştık. Teklif alın.";
+  "Büyükçekmece merkezli sosyal medya ve reklam ajansı. Beylikdüzü, Esenyurt ve Batı İstanbul'da çekim, içerik, Meta ve Google reklamları tek elden. Teklif alın.";
 
 export const metadata: Metadata = {
   title: sayfaBaslik,

@@ -112,20 +112,27 @@ export function AnasayfaSektorler() {
 export function AnasayfaBolgeler() {
   const { bolgeler, kurum } = useSiteBaglantilari();
   if (bolgeler.length === 0) return null;
+  // Bati Istanbul ilceleri one cikar, digerleri altta sade satirda (18 Kas 2026).
+  // Liste root layout'ta BATI_ISTANBUL sirasina gore isaretlenir.
+  const bati = bolgeler.filter((b) => b.bati);
+  const diger = bolgeler.filter((b) => !b.bati);
   return (
     <section className="sg-ana-bolge" aria-labelledby="anasayfa-bolgeler">
       <div className="sg-hizmet-ic">
         <span className="sg-hizmet-rozet">Hizmet bölgelerimiz</span>
         <h2 id="anasayfa-bolgeler" className="sg-hizmet-baslik">
-          İstanbul&apos;un her yerinde sahadayız
+          Batı İstanbul&apos;da <em>sahadayız</em>
         </h2>
         <p className="sg-hizmet-spot">
-          Stüdyomuz {bulunmaEki(kurum.ilce)}. Avrupa ve Anadolu yakasındaki markalar için
-          çekim günlerini önceden takvimliyor, ekip ve ekipmanla sahaya geliyoruz;
-          Türkiye genelindeki markaların hesaplarını uzaktan yönetiyoruz.
+          Stüdyomuz {bulunmaEki(kurum.ilce)}, Mimaroba&apos;da. Beylikdüzü, Esenyurt,
+          Avcılar, Küçükçekmece, Başakşehir ve Silivri stüdyomuza yakın; bu
+          ilçelerdeki işletmelerde çekim, toplantı ve reklam kurulumu için
+          düzenli olarak sahadayız. İstanbul&apos;un diğer ilçelerinde çekim
+          günlerini önceden takvimliyor, Türkiye genelindeki markaların
+          hesaplarını uzaktan yönetiyoruz.
         </p>
         <ul className="sg-ana-bolge-liste">
-          {bolgeler.map((bolge) => (
+          {bati.map((bolge) => (
             <li key={bolge.slug}>
               <Link className="sg-ana-bolge-bag" href={`/bolgeler/${bolge.slug}`}>
                 {bolge.ilce} sosyal medya ajansı
@@ -133,6 +140,17 @@ export function AnasayfaBolgeler() {
             </li>
           ))}
         </ul>
+        {diger.length > 0 && (
+          <p className="sg-ana-bolge-alt">
+            İstanbul&apos;un diğer ilçeleri:{" "}
+            {diger.map((bolge, i) => (
+              <React.Fragment key={bolge.slug}>
+                <Link href={`/bolgeler/${bolge.slug}`}>{bolge.ilce}</Link>
+                {i < diger.length - 1 ? ", " : "."}
+              </React.Fragment>
+            ))}
+          </p>
+        )}
         <p className="sg-ana-adres">
           <a href={kurum.harita} target="_blank" rel="noopener noreferrer">
             {kurum.sokak}, {kurum.postaKodu} {kurum.ilce}/{kurum.il}

@@ -25,7 +25,8 @@ export type Kurum = {
 export type SiteBaglantilari = {
   hizmetler: { ad: string; slug: string }[];
   yazilar: { baslik: string; slug: string }[];
-  bolgeler: { ilce: string; slug: string }[];
+  // bati: Batı İstanbul ilçesi (bolge-data.ts BATI_ISTANBUL); liste o sırayla başlar
+  bolgeler: { ilce: string; slug: string; bati?: boolean }[];
   // ad: alt bilgi baglanti metni; etiket ve ozet ana sayfa bolumu icin
   sektorler: { ad: string; slug: string; etiket: string; ozet: string }[];
   // kurulus-data.ts istemcide ice aktarilmaz (hizmet katalogunu da ceker)

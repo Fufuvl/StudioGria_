@@ -28,7 +28,7 @@ export default function PortfolioDetailsShowcaseArea({ hizmetler, yazilar }: Pro
               ajansi" sorgusunu tasir. */}
           <h1 className="sg-split-baslik">
             <span className="sg-split-rozet sg-gir sg-gir-1">
-              İstanbul merkezli sosyal medya ajansı
+              Büyükçekmece sosyal medya ve reklam ajansı
             </span>
             <span className="sg-split-slogan sg-gir sg-gir-2">
               İyi içerik izlenir.

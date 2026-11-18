@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { useSiteBaglantilari } from "@/components/site-baglantilari";
+import StudyoHarita from "@/components/studyo-harita";
 
 // Iletisim sayfasindaki studyo kunyesi. Ad, adres, telefon ve saatler
 // kurulus-data.ts'ten gelir; Google Isletme Profili ile birebir aynidir.
@@ -59,15 +60,17 @@ const ContactLocation = () => {
                 Google Haritalar&apos;da yol tarifi alın
               </a>
             </p>
+            <StudyoHarita />
           </div>
         </div>
         <div className="sg-hk-blok">
           <h2 className="sg-hk-baslik">Hizmet verdiğimiz ilçeler</h2>
           <div className="sg-hk-metin">
             <p>
-              İstanbul&apos;un Avrupa ve Anadolu yakasındaki işletmelerle sahada
-              çalışıyor, Türkiye genelindeki markaların hesaplarını uzaktan
-              yönetiyoruz.
+              Büyükçekmece, Beylikdüzü, Esenyurt, Avcılar, Küçükçekmece, Başakşehir
+              ve Silivri&apos;de düzenli olarak sahadayız. İstanbul&apos;un diğer
+              ilçelerinde çekimi önceden takvimliyor, Türkiye genelindeki
+              markaların hesaplarını uzaktan yönetiyoruz.
             </p>
             <p className="sg-hk-bolgeler">
               {bolgeler.map((b, i) => (

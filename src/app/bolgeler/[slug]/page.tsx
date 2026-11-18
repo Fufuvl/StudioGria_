@@ -1,4 +1,4 @@
-import { bulunmaEki } from "@/utils/turkce-ek";
+import { bulunmaEki, ayrilmaEki } from "@/utils/turkce-ek";
 import React from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -7,7 +7,15 @@ import Wrapper from "@/layouts/wrapper";
 import HeaderEleven from "@/layouts/headers/header-eleven";
 import FooterTwo from "@/layouts/footers/footer-two";
 import SosyalKanit from "@/components/sosyal-kanit";
-import { bolgeler, bolgeBul } from "@/data/bolge-data";
+import {
+  bolgeler,
+  bolgeBul,
+  batiIstanbulMu,
+  batiIstanbulBolgeleri,
+} from "@/data/bolge-data";
+import MusteriSozleri from "@/components/musteri-sozleri";
+import { musteriVideoSemalari } from "@/data/musteri-sozleri-data";
+import StudyoHarita, { yolTarifiAdresi } from "@/components/studyo-harita";
 import { hizmetBul } from "@/data/hizmet-data";
 import {
   KIMLIK,
@@ -46,7 +54,16 @@ export default function BolgePage({ params }: Props) {
   const bolge = bolgeBul(params.slug);
   if (!bolge) notFound();
 
-  const digerBolgeler = bolgeler.filter((b) => b.slug !== bolge.slug);
+  // Komsu ilceler once: Bati Istanbul listesi (bu sayfa haric), sonra
+  // Istanbul'un geri kalani. Yerel ic baglanti agirligi stüdyoya yakin
+  // ilcelerde toplanir (18 Kas 2026).
+  const bati = batiIstanbulMu(bolge.slug);
+  const komsuBolgeler = batiIstanbulBolgeleri.filter((b) => b.slug !== bolge.slug);
+  const digerBolgeler = bolgeler.filter(
+    (b) => b.slug !== bolge.slug && !batiIstanbulMu(b.slug),
+  );
+  const videoKimlikleri = bolge.videoKimlikleri ?? [];
+  const merkezIlce = bolge.slug === "buyukcekmece-sosyal-medya-ajansi";
 
   const bolgeAdresi = `${SITE_URL}/bolgeler/${bolge.slug}`;
 
@@ -106,6 +123,7 @@ export default function BolgePage({ params }: Props) {
       { ad: "Hizmet bölgelerimiz", yol: "/bolgeler" },
       { ad: bolge.ilce, yol: `/bolgeler/${bolge.slug}` },
     ]),
+    ...(videoKimlikleri.length ? musteriVideoSemalari(videoKimlikleri) : []),
     // Ilceye ozgu sorular; Google semadaki cevabin sayfada gorunmesini sart kosar
     ...(bolge.sorular?.length ? [sssSemasi(bolge.sorular, `/bolgeler/${bolge.slug}`)] : []),
   ]);
@@ -194,6 +212,80 @@ export default function BolgePage({ params }: Props) {
           </section>
         )}
 
+        {bolge.yerelMusteriler && bolge.yerelMusteriler.length > 0 && (
+          <section className={styles.bolum}>
+            <div className={styles.kapsayici}>
+              <h2 className={styles.bolumBaslik}>
+                {bulunmaEki(bolge.ilce)} birlikte çalıştığımız markalar
+              </h2>
+              <div className={styles.odakIzgara}>
+                {bolge.yerelMusteriler.map((m) => (
+                  <div className={styles.odakKart} key={m.ad}>
+                    <h3 className={styles.odakBaslik}>{m.ad}</h3>
+                    <p className={styles.odakMetin}>{m.is}</p>
+                    {m.yol && (
+                      <Link className={styles.odakBag} href={m.yol}>
+                        Çalışmayı inceleyin
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {videoKimlikleri.length > 0 && (
+          <MusteriSozleri
+            kimlikler={videoKimlikleri}
+            kimlik={`${bolge.slug}-yorum`}
+            rozet={`${bolge.ilce} müşterimiz anlatıyor`}
+            baslik={
+              <>
+                {ayrilmaEki(bolge.ilce)} <em>bir müşterimiz</em> anlatıyor
+              </>
+            }
+          />
+        )}
+
+        {bati && (
+          <section className={styles.bolum}>
+            <div className={styles.kapsayici}>
+              <h2 className={styles.bolumBaslik}>
+                {merkezIlce
+                  ? "Stüdyomuz Büyükçekmece Mimaroba'da"
+                  : `${bolge.ilce} ve Büyükçekmece'deki stüdyomuz`}
+              </h2>
+              <div className={styles.dokuMetin}>
+                <p>
+                  {kunye.ad}, {kunye.adres.sokak}, {kunye.adres.postaKodu}{" "}
+                  {kunye.adres.ilce}/{kunye.adres.il}. Telefon{" "}
+                  <a href={`tel:${kunye.telefon}`}>+90 538 865 44 05</a>.
+                </p>
+                <p>
+                  {merkezIlce
+                    ? "Mimaroba, Sinanoba, Kumburgaz, Celaliye, Tepecik ve Alkent 2000'deki işletmelere aynı gün çekime gelebiliyoruz; toplantıyı isterseniz stüdyomuzda, isterseniz işletmenizde yapıyoruz."
+                    : `${bolge.mesafeNotu} Toplantıyı isterseniz stüdyomuzda, isterseniz işletmenizde yapıyoruz.`}
+                </p>
+              </div>
+              {merkezIlce && <StudyoHarita />}
+              <div className={styles.reklamBaglar}>
+                <a
+                  className={styles.odakBag}
+                  href={yolTarifiAdresi(`${bolge.ilce}, İstanbul`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {merkezIlce ? "Yol tarifi alın" : `${ayrilmaEki(bolge.ilce)} yol tarifi`}
+                </a>
+                <Link className={styles.odakBag} href="/contact">
+                  İletişim
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
+
         {bolge.sorular && bolge.sorular.length > 0 && (
           <section className={styles.bolum}>
             <div className={styles.kapsayici}>
@@ -228,7 +320,22 @@ export default function BolgePage({ params }: Props) {
             </div>
 
             <div className={styles.digerler}>
-              <h2 className={styles.digerBaslik}>Hizmet verdiğimiz diğer bölgeler</h2>
+              <h2 className={styles.digerBaslik}>
+                {bati ? "Batı İstanbul'da komşu ilçeler" : "Stüdyomuza yakın Batı İstanbul ilçeleri"}
+              </h2>
+              <ul className={styles.digerListe}>
+                {komsuBolgeler.map((b) => (
+                  <li key={b.slug}>
+                    <Link className={styles.digerBag} href={`/bolgeler/${b.slug}`}>
+                      {b.ilce} sosyal medya ajansı
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.digerler}>
+              <h2 className={styles.digerBaslik}>İstanbul&apos;un diğer ilçeleri</h2>
               <ul className={styles.digerListe}>
                 {digerBolgeler.map((b) => (
                   <li key={b.slug}>

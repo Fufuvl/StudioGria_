@@ -15,7 +15,7 @@ import WhatsappFloat from "@/components/whatsapp-float";
 import { SiteBaglantilariSaglayici } from "@/components/site-baglantilari";
 import { hizmetler } from "@/data/hizmet-data";
 import { yazilariSirala } from "@/data/blog-yazilari";
-import { bolgeler } from "@/data/bolge-data";
+import { bolgeler, batiIstanbulBolgeleri, batiIstanbulMu } from "@/data/bolge-data";
 import { sektorler } from "@/data/sektor-data";
 import { META_PIXEL_ID } from "@/utils/meta-pixel";
 import {
@@ -133,7 +133,10 @@ const siteBaglantilari = {
   yazilar: yazilariSirala()
     .slice(0, 4)
     .map((y) => ({ baslik: y.baslik, slug: y.slug })),
-  bolgeler: bolgeler.map((b) => ({ ilce: b.ilce, slug: b.slug })),
+  // Bati Istanbul once (stüdyoya yakin ilceler), sonra digerleri (18 Kas 2026)
+  bolgeler: [...batiIstanbulBolgeleri, ...bolgeler.filter((b) => !batiIstanbulMu(b.slug))].map(
+    (b) => ({ ilce: b.ilce, slug: b.slug, bati: batiIstanbulMu(b.slug) }),
+  ),
   sektorler: sektorler.map((s) => ({
     ad: s.altBilgiAd,
     slug: s.slug,

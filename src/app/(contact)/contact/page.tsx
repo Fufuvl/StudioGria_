@@ -10,17 +10,17 @@ import {
 
 export const metadata: Metadata = {
   title: "İletişim: Büyükçekmece Sosyal Medya Ajansı | Studio Gria",
-  description: "Studio Gria ile iletişime geçin: +90 538 865 44 05, hello@studiogria.com. İstanbul Büyükçekmece merkezli sosyal medya ajansı, Türkiye geneli hizmet.",
+  description: "Studio Gria ile iletişime geçin: +90 538 865 44 05, hello@studiogria.com. Stüdyomuz Büyükçekmece Mimaroba'da, Demir Plaza. Batı İstanbul'da sahadayız.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "İletişim: Büyükçekmece Sosyal Medya Ajansı | Studio Gria",
-    description: "Studio Gria ile iletişime geçin: +90 538 865 44 05, hello@studiogria.com. İstanbul Büyükçekmece merkezli sosyal medya ajansı, Türkiye geneli hizmet.",
+    description: "Studio Gria ile iletişime geçin: +90 538 865 44 05, hello@studiogria.com. Stüdyomuz Büyükçekmece Mimaroba'da, Demir Plaza. Batı İstanbul'da sahadayız.",
     url: "https://www.studiogria.com/contact",
   },
   twitter: {
     card: "summary_large_image",
     title: "İletişim: Büyükçekmece Sosyal Medya Ajansı | Studio Gria",
-    description: "Studio Gria ile iletişime geçin: +90 538 865 44 05, hello@studiogria.com. İstanbul Büyükçekmece merkezli sosyal medya ajansı, Türkiye geneli hizmet.",
+    description: "Studio Gria ile iletişime geçin: +90 538 865 44 05, hello@studiogria.com. Stüdyomuz Büyükçekmece Mimaroba'da, Demir Plaza. Batı İstanbul'da sahadayız.",
   },
 };
 

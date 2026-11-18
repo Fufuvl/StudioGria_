@@ -1,4 +1,5 @@
 import React from "react";
+import { batiIstanbulBolgeleri } from "@/data/bolge-data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -250,6 +251,32 @@ export default function HizmetDetayPage({ params }: Props) {
             </div>
           </section>
         )}
+
+        {/* Yerel serit (18 Kas 2026): hizmet + ilce aramalarinda ("büyükçekmece
+            fotoğrafçı", "büyükçekmece web tasarım") sayfanin yerini belirtir ve
+            Bati Istanbul ilce sayfalarina site geneli ic baglanti verir. */}
+        <section className="sg-yerel" aria-labelledby="hizmet-yerel">
+          <div className={styles.kapsayici}>
+            <h2 id="hizmet-yerel" className={styles.bolumBaslik}>
+              Büyükçekmece&apos;deki stüdyomuzdan Batı İstanbul&apos;a
+            </h2>
+            <p className={styles.detayParagraf} style={{ marginTop: "16px" }}>
+              {hizmet.ad} için stüdyomuz Büyükçekmece Mimaroba&apos;da, Demir
+              Plaza&apos;da. Beylikdüzü, Esenyurt, Avcılar, Küçükçekmece,
+              Başakşehir ve Silivri&apos;deki işletmelerle yüz yüze çalışıyor,
+              çekim ve toplantı için düzenli olarak sahaya geliyoruz.
+            </p>
+            <ul className="sg-ana-bolge-liste" style={{ marginTop: "20px" }}>
+              {batiIstanbulBolgeleri.map((b) => (
+                <li key={b.slug}>
+                  <Link className="sg-ana-bolge-bag" href={`/bolgeler/${b.slug}`}>
+                    {b.ilce}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
         <ReferansSerit tekSerit />
 

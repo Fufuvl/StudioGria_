@@ -5,9 +5,10 @@
 // Kurallar: son unlu kalin (a, ı, o, u) ise "a", ince (e, i, ö, ü) ise "e";
 // ad sert unsuzle (f, s, t, k, ç, ş, h, p) bitiyorsa "d" yerine "t".
 
-// Iyelik ekiyle biten bilesik adlar (Beyoğlu, Eminönü) kaynastirma "n" alir:
-// "Beyoğlu'nda", "Beyoğlu'ndaki".
-const KAYNASTIRMALI = /(oğlu|önü)$/;
+// Iyelik ekiyle biten bilesik adlar (Beyoğlu, Eminönü, Beylikdüzü) kaynastirma
+// "n" alir: "Beyoğlu'nda", "Beylikdüzü'nde", "Beylikdüzü'nden".
+// 18 Kas 2026: "düzü" eklendi; sayfa basliklari "Beylikdüzü'de" yaziyordu.
+const KAYNASTIRMALI = /(oğlu|önü|düzü)$/;
 
 const KALIN = "aıou";
 const UNLULER = "aeıioöuü";
@@ -21,4 +22,10 @@ export function bulunmaEki(ad: string, ek: "" | "ki" = ""): string {
   if (KAYNASTIRMALI.test(kucuk)) return `${ad}'nd${unlu}${ek}`;
   const unsuz = SERT.includes(sonHarf) ? "t" : "d";
   return `${ad}'${unsuz}${unlu}${ek}`;
+}
+
+// Ayrilma eki (-den/-dan/-ten/-tan): "Esenyurt'tan", "Silivri'den",
+// "Beylikdüzü'nden". Kurallar bulunma ekiyle ayni.
+export function ayrilmaEki(ad: string): string {
+  return bulunmaEki(ad).replace(/'(n?)([dt])([ea])$/, "'$1$2$3n");
 }

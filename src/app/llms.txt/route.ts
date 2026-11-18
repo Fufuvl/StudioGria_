@@ -1,7 +1,7 @@
 import { SITE_URL, kunye, kurucu, hizmetBolgeleri } from "@/data/kurulus-data";
 import { hizmetler } from "@/data/hizmet-data";
 import { yazilariSirala } from "@/data/blog-yazilari";
-import { bolgeler } from "@/data/bolge-data";
+import { bolgeler, batiIstanbulBolgeleri, batiIstanbulMu } from "@/data/bolge-data";
 import { sosyalKanit } from "@/data/sosyal-kanit-data";
 import { sektorler } from "@/data/sektor-data";
 import { musteriSozleri } from "@/data/musteri-sozleri-data";
@@ -88,7 +88,9 @@ ${yazilar
 
 ## Hizmet bölgeleri
 
-${bolgeler
+Stüdyo Büyükçekmece Mimaroba'dadır (Mustafa Kemal Bulvarı No 18, Demir Plaza). Ekip en sık Batı İstanbul'da sahadadır: ${batiIstanbulBolgeleri.map((b) => b.ilce).join(", ")}. Bu ilçelerdeki işletmelerle yüz yüze çalışır; İstanbul'un diğer ilçelerinde çekimi önceden planlar, Türkiye genelindeki hesapları uzaktan yönetir.
+
+${[...batiIstanbulBolgeleri, ...bolgeler.filter((b) => !batiIstanbulMu(b.slug))]
   .map(
     (bolge) =>
       `- [${bolge.ilce} sosyal medya ajansı](${SITE_URL}/bolgeler/${bolge.slug}): ${bolge.seoAciklama}`,
@@ -109,7 +111,7 @@ ${bolgeler
 
 ## Güncelleme
 
-Bu dosya sitenin veri dosyalarından üretilir. Son içerik güncellemesi: 17 Ekim 2026.
+Bu dosya sitenin veri dosyalarından üretilir. Son içerik güncellemesi: 18 Kasım 2026.
 
 ## Tam metin
 

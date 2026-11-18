@@ -964,6 +964,44 @@
   padding: clamp(64px, 8vw, 120px) 0;
 }
 
+/* Batı İstanbul ilçeleri ana listede, diğer ilçeler altta sade satır (18 Kas 2026) */
+.sg-ana-bolge-alt {
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(22, 24, 29, 0.6);
+  margin: 0 0 32px;
+
+  a {
+    color: rgba(22, 24, 29, 0.75);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(22, 24, 29, 0.25);
+  }
+}
+
+/* Gömülü stüdyo haritası: sitenin mürekkep-beyaz-gri disiplininde gri tonlu */
+.sg-harita {
+  margin: 28px 0 8px;
+  border: 1px solid rgba(22, 24, 29, 0.12);
+  border-radius: 3px;
+  overflow: hidden;
+  line-height: 0;
+
+  iframe {
+    width: 100%;
+    height: clamp(260px, 32vw, 380px);
+    border: 0;
+    filter: grayscale(1);
+  }
+}
+
+/* Hizmet sayfalarında yerel şerit */
+.sg-yerel {
+  background: #fff;
+  border-top: 1px solid rgba(22, 24, 29, 0.08);
+  padding: clamp(48px, 6vw, 88px) 0;
+}
+
 .sg-ana-bolge-liste {
   display: flex;
   flex-wrap: wrap;
